@@ -1,4 +1,6 @@
-# melos_managed_dependency_overrides: unself_analysis
+# melos_managed_dependency_overrides: unself_analysis,unself_monitoring_service
 dependency_overrides:
   unself_analysis:
     path: ../tool/analysis
+  unself_monitoring_service:
+    path: ../service/monitoring_service

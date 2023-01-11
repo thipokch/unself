@@ -76,3 +76,10 @@ firebase-debug.log
 firestore-debug.log
 database-debug.log
 ui-debug.log
+
+# Config files
+google-services.js
+google-services.json
+GoogleService-Info.plist
+firebase_app_id_file.json
+packages/app/lib/config/
