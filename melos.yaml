@@ -10,3 +10,128 @@ command:
     runPubGetInParallel: true
     # It seems so that running "pub get" in parallel cause race condition.
     # See: https://github.com/dart-lang/pub/issues/3404).
+
+scripts:
+  #
+  #   Melos Lifecycle
+  #
+
+  postclean: |
+    melos exec -c 6 -- "flutter clean"
+
+    echo "Cleaning secrets repo..."
+    rm -rvf ./.secrets
+
+  #
+  #   Setup
+  #
+
+  setup:
+    description: Setup for local development. See 'setup:secrets' for variables.
+    run: |
+      melos clean && \
+      melos bootstrap && \
+      melos setup:secrets && \
+      melos setup:hygiene
+
+  setup:ci:
+    description: Setup for CI build. See 'setup:secrets' for variables.
+    run: |
+      melos clean && \
+      melos bootstrap && \
+      melos setup:secrets && \
+      git config --global user.email "noreply@github.com" && \
+      git config --global user.name "GitHub"
+
+  setup:hygiene:
+    description: Setup scripts to run on git hook events.
+    run: | 
+      chmod -R +x .githook/ && \
+      git config core.hooksPath .githook/
+
+  setup:secrets:
+    description: |
+      Clone secrets repo.
+      Decode and decrypt google services config in cloned secrets repo.
+      For local development, use .env to set variables:
+        SECRETS_GITHUB_TOKEN - Personal acccess token.
+        SECRETS_GITHUB_PATH - Path of Github repo.
+        SECRETS_PASSWORD - Encryption passphrase.
+    run: |
+      [ ! -f .env ] || export $(grep -v '^#' .env | xargs) && \
+        echo "Environment variables from .env exported..."
+
+      export APP_DIR=$MELOS_ROOT_PATH/packages/app
+      export SECRETS_DIR=$MELOS_ROOT_PATH/.secrets
+      echo "Using '$SECRETS_DIR'..."
+
+      echo "Cleaning previous secrets repo..."
+      rm -rf $SECRETS_DIR
+
+      echo "Using '$SECRETS_GITHUB_PATH'..."
+      git clone https://$SECRETS_GITHUB_TOKEN@github.com/$SECRETS_GITHUB_PATH $SECRETS_DIR
+
+      for f in $(find $SECRETS_DIR -name '*.enc'); do 
+        echo "Decrypting ${f%.enc}..."
+        openssl aes-256-cbc -md md5 -d -a -v -k $SECRETS_PASSWORD -in $f -out ${f%.enc}
+        rm -rfv $f | xargs echo "Decrypted and removed: $1"
+      done
+
+      export BUILD_ENV=dev && \
+      melos setup:build
+
+      echo "Copying environment configurations..."
+      cp -v -r "$SECRETS_DIR/flutter/"* "$APP_DIR/lib"
+      flutter format $APP_DIR/lib/**/*.dart
+
+  #
+  #   Hygiene
+  #
+
+  hygiene:
+    description: Run all targets generally expected for local quality check. For visibility, CI uses individual steps.
+    run: |
+      melos setup && \
+      melos build:generate && \
+      melos hygiene:format && \
+      melos hygiene:analyze && \
+      melos hygiene:metrics && \
+      melos test:fast
+
+  hygiene:commit:
+    description: Run local quality check before commit.
+    run: |
+      melos hygiene:format && \
+      melos hygiene:analyze && \
+      melos hygiene:metrics
+
+  hygiene:clean:
+    # melos hygiene:clean -- --exclude=.env
+    description: Clean things very deeply, can be used to establish "pristine checkout" status.
+    run: git clean -x -d -f -q
+
+  hygiene:metrics:
+    description: |
+      Run `dart_code_metrics` in all packages.
+      - Note: you can also rely on your IDEs Dart Analysis / Issues window.
+    run: |
+      melos exec -c 1 --ignore="*test*" --depends-on="dart_code_metrics" -- \
+        flutter pub run dart_code_metrics:metrics analyze lib
+
+  hygiene:analyze:
+    # We are setting the concurrency to 1 because a higher concurrency can crash
+    # the analysis server on low performance machines (like GitHub Actions).
+    description: |
+      Run `flutter analyze` in all packages.
+       - Note: you can also rely on your IDEs Dart Analysis / Issues window.
+    run: |
+      melos exec -c 1 --scope="metho*" -- \
+        flutter analyze . --fatal-infos
+
+  hygiene:format:
+    description: |
+      Run `flutter format` in all packages.
+        - Note: Exits with non-zero exit code if formatting is needed.
+    run: |
+      melos exec -c 1 -- \
+          flutter format --output=none --set-exit-if-changed .
