@@ -1,0 +1,12 @@
+name: unself
+repository: https://github.com/thipokch/unself
+
+packages:
+  - packages/**
+
+command:
+  bootstrap:
+    usePubspecOverrides: true
+    runPubGetInParallel: true
+    # It seems so that running "pub get" in parallel cause race condition.
+    # See: https://github.com/dart-lang/pub/issues/3404).
