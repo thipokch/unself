@@ -58,6 +58,17 @@ DeviceFrameBuilderFunction previewFrameBuilder = (
   );
 };
 
+UseCaseBuilderFunction previewUseCaseBuilder = (
+  BuildContext context,
+  Widget child,
+) =>
+    SizedBox.expand(
+      child: Container(
+        color: Theme.of(context).colorScheme.background,
+        child: child,
+      ),
+    );
+
 abstract class UnPreviewFrame {
   static const frames = <WidgetbookFrame>[
     none,

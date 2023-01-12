@@ -5,4 +5,4 @@ dependency_overrides:
   unself_preview:
     path: ../preview
   unself_style:
-    path: ../../style
+    path: ../../style/style

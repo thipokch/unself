@@ -3,4 +3,4 @@ dependency_overrides:
   unself_analysis:
     path: ../../tool/analysis
   unself_style:
-    path: ../../style
+    path: ../../style/style

@@ -18,3 +18,6 @@ void app; // ignore: unused_element
 
 @WidgetbookDeviceFrameBuilder()
 final frameBuilder = previewFrameBuilder;
+
+@WidgetbookUseCaseBuilder()
+final useCaseBuilder = previewUseCaseBuilder;

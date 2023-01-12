@@ -8,6 +8,7 @@
 import 'dart:core';
 import 'dart:math';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -35,6 +36,7 @@ import 'package:unself_style_preview/component/buttons.dart';
 import 'package:unself_style_preview/component/cards.dart';
 import 'package:unself_style_preview/component/chips.dart';
 import 'package:unself_style_preview/component/heading.dart';
+import 'package:unself_style_preview/component/page.dart';
 import 'package:unself_style_preview/style/colors.dart';
 import 'package:unself_style_preview/style/elevation.dart';
 import 'package:unself_style_preview/style/haptics.dart';
@@ -213,7 +215,32 @@ class HotReload extends StatelessWidget {
                   ],
                 ),
               ],
-              folders: [],
+              folders: [
+                WidgetbookFolder(
+                  name: 'page',
+                  widgets: [
+                    WidgetbookComponent(
+                      name: 'UnArtPage',
+                      useCases: [
+                        WidgetbookUseCase(
+                          name: 'Default',
+                          builder: (context) => buildArtPage(context),
+                        ),
+                      ],
+                    ),
+                    WidgetbookComponent(
+                      name: 'UnAppPage',
+                      useCases: [
+                        WidgetbookUseCase(
+                          name: 'Default',
+                          builder: (context) => buildAppPage(context),
+                        ),
+                      ],
+                    ),
+                  ],
+                  folders: [],
+                ),
+              ],
             ),
             WidgetbookFolder(
               name: 'style',
@@ -325,6 +352,7 @@ class HotReload extends StatelessWidget {
         ),
       ],
       deviceFrameBuilder: frameBuilder,
+      useCaseBuilder: useCaseBuilder,
     );
   }
 }
