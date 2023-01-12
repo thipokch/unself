@@ -11,7 +11,7 @@ melos hygiene:commit
 RESULT=$?
 
 # unstash the unstashed changes
-# git stash pop -q
+git stash -q pop
 
 # return the exit code
 exit $RESULT

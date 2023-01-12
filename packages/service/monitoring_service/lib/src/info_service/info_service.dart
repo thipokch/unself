@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:meta/meta.dart';
 import 'package:unself_monitoring_service/monitoring_service.dart';
 import 'package:package_info_plus/package_info_plus.dart';

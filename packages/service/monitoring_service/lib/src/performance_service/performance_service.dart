@@ -11,6 +11,7 @@ class PerformanceService {
 
   // Delegate
 
+  // ignore: unused_field
   final FirebasePerformance _performance;
   // TODO: Sentry
 

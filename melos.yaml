@@ -45,7 +45,7 @@ scripts:
 
   setup:hygiene:
     description: Setup scripts to run on git hook events.
-    run: | 
+    run: |
       chmod -R +x .githook/ && \
       git config core.hooksPath .githook/
 
@@ -125,7 +125,7 @@ scripts:
       Run `flutter analyze` in all packages.
        - Note: you can also rely on your IDEs Dart Analysis / Issues window.
     run: |
-      melos exec -c 1 --scope="metho*" -- \
+      melos exec -c 1 --scope="unself*" -- \
         flutter analyze . --fatal-infos
 
   hygiene:format:
@@ -135,3 +135,10 @@ scripts:
     run: |
       melos exec -c 1 -- \
           flutter format --output=none --set-exit-if-changed .
+
+  hygiene:format:fix:
+    description: |
+      Fix `flutter format` in all packages.
+    run: |
+      melos exec -c 1 -- \
+          flutter format .

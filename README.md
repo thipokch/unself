@@ -5,7 +5,7 @@
 
 ---
 
-# snself
+# unself
 
 [unself](https://unself.app) is an open source personal data archiving tool.
 
