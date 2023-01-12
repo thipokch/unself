@@ -1,0 +1,8 @@
+# melos_managed_dependency_overrides: unself_analysis,unself_preview,unself_style
+dependency_overrides:
+  unself_analysis:
+    path: ../../tool/analysis
+  unself_preview:
+    path: ../preview
+  unself_style:
+    path: ../../style
