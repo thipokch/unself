@@ -142,3 +142,38 @@ scripts:
     run: |
       melos exec -c 1 -- \
           flutter format .
+
+  #
+  #   Build
+  #
+
+  build:num:
+    description: |
+      Bump build number
+      For local development, use .env to set variables
+        BUILD_NUM - build number
+    run: dart ./packages/app/script/version_build.dart
+
+  build:generate:
+    description: Run all code generators.
+    run: |
+      melos build:runner && \
+      melos build:splash
+
+  build:watch:
+    description: Run all code generators.
+    run: |
+      melos exec --depends-on="build_runner" -- \
+        flutter pub run build_runner watch --delete-conflicting-outputs
+
+  build:runner:
+    run: |
+      melos exec --depends-on="build_runner" -- \
+        flutter pub run build_runner clean &&
+      melos exec --depends-on="build_runner" -- \
+        flutter pub run build_runner build --delete-conflicting-outputs
+
+  build:splash:
+    run: |
+      melos exec -c 1 --depends-on="flutter_native_splash" -- \
+        flutter pub run flutter_native_splash:create
