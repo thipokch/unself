@@ -216,31 +216,7 @@ class HotReload extends StatelessWidget {
               folders: [],
             ),
             WidgetbookFolder(
-              name: 'material',
-              widgets: [
-                WidgetbookComponent(
-                  name: 'Card',
-                  useCases: [
-                    WidgetbookUseCase(
-                      name: 'Default',
-                      builder: (context) => buildCards(context),
-                    ),
-                  ],
-                ),
-                WidgetbookComponent(
-                  name: 'Chip',
-                  useCases: [
-                    WidgetbookUseCase(
-                      name: 'Default',
-                      builder: (context) => buildChips(context),
-                    ),
-                  ],
-                ),
-              ],
-              folders: [],
-            ),
-            WidgetbookFolder(
-              name: 'foundation',
+              name: 'style',
               widgets: [],
               folders: [
                 WidgetbookFolder(
@@ -319,6 +295,30 @@ class HotReload extends StatelessWidget {
                   folders: [],
                 ),
               ],
+            ),
+            WidgetbookFolder(
+              name: 'material',
+              widgets: [
+                WidgetbookComponent(
+                  name: 'Card',
+                  useCases: [
+                    WidgetbookUseCase(
+                      name: 'Default',
+                      builder: (context) => buildCards(context),
+                    ),
+                  ],
+                ),
+                WidgetbookComponent(
+                  name: 'Chip',
+                  useCases: [
+                    WidgetbookUseCase(
+                      name: 'Default',
+                      builder: (context) => buildChips(context),
+                    ),
+                  ],
+                ),
+              ],
+              folders: [],
             ),
           ],
           widgets: [],

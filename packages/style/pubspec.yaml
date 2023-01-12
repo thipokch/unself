@@ -52,12 +52,21 @@ flutter:
   fonts:
     - family: Inter
       fonts:
-        - asset: assets/fonts/Inter-VariableFont_slnt,wght.ttf
+        - asset: assets/fonts/Inter.ttf
         # Variable Font Axises: slnt, wght
+
     - family: Literata
       fonts:
-        - asset: assets/fonts/Literata-VariableFont_opsz,wght.ttf
+        - asset: assets/fonts/Literata.ttf
         # Variable Font Axises: opsz, wght
+
+    - family: MaterialSymbolsRounded
+      fonts:
+        - asset: assets/fonts/MaterialSymbolsRounded.ttf
+        # Variable Font Axises: FILL,GRAD,opsz,wght
+
+        # TODO: Implement axies when flutter/flutter#106896 is released
+        # TODO: Code generate .dart tokens based on codepoints file.
 
   # assets:
   #   - assets/emojis/

@@ -15,4 +15,7 @@ class FontFamily {
 
   /// Font family: Literata
   static const String literata = 'Literata';
+
+  /// Font family: MaterialSymbolsRounded
+  static const String materialSymbolsRounded = 'MaterialSymbolsRounded';
 }

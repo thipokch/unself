@@ -11,11 +11,34 @@ Widget buildSymbols(BuildContext context) {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: const [
+            Icon(UnMaterialSymbols.add, size: UnSymbolSizes.M),
+            Icon(UnMaterialSymbols.close, size: UnSymbolSizes.M),
+            Icon(UnMaterialSymbols.close, size: UnSymbolSizes.M),
+            Icon(UnMaterialSymbols.sticky_note_2, size: UnSymbolSizes.M),
+            Icon(UnMaterialSymbols.more_vert, size: UnSymbolSizes.M),
+          ],
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: const [
             Icon(UnSymbols.add, size: UnSymbolSizes.M),
             Icon(UnSymbols.dismiss, size: UnSymbolSizes.M),
             Icon(UnSymbols.checkmark, size: UnSymbolSizes.M),
             Icon(UnSymbols.note, size: UnSymbolSizes.M),
             Icon(UnSymbols.moreVertical, size: UnSymbolSizes.M),
+          ],
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: const [
+            Icon(UnMaterialSymbols.arrow_back, size: UnSymbolSizes.M),
+            Icon(UnMaterialSymbols.arrow_upward, size: UnSymbolSizes.M),
+            Icon(UnMaterialSymbols.arrow_downward, size: UnSymbolSizes.M),
+            Icon(UnMaterialSymbols.arrow_forward, size: UnSymbolSizes.M),
+            Icon(UnMaterialSymbols.north_west, size: UnSymbolSizes.M),
+            Icon(UnMaterialSymbols.north_east, size: UnSymbolSizes.M),
+            Icon(UnMaterialSymbols.south_east, size: UnSymbolSizes.M),
+            Icon(UnMaterialSymbols.south_west, size: UnSymbolSizes.M),
           ],
         ),
         Row(
@@ -33,6 +56,15 @@ Widget buildSymbols(BuildContext context) {
             Icon(UnSymbols.brandArrowUpDown, size: UnSymbolSizes.M),
             // Icon(UnSymbols.brandArrowDownRight, size: UnSymbolSizes.M),
             // Icon(UnSymbols.brandArrowLeftRight, size: UnSymbolSizes.M),
+          ],
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: const [
+            Icon(UnMaterialSymbols.chevron_left, size: UnSymbolSizes.M),
+            Icon(UnMaterialSymbols.chevron_right, size: UnSymbolSizes.M),
+            Icon(UnMaterialSymbols.expand_more, size: UnSymbolSizes.M),
+            Icon(UnMaterialSymbols.expand_less, size: UnSymbolSizes.M),
           ],
         ),
         Row(
