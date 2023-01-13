@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/foundation.dart';
-import 'package:unself_license_repository/license_repository.dart';
+import 'package:unself_license/unself_license.dart';
 
 part 'ilicense_repository.dart';
 

@@ -13,8 +13,8 @@ dependencies:
 
   cupertino_icons: ^1.0.2
 
-  unself_monitoring_service:
-  unself_license_repository:
+  unself_monitoring:
+  unself_license:
 
 dev_dependencies:
   flutter_test:

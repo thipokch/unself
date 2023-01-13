@@ -1,4 +1,4 @@
-import 'package:unself_license_repository/license_repository.dart';
+import 'package:unself_license/unself_license.dart';
 import 'package:test/test.dart';
 
 void main() {

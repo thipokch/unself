@@ -1,10 +1,8 @@
-library monitoring_service;
+library unself_monitoring;
 
-import 'package:firebase_core/firebase_core.dart'
-    show Firebase, FirebaseOptions;
-import 'package:unself_monitoring_service/src/info_service/info_service.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:sentry/sentry.dart';
+import 'package:unself_monitoring/unself_monitoring.dart';
 
 export 'src/analytic_service/analytic_service.dart';
 export 'src/error_service/error_service.dart';

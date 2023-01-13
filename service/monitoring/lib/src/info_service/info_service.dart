@@ -1,6 +1,6 @@
 import 'package:meta/meta.dart';
-import 'package:unself_monitoring_service/monitoring_service.dart';
 import 'package:package_info_plus/package_info_plus.dart';
+import 'package:unself_monitoring/unself_monitoring.dart';
 
 /// {@template info_service}
 /// [InfoService] description

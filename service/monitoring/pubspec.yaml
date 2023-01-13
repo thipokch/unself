@@ -1,4 +1,4 @@
-name: unself_monitoring_service
+name: unself_monitoring
 description: Provides analytics, error reporting, and performance monitoring services.
 
 version: 1.0.0+1
