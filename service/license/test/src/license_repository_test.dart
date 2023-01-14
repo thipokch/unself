@@ -4,14 +4,14 @@ import 'package:test/test.dart';
 void main() {
   group('LicenseRepository', () {
     // ignore: unused_local_variable
-    late LicenseRepository licenseRepository;
+    late LicenseService licenseRepository;
 
     setUp(() {
-      licenseRepository = const LicenseRepository();
+      licenseRepository = const LicenseService();
     });
 
     test('can be instantiated', () {
-      expect(const LicenseRepository(), isNotNull);
+      expect(const LicenseService(), isNotNull);
     });
   });
 }

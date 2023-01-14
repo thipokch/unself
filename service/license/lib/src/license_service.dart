@@ -3,14 +3,14 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:unself_license/unself_license.dart';
 
-part 'ilicense_repository.dart';
+part 'ilicense_service.dart';
 
-/// {@template license_repository}
-/// LicenseRepository description
+/// {@template license_service}
+/// [LicenseService] description
 /// {@endtemplate}
-class LicenseRepository {
-  /// {@macro license_repository}
-  const LicenseRepository();
+class LicenseService {
+  /// {@macro license_service}
+  const LicenseService();
 
   static LicenseData? _licenses;
   Future<LicenseData> get licenses async =>
