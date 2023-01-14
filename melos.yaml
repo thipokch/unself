@@ -2,7 +2,9 @@ name: unself
 repository: https://github.com/thipokch/unself
 
 packages:
-  - /**
+  - "**"
+ignore:
+  - "tool/template/**"
 
 command:
   bootstrap:
@@ -31,6 +33,7 @@ scripts:
     run: |
       melos clean && \
       melos bootstrap && \
+      melos setup:mason && \
       melos setup:secrets && \
       melos setup:hygiene
 
@@ -84,6 +87,13 @@ scripts:
       cp -v -r "$SECRETS_DIR/flutter/"* "$APP_DIR/lib"
       flutter format $APP_DIR/lib/**/*.dart
 
+  setup:mason:
+    description: Setup mason
+    # Workaround: checked_yaml 2.0.2 is not used for compiling pre-gen scripts.
+    run: |
+      dart pub global activate mason_cli && \
+      dart pub cache add checked_yaml -v 2.0.1 && \
+      mason get
   #
   #   Hygiene
   #
@@ -102,7 +112,7 @@ scripts:
     description: Run local quality check before commit.
     run: |
       melos hygiene:format && \
-      melos hygiene:analyze && \
+      melos hygiene:analyze && \ 
       melos hygiene:metrics
 
   hygiene:clean:

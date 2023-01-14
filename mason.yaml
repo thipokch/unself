@@ -1,0 +1,15 @@
+bricks:
+  # feature:
+  #   path: tool/template/feature
+  feature_package:
+    path: tool/template/feature_package
+  model:
+    path: tool/template/model
+  # model_bundle:
+  #   path: tool/template/model_bundle
+  # service:
+  #   path: tool/template/service
+  service_package:
+    path: tool/template/service_package
+  # widgetbook_starter: ^0.1.0+2
+  # widgetbook_app: ^0.1.0+1

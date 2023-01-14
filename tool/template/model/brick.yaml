@@ -1,0 +1,29 @@
+name: model
+description: A brick to create your model with properties and all the supporting methods, copyWith, to/from json, equatable and more!
+version: 0.5.1
+repository: https://github.com/LukeMoody01/mason_bricks/tree/master/bricks/model
+
+vars:
+  model_name:
+    default: model
+    type: string
+    description: The model name
+    prompt: What is the models name?
+  additionals:
+    type: array
+    defaults: [copyWith, json, equatable]
+    description: The additional methods/extensions you can have on a model
+    prompt: What additional methods/extensions should the model have?
+    values:
+      - copyWith
+      - json
+      - equatable
+  style:
+    type: enum
+    default: basic
+    description: The style that the file is augmented via generation code
+    prompt: What is the model style?
+    values:
+      - basic
+      - json_serializable
+      - freezed
