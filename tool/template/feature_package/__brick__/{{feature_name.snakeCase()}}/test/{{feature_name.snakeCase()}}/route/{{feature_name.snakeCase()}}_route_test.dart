@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:unself_{{feature_name.snakeCase()}}/{{feature_name.snakeCase()}}.dart';
+import 'package:unself_{{feature_name.snakeCase()}}/unself_{{feature_name.snakeCase()}}.dart';
 
 void main() {
   group('{{feature_name.pascalCase()}}Route', () {

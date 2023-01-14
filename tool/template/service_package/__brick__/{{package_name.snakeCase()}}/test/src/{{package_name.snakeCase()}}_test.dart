@@ -1,4 +1,4 @@
-import 'package:{{package_name.snakeCase()}}/{{package_name.snakeCase()}}.dart';
+import 'package:unself_{{package_name.snakeCase()}}/unself_{{package_name.snakeCase()}}.dart';
 import 'package:test/test.dart';
 
 void main() {

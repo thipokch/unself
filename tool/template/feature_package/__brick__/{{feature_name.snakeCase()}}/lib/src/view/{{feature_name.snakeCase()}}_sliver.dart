@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:unself_{{feature_name.snakeCase()}}/{{feature_name.snakeCase()}}.dart';
+import 'package:unself_{{feature_name.snakeCase()}}/unself_{{feature_name.snakeCase()}}.dart';
 
 /// {@template {{feature_name.snakeCase()}}_sliver}
 /// Sliver of the {{feature_name.pascalCase()}}Page.

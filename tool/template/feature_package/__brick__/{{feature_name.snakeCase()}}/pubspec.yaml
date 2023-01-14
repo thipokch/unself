@@ -19,7 +19,7 @@ dependencies:
   go_router:
 
   unself_style:
-  unself_monitoring_service:
+  unself_monitoring:
 
 dev_dependencies:
 

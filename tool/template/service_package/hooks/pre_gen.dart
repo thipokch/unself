@@ -5,41 +5,75 @@ import 'package:mason/mason.dart';
 Future<void> run(HookContext context) async {
   final recasedPackageName = ReCase(context.vars['package_name']).snakeCase;
   final logger = context.logger;
-  final methods = await _runServiceBrick(context, recasedPackageName);
 
   context.vars = {
     ...context.vars,
-    'methods': methods,
+    'isFactory': false,
+    'isInstance': false,
+    'isInstanceLazy': false,
+    'isNone': true,
   };
 
-  if (!logger.confirm('? Do you want to add Models?', defaultValue: true)) {
-    return;
-  }
-  final models = <Map<String, dynamic>>[];
-  while (true) {
-    final modelFileName = await _runModelBrick(context, recasedPackageName);
-    models.add({'name': modelFileName});
-    if (logger.confirm(
-      '? Do you want to add another Model?',
-      defaultValue: false,
-    )) {
-      continue;
-    } else {
-      break;
+  if (logger.confirm('? Do you want to add Models?', defaultValue: true)) {
+    final models = <Map<String, dynamic>>[];
+    while (true) {
+      final modelFileName = await _runModelBrick(context, recasedPackageName);
+      models.add({'name': modelFileName});
+      if (logger.confirm(
+        '? Do you want to add another Model?',
+        defaultValue: false,
+      )) {
+        continue;
+      } else {
+        break;
+      }
     }
+    context.vars = {
+      ...context.vars,
+      'hasModels': true,
+      'models': models,
+    };
   }
 
-  context.vars = {
-    ...context.vars,
-    'hasModels': true,
-    'models': models,
-  };
+  if (logger.confirm(
+    '? Do you want to add methods to your service?',
+    defaultValue: true,
+  )) {
+    logger.alert(lightYellow.wrap('enter "e" to exit adding methods'));
+    logger.alert('Format: returnType methodName e.g, String myMethod:');
+    final methods = <Map<String, dynamic>>[];
+
+    while (true) {
+      final method = logger.prompt(':').replaceAll(RegExp('\\s+'), ' ').trim();
+      if (method.toLowerCase() == 'e') {
+        break;
+      }
+
+      if (!method.contains(' ')) {
+        logger.alert(
+            'That was not a valid format -> returnType methodName e.g, String myMethod');
+        continue;
+      }
+
+      final splitProperty = method.split(' ');
+      final propertyType = splitProperty[0];
+      final propertyName = splitProperty[1];
+      methods.add({
+        'name': propertyName,
+        'type': propertyType,
+      });
+    }
+    context.vars = {
+      ...context.vars,
+      'methods': methods,
+    };
+  }
 }
 
 Future<String> _runModelBrick(
     HookContext context, String recasedPackageName) async {
   final modelsDirectory =
-      '${Directory.current.path..replaceAll(RegExp(r"'"), '')}\\$recasedPackageName\\lib\\src\\models';
+      '${Directory.current.path..replaceAll(RegExp(r"'"), '')}/$recasedPackageName/lib/src/models';
   final directory = Directory(modelsDirectory);
   final generator = await MasonGenerator.fromBrick(
     Brick.version(name: 'model', version: '0.3.5'),
@@ -82,35 +116,6 @@ Future<String> _runModelBrick(
   );
 
   return ReCase(modelName).snakeCase;
-}
-
-Future<List<dynamic>?> _runServiceBrick(
-    HookContext context, String recasedPackageName) async {
-  final serviceDirectory =
-      '${Directory.current.path..replaceAll(RegExp(r"'"), '')}\\$recasedPackageName\\lib\\src';
-  final directory = Directory(serviceDirectory);
-  final generator = await MasonGenerator.fromBrick(
-    Brick.version(name: 'service', version: '0.0.3'),
-  );
-
-  Map<String, dynamic> preGenVars = {};
-  await generator.hooks.preGen(
-    vars: {
-      'service_name': recasedPackageName,
-      'singleton_type': 'none',
-    },
-    onVarsChanged: (varsMap) {
-      preGenVars = varsMap;
-    },
-  );
-
-  await generator.generate(
-    DirectoryGeneratorTarget(directory),
-    vars: preGenVars,
-    logger: context.logger,
-  );
-
-  return preGenVars['methods'];
 }
 
 class ReCase {
