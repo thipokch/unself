@@ -1,11 +1,11 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'schema_field.freezed.dart';
-part 'schema_field.g.dart';
+part 'field.freezed.dart';
+part 'field.g.dart';
 
 @freezed
-class SchemaField with _$SchemaField {
-  const factory SchemaField({
+class Field with _$Field {
+  const factory Field({
     @Default('') String id,
     @Default('') String name,
     @Default('') String type,
@@ -13,8 +13,7 @@ class SchemaField with _$SchemaField {
     @Default(false) bool required,
     @Default(false) bool unique,
     @Default({}) Map<String, dynamic> options,
-  }) = _SchemaField;
+  }) = _Field;
 
-  factory SchemaField.fromJson(Map<String, dynamic> json) =>
-      _$SchemaFieldFromJson(json);
+  factory Field.fromJson(Map<String, dynamic> json) => _$FieldFromJson(json);
 }

@@ -1,10 +1,12 @@
 import 'dart:async';
 
 import 'package:drift/drift.dart';
+import 'package:unself_database/unself_database.dart';
 
-class UnTable extends Table with TableInfo {
-  UnTable(
+class CollectionOrm<D> extends Table with TableInfo<CollectionOrm<D>, D> {
+  CollectionOrm(
     this.attachedDatabase,
+    this.id,
     this.actualTableName,
     this.$columns, [
     this._alias,
@@ -14,6 +16,8 @@ class UnTable extends Table with TableInfo {
   final List<GeneratedColumn> $columns;
 
   final String? _alias;
+
+  final String id;
 
   @override
   String get aliasedName => _alias ?? actualTableName;
@@ -25,18 +29,19 @@ class UnTable extends Table with TableInfo {
   // String get $tableName => alias ?? actualTableName;
 
   @override
-  UnTable createAlias(String alias) => UnTable(
+  CollectionOrm<D> createAlias(String alias) => CollectionOrm(
         attachedDatabase,
+        id,
         actualTableName,
         $columns,
         alias,
       );
 
   @override
-  DatabaseConnectionUser attachedDatabase;
+  Database attachedDatabase;
 
   @override
-  FutureOr map(Map<String, dynamic> data, {String? tablePrefix}) {
+  FutureOr<D> map(Map<String, dynamic> data, {String? tablePrefix}) {
     // TODO: implement map
     throw UnimplementedError();
   }

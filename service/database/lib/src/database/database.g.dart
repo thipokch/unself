@@ -496,12 +496,11 @@ class CollectionCompanion extends UpdateCompanion<CollectionData> {
   }
 }
 
-class $SchemaFieldTable extends SchemaField
-    with TableInfo<$SchemaFieldTable, SchemaFieldData> {
+class $FieldTable extends Field with TableInfo<$FieldTable, FieldData> {
   @override
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
-  $SchemaFieldTable(this.attachedDatabase, [this._alias]);
+  $FieldTable(this.attachedDatabase, [this._alias]);
   static const VerificationMeta _idMeta = const VerificationMeta('id');
   @override
   late final GeneratedColumn<String> id = GeneratedColumn<String>(
@@ -557,15 +556,24 @@ class $SchemaFieldTable extends SchemaField
   late final GeneratedColumn<String> options = GeneratedColumn<String>(
       'options', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _collectionIdMeta =
+      const VerificationMeta('collectionId');
+  @override
+  late final GeneratedColumn<String> collectionId = GeneratedColumn<String>(
+      'collection_id', aliasedName, false,
+      type: DriftSqlType.string,
+      requiredDuringInsert: true,
+      defaultConstraints:
+          GeneratedColumn.constraintIsAlways('REFERENCES collection (id)'));
   @override
   List<GeneratedColumn> get $columns =>
-      [id, name, type, system, required, unique, options];
+      [id, name, type, system, required, unique, options, collectionId];
   @override
-  String get aliasedName => _alias ?? 'schema_field';
+  String get aliasedName => _alias ?? 'field';
   @override
-  String get actualTableName => 'schema_field';
+  String get actualTableName => 'field';
   @override
-  VerificationContext validateIntegrity(Insertable<SchemaFieldData> instance,
+  VerificationContext validateIntegrity(Insertable<FieldData> instance,
       {bool isInserting = false}) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
@@ -608,15 +616,23 @@ class $SchemaFieldTable extends SchemaField
       context.handle(_optionsMeta,
           options.isAcceptableOrUnknown(data['options']!, _optionsMeta));
     }
+    if (data.containsKey('collection_id')) {
+      context.handle(
+          _collectionIdMeta,
+          collectionId.isAcceptableOrUnknown(
+              data['collection_id']!, _collectionIdMeta));
+    } else if (isInserting) {
+      context.missing(_collectionIdMeta);
+    }
     return context;
   }
 
   @override
   Set<GeneratedColumn> get $primaryKey => {id};
   @override
-  SchemaFieldData map(Map<String, dynamic> data, {String? tablePrefix}) {
+  FieldData map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
-    return SchemaFieldData(
+    return FieldData(
       id: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}id'])!,
       name: attachedDatabase.typeMapping
@@ -631,16 +647,18 @@ class $SchemaFieldTable extends SchemaField
           .read(DriftSqlType.bool, data['${effectivePrefix}unique'])!,
       options: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}options']),
+      collectionId: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}collection_id'])!,
     );
   }
 
   @override
-  $SchemaFieldTable createAlias(String alias) {
-    return $SchemaFieldTable(attachedDatabase, alias);
+  $FieldTable createAlias(String alias) {
+    return $FieldTable(attachedDatabase, alias);
   }
 }
 
-class SchemaFieldData extends DataClass implements Insertable<SchemaFieldData> {
+class FieldData extends DataClass implements Insertable<FieldData> {
   final String id;
   final String name;
   final String type;
@@ -648,14 +666,16 @@ class SchemaFieldData extends DataClass implements Insertable<SchemaFieldData> {
   final bool required;
   final bool unique;
   final String? options;
-  const SchemaFieldData(
+  final String collectionId;
+  const FieldData(
       {required this.id,
       required this.name,
       required this.type,
       required this.system,
       required this.required,
       required this.unique,
-      this.options});
+      this.options,
+      required this.collectionId});
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
@@ -668,11 +688,12 @@ class SchemaFieldData extends DataClass implements Insertable<SchemaFieldData> {
     if (!nullToAbsent || options != null) {
       map['options'] = Variable<String>(options);
     }
+    map['collection_id'] = Variable<String>(collectionId);
     return map;
   }
 
-  SchemaFieldCompanion toCompanion(bool nullToAbsent) {
-    return SchemaFieldCompanion(
+  FieldCompanion toCompanion(bool nullToAbsent) {
+    return FieldCompanion(
       id: Value(id),
       name: Value(name),
       type: Value(type),
@@ -682,13 +703,14 @@ class SchemaFieldData extends DataClass implements Insertable<SchemaFieldData> {
       options: options == null && nullToAbsent
           ? const Value.absent()
           : Value(options),
+      collectionId: Value(collectionId),
     );
   }
 
-  factory SchemaFieldData.fromJson(Map<String, dynamic> json,
+  factory FieldData.fromJson(Map<String, dynamic> json,
       {ValueSerializer? serializer}) {
     serializer ??= driftRuntimeOptions.defaultSerializer;
-    return SchemaFieldData(
+    return FieldData(
       id: serializer.fromJson<String>(json['id']),
       name: serializer.fromJson<String>(json['name']),
       type: serializer.fromJson<String>(json['type']),
@@ -696,6 +718,7 @@ class SchemaFieldData extends DataClass implements Insertable<SchemaFieldData> {
       required: serializer.fromJson<bool>(json['required']),
       unique: serializer.fromJson<bool>(json['unique']),
       options: serializer.fromJson<String?>(json['options']),
+      collectionId: serializer.fromJson<String>(json['collectionId']),
     );
   }
   @override
@@ -709,18 +732,20 @@ class SchemaFieldData extends DataClass implements Insertable<SchemaFieldData> {
       'required': serializer.toJson<bool>(required),
       'unique': serializer.toJson<bool>(unique),
       'options': serializer.toJson<String?>(options),
+      'collectionId': serializer.toJson<String>(collectionId),
     };
   }
 
-  SchemaFieldData copyWith(
+  FieldData copyWith(
           {String? id,
           String? name,
           String? type,
           bool? system,
           bool? required,
           bool? unique,
-          Value<String?> options = const Value.absent()}) =>
-      SchemaFieldData(
+          Value<String?> options = const Value.absent(),
+          String? collectionId}) =>
+      FieldData(
         id: id ?? this.id,
         name: name ?? this.name,
         type: type ?? this.type,
@@ -728,38 +753,41 @@ class SchemaFieldData extends DataClass implements Insertable<SchemaFieldData> {
         required: required ?? this.required,
         unique: unique ?? this.unique,
         options: options.present ? options.value : this.options,
+        collectionId: collectionId ?? this.collectionId,
       );
   @override
   String toString() {
-    return (StringBuffer('SchemaFieldData(')
+    return (StringBuffer('FieldData(')
           ..write('id: $id, ')
           ..write('name: $name, ')
           ..write('type: $type, ')
           ..write('system: $system, ')
           ..write('required: $required, ')
           ..write('unique: $unique, ')
-          ..write('options: $options')
+          ..write('options: $options, ')
+          ..write('collectionId: $collectionId')
           ..write(')'))
         .toString();
   }
 
   @override
-  int get hashCode =>
-      Object.hash(id, name, type, system, required, unique, options);
+  int get hashCode => Object.hash(
+      id, name, type, system, required, unique, options, collectionId);
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      (other is SchemaFieldData &&
+      (other is FieldData &&
           other.id == this.id &&
           other.name == this.name &&
           other.type == this.type &&
           other.system == this.system &&
           other.required == this.required &&
           other.unique == this.unique &&
-          other.options == this.options);
+          other.options == this.options &&
+          other.collectionId == this.collectionId);
 }
 
-class SchemaFieldCompanion extends UpdateCompanion<SchemaFieldData> {
+class FieldCompanion extends UpdateCompanion<FieldData> {
   final Value<String> id;
   final Value<String> name;
   final Value<String> type;
@@ -767,7 +795,8 @@ class SchemaFieldCompanion extends UpdateCompanion<SchemaFieldData> {
   final Value<bool> required;
   final Value<bool> unique;
   final Value<String?> options;
-  const SchemaFieldCompanion({
+  final Value<String> collectionId;
+  const FieldCompanion({
     this.id = const Value.absent(),
     this.name = const Value.absent(),
     this.type = const Value.absent(),
@@ -775,8 +804,9 @@ class SchemaFieldCompanion extends UpdateCompanion<SchemaFieldData> {
     this.required = const Value.absent(),
     this.unique = const Value.absent(),
     this.options = const Value.absent(),
+    this.collectionId = const Value.absent(),
   });
-  SchemaFieldCompanion.insert({
+  FieldCompanion.insert({
     required String id,
     required String name,
     required String type,
@@ -784,13 +814,15 @@ class SchemaFieldCompanion extends UpdateCompanion<SchemaFieldData> {
     required bool required,
     required bool unique,
     this.options = const Value.absent(),
+    required String collectionId,
   })  : id = Value(id),
         name = Value(name),
         type = Value(type),
         system = Value(system),
         required = Value(required),
-        unique = Value(unique);
-  static Insertable<SchemaFieldData> custom({
+        unique = Value(unique),
+        collectionId = Value(collectionId);
+  static Insertable<FieldData> custom({
     Expression<String>? id,
     Expression<String>? name,
     Expression<String>? type,
@@ -798,6 +830,7 @@ class SchemaFieldCompanion extends UpdateCompanion<SchemaFieldData> {
     Expression<bool>? required,
     Expression<bool>? unique,
     Expression<String>? options,
+    Expression<String>? collectionId,
   }) {
     return RawValuesInsertable({
       if (id != null) 'id': id,
@@ -807,18 +840,20 @@ class SchemaFieldCompanion extends UpdateCompanion<SchemaFieldData> {
       if (required != null) 'required': required,
       if (unique != null) 'unique': unique,
       if (options != null) 'options': options,
+      if (collectionId != null) 'collection_id': collectionId,
     });
   }
 
-  SchemaFieldCompanion copyWith(
+  FieldCompanion copyWith(
       {Value<String>? id,
       Value<String>? name,
       Value<String>? type,
       Value<bool>? system,
       Value<bool>? required,
       Value<bool>? unique,
-      Value<String?>? options}) {
-    return SchemaFieldCompanion(
+      Value<String?>? options,
+      Value<String>? collectionId}) {
+    return FieldCompanion(
       id: id ?? this.id,
       name: name ?? this.name,
       type: type ?? this.type,
@@ -826,6 +861,7 @@ class SchemaFieldCompanion extends UpdateCompanion<SchemaFieldData> {
       required: required ?? this.required,
       unique: unique ?? this.unique,
       options: options ?? this.options,
+      collectionId: collectionId ?? this.collectionId,
     );
   }
 
@@ -853,249 +889,36 @@ class SchemaFieldCompanion extends UpdateCompanion<SchemaFieldData> {
     if (options.present) {
       map['options'] = Variable<String>(options.value);
     }
+    if (collectionId.present) {
+      map['collection_id'] = Variable<String>(collectionId.value);
+    }
     return map;
   }
 
   @override
   String toString() {
-    return (StringBuffer('SchemaFieldCompanion(')
+    return (StringBuffer('FieldCompanion(')
           ..write('id: $id, ')
           ..write('name: $name, ')
           ..write('type: $type, ')
           ..write('system: $system, ')
           ..write('required: $required, ')
           ..write('unique: $unique, ')
-          ..write('options: $options')
+          ..write('options: $options, ')
+          ..write('collectionId: $collectionId')
           ..write(')'))
         .toString();
   }
 }
 
-class $SchemaTable extends Schema with TableInfo<$SchemaTable, SchemaData> {
-  @override
-  final GeneratedDatabase attachedDatabase;
-  final String? _alias;
-  $SchemaTable(this.attachedDatabase, [this._alias]);
-  static const VerificationMeta _idMeta = const VerificationMeta('id');
-  @override
-  late final GeneratedColumn<String> id = GeneratedColumn<String>(
-      'id', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
-  static const VerificationMeta _collectionIdMeta =
-      const VerificationMeta('collectionId');
-  @override
-  late final GeneratedColumn<String> collectionId = GeneratedColumn<String>(
-      'collection_id', aliasedName, false,
-      type: DriftSqlType.string,
-      requiredDuringInsert: true,
-      defaultConstraints:
-          GeneratedColumn.constraintIsAlways('REFERENCES collection (id)'));
-  static const VerificationMeta _fieldIdMeta =
-      const VerificationMeta('fieldId');
-  @override
-  late final GeneratedColumn<String> fieldId = GeneratedColumn<String>(
-      'field_id', aliasedName, false,
-      type: DriftSqlType.string,
-      requiredDuringInsert: true,
-      defaultConstraints:
-          GeneratedColumn.constraintIsAlways('REFERENCES schema_field (id)'));
-  @override
-  List<GeneratedColumn> get $columns => [id, collectionId, fieldId];
-  @override
-  String get aliasedName => _alias ?? 'schema';
-  @override
-  String get actualTableName => 'schema';
-  @override
-  VerificationContext validateIntegrity(Insertable<SchemaData> instance,
-      {bool isInserting = false}) {
-    final context = VerificationContext();
-    final data = instance.toColumns(true);
-    if (data.containsKey('id')) {
-      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
-    } else if (isInserting) {
-      context.missing(_idMeta);
-    }
-    if (data.containsKey('collection_id')) {
-      context.handle(
-          _collectionIdMeta,
-          collectionId.isAcceptableOrUnknown(
-              data['collection_id']!, _collectionIdMeta));
-    } else if (isInserting) {
-      context.missing(_collectionIdMeta);
-    }
-    if (data.containsKey('field_id')) {
-      context.handle(_fieldIdMeta,
-          fieldId.isAcceptableOrUnknown(data['field_id']!, _fieldIdMeta));
-    } else if (isInserting) {
-      context.missing(_fieldIdMeta);
-    }
-    return context;
-  }
-
-  @override
-  Set<GeneratedColumn> get $primaryKey => {id};
-  @override
-  SchemaData map(Map<String, dynamic> data, {String? tablePrefix}) {
-    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
-    return SchemaData(
-      id: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}id'])!,
-      collectionId: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}collection_id'])!,
-      fieldId: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}field_id'])!,
-    );
-  }
-
-  @override
-  $SchemaTable createAlias(String alias) {
-    return $SchemaTable(attachedDatabase, alias);
-  }
-}
-
-class SchemaData extends DataClass implements Insertable<SchemaData> {
-  final String id;
-  final String collectionId;
-  final String fieldId;
-  const SchemaData(
-      {required this.id, required this.collectionId, required this.fieldId});
-  @override
-  Map<String, Expression> toColumns(bool nullToAbsent) {
-    final map = <String, Expression>{};
-    map['id'] = Variable<String>(id);
-    map['collection_id'] = Variable<String>(collectionId);
-    map['field_id'] = Variable<String>(fieldId);
-    return map;
-  }
-
-  SchemaCompanion toCompanion(bool nullToAbsent) {
-    return SchemaCompanion(
-      id: Value(id),
-      collectionId: Value(collectionId),
-      fieldId: Value(fieldId),
-    );
-  }
-
-  factory SchemaData.fromJson(Map<String, dynamic> json,
-      {ValueSerializer? serializer}) {
-    serializer ??= driftRuntimeOptions.defaultSerializer;
-    return SchemaData(
-      id: serializer.fromJson<String>(json['id']),
-      collectionId: serializer.fromJson<String>(json['collectionId']),
-      fieldId: serializer.fromJson<String>(json['fieldId']),
-    );
-  }
-  @override
-  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
-    serializer ??= driftRuntimeOptions.defaultSerializer;
-    return <String, dynamic>{
-      'id': serializer.toJson<String>(id),
-      'collectionId': serializer.toJson<String>(collectionId),
-      'fieldId': serializer.toJson<String>(fieldId),
-    };
-  }
-
-  SchemaData copyWith({String? id, String? collectionId, String? fieldId}) =>
-      SchemaData(
-        id: id ?? this.id,
-        collectionId: collectionId ?? this.collectionId,
-        fieldId: fieldId ?? this.fieldId,
-      );
-  @override
-  String toString() {
-    return (StringBuffer('SchemaData(')
-          ..write('id: $id, ')
-          ..write('collectionId: $collectionId, ')
-          ..write('fieldId: $fieldId')
-          ..write(')'))
-        .toString();
-  }
-
-  @override
-  int get hashCode => Object.hash(id, collectionId, fieldId);
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      (other is SchemaData &&
-          other.id == this.id &&
-          other.collectionId == this.collectionId &&
-          other.fieldId == this.fieldId);
-}
-
-class SchemaCompanion extends UpdateCompanion<SchemaData> {
-  final Value<String> id;
-  final Value<String> collectionId;
-  final Value<String> fieldId;
-  const SchemaCompanion({
-    this.id = const Value.absent(),
-    this.collectionId = const Value.absent(),
-    this.fieldId = const Value.absent(),
-  });
-  SchemaCompanion.insert({
-    required String id,
-    required String collectionId,
-    required String fieldId,
-  })  : id = Value(id),
-        collectionId = Value(collectionId),
-        fieldId = Value(fieldId);
-  static Insertable<SchemaData> custom({
-    Expression<String>? id,
-    Expression<String>? collectionId,
-    Expression<String>? fieldId,
-  }) {
-    return RawValuesInsertable({
-      if (id != null) 'id': id,
-      if (collectionId != null) 'collection_id': collectionId,
-      if (fieldId != null) 'field_id': fieldId,
-    });
-  }
-
-  SchemaCompanion copyWith(
-      {Value<String>? id,
-      Value<String>? collectionId,
-      Value<String>? fieldId}) {
-    return SchemaCompanion(
-      id: id ?? this.id,
-      collectionId: collectionId ?? this.collectionId,
-      fieldId: fieldId ?? this.fieldId,
-    );
-  }
-
-  @override
-  Map<String, Expression> toColumns(bool nullToAbsent) {
-    final map = <String, Expression>{};
-    if (id.present) {
-      map['id'] = Variable<String>(id.value);
-    }
-    if (collectionId.present) {
-      map['collection_id'] = Variable<String>(collectionId.value);
-    }
-    if (fieldId.present) {
-      map['field_id'] = Variable<String>(fieldId.value);
-    }
-    return map;
-  }
-
-  @override
-  String toString() {
-    return (StringBuffer('SchemaCompanion(')
-          ..write('id: $id, ')
-          ..write('collectionId: $collectionId, ')
-          ..write('fieldId: $fieldId')
-          ..write(')'))
-        .toString();
-  }
-}
-
-abstract class _$UnDatabase extends GeneratedDatabase {
-  _$UnDatabase(QueryExecutor e) : super(e);
+abstract class _$Database extends GeneratedDatabase {
+  _$Database(QueryExecutor e) : super(e);
   late final $CollectionTable collection = $CollectionTable(this);
-  late final $SchemaFieldTable schemaField = $SchemaFieldTable(this);
-  late final $SchemaTable schema = $SchemaTable(this);
+  late final $FieldTable field = $FieldTable(this);
+  late final DocumentDao documentDao = DocumentDao(this as Database);
   @override
   Iterable<TableInfo<Table, Object?>> get allTables =>
       allSchemaEntities.whereType<TableInfo<Table, Object?>>();
   @override
-  List<DatabaseSchemaEntity> get allSchemaEntities =>
-      [collection, schemaField, schema];
+  List<DatabaseSchemaEntity> get allSchemaEntities => [collection, field];
 }

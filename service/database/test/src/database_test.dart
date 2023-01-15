@@ -3,14 +3,15 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   group('Database', () {
-    late UnDatabase database;
+    // ignore: unused_local_variable
+    late Database database;
 
     setUp(() {
-      database = UnDatabase();
+      database = Database();
     });
 
     test('can be instantiated', () {
-      expect(UnDatabase(), isNotNull);
+      expect(Database(), isNotNull);
     });
   });
 }

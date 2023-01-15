@@ -31,7 +31,7 @@ mixin _$Collection {
   String? get createRule => throw _privateConstructorUsedError;
   String? get updateRule => throw _privateConstructorUsedError;
   String? get deleteRule => throw _privateConstructorUsedError;
-  List<SchemaField> get schema => throw _privateConstructorUsedError;
+  List<Field> get schema => throw _privateConstructorUsedError;
   Map<String, dynamic> get options => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -56,7 +56,7 @@ abstract class $CollectionCopyWith<$Res> {
       String? createRule,
       String? updateRule,
       String? deleteRule,
-      List<SchemaField> schema,
+      List<Field> schema,
       Map<String, dynamic> options});
 }
 
@@ -125,7 +125,7 @@ class _$CollectionCopyWithImpl<$Res, $Val extends Collection>
       schema: null == schema
           ? _value.schema
           : schema // ignore: cast_nullable_to_non_nullable
-              as List<SchemaField>,
+              as List<Field>,
       options: null == options
           ? _value.options
           : options // ignore: cast_nullable_to_non_nullable
@@ -152,7 +152,7 @@ abstract class _$$_CollectionCopyWith<$Res>
       String? createRule,
       String? updateRule,
       String? deleteRule,
-      List<SchemaField> schema,
+      List<Field> schema,
       Map<String, dynamic> options});
 }
 
@@ -219,7 +219,7 @@ class __$$_CollectionCopyWithImpl<$Res>
       schema: null == schema
           ? _value._schema
           : schema // ignore: cast_nullable_to_non_nullable
-              as List<SchemaField>,
+              as List<Field>,
       options: null == options
           ? _value._options
           : options // ignore: cast_nullable_to_non_nullable
@@ -241,7 +241,7 @@ class _$_Collection implements _Collection {
       this.createRule,
       this.updateRule,
       this.deleteRule,
-      final List<SchemaField> schema = const [],
+      final List<Field> schema = const [],
       final Map<String, dynamic> options = const {}})
       : _schema = schema,
         _options = options;
@@ -273,10 +273,10 @@ class _$_Collection implements _Collection {
   final String? updateRule;
   @override
   final String? deleteRule;
-  final List<SchemaField> _schema;
+  final List<Field> _schema;
   @override
   @JsonKey()
-  List<SchemaField> get schema {
+  List<Field> get schema {
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_schema);
   }
@@ -358,7 +358,7 @@ abstract class _Collection implements Collection {
       final String? createRule,
       final String? updateRule,
       final String? deleteRule,
-      final List<SchemaField> schema,
+      final List<Field> schema,
       final Map<String, dynamic> options}) = _$_Collection;
 
   factory _Collection.fromJson(Map<String, dynamic> json) =
@@ -384,7 +384,7 @@ abstract class _Collection implements Collection {
   @override
   String? get deleteRule;
   @override
-  List<SchemaField> get schema;
+  List<Field> get schema;
   @override
   Map<String, dynamic> get options;
   @override

@@ -1,13 +1,12 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'record_model.dart';
+part of 'document.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_RecordModel _$$_RecordModelFromJson(Map<String, dynamic> json) =>
-    _$_RecordModel(
+_$_Document _$$_DocumentFromJson(Map<String, dynamic> json) => _$_Document(
       id: json['id'] as String? ?? '',
       created: json['created'] as String? ?? '',
       updated: json['updated'] as String? ?? '',
@@ -15,7 +14,7 @@ _$_RecordModel _$$_RecordModelFromJson(Map<String, dynamic> json) =>
       collectionName: json['collectionName'] as String? ?? '',
     );
 
-Map<String, dynamic> _$$_RecordModelToJson(_$_RecordModel instance) =>
+Map<String, dynamic> _$$_DocumentToJson(_$_Document instance) =>
     <String, dynamic>{
       'id': instance.id,
       'created': instance.created,

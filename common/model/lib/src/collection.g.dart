@@ -18,7 +18,7 @@ _$_Collection _$$_CollectionFromJson(Map<String, dynamic> json) =>
       updateRule: json['updateRule'] as String?,
       deleteRule: json['deleteRule'] as String?,
       schema: (json['schema'] as List<dynamic>?)
-              ?.map((e) => SchemaField.fromJson(e as Map<String, dynamic>))
+              ?.map((e) => Field.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
       options: json['options'] as Map<String, dynamic>? ?? const {},

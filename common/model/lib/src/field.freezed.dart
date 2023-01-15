@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'schema_field.dart';
+part of 'field.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,12 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-SchemaField _$SchemaFieldFromJson(Map<String, dynamic> json) {
-  return _SchemaField.fromJson(json);
+Field _$FieldFromJson(Map<String, dynamic> json) {
+  return _Field.fromJson(json);
 }
 
 /// @nodoc
-mixin _$SchemaField {
+mixin _$Field {
   String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get type => throw _privateConstructorUsedError;
@@ -30,15 +30,13 @@ mixin _$SchemaField {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $SchemaFieldCopyWith<SchemaField> get copyWith =>
-      throw _privateConstructorUsedError;
+  $FieldCopyWith<Field> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $SchemaFieldCopyWith<$Res> {
-  factory $SchemaFieldCopyWith(
-          SchemaField value, $Res Function(SchemaField) then) =
-      _$SchemaFieldCopyWithImpl<$Res, SchemaField>;
+abstract class $FieldCopyWith<$Res> {
+  factory $FieldCopyWith(Field value, $Res Function(Field) then) =
+      _$FieldCopyWithImpl<$Res, Field>;
   @useResult
   $Res call(
       {String id,
@@ -51,9 +49,9 @@ abstract class $SchemaFieldCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$SchemaFieldCopyWithImpl<$Res, $Val extends SchemaField>
-    implements $SchemaFieldCopyWith<$Res> {
-  _$SchemaFieldCopyWithImpl(this._value, this._then);
+class _$FieldCopyWithImpl<$Res, $Val extends Field>
+    implements $FieldCopyWith<$Res> {
+  _$FieldCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -105,11 +103,9 @@ class _$SchemaFieldCopyWithImpl<$Res, $Val extends SchemaField>
 }
 
 /// @nodoc
-abstract class _$$_SchemaFieldCopyWith<$Res>
-    implements $SchemaFieldCopyWith<$Res> {
-  factory _$$_SchemaFieldCopyWith(
-          _$_SchemaField value, $Res Function(_$_SchemaField) then) =
-      __$$_SchemaFieldCopyWithImpl<$Res>;
+abstract class _$$_FieldCopyWith<$Res> implements $FieldCopyWith<$Res> {
+  factory _$$_FieldCopyWith(_$_Field value, $Res Function(_$_Field) then) =
+      __$$_FieldCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -123,11 +119,9 @@ abstract class _$$_SchemaFieldCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_SchemaFieldCopyWithImpl<$Res>
-    extends _$SchemaFieldCopyWithImpl<$Res, _$_SchemaField>
-    implements _$$_SchemaFieldCopyWith<$Res> {
-  __$$_SchemaFieldCopyWithImpl(
-      _$_SchemaField _value, $Res Function(_$_SchemaField) _then)
+class __$$_FieldCopyWithImpl<$Res> extends _$FieldCopyWithImpl<$Res, _$_Field>
+    implements _$$_FieldCopyWith<$Res> {
+  __$$_FieldCopyWithImpl(_$_Field _value, $Res Function(_$_Field) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -141,7 +135,7 @@ class __$$_SchemaFieldCopyWithImpl<$Res>
     Object? unique = null,
     Object? options = null,
   }) {
-    return _then(_$_SchemaField(
+    return _then(_$_Field(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -176,8 +170,8 @@ class __$$_SchemaFieldCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_SchemaField implements _SchemaField {
-  const _$_SchemaField(
+class _$_Field implements _Field {
+  const _$_Field(
       {this.id = '',
       this.name = '',
       this.type = '',
@@ -187,8 +181,8 @@ class _$_SchemaField implements _SchemaField {
       final Map<String, dynamic> options = const {}})
       : _options = options;
 
-  factory _$_SchemaField.fromJson(Map<String, dynamic> json) =>
-      _$$_SchemaFieldFromJson(json);
+  factory _$_Field.fromJson(Map<String, dynamic> json) =>
+      _$$_FieldFromJson(json);
 
   @override
   @JsonKey()
@@ -218,14 +212,14 @@ class _$_SchemaField implements _SchemaField {
 
   @override
   String toString() {
-    return 'SchemaField(id: $id, name: $name, type: $type, system: $system, required: $required, unique: $unique, options: $options)';
+    return 'Field(id: $id, name: $name, type: $type, system: $system, required: $required, unique: $unique, options: $options)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SchemaField &&
+            other is _$_Field &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.type, type) || other.type == type) &&
@@ -244,29 +238,28 @@ class _$_SchemaField implements _SchemaField {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SchemaFieldCopyWith<_$_SchemaField> get copyWith =>
-      __$$_SchemaFieldCopyWithImpl<_$_SchemaField>(this, _$identity);
+  _$$_FieldCopyWith<_$_Field> get copyWith =>
+      __$$_FieldCopyWithImpl<_$_Field>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_SchemaFieldToJson(
+    return _$$_FieldToJson(
       this,
     );
   }
 }
 
-abstract class _SchemaField implements SchemaField {
-  const factory _SchemaField(
+abstract class _Field implements Field {
+  const factory _Field(
       {final String id,
       final String name,
       final String type,
       final bool system,
       final bool required,
       final bool unique,
-      final Map<String, dynamic> options}) = _$_SchemaField;
+      final Map<String, dynamic> options}) = _$_Field;
 
-  factory _SchemaField.fromJson(Map<String, dynamic> json) =
-      _$_SchemaField.fromJson;
+  factory _Field.fromJson(Map<String, dynamic> json) = _$_Field.fromJson;
 
   @override
   String get id;
@@ -284,6 +277,6 @@ abstract class _SchemaField implements SchemaField {
   Map<String, dynamic> get options;
   @override
   @JsonKey(ignore: true)
-  _$$_SchemaFieldCopyWith<_$_SchemaField> get copyWith =>
+  _$$_FieldCopyWith<_$_Field> get copyWith =>
       throw _privateConstructorUsedError;
 }

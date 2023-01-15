@@ -1,13 +1,12 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'schema_field.dart';
+part of 'field.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_SchemaField _$$_SchemaFieldFromJson(Map<String, dynamic> json) =>
-    _$_SchemaField(
+_$_Field _$$_FieldFromJson(Map<String, dynamic> json) => _$_Field(
       id: json['id'] as String? ?? '',
       name: json['name'] as String? ?? '',
       type: json['type'] as String? ?? '',
@@ -17,8 +16,7 @@ _$_SchemaField _$$_SchemaFieldFromJson(Map<String, dynamic> json) =>
       options: json['options'] as Map<String, dynamic>? ?? const {},
     );
 
-Map<String, dynamic> _$$_SchemaFieldToJson(_$_SchemaField instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$$_FieldToJson(_$_Field instance) => <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
       'type': instance.type,

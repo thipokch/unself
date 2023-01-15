@@ -18,7 +18,7 @@ class Collection with _$Collection {
     String? createRule,
     String? updateRule,
     String? deleteRule,
-    @Default([]) List<SchemaField> schema,
+    @Default([]) List<Field> schema,
     @Default({}) Map<String, dynamic> options,
   }) = _Collection;
 

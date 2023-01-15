@@ -1,2 +1,2 @@
 export 'collection.dart';
-export 'field.dart';
+export 'document.dart';
