@@ -17,12 +17,19 @@ part 'database.g.dart';
 )
 class Database extends _$Database {
   /// {@macro database}
-  Database() : super(_openConnection());
+  Database([QueryExecutor? qe]) : super(qe ?? _openConnection());
 
   // you should bump this number whenever you change or add a table definition.
   // Migrations are covered later in the documentation.
   @override
   int get schemaVersion => 1;
+
+  /// [allTablesCollections] returns a list of all table names,
+  /// including dynamic [Collection]s, in the database.
+  Future<List<String>> get allTablesCollections async => await customSelect(
+          'SELECT name FROM sqlite_schema WHERE type =\'table\' AND name NOT LIKE \'sqlite_%\';')
+      .map((row) => row.read<String>('name'))
+      .get();
 
   // the LazyDatabase util lets us find the right location for the file async.
   static _openConnection() => LazyDatabase(() async {

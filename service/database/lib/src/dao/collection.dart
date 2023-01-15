@@ -1,8 +1,7 @@
-// ignore_for_file: unused_field
-
 import 'package:drift/drift.dart';
 import 'package:unself_database/unself_database.dart';
 
+@DriftAccessor()
 class CollectionDao extends DatabaseAccessor<Database> {
   CollectionDao(Database db) : super(db);
 
@@ -14,24 +13,8 @@ class CollectionDao extends DatabaseAccessor<Database> {
   $CollectionTable get collection => attachedDatabase.collection;
   $FieldTable get field => attachedDatabase.field;
 
-  // /// @nodoc
-  // @protected
-  // void loadCollections() async {
-  //   select(collection)
-  //       .join([
-  //         leftOuterJoin(field,
-  //             field.collectionId.equalsExp(collection.id))
-  //       ])
-  //       .get()
-  //       .then<Map<Type, UnCollection<dynamic>>>((result) => {
-  //             for (var row in result)
-  //               row.runtimeType:
-  //                   UnCollection.fromData(attachedDatabase, v.read, columns)
-  //           });
-  // }
-
   /// @nodoc
-  void loadCollectionsFromDb() async {
+  loadCollectionsFromDb() async {
     final List<CollectionData> collections = await select(collection).get();
 
     final collectionSchema = <CollectionData, List<FieldData>>{
@@ -54,10 +37,19 @@ class CollectionDao extends DatabaseAccessor<Database> {
   CollectionOrm<D> getCollectionByName<D>(String name) =>
       _collectionsByName[name.toLowerCase()] as CollectionOrm<D>;
 
-  /// [saveCollection] upserts the provided [Collection] model and updates
+  /// [saveCollection] upserts the provided [CollectionData] model and updates
   /// its related records table schema.
-  void saveCollection(Collection collection, List<Field> fields) =>
-      throw UnimplementedError();
+  Future saveCollection(CollectionData collection, List<FieldData> fields) =>
+      transaction(() async {
+        await into(attachedDatabase.collection)
+            .insertOnConflictUpdate(collection);
+
+        for (final field in fields) {
+          await into(attachedDatabase.field).insertOnConflictUpdate(field);
+        }
+        await _migrator.createTable(collection.toOrm(
+            attachedDatabase, fields.map((e) => e.toOrm()).toList()));
+      });
 
   /// [deleteCollection] deletes the provided [Collection] model.
   /// This method automatically deletes the related collection records table.
@@ -65,5 +57,30 @@ class CollectionDao extends DatabaseAccessor<Database> {
   /// The collection cannot be deleted, if:
   /// - is system collection (aka. collection.System is true)
   /// - is referenced as part of a relation field in another collection
-  void deleteCollection(Collection collection) => throw UnimplementedError();
+  Future deleteCollection(String name) => transaction(() async {
+        // TODO: implement edge cases
+
+        // if (collection.system) {
+        //   throw Exception('Cannot delete system collection');
+        // }
+
+        // final referenced = await (select(field)
+        //       ..where((_) => _.collectionId.equals(collection.id)))
+        //     .get();
+
+        // if (referenced.isNotEmpty) {
+        //   throw Exception(
+        //       'Cannot delete collection, because it is referenced in other collections');
+        // }
+
+        // await (delete(attachedDatabase.collection)
+        //       ..where((_) => _.id.equals(collection.id)))
+        //     .go();
+
+        // await (delete(attachedDatabase.field)
+        //       ..where((_) => _.collectionId.equals(collection.id)))
+        //     .go();
+
+        await _migrator.deleteTable(name);
+      });
 }

@@ -915,6 +915,7 @@ abstract class _$Database extends GeneratedDatabase {
   _$Database(QueryExecutor e) : super(e);
   late final $CollectionTable collection = $CollectionTable(this);
   late final $FieldTable field = $FieldTable(this);
+  late final CollectionDao collectionDao = CollectionDao(this as Database);
   late final DocumentDao documentDao = DocumentDao(this as Database);
   @override
   Iterable<TableInfo<Table, Object?>> get allTables =>

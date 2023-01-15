@@ -113,7 +113,8 @@ scripts:
     run: |
       melos hygiene:format && \
       melos hygiene:analyze && \ 
-      melos hygiene:metrics
+      melos hygiene:metrics && \
+      melos test:fast
 
   hygiene:clean:
     # melos hygiene:clean -- --exclude=.env
@@ -193,3 +194,13 @@ scripts:
     select-package:
       scope: "unself_app"
     exec: dart doc .
+
+  #
+  #   Test
+  #
+
+  test:fast:
+    description: Flutter tests (fail-fast)
+    run: |
+      melos exec -c 6 --dir-exists=test --fail-fast -- \
+        "flutter test"
