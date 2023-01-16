@@ -1,0 +1,6 @@
+# melos_managed_dependency_overrides: unself_analysis,unself_model
+dependency_overrides:
+  unself_analysis:
+    path: ../../tool/analysis
+  unself_model:
+    path: ../../common/model
