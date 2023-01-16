@@ -1,4 +1,4 @@
-platform :osx, '10.11'
+platform :osx, '10.15'
 
 # CocoaPods analytics sends network stats synchronously affecting flutter build latency.
 ENV['COCOAPODS_DISABLE_STATS'] = 'true'
@@ -27,14 +27,29 @@ require File.expand_path(File.join('packages', 'flutter_tools', 'bin', 'podhelpe
 flutter_macos_podfile_setup
 
 target 'Runner' do
-  use_frameworks!
+  use_frameworks! :linkage=> :static
   use_modular_headers!
 
   flutter_install_all_macos_pods File.dirname(File.realpath(__FILE__))
+
+  # 'Rudder-Firebase' is not supported on macos
 end
 
 post_install do |installer|
-  installer.pods_project.targets.each do |target|
-    flutter_additional_macos_build_settings(target)
+  installer.generated_projects.each do |project|
+    project.targets.each do |target|
+      flutter_additional_macos_build_settings(target)
+      target.build_configurations.each do |config|
+        # https://github.com/CocoaPods/CocoaPods/issues/8891#issuecomment-546636698
+        config.build_settings['DEVELOPMENT_TEAM'] = '9C25UZ547F'
+        config.build_settings['MACOSX_DEPLOYMENT_TARGET'] = '10.15'
+
+        if config.build_settings['MACOSX_DEPLOYMENT_TARGET'].to_f < 10.15
+            config.build_settings['MACOSX_DEPLOYMENT_TARGET'] = '10.15'
+        end
+      end
+    end
   end
 end
+
+# $FirebaseSDKVersion = '8.15.0'
