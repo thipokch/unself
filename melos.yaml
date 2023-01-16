@@ -62,29 +62,29 @@ scripts:
         SECRETS_PASSWORD - Encryption passphrase.
     run: |
       [ ! -f .env ] || export $(grep -v '^#' .env | xargs) && \
-        echo "Environment variables from .env exported..."
+        echo "Environment variables from .env exported..." && \
 
-      export APP_DIR=$MELOS_ROOT_PATH/app/unself
-      export SECRETS_DIR=$MELOS_ROOT_PATH/.secrets
-      echo "Using '$SECRETS_DIR'..."
+      export APP_DIR=$MELOS_ROOT_PATH/app/unself && \
+      export SECRETS_DIR=$MELOS_ROOT_PATH/.secrets && \
+      echo "Using '$SECRETS_DIR'..." && \
 
-      echo "Cleaning previous secrets repo..."
-      rm -rf $SECRETS_DIR
+      echo "Cleaning previous secrets repo..." && \
+      rm -rf $SECRETS_DIR && \
 
-      echo "Using '$SECRETS_GITHUB_PATH'..."
-      git clone https://$SECRETS_GITHUB_TOKEN@github.com/$SECRETS_GITHUB_PATH $SECRETS_DIR
+      echo "Using '$SECRETS_GITHUB_PATH'..." && \
+      git clone https://$SECRETS_GITHUB_TOKEN@github.com/$SECRETS_GITHUB_PATH $SECRETS_DIR && \
 
       for f in $(find $SECRETS_DIR -name '*.enc'); do 
         echo "Decrypting ${f%.enc}..."
         openssl aes-256-cbc -md md5 -d -a -v -k $SECRETS_PASSWORD -in $f -out ${f%.enc}
         rm -rfv $f | xargs echo "Decrypted and removed: $1"
-      done
+      done && \
 
       export BUILD_ENV=dev && \
-      melos setup:build
+      melos setup:build && \
 
-      echo "Copying environment configurations..."
-      cp -v -r "$SECRETS_DIR/flutter/"* "$APP_DIR/lib"
+      echo "Copying environment configurations..." && \
+      cp -v -r "$SECRETS_DIR/flutter/"* "$APP_DIR/lib" && \
       flutter format $APP_DIR/lib/**/*.dart
 
   setup:mason:
@@ -94,6 +94,22 @@ scripts:
       dart pub global activate mason_cli && \
       dart pub cache add checked_yaml -v 2.0.1 && \
       mason get
+
+  setup:build:
+    description: Setup for building given environment.
+      For local development, use .env to set variables
+      BUILD_ENV - build environment (dev, stg, prd)
+    run: |
+      export SECRETS_DIR=$MELOS_ROOT_PATH/.secrets && \
+
+      echo "Copying Google service configurations for $BUILD_ENV environment..." && \
+      cp -v -r "$SECRETS_DIR/android/$BUILD_ENV/"* "$APP_DIR/android/"  && \
+      cp -v -r "$SECRETS_DIR/apple/$BUILD_ENV/"* "$APP_DIR/ios/"  && \
+      cp -v -r "$SECRETS_DIR/apple/$BUILD_ENV/"* "$APP_DIR/macos/"
+    # Web is configured from RudderStack
+    # cp -v -r "$SECRETS_DIR/darwin/$BUILD_ENV/"* "$APP_DIR/macos/" && \
+    # cp -v -r "$SECRETS_DIR/web/$BUILD_ENV/"* "$APP_DIR/web/"
+
   #
   #   Hygiene
   #

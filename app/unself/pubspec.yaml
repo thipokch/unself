@@ -1,5 +1,5 @@
 name: unself_app
-description: A new Flutter project.
+description: Flutter app for Unself project.
 
 publish_to: "none"
 version: 1.0.0+1
@@ -11,16 +11,30 @@ dependencies:
   flutter:
     sdk: flutter
 
-  cupertino_icons: ^1.0.2
+  go_router: ^6.0.1
+  provider: ^6.0.5
 
-  unself_monitoring:
+  unself_database:
   unself_license:
+  unself_monitoring:
+  unself_user:
+
+  unself_component:
+  unself_style:
 
 dev_dependencies:
+  # Code Generation
+
+  build_runner: ^2.3.0
+  go_router_builder: ^1.0.15
+
+  # Testing
+
   flutter_test:
     sdk: flutter
-
-  flutter_lints: ^2.0.0
+  integration_test:
+    sdk: flutter
+  mocktail: ^0.3.0
 
   unself_analysis:
 

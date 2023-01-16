@@ -1,8 +1,18 @@
-# melos_managed_dependency_overrides: unself_analysis,unself_license,unself_monitoring
+# melos_managed_dependency_overrides: unself_analysis,unself_component,unself_database,unself_license,unself_model,unself_monitoring,unself_style,unself_user
 dependency_overrides:
   unself_analysis:
     path: ../../tool/analysis
+  unself_component:
+    path: ../../style/component
+  unself_database:
+    path: ../../service/database
   unself_license:
     path: ../../service/license
+  unself_model:
+    path: ../../common/model
   unself_monitoring:
     path: ../../service/monitoring
+  unself_style:
+    path: ../../style/style
+  unself_user:
+    path: ../../service/user
