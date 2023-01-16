@@ -1,4 +1,4 @@
-package com.example.unself
+package app.unself
 
 import io.flutter.embedding.android.FlutterActivity
 
