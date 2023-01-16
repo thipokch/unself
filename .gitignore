@@ -82,7 +82,10 @@ google-services.js
 google-services.json
 GoogleService-Info.plist
 firebase_app_id_file.json
-app/unself/lib/config/
+
+**/lib/config/dev
+**/lib/config/stg
+**/lib/config/prd
 
 # Template
 .mason/
