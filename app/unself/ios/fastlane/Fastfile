@@ -1,0 +1,142 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:ios)
+
+platform :ios do
+  desc "Build Development"
+  lane :build_dev do
+    setup_ci if is_ci
+    # For Local Development
+    match(
+      type: "development",
+      app_identifier: "app.unself.dev",
+      storage_mode: "git",
+      readonly: is_ci,
+      # Via env: MATCH_PASSWORD, MATCH_GIT_URL
+    )
+    # For TestFlight
+    # match(
+    #   type: "appstore",
+    #   app_identifier: "app.unself.dev",
+    #   storage_mode: "git",
+    #   readonly: is_ci,
+    #   # Via env: MATCH_PASSWORD, MATCH_GIT_URL
+    # )
+    Dir.chdir "../.." do
+      sh(
+        "flutter", "build", "ios", "--debug", "--config-only",
+        "--flavor=dev",
+        "--target=lib/dev.dart"
+      )
+    end
+    build_app(
+      scheme: "dev",
+      export_method: "development",
+      output_directory: "../build/ipa/dev",
+    )
+  end
+
+  desc "Build Staging"
+  lane :build_stg do
+    setup_ci if is_ci
+    match(
+      type: "appstore",
+      app_identifier: "app.unself.stg",
+      storage_mode: "git",
+      readonly: is_ci,
+      # Via env: MATCH_PASSWORD, MATCH_GIT_URL
+    )
+    Dir.chdir "../.." do
+      sh(
+        "flutter", "build", "ios", "--release", "--config-only",
+        "--flavor=stg",
+        "--target=lib/stg.dart"
+      )
+    end
+    build_app(
+      scheme: "stg",
+      export_method: "app-store",
+      output_directory: "../build/ipa/stg",
+    )
+  end
+
+  desc "Build Production"
+  lane :build_prd do
+    setup_ci if is_ci
+    match(
+      type: "appstore",
+      app_identifier: "app.unself",
+      storage_mode: "git",
+      readonly: is_ci,
+      # Via env: MATCH_PASSWORD, MATCH_GIT_URL
+    )
+    Dir.chdir "../.." do
+      sh(
+        "flutter", "build", "ios", "--release", "--config-only",
+        "--flavor=prd",
+        "--target=lib/prd.dart"
+      )
+    end
+    build_app(
+      scheme: "prd",
+      export_method: "app-store",
+      output_directory: "../build/ipa/prd",
+    )
+  end
+
+  desc "Deploy Development"
+  lane :deploy_dev do
+    app_store_connect_api_key(
+      is_key_content_base64: true,
+      in_house: false,
+      # Via env: APP_STORE_CONNECT_API_KEY_KEY_ID, APP_STORE_CONNECT_API_KEY_ISSUER_ID, APP_STORE_CONNECT_API_KEY_KEY
+    )
+    upload_to_testflight(
+      ipa: "../build/ipa/dev/Runner.ipa",
+      beta_app_feedback_email: CredentialsManager::AppfileConfig.try_fetch_value(:apple_id),
+      beta_app_description: "Make your data yours.",
+      changelog: ENV["CHANGELOG"],
+    )
+  end
+
+  desc "Deploy Staging"
+  lane :deploy_stg do
+    app_store_connect_api_key(
+      is_key_content_base64: true,
+      in_house: false,
+      # Via env: APP_STORE_CONNECT_API_KEY_KEY_ID, APP_STORE_CONNECT_API_KEY_ISSUER_ID, APP_STORE_CONNECT_API_KEY_KEY
+    )
+    upload_to_testflight(
+      ipa: "../build/ipa/stg/Runner.ipa",
+      beta_app_feedback_email: CredentialsManager::AppfileConfig.try_fetch_value(:apple_id),
+      beta_app_description: "Make your data yours.",
+      changelog: ENV["CHANGELOG"],
+    )
+  end
+
+  desc "Deploy Production"
+  lane :deploy_prd do
+    app_store_connect_api_key(
+      is_key_content_base64: true,
+      in_house: false,
+      # Via env: APP_STORE_CONNECT_API_KEY_KEY_ID, APP_STORE_CONNECT_API_KEY_ISSUER_ID, APP_STORE_CONNECT_API_KEY_KEY
+    )
+    upload_to_app_store(
+      ipa: "./build/ipa/prd/Runner.ipa",
+      force: true,
+    )
+  end
+end

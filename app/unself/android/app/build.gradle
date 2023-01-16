@@ -65,6 +65,27 @@ android {
             signingConfig signingConfigs.debug
         }
     }
+
+    // See : https://sebastien-arbogast.com/2022/05/02/multi-environment-flutter-projects-with-flavors/#Preparing_Your_Android_App
+
+    flavorDimensions "env"
+
+    productFlavors {
+        dev {
+            dimension "env"
+            applicationIdSuffix ".dev"
+            resValue "string", "app_name", "unself dev"
+        }
+        stg {
+            dimension "env"
+            applicationIdSuffix ".stg"
+            resValue "string", "app_name", "unself stg"
+        }
+        prd {
+            dimension "env"
+            resValue "string", "app_name", "unself"
+        }
+    }
 }
 
 flutter {

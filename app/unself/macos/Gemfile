@@ -1,0 +1,5 @@
+source "https://rubygems.org"
+
+gem "cocoapods"
+# TODO: decide macos app vs universal apple app
+# gem "fastlane"

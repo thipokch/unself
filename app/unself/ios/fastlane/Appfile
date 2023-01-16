@@ -1,0 +1,18 @@
+# For more information about the Appfile, see:
+#     https://docs.fastlane.tools/advanced/#appfile
+
+# for_platform :ios do
+#   team_id '9C25UZ547F'
+#   for_lane :test do
+#     app_identifier 'com.app.test'
+#   end
+# end
+
+# Your Apple email address
+apple_id(ENV['FAST_APPLE_ID'])
+
+# App Store Connect Team ID
+itc_team_id(ENV['FAST_ITC_TEAM_ID'])
+
+# Developer Portal Team ID
+team_id(ENV['FAST_TEAM_ID'])
