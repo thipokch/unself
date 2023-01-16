@@ -1,0 +1,89 @@
+name: unself_component
+description: Styles and UI Toolkit for the unself.
+
+publish_to: none
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.18.6 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  io: ^1.0.3
+  path: ^1.8.0
+  yaml: ^3.1.0
+
+  characters: ^1.1.0
+  google_fonts: ^3.0.1
+  fluentui_system_icons: ^1.1.181
+
+  image: ^3.2.2
+  flutter_svg: ^1.0.0
+  dynamic_color: ^1.5.4
+  figma_squircle: ^0.5.3
+
+  gaimon: ^1.0.1
+  modal_bottom_sheet: ^2.1.2
+  linked_scroll_controller: ^0.2.0
+
+  unself_style:
+
+dev_dependencies:
+  # Code Analysis
+
+  unself_analysis:
+
+  # Code Generation
+
+  build_runner: ^2.3.0
+  flutter_gen_runner: ^5.1.0+1
+  # freezed: ^2.2.0
+  # json_serializable: ^6.5.4
+
+  # Testing
+
+  flutter_test:
+    sdk: flutter
+  integration_test:
+    sdk: flutter
+  # mocktail: ^0.3.0
+
+flutter:
+  fonts:
+    - family: Inter
+      fonts:
+        - asset: assets/fonts/Inter.ttf
+        # Variable Font Axises: slnt, wght
+
+    - family: Literata
+      fonts:
+        - asset: assets/fonts/Literata.ttf
+        # Variable Font Axises: opsz, wght
+
+    - family: MaterialSymbolsRounded
+      fonts:
+        - asset: assets/fonts/MaterialSymbolsRounded.ttf
+        # Variable Font Axises: FILL,GRAD,opsz,wght
+
+        # TODO: Implement axies when flutter/flutter#106896 is released
+        # TODO: Code generate .dart tokens based on codepoints file.
+
+  # assets:
+  #   - assets/emojis/
+
+flutter_gen:
+  output: lib/src/generated/ # Optional (default: lib/gen/)
+  line_length: 80 # Optional (default: 80)
+  package_parameter_enabled: true
+
+  integrations:
+    flutter_svg: true
+    # flare_flutter: true
+    # rive: true
+
+  assets:
+    outputs:
+      exclude:
+        - assets/emojis/*

@@ -2,7 +2,7 @@ name: unself
 repository: https://github.com/thipokch/unself
 
 packages:
-  - packages/**
+  - /**
 
 command:
   bootstrap:
@@ -61,7 +61,7 @@ scripts:
       [ ! -f .env ] || export $(grep -v '^#' .env | xargs) && \
         echo "Environment variables from .env exported..."
 
-      export APP_DIR=$MELOS_ROOT_PATH/packages/app
+      export APP_DIR=$MELOS_ROOT_PATH/app/unself
       export SECRETS_DIR=$MELOS_ROOT_PATH/.secrets
       echo "Using '$SECRETS_DIR'..."
 
@@ -152,7 +152,7 @@ scripts:
       Bump build number
       For local development, use .env to set variables
         BUILD_NUM - build number
-    run: dart ./packages/app/script/version_build.dart
+    run: dart ./tool/script/bin/version_build.dart
 
   build:generate:
     description: Run all code generators.
@@ -175,5 +175,11 @@ scripts:
 
   build:splash:
     run: |
-      melos exec -c 1 --depends-on="flutter_native_splash" -- \
+      melos exec --depends-on="flutter_native_splash" -- \
         flutter pub run flutter_native_splash:create
+
+  build:doc:
+    description: Generate documentation for the package.
+    select-package:
+      scope: "unself_app"
+    exec: dart doc .
