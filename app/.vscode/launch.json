@@ -9,7 +9,7 @@
             "cwd": "unself",
             "request": "launch",
             "type": "dart",
-            "program": "lib/main.dart",
+            "program": "lib/dev.dart",
             "flutterMode": "debug",
             "args": [
                 "--debug",

@@ -28,6 +28,7 @@ dependencies:
 
   # feature
 
+  unself_app_info:
   unself_license_detail:
   unself_license_list:
   unself_settings_appearance:

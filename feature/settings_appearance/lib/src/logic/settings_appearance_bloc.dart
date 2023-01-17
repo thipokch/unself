@@ -41,6 +41,8 @@ class SettingsAppearanceBloc
   late final StreamSubscription<User> _subscription;
 
   void onSubscriptionData(User user) =>
+      // TODO: Reimplement logic
+      // ignore: invalid_use_of_visible_for_testing_member
       emit(SettingsAppearanceState(themeMode: user.themeMode));
 
   void _onSetThemeMode(
