@@ -16,9 +16,11 @@ dependencies:
   freezed_annotation: ^2.1.0
 
 dev_dependencies:
-  # Code Analysis
+  # Code Quality
 
   unself_analysis:
+  dart_code_metrics: ^5.4.0
+  dependency_validator: ^3.2.2
 
   # Code Generation
 
@@ -30,7 +32,6 @@ dev_dependencies:
 
   flutter_test:
     sdk: flutter
-  integration_test:
-    sdk: flutter
-  bloc_test: ^9.1.0
-  mocktail: ^0.3.0
+
+  # bloc_test: ^9.1.0
+  # mocktail: ^0.3.0

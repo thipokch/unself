@@ -14,15 +14,33 @@ dependencies:
   go_router: ^6.0.1
   provider: ^6.0.5
 
+  # service
+
   unself_database:
   unself_license:
   unself_monitoring:
   unself_user:
 
+  # style
+
   unself_component:
   unself_style:
 
+  # feature
+
+  unself_license_detail:
+  unself_license_list:
+  unself_settings_appearance:
+  unself_settings_data:
+  unself_settings_list:
+
 dev_dependencies:
+  # Code Quality
+
+  unself_analysis:
+  dart_code_metrics: ^5.4.0
+  dependency_validator: ^3.2.2
+
   # Code Generation
 
   build_runner: ^2.3.0
@@ -34,9 +52,7 @@ dev_dependencies:
     sdk: flutter
   integration_test:
     sdk: flutter
-  mocktail: ^0.3.0
-
-  unself_analysis:
+  # mocktail: ^0.3.0
 
 flutter:
   uses-material-design: true

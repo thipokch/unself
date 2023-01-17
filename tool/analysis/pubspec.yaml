@@ -9,3 +9,9 @@ environment:
 
 dependencies:
   flutter_lints: ^2.0.1
+
+dev_dependencies:
+  # Code Quality
+
+  dart_code_metrics: ^5.4.0
+  dependency_validator: ^3.2.2

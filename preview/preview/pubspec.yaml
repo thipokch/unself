@@ -13,7 +13,6 @@ dependencies:
 
   widgetbook: ^2.4.1
   widgetbook_generator: ^2.4.1
-  widgetbook_annotation: ^2.1.0
   device_frame: ^1.1.0
 
   source_gen:
@@ -23,9 +22,11 @@ dependencies:
   unself_component:
 
 dev_dependencies:
-  # Code Analysis
+  # Code Quality
 
   unself_analysis:
+  dart_code_metrics: ^5.4.0
+  dependency_validator: ^3.2.2
 
   # Code Generation
 
@@ -35,3 +36,6 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+
+dependency_overrides:
+  analyzer: ">=5.1.0"

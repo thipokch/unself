@@ -1,5 +1,6 @@
-# melos_managed_dependency_overrides: unself_analysis,unself_component,unself_style
+# melos_managed_dependency_overrides: analyzer,unself_analysis,unself_component,unself_style
 dependency_overrides:
+  analyzer: ">=5.1.0"
   unself_analysis:
     path: ../../tool/analysis
   unself_component:

@@ -12,4 +12,8 @@ dependencies:
   glob: ^2.1.1
 
 dev_dependencies:
+  # Code Quality
+
   unself_analysis:
+  dart_code_metrics: ^5.4.0
+  dependency_validator: ^3.2.2

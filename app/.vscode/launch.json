@@ -12,7 +12,8 @@
             "program": "lib/main.dart",
             "flutterMode": "debug",
             "args": [
-                "--flavor=dev"
+                "--debug",
+                "--flavor=dev",
             ]
         },
         {

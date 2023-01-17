@@ -32,9 +32,6 @@ target 'Runner' do
   use_modular_headers!
 
   flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
-
-  # Patch Firebase Analytics SDK Version Conflict
-  pod 'Rudder-Firebase', :path => '../../../patch/rudder-integration-firebase-ios'
 end
 
 post_install do |installer|

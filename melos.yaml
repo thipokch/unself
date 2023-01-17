@@ -110,6 +110,16 @@ scripts:
     # cp -v -r "$SECRETS_DIR/darwin/$BUILD_ENV/"* "$APP_DIR/macos/" && \
     # cp -v -r "$SECRETS_DIR/web/$BUILD_ENV/"* "$APP_DIR/web/"
 
+  setup:upgrade:
+    run: |
+      melos exec -c 1 -- \
+        flutter pub upgrade --major-versions --dry-run
+
+  setup:outdated:
+    run: |
+      melos exec -c 1 -- \
+        flutter pub outdated
+
   #
   #   Hygiene
   #
@@ -121,16 +131,16 @@ scripts:
       melos build:generate && \
       melos hygiene:format && \
       melos hygiene:analyze && \
-      melos hygiene:metrics && \
       melos test:fast
+    # melos hygiene:metrics && \ # Stack overflow
 
   hygiene:commit:
     description: Run local quality check before commit.
     run: |
       melos hygiene:format && \
       melos hygiene:analyze && \ 
-      melos hygiene:metrics && \
       melos test:fast
+    # melos hygiene:metrics && \ # Stack overflow
 
   hygiene:clean:
     # melos hygiene:clean -- --exclude=.env
@@ -144,6 +154,14 @@ scripts:
     run: |
       melos exec -c 1 --ignore="*test*" --depends-on="dart_code_metrics" -- \
         flutter pub run dart_code_metrics:metrics analyze lib
+
+  hygiene:deps:
+    description: |
+      Run `dependency_validator` in all packages.
+      - Note: you can also rely on your IDEs Dart Analysis / Issues window.
+    run: |
+      melos exec -c 1 --ignore="*test*" --depends-on="dependency_validator" -- \
+        flutter pub run dependency_validator
 
   hygiene:analyze:
     # We are setting the concurrency to 1 because a higher concurrency can crash

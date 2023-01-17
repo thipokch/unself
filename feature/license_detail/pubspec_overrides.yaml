@@ -1,0 +1,10 @@
+# melos_managed_dependency_overrides: unself_analysis,unself_component,unself_license,unself_style
+dependency_overrides:
+  unself_analysis:
+    path: ../../tool/analysis
+  unself_component:
+    path: ../../style/component
+  unself_license:
+    path: ../../service/license
+  unself_style:
+    path: ../../style/style

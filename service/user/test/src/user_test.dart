@@ -1,5 +1,5 @@
+import 'package:flutter_test/flutter_test.dart';
 import 'package:unself_user/unself_user.dart';
-import 'package:test/test.dart';
 
 void main() {
   group('UserService', () {
@@ -10,7 +10,7 @@ void main() {
     });
 
     test('can be instantiated', () {
-      expect(const UserService(), isNotNull);
+      expect(user, isNotNull);
     });
   });
 }
