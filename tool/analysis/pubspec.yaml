@@ -1,5 +1,5 @@
 name: unself_analysis
-description: Analysis options for all packages under this mono-repo.
+description: Analysis options for unself mono-repo.
 
 version: 1.0.0+1
 publish_to: none

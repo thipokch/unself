@@ -1,8 +1,8 @@
 name: unself_license
 description: License and attribution repository for unself app.
 
+publish_to: none
 version: 1.0.0+1
-publish_to: "none"
 
 environment:
   sdk: ">=2.18.6 <3.0.0"

@@ -1,4 +1,5 @@
 name: unself_script
+description: Scripts for unself mono-repo.
 
 version: 1.0.0+1
 publish_to: none

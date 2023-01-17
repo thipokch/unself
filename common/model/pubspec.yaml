@@ -1,5 +1,5 @@
 name: unself_model
-description: A new Flutter package project.
+description: Domain model for unself project.
 
 publish_to: "none"
 version: 1.0.0+1

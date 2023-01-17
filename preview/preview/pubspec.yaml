@@ -1,5 +1,5 @@
 name: unself_preview
-description: A common util for Widgetbooks.
+description: A common util for Widgetbooks and preview
 
 publish_to: none
 version: 1.0.0+1
