@@ -1,5 +1,5 @@
-name: unself_app_info
-description: App Info Display for unself app.
+name: unself_browser
+description: Browser feature for Unself project.
 
 publish_to: none
 version: 1.0.0+1
@@ -21,14 +21,22 @@ dependencies:
   unself_component:
 
   # Service
-  
+
   unself_monitoring:
+
+  # Common
+
+  unself_model:
+
+  # Feature
+
+  flutter_inappwebview: ^6.0.0-beta.20
 
 dev_dependencies:
   # Code Quality
 
   unself_analysis:
-  dart_code_metrics: ^4.19.2
+  dart_code_metrics: ^5.4.0
   dependency_validator: ^3.2.2
 
   # Code Generation

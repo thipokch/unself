@@ -318,5 +318,5 @@ scripts:
   test:fast:
     description: Flutter tests (fail-fast)
     run: |
-      melos exec -c 6 --dir-exists=test --fail-fast -- \
+      melos exec -c 1 --dir-exists=test --fail-fast -- \
         "flutter test"
