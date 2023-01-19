@@ -16,7 +16,7 @@ dependencies:
 
   # service
 
-  unself_database:
+  unself_local_database:
   unself_license:
   unself_monitoring:
   unself_user:
@@ -35,6 +35,7 @@ dependencies:
   unself_settings_appearance:
   unself_settings_data:
   unself_settings_list:
+  unself_unpack_assistant:
 
 dev_dependencies:
   # Code Quality
