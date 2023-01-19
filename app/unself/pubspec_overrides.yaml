@@ -1,4 +1,4 @@
-# melos_managed_dependency_overrides: unself_analysis,unself_app_info,unself_browser,unself_component,unself_database,unself_license,unself_license_detail,unself_license_list,unself_model,unself_monitoring,unself_settings_appearance,unself_settings_data,unself_settings_list,unself_style,unself_user
+# melos_managed_dependency_overrides: unself_analysis,unself_app_info,unself_browser,unself_component,unself_license,unself_license_detail,unself_license_list,unself_local_database,unself_model,unself_monitoring,unself_settings_appearance,unself_settings_data,unself_settings_list,unself_style,unself_unpack,unself_unpack_assistant,unself_user
 dependency_overrides:
   unself_analysis:
     path: ../../tool/analysis
@@ -8,14 +8,14 @@ dependency_overrides:
     path: ../../feature/browser
   unself_component:
     path: ../../style/component
-  unself_database:
-    path: ../../service/database
   unself_license:
     path: ../../service/license
   unself_license_detail:
     path: ../../feature/license_detail
   unself_license_list:
     path: ../../feature/license_list
+  unself_local_database:
+    path: ../../service/local_database
   unself_model:
     path: ../../common/model
   unself_monitoring:
@@ -28,5 +28,9 @@ dependency_overrides:
     path: ../../feature/settings_list
   unself_style:
     path: ../../style/style
+  unself_unpack:
+    path: ../../service/unpack
+  unself_unpack_assistant:
+    path: ../../feature/unpack_assistant
   unself_user:
     path: ../../service/user
