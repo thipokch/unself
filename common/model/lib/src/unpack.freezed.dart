@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'field.dart';
+part of 'unpack.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,44 +14,35 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-Field _$FieldFromJson(Map<String, dynamic> json) {
-  return _Field.fromJson(json);
+Unpack _$UnpackFromJson(Map<String, dynamic> json) {
+  return _Unpack.fromJson(json);
 }
 
 /// @nodoc
-mixin _$Field {
+mixin _$Unpack {
   String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get type => throw _privateConstructorUsedError;
-  bool get system => throw _privateConstructorUsedError;
-  bool get required => throw _privateConstructorUsedError;
-  bool get unique => throw _privateConstructorUsedError;
   Map<String, dynamic> get options => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $FieldCopyWith<Field> get copyWith => throw _privateConstructorUsedError;
+  $UnpackCopyWith<Unpack> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $FieldCopyWith<$Res> {
-  factory $FieldCopyWith(Field value, $Res Function(Field) then) =
-      _$FieldCopyWithImpl<$Res, Field>;
+abstract class $UnpackCopyWith<$Res> {
+  factory $UnpackCopyWith(Unpack value, $Res Function(Unpack) then) =
+      _$UnpackCopyWithImpl<$Res, Unpack>;
   @useResult
   $Res call(
-      {String id,
-      String name,
-      String type,
-      bool system,
-      bool required,
-      bool unique,
-      Map<String, dynamic> options});
+      {String id, String name, String type, Map<String, dynamic> options});
 }
 
 /// @nodoc
-class _$FieldCopyWithImpl<$Res, $Val extends Field>
-    implements $FieldCopyWith<$Res> {
-  _$FieldCopyWithImpl(this._value, this._then);
+class _$UnpackCopyWithImpl<$Res, $Val extends Unpack>
+    implements $UnpackCopyWith<$Res> {
+  _$UnpackCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -64,9 +55,6 @@ class _$FieldCopyWithImpl<$Res, $Val extends Field>
     Object? id = null,
     Object? name = null,
     Object? type = null,
-    Object? system = null,
-    Object? required = null,
-    Object? unique = null,
     Object? options = null,
   }) {
     return _then(_value.copyWith(
@@ -82,18 +70,6 @@ class _$FieldCopyWithImpl<$Res, $Val extends Field>
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as String,
-      system: null == system
-          ? _value.system
-          : system // ignore: cast_nullable_to_non_nullable
-              as bool,
-      required: null == required
-          ? _value.required
-          : required // ignore: cast_nullable_to_non_nullable
-              as bool,
-      unique: null == unique
-          ? _value.unique
-          : unique // ignore: cast_nullable_to_non_nullable
-              as bool,
       options: null == options
           ? _value.options
           : options // ignore: cast_nullable_to_non_nullable
@@ -103,25 +79,20 @@ class _$FieldCopyWithImpl<$Res, $Val extends Field>
 }
 
 /// @nodoc
-abstract class _$$_FieldCopyWith<$Res> implements $FieldCopyWith<$Res> {
-  factory _$$_FieldCopyWith(_$_Field value, $Res Function(_$_Field) then) =
-      __$$_FieldCopyWithImpl<$Res>;
+abstract class _$$_UnpackCopyWith<$Res> implements $UnpackCopyWith<$Res> {
+  factory _$$_UnpackCopyWith(_$_Unpack value, $Res Function(_$_Unpack) then) =
+      __$$_UnpackCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {String id,
-      String name,
-      String type,
-      bool system,
-      bool required,
-      bool unique,
-      Map<String, dynamic> options});
+      {String id, String name, String type, Map<String, dynamic> options});
 }
 
 /// @nodoc
-class __$$_FieldCopyWithImpl<$Res> extends _$FieldCopyWithImpl<$Res, _$_Field>
-    implements _$$_FieldCopyWith<$Res> {
-  __$$_FieldCopyWithImpl(_$_Field _value, $Res Function(_$_Field) _then)
+class __$$_UnpackCopyWithImpl<$Res>
+    extends _$UnpackCopyWithImpl<$Res, _$_Unpack>
+    implements _$$_UnpackCopyWith<$Res> {
+  __$$_UnpackCopyWithImpl(_$_Unpack _value, $Res Function(_$_Unpack) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -130,12 +101,9 @@ class __$$_FieldCopyWithImpl<$Res> extends _$FieldCopyWithImpl<$Res, _$_Field>
     Object? id = null,
     Object? name = null,
     Object? type = null,
-    Object? system = null,
-    Object? required = null,
-    Object? unique = null,
     Object? options = null,
   }) {
-    return _then(_$_Field(
+    return _then(_$_Unpack(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -148,18 +116,6 @@ class __$$_FieldCopyWithImpl<$Res> extends _$FieldCopyWithImpl<$Res, _$_Field>
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as String,
-      system: null == system
-          ? _value.system
-          : system // ignore: cast_nullable_to_non_nullable
-              as bool,
-      required: null == required
-          ? _value.required
-          : required // ignore: cast_nullable_to_non_nullable
-              as bool,
-      unique: null == unique
-          ? _value.unique
-          : unique // ignore: cast_nullable_to_non_nullable
-              as bool,
       options: null == options
           ? _value._options
           : options // ignore: cast_nullable_to_non_nullable
@@ -170,19 +126,16 @@ class __$$_FieldCopyWithImpl<$Res> extends _$FieldCopyWithImpl<$Res, _$_Field>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Field implements _Field {
-  const _$_Field(
+class _$_Unpack implements _Unpack {
+  const _$_Unpack(
       {this.id = '',
       this.name = '',
       this.type = '',
-      this.system = false,
-      this.required = false,
-      this.unique = false,
       final Map<String, dynamic> options = const {}})
       : _options = options;
 
-  factory _$_Field.fromJson(Map<String, dynamic> json) =>
-      _$$_FieldFromJson(json);
+  factory _$_Unpack.fromJson(Map<String, dynamic> json) =>
+      _$$_UnpackFromJson(json);
 
   @override
   @JsonKey()
@@ -193,15 +146,6 @@ class _$_Field implements _Field {
   @override
   @JsonKey()
   final String type;
-  @override
-  @JsonKey()
-  final bool system;
-  @override
-  @JsonKey()
-  final bool required;
-  @override
-  @JsonKey()
-  final bool unique;
   final Map<String, dynamic> _options;
   @override
   @JsonKey()
@@ -213,54 +157,47 @@ class _$_Field implements _Field {
 
   @override
   String toString() {
-    return 'Field(id: $id, name: $name, type: $type, system: $system, required: $required, unique: $unique, options: $options)';
+    return 'Unpack(id: $id, name: $name, type: $type, options: $options)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Field &&
+            other is _$_Unpack &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.type, type) || other.type == type) &&
-            (identical(other.system, system) || other.system == system) &&
-            (identical(other.required, required) ||
-                other.required == required) &&
-            (identical(other.unique, unique) || other.unique == unique) &&
             const DeepCollectionEquality().equals(other._options, _options));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, type, system, required,
-      unique, const DeepCollectionEquality().hash(_options));
+  int get hashCode => Object.hash(runtimeType, id, name, type,
+      const DeepCollectionEquality().hash(_options));
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_FieldCopyWith<_$_Field> get copyWith =>
-      __$$_FieldCopyWithImpl<_$_Field>(this, _$identity);
+  _$$_UnpackCopyWith<_$_Unpack> get copyWith =>
+      __$$_UnpackCopyWithImpl<_$_Unpack>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_FieldToJson(
+    return _$$_UnpackToJson(
       this,
     );
   }
 }
 
-abstract class _Field implements Field {
-  const factory _Field(
+abstract class _Unpack implements Unpack {
+  const factory _Unpack(
       {final String id,
       final String name,
       final String type,
-      final bool system,
-      final bool required,
-      final bool unique,
-      final Map<String, dynamic> options}) = _$_Field;
+      final Map<String, dynamic> options}) = _$_Unpack;
 
-  factory _Field.fromJson(Map<String, dynamic> json) = _$_Field.fromJson;
+  factory _Unpack.fromJson(Map<String, dynamic> json) = _$_Unpack.fromJson;
 
   @override
   String get id;
@@ -269,15 +206,9 @@ abstract class _Field implements Field {
   @override
   String get type;
   @override
-  bool get system;
-  @override
-  bool get required;
-  @override
-  bool get unique;
-  @override
   Map<String, dynamic> get options;
   @override
   @JsonKey(ignore: true)
-  _$$_FieldCopyWith<_$_Field> get copyWith =>
+  _$$_UnpackCopyWith<_$_Unpack> get copyWith =>
       throw _privateConstructorUsedError;
 }
