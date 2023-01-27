@@ -8,7 +8,7 @@ class Field with _$Field {
   const factory Field({
     @Default('') String id,
     @Default('') String name,
-    @Default('') String type,
+    @Default(FieldType.text) FieldType type,
     @Default(false) bool system,
     @Default(false) bool required,
     @Default(false) bool unique,
@@ -16,4 +16,17 @@ class Field with _$Field {
   }) = _Field;
 
   factory Field.fromJson(Map<String, dynamic> json) => _$FieldFromJson(json);
+}
+
+@JsonEnum()
+enum FieldType {
+  text,
+  number,
+  bool,
+  email,
+  url,
+  date,
+  select,
+  file,
+  relation,
 }

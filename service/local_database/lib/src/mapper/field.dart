@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:drift/drift.dart';
 import 'package:unself_local_database/unself_local_database.dart'
     show FieldData;
-import 'package:unself_model/unself_model.dart' show Field;
+import 'package:unself_model/unself_model.dart' show Field, FieldType;
 
 extension FieldToOrm on FieldData {
   GeneratedColumn toOrm() => GeneratedColumn(
@@ -17,7 +17,7 @@ extension FieldToOrm on FieldData {
   Field toDomain() => Field(
         id: id,
         name: name,
-        type: type,
+        type: FieldType.values.byName(name),
         system: system,
         required: required,
         unique: unique,
@@ -42,7 +42,7 @@ extension FieldFromDomain on Field {
         id: id,
         collectionId: id,
         name: name,
-        type: type,
+        type: type.name,
         system: system,
         required: required,
         unique: unique,

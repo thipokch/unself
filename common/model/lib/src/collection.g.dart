@@ -9,7 +9,7 @@ part of 'collection.dart';
 _$_Collection _$$_CollectionFromJson(Map<String, dynamic> json) =>
     _$_Collection(
       id: json['id'] as String? ?? '',
-      type: json['type'] as String? ?? 'base',
+      type: json['type'] as String? ?? '',
       name: json['name'] as String? ?? '',
       system: json['system'] as bool? ?? false,
       listRule: json['listRule'] as String?,

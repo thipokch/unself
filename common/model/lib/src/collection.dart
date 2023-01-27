@@ -8,7 +8,7 @@ part 'collection.g.dart';
 class Collection with _$Collection {
   const factory Collection({
     @Default('') String id,
-    @Default('base') String type,
+    @Default('') String type,
     // @Default('') DateTime created,
     // @Default('') DateTime updated,
     @Default('') String name,
