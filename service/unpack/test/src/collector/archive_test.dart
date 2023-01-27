@@ -9,8 +9,14 @@ void main() {
 
     setUp(() {
       print(Directory.current);
-      archiveCollector = ArchiveCollector.fromZipPath(
-          path: '../../resource/archive/assets/facebook_2301.zip');
+      // archiveCollector = ArchiveCollector.fromZipPath(
+      //   path: '../../resource/archive/assets/facebook_2301.zip',
+      // );
+      archiveCollector = ArchiveCollector.fromZipBytes(
+        bytes: File.fromUri(
+          Uri.parse('../../resource/archive/assets/facebook_2301.zip'),
+        ).readAsBytesSync(),
+      );
     });
 
     test('can be instantiated', () {

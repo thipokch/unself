@@ -233,7 +233,7 @@ class __$$_CollectionCopyWithImpl<$Res>
 class _$_Collection implements _Collection {
   const _$_Collection(
       {this.id = '',
-      this.type = 'base',
+      this.type = '',
       this.name = '',
       this.system = false,
       this.listRule,

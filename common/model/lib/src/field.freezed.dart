@@ -22,7 +22,7 @@ Field _$FieldFromJson(Map<String, dynamic> json) {
 mixin _$Field {
   String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
-  String get type => throw _privateConstructorUsedError;
+  FieldType get type => throw _privateConstructorUsedError;
   bool get system => throw _privateConstructorUsedError;
   bool get required => throw _privateConstructorUsedError;
   bool get unique => throw _privateConstructorUsedError;
@@ -41,7 +41,7 @@ abstract class $FieldCopyWith<$Res> {
   $Res call(
       {String id,
       String name,
-      String type,
+      FieldType type,
       bool system,
       bool required,
       bool unique,
@@ -81,7 +81,7 @@ class _$FieldCopyWithImpl<$Res, $Val extends Field>
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as String,
+              as FieldType,
       system: null == system
           ? _value.system
           : system // ignore: cast_nullable_to_non_nullable
@@ -111,7 +111,7 @@ abstract class _$$_FieldCopyWith<$Res> implements $FieldCopyWith<$Res> {
   $Res call(
       {String id,
       String name,
-      String type,
+      FieldType type,
       bool system,
       bool required,
       bool unique,
@@ -147,7 +147,7 @@ class __$$_FieldCopyWithImpl<$Res> extends _$FieldCopyWithImpl<$Res, _$_Field>
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as String,
+              as FieldType,
       system: null == system
           ? _value.system
           : system // ignore: cast_nullable_to_non_nullable
@@ -174,7 +174,7 @@ class _$_Field implements _Field {
   const _$_Field(
       {this.id = '',
       this.name = '',
-      this.type = '',
+      this.type = FieldType.text,
       this.system = false,
       this.required = false,
       this.unique = false,
@@ -192,7 +192,7 @@ class _$_Field implements _Field {
   final String name;
   @override
   @JsonKey()
-  final String type;
+  final FieldType type;
   @override
   @JsonKey()
   final bool system;
@@ -254,7 +254,7 @@ abstract class _Field implements Field {
   const factory _Field(
       {final String id,
       final String name,
-      final String type,
+      final FieldType type,
       final bool system,
       final bool required,
       final bool unique,
@@ -267,7 +267,7 @@ abstract class _Field implements Field {
   @override
   String get name;
   @override
-  String get type;
+  FieldType get type;
   @override
   bool get system;
   @override
