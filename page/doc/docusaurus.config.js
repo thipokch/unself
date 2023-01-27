@@ -32,7 +32,7 @@ const config = {
     [
       'classic',
       /** @type {import('@docusaurus/preset-classic').Options} */
-      ({
+      {
         docs: {
           routeBasePath: '/', // Serve the docs at the site's root
           sidebarPath: require.resolve('./sidebars.js'),
@@ -51,7 +51,7 @@ const config = {
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
-      }),
+      },
     ],
   ],
 
@@ -139,6 +139,13 @@ const config = {
         darkTheme: darkCodeTheme,
       },
     }),
+
+  plugins: [
+    [
+      '@docusaurus/plugin-google-tag-manager',
+      { containerId: 'GTM-KVZ35TZ' }
+    ],
+  ],
 };
 
 module.exports = config;
