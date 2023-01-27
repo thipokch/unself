@@ -1,0 +1,143 @@
+// @ts-check
+// Note: type annotations allow type checking and IDEs autocompletion
+
+const lightCodeTheme = require('prism-react-renderer/themes/github');
+const darkCodeTheme = require('prism-react-renderer/themes/dracula');
+
+/** @type {import('@docusaurus/types').Config} */
+const config = {
+  title: 'unself. documentation',
+  tagline: 'Make Your Data Yours.',
+  url: 'https://doc.unself.app',
+  baseUrl: '/',
+  onBrokenLinks: 'throw',
+  onBrokenMarkdownLinks: 'warn',
+  favicon: 'img/favicon.png',
+
+  // GitHub pages deployment config.
+  // If you aren't using GitHub pages, you don't need these.
+  organizationName: 'unself', // Usually your GitHub org/user name.
+  projectName: 'unself', // Usually your repo name.
+
+  // Even if you don't use internalization, you can use this field to set useful
+  // metadata like html lang. For example, if your site is Chinese, you may want
+  // to replace "en" with "zh-Hans".
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en'],
+  },
+
+  presets: [
+    [
+      'classic',
+      /** @type {import('@docusaurus/preset-classic').Options} */
+      ({
+        docs: {
+          routeBasePath: '/', // Serve the docs at the site's root
+          sidebarPath: require.resolve('./sidebars.js'),
+          // Please change this to your repo.
+          // Remove this to remove the "edit this page" links.
+          editUrl:
+            'https://github.com/thipokch/unself/tree/main/page/doc/',
+        },
+        // blog: {
+        //   showReadingTime: true,
+        //   // Please change this to your repo.
+        //   // Remove this to remove the "edit this page" links.
+        //   editUrl:
+        //     'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+        // },
+        theme: {
+          customCss: require.resolve('./src/css/custom.css'),
+        },
+      }),
+    ],
+  ],
+
+  themeConfig:
+    /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
+    ({
+      navbar: {
+        logo: {
+          alt: 'Unself Docs Logo',
+          src: 'img/unself-logo-wordmark--light.svg',
+          srcDark: 'img/unself-logo-wordmark--dark.svg',
+        },
+        items: [
+          // {
+          //   type: 'doc',
+          //   docId: 'intro',
+          //   position: 'left',
+          //   label: 'Tutorial',
+          //   routeBasePath: '/',
+          // },
+          // {
+          //   to: '/blog',
+          //   label: 'Blog',
+          //   position: 'left',
+          // },
+          {
+            href: 'https://unself.app',
+            label: 'Home',
+            position: 'right',
+          },
+          {
+            href: 'https://github.com/thipokch/unself',
+            label: 'GitHub',
+            position: 'right',
+          },
+        ],
+      },
+      footer: {
+        style: 'dark',
+        links: [
+          {
+            title: 'Docs',
+            items: [
+              {
+                label: 'Getting Started',
+                to: '/',
+              },
+            ],
+          },
+          {
+            title: 'Community',
+            items: [
+              // {
+              //   label: 'Stack Overflow',
+              //   href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+              // },
+              // {
+              //   label: 'Discord',
+              //   href: 'https://discordapp.com/invite/docusaurus',
+              // },
+              // {
+              //   label: 'Twitter',
+              //   href: 'https://twitter.com/docusaurus',
+              // },
+            ],
+          },
+          {
+            title: 'More',
+            items: [
+              {
+                label: 'Home',
+                href: 'https://unself.app',
+              },
+              {
+                label: 'GitHub',
+                href: 'https://github.com/thipokch/unself',
+              },
+            ],
+          },
+        ],
+        copyright: `Copyright © ${new Date().getFullYear()} Unself. Docs built with Docusaurus.`,
+      },
+      prism: {
+        theme: lightCodeTheme,
+        darkTheme: darkCodeTheme,
+      },
+    }),
+};
+
+module.exports = config;
