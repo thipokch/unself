@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './styles.module.css';
+
 export default function IconExternalLink({ width = 16, height = 16 }) {
   return (
     <svg width={width} height={height} viewBox="0 0 192 192" fill="none" className={styles.iconExternalLink} xmlns="http://www.w3.org/2000/svg">
