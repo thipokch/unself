@@ -311,6 +311,35 @@ scripts:
       export APP_DIR=$MELOS_ROOT_PATH/app/unself && \
       $FLUTTER_ROOT/bin/dart pub global run melos setup:build
 
+  #   web
+
+  build:web:
+    description: Build web for given environment.
+      For local development, use .env to set variables
+      BUILD_ENV - build environment (dev, stg, prd)
+    run: |      
+      [ ! -f .env ] || export $(grep -v '^#' .env | xargs) && \
+        echo "Environment variables from .env exported..."
+
+      export APP_DIR=$MELOS_ROOT_PATH/app/unself && \
+
+      melos setup:build && \
+
+      cd $APP_DIR && \
+      flutter build web --verbose --release --target=lib/$BUILD_ENV.dart
+
+  build:web:dev:
+    description: Builds web for development.
+    run: export BUILD_ENV=dev && melos build:web
+
+  build:web:stg:
+    description: Builds web for staging.
+    run: export BUILD_ENV=stg && melos build:web
+
+  build:web:prd:
+    description: Builds web for production.
+    run: export BUILD_ENV=prd && melos build:web
+
   #
   #   Test
   #

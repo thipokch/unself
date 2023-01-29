@@ -1,0 +1,17 @@
+name: CI for Dev Environment
+
+on:
+  push:
+    branches:
+      - master
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  ci:
+    uses: thipokch/unself/.github/workflows/ci.yaml@master
+    secrets: inherit
+    with:
+      env: dev

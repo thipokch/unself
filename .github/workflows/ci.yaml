@@ -1,0 +1,387 @@
+name: Master CI
+
+# Since GitHub Actions CI is hard and expensive to debug, we use a single workflow for all jobs.
+# This workflow includes the following jobs: hygiene, build, release, promote, deploy
+
+# The workflow is triggered via workflow_call, which allows us to reuse the same workflow for
+# the given enviroment. Requires: `env` input and inherited `secrets` context. (secrets: inherit)
+
+on:
+  workflow_call:
+    inputs:
+      env:
+        description: "Environment to run the workflow for."
+        required: true
+        type: string
+
+jobs:
+  hygiene:
+    name: Hygiene check for ${{ inputs.env }}
+    outputs:
+      build_num: ${{ steps.hash.outputs.build_num }}
+      build_info: "Build #${{ steps.hash.outputs.build_num }} for ${{  inputs.env }} environment."
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checking out repo.
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 # Deep Fetch
+
+      - name: Setup Flutter SDK
+        uses: subosito/flutter-action@v2
+        with:
+          channel: "stable"
+          cache: true
+
+      - name: Bootstraping Melos
+        env:
+          SECRETS_GITHUB_TOKEN: ${{ secrets.SECRETS_GITHUB_TOKEN }}
+          SECRETS_GITHUB_PATH: ${{ secrets.SECRETS_GITHUB_PATH }}
+          SECRETS_PASSWORD: ${{ secrets.SECRETS_PASSWORD }}
+        run: dart pub global activate melos && melos setup:ci
+
+      - name: Generate new build num
+        id: hash
+        run: |
+          DATE=$( TZ=UTC0 git show --quiet --date='format-local:%y%m%d' --format='%cd' )
+          COUNT=$( printf %02d $(TZ=UTC0 git log --date='format-local:%y%m%d' --format='%cd' | grep -c $DATE ) )
+          export BUILD_NUM="$DATE$COUNT"
+          echo "::set-output name=build_num::$BUILD_NUM"
+
+      - name: Generate code
+        run: melos build:num && melos build:generate
+
+      # Basically hygene:commit, but broken into steps for better error reporting
+
+      - name: Hygiene - Format
+        run: melos hygiene:format
+
+      - name: Hygiene - Analyse
+        run: melos hygiene:analyze
+
+      # - name: Setup Dart Code Metrics
+      #   working-directory: ${{ runner.temp }}
+      #   run: |
+      #     git clone https://github.com/dart-code-checker/dart-code-metrics-action --branch v2.0.0 --single-branch
+      #     cd ./dart-code-metrics-action/action_app/
+      #     flutter pub get
+
+      # - name: Hygiene - Code Metrics
+      #   env:
+      #     INPUT_FOLDERS: "./packages/method, ./packages/method_bloc, ./packages/domain, ./packages/method_ui, ./packages/method_isar, ./packages/method_data, ./packages/method_ui, ./packages/method_ui"
+      #     INPUT_GITHUB_TOKEN: ${{ github.token }}
+      #     # Defaults
+      #     INPUT_RELATIVE_PATH: ""
+      #     INPUT_PULL_REQUEST_COMMENT: false
+      #     INPUT_ANALYZE_REPORT_TITLE_PATTERN: "Code Metrics: $packageName ${{ inputs.env }} #${{ steps.hash.outputs.build_num }}"
+      #     INPUT_FATAL_WARNINGS: false
+      #     INPUT_FATAL_PERFORMANCE: false
+      #     INPUT_FATAL_STYLE: false
+      #     INPUT_CHECK_UNUSED_FILES: false
+      #     INPUT_UNUSED_FILES_REPORT_TITLE_PATTERN: "Dart Code Metrics unused files report of $packageName."
+      #   run: |
+      #     dart run ${{ runner.temp }}/dart-code-metrics-action/action_app/bin/main.dart
+
+      - name: Flutter fail-fast test
+        run: melos test:fast
+
+  build:
+    name: "Building ${{ matrix.target }} for ${{ inputs.env }} #${{ needs.hygiene.outputs.build_num }}"
+    needs: hygiene
+    strategy:
+      fail-fast: true
+      matrix:
+        include:
+          # - os: macos-12
+          #   target: iOS
+          #   build-command: ios
+          #   build-dir: /app/unself/build/ipa/
+
+          # - os: ubuntu-22.04
+          #   target: Android
+          #   build-command: and
+          #   build-dir: /app/unself/build/app/outputs/apk/
+
+          - os: ubuntu-22.04
+            target: Web
+            build-command: web
+            build-dir: /app/unself/build/web/
+
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Checking out repo.
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 # Deep Fetch
+
+      - name: Setup Flutter SDK
+        uses: subosito/flutter-action@v2
+        with:
+          channel: "stable"
+          cache: true
+
+      - name: Setup ruby
+        if: ${{ startsWith(runner.os, 'macos') }}
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.0" # Not needed with a .ruby-version file
+          bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+          working-directory: ${{ github.workspace }}/packages/app/ios
+
+      - name: Bootstraping Melos
+        env:
+          SECRETS_GITHUB_TOKEN: ${{ secrets.SECRETS_GITHUB_TOKEN }}
+          SECRETS_GITHUB_PATH: ${{ secrets.SECRETS_GITHUB_PATH }}
+          SECRETS_PASSWORD: ${{ secrets.SECRETS_PASSWORD }}
+        run: dart pub global activate melos && melos setup:ci
+
+      - name: Flutter Build ${{ matrix.target }}
+        env:
+          BUILD_NUM: ${{ needs.hygiene.outputs.build_num }}
+          SECRETS_PASSWORD: ${{ secrets.SECRETS_PASSWORD }}
+        run: |
+          melos build:num && \
+          melos build:generate && \
+          melos build:${{ matrix.build-command }}:${{ inputs.env }}
+
+      - name: Upload ${{ matrix.target }} artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ matrix.target }}
+          path: |
+            ./**/${{ matrix.build-dir }}
+
+  # # test:
+
+  # #   name: Unit, Widget, Integration Tests.
+  # #   needs: [ hygiene, build ]
+
+  # #   runs-on: ubuntu-22.04
+  # #   steps:
+
+  # #     - name: Checking out repo.
+  # #       uses: actions/checkout@v3
+  # #       with:
+  # #         fetch-depth: 0  # Deep Fetch
+
+  # #     - name: Setup Flutter SDK
+  # #       uses: subosito/flutter-action@v2
+  # #       with:
+  # #         channel: 'stable'
+  # #         cache: true
+
+  # #     - name: Bootstraping Melos
+  # #       env:
+  # #         SECRETS_GITHUB_TOKEN: ${{ secrets.SECRETS_GITHUB_TOKEN }}
+  # #         SECRETS_GITHUB_PATH: ${{ secrets.SECRETS_GITHUB_PATH }}
+  # #         SECRETS_PASSWORD: ${{ secrets.SECRETS_PASSWORD }}
+  # #       run: dart pub global activate melos && melos setup:ci
+
+  # #     - name: Generate code
+  # #       run: melos build:num && melos build:generate
+
+  # #     - name: End to end testing
+  # #       run: melos test:e2e
+
+  # release:
+  #   name: "Process ${{ inputs.env }} #${{ needs.hygiene.outputs.build_num }} for release"
+  #   needs: [hygiene, build]
+  #   # needs: [ hygiene, build, test ]
+  #   outputs:
+  #     releases_created: ${{ steps.release.outputs.releases_created }}
+  #     version: ${{ steps.get-version.outputs.replaced }}
+  #     tag_name: ${{ steps.release.outputs.tag_name }}
+  #     next_env: ${{ steps.get-next-branch.outputs.replaced }}
+  #     current_env: ${{ inputs.env }}
+  #     pr: ${{ steps.release.outputs.pr }}
+  #     changelog: ${{ steps.render-changelog.outputs.replaced || needs.hygiene.outputs.build_info }}
+
+  #   runs-on: ubuntu-22.04
+  #   steps:
+  #     - name: Checking out repo.
+  #       uses: actions/checkout@v3
+  #       with:
+  #         fetch-depth: 0 # Deep Fetch
+
+  #     - name: Process release state
+  #       uses: google-github-actions/release-please-action@v3
+  #       id: release
+  #       with:
+  #         release-type: dart
+  #         monorepo-tags: true # append branch tag
+  #         default-branch: ${{ inputs.env }}
+  #         package-name: ${{ inputs.env }}
+  #         changelog-path: CHANGELOG.${{ inputs.env }}.md
+  #         pull-request-title-pattern: "chore${scope}: release${component} ${version}"
+
+  #     - name: Release info
+  #       env:
+  #         PR: ${{ steps.release.outputs.pr  || 'undefined' }} # Avoid syntax error
+  #       run: |
+  #         echo "Release Created: ${{ steps.release.outputs.releases_created || 'undefined' }}"
+  #         echo "Upload url: ${{ steps.release.outputs.upload_url || 'undefined' }}"
+  #         echo "Html url: ${{ steps.release.outputs.html_url || 'undefined' }}"
+  #         echo "Tagged: ${{ steps.release.outputs.tag_name  || 'undefined' }}"
+  #         echo "Sha: ${{ steps.release.outputs.sha  || 'undefined' }}"
+  #         echo "Pull Request: $PR"
+
+  #     - name: Extract release version
+  #       uses: frabert/replace-string-action@v2.0
+  #       id: get-version
+  #       with:
+  #         pattern: '^[^\d]*'
+  #         string: ${{ steps.release.outputs.tag_name }}
+  #         replace-with: ""
+
+  #     - name: Read CHANGELOG.
+  #       id: get-changelog
+  #       uses: chuhlomin/render-template@v1.4
+  #       if: ${{ steps.release.outputs.releases_created }}
+  #       with:
+  #         template: CHANGELOG.${{ inputs.env }}.md
+
+  #     - name: Render CHANGELOG
+  #       id: render-changelog
+  #       uses: frabert/replace-string-action@v2.0
+  #       if: ${{ steps.release.outputs.releases_created }}
+  #       with:
+  #         # https://regex101.com/r/S5GXF9/1
+  #         pattern: '# Changelog\n\n(## .*[\W\w]*?)^## .*[\W\w]*$'
+  #         string: "${{ steps.get-changelog.outputs.result }} \n## END"
+  #         replace-with: "$1\nBuild #${{ needs.hygiene.outputs.build_num }}"
+  #         flags: m # multiline
+
+  #     - name: Determine next environment
+  #       uses: frabert/replace-string-action@v2.0
+  #       id: get-next-branch
+  #       with:
+  #         # https://regex101.com/r/vzQTby/1
+  #         pattern: ".*(${{ inputs.env }})(.{3}).*"
+  #         string: "devstgprd---"
+  #         replace-with: "$2"
+
+  #     - name: Computed release info
+  #       env:
+  #         CHANGELOG: ${{ steps.render-changelog.outputs.replaced  || 'undefined' }} # Avoid syntax error
+  #       run: |
+  #         echo "Version: ${{ steps.get-version.outputs.replaced  || 'undefined' }}"
+  #         echo "Current environment: ${{ inputs.env }}"
+  #         echo "Next environment: ${{ steps.get-next-branch.outputs.replaced }}"
+  #         echo "Changelog: $CHANGELOG"
+
+  #     - name: "Tag merged commit with {{ needs.hygiene.outputs.build_num }}."
+  #       if: ${{ steps.release.outputs.releases_created }}
+  #       run: |
+  #         git config user.name github-actions[bot]
+  #         git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+  #         git tag ${{ needs.hygiene.outputs.build_num }}
+  #         git push origin ${{ needs.hygiene.outputs.build_num }}
+
+  # promote:
+  #   name: "Promote ${{ inputs.env }} #${{ needs.hygiene.outputs.build_num }} to ${{ needs.release.outputs.next_env }}"
+  #   needs: [hygiene, build, release]
+  #   # needs: [ hygiene, build, test, release ]
+
+  #   if: ${{ needs.release.outputs.releases_created && (needs.release.outputs.next_env != '---') }}
+  #   runs-on: ubuntu-22.04
+  #   steps:
+  #     - name: Check out ${{ needs.release.outputs.next_env }} branch.
+  #       uses: actions/checkout@v3
+  #       with:
+  #         fetch-depth: 0
+  #         ref: ${{ needs.release.outputs.next_env }}
+
+  #     - name: Fetch and reset to ${{ inputs.env }} branch
+  #       run: |
+  #         git fetch origin ${{ inputs.env }}:${{ inputs.env }}
+  #         git reset --hard ${{ inputs.env }}
+
+  #     - name: Create {{ needs.release.outputs.next_env }} pull request
+  #       id: pr
+  #       uses: peter-evans/create-pull-request@v4
+  #       with:
+  #         branch: promote-${{ needs.release.outputs.next_env }}
+  #         title: "chore(${{ needs.release.outputs.next_env }}): promote ${{ needs.release.outputs.tag_name }} to ${{ needs.release.outputs.next_env }}"
+  #         body: ${{ needs.release.outputs.changelog }}
+  #         labels: autopromote
+
+  deploy:
+    name: "Deploying ${{ matrix.target }} for ${{ inputs.env }} #${{ needs.hygiene.outputs.build_num }}"
+    needs: [hygiene, build, release]
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: macos-12
+            target: iOS
+            deploy-command: ios
+
+          # - os: ubuntu-22.04
+          #   target: Android
+          #   deploy-command: and
+          #   build-dir: /build/app/outputs/apk/
+
+          - os: ubuntu-22.04
+            target: Web
+            deploy-command: web
+
+    if: ${{ needs.release.outputs.releases_created || inputs.env == 'dev' }}
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Checking out repo.
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 # Deep Fetch
+          ref: ${{ inputs.env }}
+
+      - name: Setup Flutter SDK
+        uses: subosito/flutter-action@v2
+        with:
+          channel: "stable"
+          cache: true
+
+      - name: Setup ruby
+        if: ${{ startsWith(runner.os, 'macos') }}
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.0" # Not needed with a .ruby-version file
+          bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+          working-directory: ${{ github.workspace }}/packages/app/ios
+
+      - name: Bootstraping Melos
+        run: |
+          dart pub global activate melos
+          melos setup:ci
+
+      - name: "Download Artifacts for ${{ matrix.target }} #${{ needs.hygiene.outputs.build_num }}"
+        uses: actions/download-artifact@v3
+        with:
+          name: ${{ matrix.target }}
+
+      # - name: "Deploying ${{ matrix.target }} #${{ needs.hygiene.outputs.build_num }}"
+      #   if: ${{ deploy-command != 'web' }}
+      #   env:
+      #     ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
+      #     ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
+      #     ASC_KEY_CONTENT: ${{ secrets.ASC_KEY_CONTENT }}
+      #     CHANGELOG: ${{ needs.release.outputs.changelog }}
+      #   run: melos deploy:${{ matrix.deploy-command }}:${{ inputs.env }}
+      # Popular action to deploy to GitHub Pages:
+      # Docs: https://github.com/peaceiris/actions-gh-pages#%EF%B8%8F-docusaurus
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        if: ${{ deploy-command == 'web' }}
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          # Build output to publish to the `gh-pages` branch:
+          publish_dir: ./app/unself/build/web
+          # The following lines assign commit authorship to the official
+          # GH-Actions bot for deploys to `gh-pages` branch:
+          # https://github.com/actions/checkout/issues/13#issuecomment-724415212
+          # The GH actions bot is used by default if you didn't specify the two fields.
+          # You can swap them out with your own user credentials.
+          user_name: github-actions[bot]
+          user_email: 41898282+github-actions[bot]@users.noreply.github.com
+          publish_branch: cf-pages
