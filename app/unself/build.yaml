@@ -1,0 +1,9 @@
+targets:
+  $default:
+    builders:
+      # Typically the builder key is just the package name, run
+      # `dart run build_runner doctor` to check your config.
+      go_router_builder:go_router_builder:
+        generate_for:
+          # Example glob for only the Dart files under `lib/models`
+          - lib/routing/**.dart

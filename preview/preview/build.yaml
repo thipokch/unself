@@ -92,7 +92,5 @@ builders:
 
 targets:
   $default:
-    builders:
-      widgetbook_generator:
-        enabled: false
-        # Disable to use customized builder (with ignore_for_file)
+    auto_apply_builders: false
+    # Disable to use customized builder (with ignore_for_file)

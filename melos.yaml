@@ -215,8 +215,13 @@ scripts:
     run: |
       melos exec --depends-on="build_runner" -- \
         flutter pub run build_runner clean &&
-      melos exec --depends-on="build_runner" -- \
+      melos exec --depends-on="build_runner" -c 2 -- \
         flutter pub run build_runner build --delete-conflicting-outputs
+
+  build:runner:perf:
+    run: |
+      flutter pub run build_runner clean && \
+      flutter pub run build_runner serve .\build\web --track-performance --delete-conflicting-outputs
 
   build:splash:
     run: |

@@ -29,8 +29,8 @@ dev_dependencies:
   # Code Generation
 
   build_runner: ^2.3.0
-  freezed: ^2.2.0
-  json_serializable: ^6.5.4
+  # freezed: ^2.2.0
+  # json_serializable: ^6.5.4
 
 flutter:
   uses-material-design: true
