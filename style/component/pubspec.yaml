@@ -19,7 +19,7 @@ dependencies:
   flutter_svg: ^1.0.0
   figma_squircle: ^0.5.3
 
-  modal_bottom_sheet: ^2.1.2
+  modal_bottom_sheet: ^3.0.0-pre
 
   unself_style:
 

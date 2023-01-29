@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:drift/native.dart';
 import 'package:unself_local_database/unself_local_database.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -24,8 +26,8 @@ void main() {
       expect(
           database.allTables,
           containsAll([
-            TypeMatcher<$CollectionTable>(),
-            TypeMatcher<$FieldTable>(),
+            const TypeMatcher<$CollectionTable>(),
+            const TypeMatcher<$FieldTable>(),
           ]));
     });
   });

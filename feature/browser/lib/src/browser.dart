@@ -1,8 +1,12 @@
 // ignore_for_file: deprecated_member_use
 
-import 'package:meta/meta.dart';
+import 'package:flutter/foundation.dart';
+// import 'package:meta/meta.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:unself_monitoring/unself_monitoring.dart';
+
+// ignore: avoid_web_libraries_in_flutter
+import 'dart:html' as html;
 
 /// {@template browser}
 /// View of the [Browser].
@@ -32,35 +36,37 @@ class Browser extends ChromeSafariBrowser {
 
   // Methods
 
-  Future<void> go({
+  void go({
     required String url,
     String eventName = 'BrowserView',
     ChromeSafariBrowserSettings? settings,
   }) {
     analytics?.trackScreen(eventName);
-    return open(
-      url: WebUri(url),
-      settings: settings ?? this.settings ?? defaultSettings,
-    );
+    kIsWeb
+        ? html.window.open(url, 'new tab')
+        : open(
+            url: WebUri(url),
+            settings: settings ?? this.settings ?? defaultSettings,
+          );
   }
 
-  @override
-  @visibleForOverriding
-  Future<void> open(
-          {WebUri? url,
-          Map<String, String>? headers,
-          List<WebUri>? otherLikelyURLs,
-          WebUri? referrer,
-          ChromeSafariBrowserClassOptions? options,
-          ChromeSafariBrowserSettings? settings}) =>
-      super.open(
-        url: url,
-        headers: headers,
-        otherLikelyURLs: otherLikelyURLs,
-        referrer: referrer,
-        options: options,
-        settings: settings,
-      );
+  // @override
+  // @visibleForOverriding
+  // Future<void> open(
+  //         {WebUri? url,
+  //         Map<String, String>? headers,
+  //         List<WebUri>? otherLikelyURLs,
+  //         WebUri? referrer,
+  //         ChromeSafariBrowserClassOptions? options,
+  //         ChromeSafariBrowserSettings? settings}) =>
+  //     super.open(
+  //       url: url,
+  //       headers: headers,
+  //       otherLikelyURLs: otherLikelyURLs,
+  //       referrer: referrer,
+  //       options: options,
+  //       settings: settings,
+  //     );
 
   // @override
   // void onOpened() {}

@@ -25,7 +25,7 @@ class AppInfoSliver extends StatelessWidget {
         children: <Widget>[
           Text(
             info.appName,
-            style: Theme.of(context).textTheme.headline5,
+            style: Theme.of(context).textTheme.headlineSmall,
             textAlign: TextAlign.start,
           ),
           if (info.version != '')
@@ -33,14 +33,14 @@ class AppInfoSliver extends StatelessWidget {
               padding: const EdgeInsets.only(bottom: UnSpaces.M),
               child: Text(
                 info.version,
-                style: Theme.of(context).textTheme.bodyText2,
+                style: Theme.of(context).textTheme.bodyMedium,
                 textAlign: TextAlign.start,
               ),
             ),
           if (info.buildNumber != '')
             Text(
               info.buildNumber,
-              style: Theme.of(context).textTheme.caption,
+              style: Theme.of(context).textTheme.bodySmall,
               textAlign: TextAlign.start,
             ),
           const SizedBox(height: 16),

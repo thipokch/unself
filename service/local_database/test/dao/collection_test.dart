@@ -1,6 +1,9 @@
+// ignore_for_file: avoid_print
+
 import 'package:drift/native.dart';
 import 'package:unself_local_database/unself_local_database.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:unself_model/unself_model.dart';
 
 void main() {
   group('Database', () {
@@ -16,7 +19,7 @@ void main() {
     });
 
     test('loading collections from db', () async {
-      final a = const CollectionData(
+      const a = CollectionData(
         id: 'veggie',
         name: 'fruits',
         system: false,
@@ -33,17 +36,17 @@ void main() {
     });
 
     test('saving collections to db', () async {
-      final a = const CollectionData(
+      const a = CollectionData(
         id: 'veggie',
         name: 'fruits',
         system: false,
         type: 'table',
       );
 
-      final b = const FieldData(
+      const b = FieldData(
         id: 'veggie',
         name: 'name',
-        type: 'string',
+        type: FieldType.text,
         system: false,
         required: true,
         unique: false,
@@ -68,17 +71,17 @@ void main() {
     });
 
     test('deleting collections from db', () async {
-      final a = const CollectionData(
+      const a = CollectionData(
         id: 'veggie',
         name: 'fruits',
         system: false,
         type: 'table',
       );
 
-      final b = const FieldData(
+      const b = FieldData(
         id: 'veggie',
         name: 'name',
-        type: 'string',
+        type: FieldType.text,
         system: false,
         required: true,
         unique: false,

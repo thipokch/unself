@@ -224,7 +224,7 @@ class _UnCupertinoContextMenuState extends State<UnCupertinoContextMenu>
         );
       },
     );
-    Overlay.of(context, rootOverlay: true)!.insert(_lastOverlayEntry!);
+    Overlay.of(context, rootOverlay: true).insert(_lastOverlayEntry!);
     _openController.forward();
   }
 

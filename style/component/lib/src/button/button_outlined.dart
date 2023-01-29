@@ -47,7 +47,7 @@ class ButtonOutlined extends OutlinedButton {
           overlayColor: ButtonOverlay(
             Theme.of(context).colorScheme.primary,
           ),
-          splashFactory: kIsWeb ? null : InkSparklePatch.splashFactory,
+          splashFactory: kIsWeb ? null : InkSparkle.splashFactory,
           side: MaterialStateProperty.all(
             BorderSide(
               width: UnStroke.L,

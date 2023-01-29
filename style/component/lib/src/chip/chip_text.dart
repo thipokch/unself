@@ -34,7 +34,7 @@ class ChipText extends StatelessWidget {
       pressElevation: 0.0,
       label: Text(
         text,
-        style: textTheme.button?.copyWith(
+        style: textTheme.labelLarge?.copyWith(
           color: isEnabled
               ? (selected ? colorScheme.onPrimary : colorScheme.primary)
               : colorScheme.onSurface,

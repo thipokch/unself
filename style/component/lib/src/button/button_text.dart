@@ -42,7 +42,7 @@ class ButtonText extends TextButton {
           overlayColor: ButtonOverlay(
             Theme.of(context).colorScheme.primary,
           ),
-          splashFactory: kIsWeb ? null : InkSparklePatch.splashFactory,
+          splashFactory: kIsWeb ? null : InkSparkle.splashFactory,
         );
   }
 

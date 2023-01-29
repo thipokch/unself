@@ -5,6 +5,7 @@ import 'package:drift/native.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart' as p;
 import 'package:unself_local_database/unself_local_database.dart';
+import 'package:unself_model/unself_model.dart' show FieldType;
 
 part 'local_database.g.dart';
 

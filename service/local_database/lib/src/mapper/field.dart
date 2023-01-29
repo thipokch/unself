@@ -17,7 +17,7 @@ extension FieldToOrm on FieldData {
   Field toDomain() => Field(
         id: id,
         name: name,
-        type: FieldType.values.byName(name),
+        type: type,
         system: system,
         required: required,
         unique: unique,
@@ -29,7 +29,7 @@ extension FieldFromOrm on GeneratedColumn {
   FieldData toData(String collectionId) => FieldData(
         id: "",
         name: name,
-        type: "any",
+        type: FieldType.text,
         system: false,
         required: !$nullable,
         unique: true,
@@ -42,7 +42,7 @@ extension FieldFromDomain on Field {
         id: id,
         collectionId: id,
         name: name,
-        type: type.name,
+        type: type,
         system: system,
         required: required,
         unique: unique,

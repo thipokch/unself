@@ -513,9 +513,10 @@ class $FieldTable extends Field with TableInfo<$FieldTable, FieldData> {
       type: DriftSqlType.string, requiredDuringInsert: true);
   static const VerificationMeta _typeMeta = const VerificationMeta('type');
   @override
-  late final GeneratedColumn<String> type = GeneratedColumn<String>(
-      'type', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
+  late final GeneratedColumnWithTypeConverter<FieldType, String> type =
+      GeneratedColumn<String>('type', aliasedName, false,
+              type: DriftSqlType.string, requiredDuringInsert: true)
+          .withConverter<FieldType>($FieldTable.$convertertype);
   static const VerificationMeta _systemMeta = const VerificationMeta('system');
   @override
   late final GeneratedColumn<bool> system =
@@ -588,12 +589,7 @@ class $FieldTable extends Field with TableInfo<$FieldTable, FieldData> {
     } else if (isInserting) {
       context.missing(_nameMeta);
     }
-    if (data.containsKey('type')) {
-      context.handle(
-          _typeMeta, type.isAcceptableOrUnknown(data['type']!, _typeMeta));
-    } else if (isInserting) {
-      context.missing(_typeMeta);
-    }
+    context.handle(_typeMeta, const VerificationResult.success());
     if (data.containsKey('system')) {
       context.handle(_systemMeta,
           system.isAcceptableOrUnknown(data['system']!, _systemMeta));
@@ -637,8 +633,8 @@ class $FieldTable extends Field with TableInfo<$FieldTable, FieldData> {
           .read(DriftSqlType.string, data['${effectivePrefix}id'])!,
       name: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}name'])!,
-      type: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}type'])!,
+      type: $FieldTable.$convertertype.fromSql(attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}type'])!),
       system: attachedDatabase.typeMapping
           .read(DriftSqlType.bool, data['${effectivePrefix}system'])!,
       required: attachedDatabase.typeMapping
@@ -656,12 +652,15 @@ class $FieldTable extends Field with TableInfo<$FieldTable, FieldData> {
   $FieldTable createAlias(String alias) {
     return $FieldTable(attachedDatabase, alias);
   }
+
+  static JsonTypeConverter2<FieldType, String, String> $convertertype =
+      const EnumNameConverter<FieldType>(FieldType.values);
 }
 
 class FieldData extends DataClass implements Insertable<FieldData> {
   final String id;
   final String name;
-  final String type;
+  final FieldType type;
   final bool system;
   final bool required;
   final bool unique;
@@ -681,7 +680,10 @@ class FieldData extends DataClass implements Insertable<FieldData> {
     final map = <String, Expression>{};
     map['id'] = Variable<String>(id);
     map['name'] = Variable<String>(name);
-    map['type'] = Variable<String>(type);
+    {
+      final converter = $FieldTable.$convertertype;
+      map['type'] = Variable<String>(converter.toSql(type));
+    }
     map['system'] = Variable<bool>(system);
     map['required'] = Variable<bool>(required);
     map['unique'] = Variable<bool>(unique);
@@ -713,7 +715,8 @@ class FieldData extends DataClass implements Insertable<FieldData> {
     return FieldData(
       id: serializer.fromJson<String>(json['id']),
       name: serializer.fromJson<String>(json['name']),
-      type: serializer.fromJson<String>(json['type']),
+      type: $FieldTable.$convertertype
+          .fromJson(serializer.fromJson<String>(json['type'])),
       system: serializer.fromJson<bool>(json['system']),
       required: serializer.fromJson<bool>(json['required']),
       unique: serializer.fromJson<bool>(json['unique']),
@@ -727,7 +730,8 @@ class FieldData extends DataClass implements Insertable<FieldData> {
     return <String, dynamic>{
       'id': serializer.toJson<String>(id),
       'name': serializer.toJson<String>(name),
-      'type': serializer.toJson<String>(type),
+      'type':
+          serializer.toJson<String>($FieldTable.$convertertype.toJson(type)),
       'system': serializer.toJson<bool>(system),
       'required': serializer.toJson<bool>(required),
       'unique': serializer.toJson<bool>(unique),
@@ -739,7 +743,7 @@ class FieldData extends DataClass implements Insertable<FieldData> {
   FieldData copyWith(
           {String? id,
           String? name,
-          String? type,
+          FieldType? type,
           bool? system,
           bool? required,
           bool? unique,
@@ -790,7 +794,7 @@ class FieldData extends DataClass implements Insertable<FieldData> {
 class FieldCompanion extends UpdateCompanion<FieldData> {
   final Value<String> id;
   final Value<String> name;
-  final Value<String> type;
+  final Value<FieldType> type;
   final Value<bool> system;
   final Value<bool> required;
   final Value<bool> unique;
@@ -809,7 +813,7 @@ class FieldCompanion extends UpdateCompanion<FieldData> {
   FieldCompanion.insert({
     required String id,
     required String name,
-    required String type,
+    required FieldType type,
     required bool system,
     required bool required,
     required bool unique,
@@ -847,7 +851,7 @@ class FieldCompanion extends UpdateCompanion<FieldData> {
   FieldCompanion copyWith(
       {Value<String>? id,
       Value<String>? name,
-      Value<String>? type,
+      Value<FieldType>? type,
       Value<bool>? system,
       Value<bool>? required,
       Value<bool>? unique,
@@ -875,7 +879,8 @@ class FieldCompanion extends UpdateCompanion<FieldData> {
       map['name'] = Variable<String>(name.value);
     }
     if (type.present) {
-      map['type'] = Variable<String>(type.value);
+      final converter = $FieldTable.$convertertype;
+      map['type'] = Variable<String>(converter.toSql(type.value));
     }
     if (system.present) {
       map['system'] = Variable<bool>(system.value);

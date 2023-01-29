@@ -8,7 +8,6 @@ export 'src/context_menu/context_menu.dart';
 export 'src/emoji/emoji.dart';
 export 'src/float/float.dart';
 export 'src/heading/heading.dart';
-export 'src/ink_sparkle/ink_sparkle.dart';
 export 'src/list/list.dart';
 export 'src/nav/nav.dart';
 export 'src/page/page.dart';
