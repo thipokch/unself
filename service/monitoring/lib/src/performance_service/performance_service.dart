@@ -14,7 +14,5 @@ class PerformanceService {
   // ignore: unused_field
   final FirebasePerformance _performance;
   // TODO: Sentry
-
   // TODO: Implement [_performance]
-
 }

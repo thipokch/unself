@@ -84,7 +84,7 @@ scripts:
       melos setup:build && \
 
       echo "Formatting and Copying environment configurations..." && \
-      flutter format $SECRETS_DIR/flutter/ && \
+      dart format $SECRETS_DIR/flutter/ && \
       cp -v -r "$SECRETS_DIR/flutter/"* "$APP_DIR/lib"
 
   setup:mason:
@@ -175,18 +175,18 @@ scripts:
 
   hygiene:format:
     description: |
-      Run `flutter format` in all packages.
+      Run `dart format` in all packages.
         - Note: Exits with non-zero exit code if formatting is needed.
     run: |
       melos exec -c 1 -- \
-          flutter format --output=none --set-exit-if-changed .
+          dart format --output=none --set-exit-if-changed .
 
   hygiene:format:fix:
     description: |
-      Fix `flutter format` in all packages.
+      Fix `dart format` in all packages.
     run: |
       melos exec -c 1 -- \
-          flutter format .
+          dart format .
 
   #
   #   Build

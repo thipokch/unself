@@ -308,7 +308,8 @@ jobs:
 
   deploy:
     name: "Deploying ${{ matrix.target }} for ${{ inputs.env }} #${{ needs.hygiene.outputs.build_num }}"
-    needs: [hygiene, build, release]
+    # needs: [hygiene, build, release]
+    needs: [hygiene, build]
     strategy:
       fail-fast: false
       matrix:
@@ -360,7 +361,7 @@ jobs:
           name: ${{ matrix.target }}
 
       # - name: "Deploying ${{ matrix.target }} #${{ needs.hygiene.outputs.build_num }}"
-      #   if: ${{ deploy-command != 'web' }}
+      #   if: ${{ matrix.deploy-command != 'web' }}
       #   env:
       #     ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
       #     ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
@@ -372,7 +373,7 @@ jobs:
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
-        if: ${{ deploy-command == 'web' }}
+        if: ${{ matrix.deploy-command == 'web' }}
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           # Build output to publish to the `gh-pages` branch:
