@@ -42,9 +42,9 @@ class Browser extends ChromeSafariBrowser {
     // kIsWeb ? window.open(url, 'new tab')
 
     open(
-        url: WebUri(url),
-        settings: settings ?? this.settings ?? defaultSettings,
-      );
+      url: WebUri(url),
+      settings: settings ?? this.settings ?? defaultSettings,
+    );
   }
 
   // @override
