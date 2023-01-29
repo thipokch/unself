@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:isolate';
 
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:sentry/sentry.dart';
 
@@ -51,7 +52,7 @@ abstract class ErrorService {
   static runAppGuarded(Widget app) => runZonedGuarded(
         () {
           FlutterError.onError = recordFlutterError;
-          recordIsolateError();
+          if (!kIsWeb) recordIsolateError();
 
           return runApp(app);
         },
