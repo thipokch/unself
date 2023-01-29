@@ -1,3 +1,6 @@
+// ignore_for_file: unused_field
+// TODO: Remove this once done implementing this class.
+
 import 'dart:async';
 
 import 'package:unself_local_database/unself_local_database.dart'

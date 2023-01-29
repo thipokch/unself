@@ -132,8 +132,12 @@ final List<Pattern> facebookKeys = [
   "notifications.notifications",
   "your_places.places_you've_created",
   RegExp(r'^posts\.album\.(\d+)$'), // "posts.album.0",
-  RegExp(r'^messages\.filtered_threads\.(.+)_(\d+).message_(\d+)'), // "messages.filtered_threads.username_012345.message_1",
-  RegExp(r'^messages\.message_requests\.(.+)_(\d+).message_(\d+)'), // "messages.message_requests.username_012345.message_1",
-  RegExp(r'^messages\.inbox\.(.+)_(\d+).message_(\d+)'), // "messages.inbox.username_012345.message_1",
-  RegExp(r'^messages\.archived_threads\.(.+)_(\d+).message_(\d+)'), // "messages.archived_threads.username_012345.message_1",
+  RegExp(
+      r'^messages\.filtered_threads\.(.+)_(\d+).message_(\d+)'), // "messages.filtered_threads.username_012345.message_1",
+  RegExp(
+      r'^messages\.message_requests\.(.+)_(\d+).message_(\d+)'), // "messages.message_requests.username_012345.message_1",
+  RegExp(
+      r'^messages\.inbox\.(.+)_(\d+).message_(\d+)'), // "messages.inbox.username_012345.message_1",
+  RegExp(
+      r'^messages\.archived_threads\.(.+)_(\d+).message_(\d+)'), // "messages.archived_threads.username_012345.message_1",
 ];

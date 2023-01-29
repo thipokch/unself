@@ -50,13 +50,13 @@ class UnpackAssistantBloc
 
   // STREAM EVENTS
 
-  _Errored _onError(Object error, StackTrace stackTrace) {
-    // TODO: implement analytics here
-    log("$runtimeType - error", error: error, stackTrace: stackTrace);
-    onError(error, stackTrace);
+  // _Errored _onError(Object error, StackTrace stackTrace) {
+  //   // TODO: implement analytics here
+  //   log("$runtimeType - error", error: error, stackTrace: stackTrace);
+  //   onError(error, stackTrace);
 
-    return _Errored(error: error, stackTrace: stackTrace);
-  }
+  //   return _Errored(error: error, stackTrace: stackTrace);
+  // }
 
   // BLOC EVENTS
 
