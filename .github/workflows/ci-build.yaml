@@ -62,6 +62,13 @@ jobs:
           SECRETS_PASSWORD: ${{ secrets.SECRETS_PASSWORD }}
         run: dart pub global activate melos && melos setup:ci
 
+      - name: Cache .dart_tool
+        uses: actions/cache@v3
+        id: cache_dart_tool
+        with:
+          path: "**/.dart_tool/"
+          key: ${{ github.ref }}-${{ runner.os }}
+
       - name: Flutter Build ${{ matrix.target }}
         env:
           BUILD_NUM: ${{ inputs.build_num }}

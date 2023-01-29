@@ -27,6 +27,8 @@ jobs:
     # needs: [hygiene, build, release]
     needs: [hygiene, build]
     secrets: inherit
+    permissions:
+      contents: write
     with:
       env: dev
       build_num: ${{ needs.hygiene.outputs.build_num }}

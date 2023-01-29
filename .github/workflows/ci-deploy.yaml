@@ -24,6 +24,10 @@ on:
 jobs:
   deploy:
     name: "Deploying ${{ matrix.target }} for ${{ inputs.env }} #${{ inputs.build_num }}"
+
+    permissions:
+      contents: write
+
     strategy:
       fail-fast: false
       matrix:
@@ -75,6 +79,13 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: ${{ matrix.target }}
+      
+      - name: Cache .dart_tool
+        uses: actions/cache@v3
+        id: cache_dart_tool
+        with:
+          path: "**/.dart_tool/"
+          key: ${{ github.ref }}-${{ runner.os }}
 
       # - name: "Deploying ${{ matrix.target }} #${{ inputs.build_num }}"
       #   if: ${{ matrix.deploy-command != 'web' }}
@@ -84,6 +95,7 @@ jobs:
       #     ASC_KEY_CONTENT: ${{ secrets.ASC_KEY_CONTENT }}
       #     CHANGELOG: ${{ inputs.changelog }}
       #   run: melos deploy:${{ matrix.deploy-command }}:${{ inputs.env }}
+
       # Popular action to deploy to GitHub Pages:
       # Docs: https://github.com/peaceiris/actions-gh-pages#%EF%B8%8F-docusaurus
 

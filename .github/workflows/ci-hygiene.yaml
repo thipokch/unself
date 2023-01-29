@@ -51,6 +51,13 @@ jobs:
       - name: Generate code
         run: melos build:num && melos build:generate
 
+      - name: Cache .dart_tool
+        uses: actions/cache@v3
+        id: cache_dart_tool
+        with:
+          path: "**/.dart_tool/"
+          key: ${{ github.ref }}-${{ runner.os }}
+
       # Basically hygene:commit, but broken into steps for better error reporting
 
       - name: Hygiene - Format

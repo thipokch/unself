@@ -1,6 +1,8 @@
 import 'package:drift/drift.dart';
 import 'package:unself_local_database/unself_local_database.dart';
 
+part 'collection.g.dart';
+
 @DriftAccessor()
 class CollectionDao extends DatabaseAccessor<LocalDatabase> {
   CollectionDao(LocalDatabase db) : super(db);
