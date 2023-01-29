@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
+// ignore: depend_on_referenced_packages
 import 'package:rudder_integration_firebase_flutter/rudder_integration_firebase_flutter.dart';
 import 'package:unself_app/routing/routing.dart';
 import 'package:unself_license/unself_license.dart';
@@ -18,15 +19,14 @@ class App extends StatefulWidget {
     required String rudderDataPlaneUrl,
   }) async {
     return MultiProvider(
-      child: const App._(),
       builder: builder,
       providers: [
         // [Provider] create/update are lazy by default
         Provider<UserService>(
-          create: (_) => UserService(),
+          create: (_) => const UserService(),
         ),
         Provider<LicenseService>(
-          create: (_) => LicenseService(),
+          create: (_) => const LicenseService(),
         ),
         // Provider<ExerciseRepository>(
         //   create: (_) => ExerciseRepository(),
@@ -81,6 +81,7 @@ class App extends StatefulWidget {
         //   create: (context) => Browser(analytics: ),
         // ),
       ],
+      child: const App._(),
     );
   }
 

@@ -15,7 +15,7 @@ class SettingsAppearancePage extends StatelessWidget {
           analyticService: context.read(),
           userService: context.read(),
         ),
-        child: UnAppPage(
+        child: const UnAppPage(
           name: Text("Appearance"),
           slivers: [SettingsAppearanceSliver()],
         ),

@@ -17,7 +17,7 @@ class LicenseDetailPage extends StatelessWidget {
         // description: Text(""),
         slivers: [
           SliverPadding(
-            padding: EdgeInsets.all(UnSpaces.M),
+            padding: const EdgeInsets.all(UnSpaces.M),
             sliver: LicenseDetailSliver(packageName: packageName),
           ),
         ],

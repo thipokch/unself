@@ -17,6 +17,6 @@ abstract class AppRouter {
   static final defaultNavigator =
       GlobalKey<NavigatorState>(debugLabel: 'AppRouter');
 
-  static final String defaultLocation = SettingsRoutes().location;
+  static final String defaultLocation = const SettingsRoutes().location;
   static final List<RouteBase> defaultRoutes = [AppShell.defaultRoute];
 }

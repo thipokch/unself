@@ -11,6 +11,7 @@ dependencies:
   flutter:
     sdk: flutter
 
+  provider: ^6.0.5
   bloc: ^8.1.0
   flutter_bloc: ^8.1.1
   freezed_annotation: ^2.1.0
@@ -21,7 +22,7 @@ dependencies:
   unself_component:
 
   # Service
-  
+
   unself_monitoring:
 
 dev_dependencies:
@@ -44,5 +45,3 @@ dev_dependencies:
 
   # bloc_test: ^9.1.0
   # mocktail: ^0.3.0
-
-  provider: ^6.0.5

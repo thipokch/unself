@@ -14,6 +14,7 @@ export 'package:firebase_core/firebase_core.dart'
 export 'package:firebase_performance/firebase_performance.dart'
     show FirebasePerformance;
 export 'package:rudder_sdk_flutter/RudderController.dart' show RudderController;
+// ignore: depend_on_referenced_packages
 export 'package:rudder_sdk_flutter_platform_interface/platform.dart'
     show RudderConfigBuilder, WebConfig, MobileConfig;
 

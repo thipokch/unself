@@ -5,7 +5,7 @@ import 'package:unself_model/unself_model.dart';
 
 void main() {
   group('test Field', () {
-    final Field a = Field(
+    const Field a = Field(
       id: 'id',
       name: 'id',
       type: FieldType.text,
@@ -15,7 +15,7 @@ void main() {
       options: {'extra': 'diva'},
     );
 
-    final String aJson =
+    const String aJson =
         '{"id":"id","name":"id","type":"text","system":true,"required":true,"unique":true,"options":{"extra":"diva"}}';
 
     setUp(() {});

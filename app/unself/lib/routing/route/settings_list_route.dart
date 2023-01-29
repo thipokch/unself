@@ -14,16 +14,16 @@ class SettingsListRoute extends GoRouteData {
 
   @override
   Widget build(BuildContext context, GoRouterState state) => SettingsListPage(
-        onSelectData: () => SettingsDataRoute().go(context),
-        onSelectAppearance: () => SettingsAppearanceRoute().go(context),
-        onSelectLicense: () => LicenseListRoute().go(context),
+        onSelectData: () => const SettingsDataRoute().go(context),
+        onSelectAppearance: () => const SettingsAppearanceRoute().go(context),
+        onSelectLicense: () => const LicenseListRoute().go(context),
         onSelectFeedback: () => Browser(analytics: context.read())
             .go(url: "https://unself.app/feedback"),
         onSelectPrivacy: () => Browser(analytics: context.read())
             .go(url: "https://unself.app/privacy"),
         onSelectTerms: () => Browser(analytics: context.read())
             .go(url: "https://unself.app/terms"),
-        trailing: AppInfoView(),
+        trailing: const AppInfoView(),
       );
 
   @override

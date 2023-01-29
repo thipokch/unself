@@ -11,7 +11,7 @@ class SettingsDataPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => UnAppPage(
-        name: Text("Data & Privacy"),
+        name: const Text("Data & Privacy"),
         slivers: [
           SettingsDataSliver(
             onReset: () {

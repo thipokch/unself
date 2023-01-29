@@ -5,7 +5,7 @@ import 'package:unself_model/unself_model.dart';
 
 void main() {
   group('test Field', () {
-    final Field aField = Field(
+    const Field aField = Field(
       id: 'id',
       name: 'id',
       type: FieldType.text,
@@ -15,7 +15,7 @@ void main() {
       options: {'extra': 'diva'},
     );
 
-    final Field bField = Field(
+    const Field bField = Field(
       id: 'image',
       name: 'image',
       type: FieldType.url,
@@ -24,14 +24,14 @@ void main() {
       unique: true,
     );
 
-    final Collection a = Collection(
+    const Collection a = Collection(
       id: 'id',
       name: 'id',
       schema: [aField, bField],
       options: {'extra': 'diva'},
     );
 
-    final String aJson =
+    const String aJson =
         '{"id":"id","type":"","name":"id","system":false,"listRule":null,"viewRule":null,"createRule":null,"updateRule":null,"deleteRule":null,"schema":[{"id":"id","name":"id","type":"text","system":true,"required":true,"unique":true,"options":{"extra":"diva"}},{"id":"image","name":"image","type":"url","system":false,"required":false,"unique":true,"options":{}}],"options":{"extra":"diva"}}';
 
     setUp(() {});

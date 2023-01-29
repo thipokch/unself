@@ -9,7 +9,7 @@ class LicenseListPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => UnAppPage(
-        name: Text("Acknowledgments"),
+        name: const Text("Acknowledgments"),
         // description: Text(""),
         slivers: [
           LicenseListSliver(onSelectPackage: onSelectPackage),

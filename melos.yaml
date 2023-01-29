@@ -83,9 +83,9 @@ scripts:
       export BUILD_ENV=dev && \
       melos setup:build && \
 
-      echo "Copying environment configurations..." && \
-      cp -v -r "$SECRETS_DIR/flutter/"* "$APP_DIR/lib" && \
-      flutter format $APP_DIR/lib/**/*.dart
+      echo "Formatting and Copying environment configurations..." && \
+      flutter format $SECRETS_DIR/flutter/ && \
+      cp -v -r "$SECRETS_DIR/flutter/"* "$APP_DIR/lib"
 
   setup:mason:
     description: Setup mason
@@ -317,7 +317,7 @@ scripts:
     description: Build web for given environment.
       For local development, use .env to set variables
       BUILD_ENV - build environment (dev, stg, prd)
-    run: |      
+    run: |
       [ ! -f .env ] || export $(grep -v '^#' .env | xargs) && \
         echo "Environment variables from .env exported..."
 

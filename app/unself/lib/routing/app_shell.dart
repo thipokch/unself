@@ -6,13 +6,13 @@ import 'package:unself_component/unself_component.dart';
 import 'package:unself_style/unself_style.dart';
 
 class AppShell extends StatefulWidget {
-  const AppShell({
+  const AppShell._({
     required this.child,
-    required this.destinations,
-  });
+    required List<_AppShellDestination> destinations,
+  }) : _destinations = destinations;
 
   final Widget child;
-  final List<_AppShellDestination> destinations;
+  final List<_AppShellDestination> _destinations;
 
   static final navigator = GlobalKey<NavigatorState>(debugLabel: 'AppShell');
   static final defaultRoute = ShellRoute(
@@ -24,20 +24,20 @@ class AppShell extends StatefulWidget {
           Provider(create: (_) => navigator),
           // Provider(create: (_) => HomeBloc(navigator: _.read())),
         ],
-        child: AppShell(child: child, destinations: [
+        child: AppShell._(destinations: [
           _AppShellDestination(
-            path: SettingsRoutes().location,
-            icon: Icon(UnSymbols.list),
-            selectedIcon: Icon(UnSymbols.listFilled),
+            path: const SettingsRoutes().location,
+            icon: const Icon(UnSymbols.list),
+            selectedIcon: const Icon(UnSymbols.listFilled),
             label: 'Unpack',
           ),
           _AppShellDestination(
-            path: SettingsRoutes().location,
-            icon: Icon(UnSymbols.list),
-            selectedIcon: Icon(UnSymbols.listFilled),
+            path: const SettingsRoutes().location,
+            icon: const Icon(UnSymbols.list),
+            selectedIcon: const Icon(UnSymbols.listFilled),
             label: 'Timeline',
           ),
-        ]),
+        ], child: child),
       ),
     ),
     // observers:  [
@@ -75,7 +75,7 @@ class AppShell extends StatefulWidget {
 class _AppShellState extends State<AppShell> {
   int _locationToIndex(String location) {
     final index =
-        widget.destinations.indexWhere((t) => location.startsWith(t.path));
+        widget._destinations.indexWhere((t) => location.startsWith(t.path));
     // if index not found (-1), return 0
     return index < 0 ? 0 : index;
   }
@@ -85,7 +85,7 @@ class _AppShellState extends State<AppShell> {
   void _onDestinationSelected(BuildContext context, int tabIndex) {
     // Only navigate if the tab index has changed
     if (tabIndex != _selectedIndex) {
-      context.go(widget.destinations[tabIndex].path);
+      context.go(widget._destinations[tabIndex].path);
     }
   }
 
@@ -98,7 +98,7 @@ class _AppShellState extends State<AppShell> {
             onDestinationSelected: (index) =>
                 _onDestinationSelected(context, index),
             selectedIndex: _selectedIndex,
-            destinations: widget.destinations,
+            destinations: widget._destinations,
             labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
             // backgroundColor: Colors.transparent,
             // surfaceTintColor: Colors.transparent,

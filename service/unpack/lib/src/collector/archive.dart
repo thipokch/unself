@@ -3,7 +3,7 @@ import 'dart:convert';
 
 import 'package:archive/archive.dart';
 import 'package:archive/archive_io.dart' show InputFileStream;
-import 'package:unself_model/src/collection.dart';
+import 'package:unself_model/unself_model.dart';
 import 'package:unself_unpack/src/collector/collector.dart'; // TODO: remove to support web
 
 /// {@template archive_collector}
@@ -56,6 +56,7 @@ class ArchiveCollector implements ICollector {
     //         jsonDecode(String.fromCharCodes(rawFile.content))
     // };
 
+    // ignore: avoid_print
     print(jsonEncode(collectionFileMap.keys.toList()));
 
     return [];

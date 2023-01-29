@@ -1,6 +1,6 @@
-import 'package:unself_local_database/src/table/collection.dart';
 import 'dart:async';
 
+import 'package:unself_local_database/unself_local_database.dart';
 import 'package:unself_unpack/src/processor/processor.dart';
 
 /// {@template facebook_processor}

@@ -14,7 +14,7 @@ class UserService implements IUserService {
   static final _controller = StreamController<User>.broadcast()
     ..stream.listen((value) => _currentUser = value);
 
-  static User _currentUser = User(themeMode: ThemeMode.system);
+  static User _currentUser = const User(themeMode: ThemeMode.system);
 
   @override
   Stream<User> streamUser() => _controller.stream;

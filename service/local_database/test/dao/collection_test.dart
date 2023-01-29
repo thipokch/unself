@@ -16,7 +16,7 @@ void main() {
     });
 
     test('loading collections from db', () async {
-      final a = CollectionData(
+      final a = const CollectionData(
         id: 'veggie',
         name: 'fruits',
         system: false,
@@ -27,20 +27,20 @@ void main() {
       await database.collectionDao.loadCollectionsFromDb();
 
       final result = database.collectionDao.getCollectionByName('fruits');
-      expect(result, TypeMatcher<CollectionOrm>());
+      expect(result, const TypeMatcher<CollectionOrm>());
       expect(result.id, a.id);
       expect(result.actualTableName, a.name);
     });
 
     test('saving collections to db', () async {
-      final a = CollectionData(
+      final a = const CollectionData(
         id: 'veggie',
         name: 'fruits',
         system: false,
         type: 'table',
       );
 
-      final b = FieldData(
+      final b = const FieldData(
         id: 'veggie',
         name: 'name',
         type: 'string',
@@ -68,14 +68,14 @@ void main() {
     });
 
     test('deleting collections from db', () async {
-      final a = CollectionData(
+      final a = const CollectionData(
         id: 'veggie',
         name: 'fruits',
         system: false,
         type: 'table',
       );
 
-      final b = FieldData(
+      final b = const FieldData(
         id: 'veggie',
         name: 'name',
         type: 'string',

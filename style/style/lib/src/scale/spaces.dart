@@ -1,3 +1,5 @@
+// ignore_for_file: constant_identifier_names
+
 import 'package:unself_style/unself_style.dart';
 
 abstract class UnSpaces {
