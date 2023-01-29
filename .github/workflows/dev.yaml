@@ -10,10 +10,28 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  ci:
-    uses: thipokch/unself/.github/workflows/ci.yaml@master
+  hygiene:
+    uses: thipokch/unself/.github/workflows/ci-hygiene.yaml@master
     secrets: inherit
     with:
       env: dev
+  build:
+    uses: thipokch/unself/.github/workflows/ci-build.yaml@master
+    needs: hygiene
+    secrets: inherit
+    with:
+      env: dev
+      build_num: ${{ needs.hygiene.outputs.build_num }}
+  deploy:
+    uses: thipokch/unself/.github/workflows/ci-deploy.yaml@master
+    # needs: [hygiene, build, release]
+    needs: [hygiene, build]
+    secrets: inherit
+    with:
+      env: dev
+      build_num: ${{ needs.hygiene.outputs.build_num }}
+      # releases_created: ${{ needs.release.outputs.releases_created }}
+      # changelog: ${{ needs.release.outputs.changelog }}
+
   # doc:
   #   uses: thipokch/unself/.github/workflows/docs.yaml@master

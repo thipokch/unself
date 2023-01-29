@@ -1,0 +1,79 @@
+name: Build
+
+on:
+  workflow_call:
+    inputs:
+      env:
+        description: "Environment to run the workflow for."
+        required: true
+        type: string
+      build_num:
+        description: "Build number to use for this build."
+        required: true
+        type: string
+
+jobs:
+  build:
+    name: "Building ${{ matrix.target }} for ${{ inputs.env }} #${{ inputs.build_num }}"
+    strategy:
+      fail-fast: true
+      matrix:
+        include:
+          # - os: macos-12
+          #   target: iOS
+          #   build-command: ios
+          #   build-dir: /app/unself/build/ipa/
+
+          # - os: ubuntu-22.04
+          #   target: Android
+          #   build-command: and
+          #   build-dir: /app/unself/build/app/outputs/apk/
+
+          - os: ubuntu-22.04
+            target: Web
+            build-command: web
+            build-dir: /app/unself/build/web/
+
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Checking out repo.
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 # Deep Fetch
+
+      - name: Setup Flutter SDK
+        uses: subosito/flutter-action@v2
+        with:
+          channel: "stable"
+          cache: true
+
+      - name: Setup ruby
+        if: ${{ startsWith(runner.os, 'macos') }}
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.0" # Not needed with a .ruby-version file
+          bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+          working-directory: ${{ github.workspace }}/packages/app/ios
+
+      - name: Bootstraping Melos
+        env:
+          SECRETS_GITHUB_TOKEN: ${{ secrets.SECRETS_GITHUB_TOKEN }}
+          SECRETS_GITHUB_PATH: ${{ secrets.SECRETS_GITHUB_PATH }}
+          SECRETS_PASSWORD: ${{ secrets.SECRETS_PASSWORD }}
+        run: dart pub global activate melos && melos setup:ci
+
+      - name: Flutter Build ${{ matrix.target }}
+        env:
+          BUILD_NUM: ${{ inputs.build_num }}
+          SECRETS_PASSWORD: ${{ secrets.SECRETS_PASSWORD }}
+        run: |
+          melos build:num && \
+          melos build:generate && \
+          melos build:${{ matrix.build-command }}:${{ inputs.env }}
+
+      - name: Upload ${{ matrix.target }} artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ matrix.target }}
+          path: |
+            ./**/${{ matrix.build-dir }}

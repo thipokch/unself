@@ -1,0 +1,86 @@
+name: Hygiene
+
+on:
+  workflow_call:
+    inputs:
+      env:
+        description: "Environment to run the workflow for."
+        required: true
+        type: string
+    outputs:
+      build_num:
+        value: ${{ jobs.hygiene.outputs.build_num }}
+      build_info:
+        value: ${{ jobs.hygiene.outputs.build_info }}
+
+jobs:
+  hygiene:
+    name: Hygiene check for ${{ inputs.env }}
+    outputs:
+      build_num: ${{ steps.hash.outputs.build_num }}
+      build_info: "Build #${{ steps.hash.outputs.build_num }} for ${{ inputs.env }} environment."
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checking out repo.
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 # Deep Fetch
+
+      - name: Setup Flutter SDK
+        uses: subosito/flutter-action@v2
+        with:
+          channel: "stable"
+          cache: true
+
+      - name: Bootstraping Melos
+        env:
+          SECRETS_GITHUB_TOKEN: ${{ secrets.SECRETS_GITHUB_TOKEN }}
+          SECRETS_GITHUB_PATH: ${{ secrets.SECRETS_GITHUB_PATH }}
+          SECRETS_PASSWORD: ${{ secrets.SECRETS_PASSWORD }}
+        run: dart pub global activate melos && melos setup:ci
+
+      - name: Generate new build num
+        id: hash
+        run: |
+          DATE=$( TZ=UTC0 git show --quiet --date='format-local:%y%m%d' --format='%cd' )
+          COUNT=$( printf %02d $(TZ=UTC0 git log --date='format-local:%y%m%d' --format='%cd' | grep -c $DATE ) )
+          export BUILD_NUM="$DATE$COUNT"
+          echo "build_num=$BUILD_NUM" >> $GITHUB_OUTPUT
+
+      - name: Generate code
+        run: melos build:num && melos build:generate
+
+      # Basically hygene:commit, but broken into steps for better error reporting
+
+      - name: Hygiene - Format
+        run: melos hygiene:format
+
+      - name: Hygiene - Analyse
+        run: melos hygiene:analyze
+
+      # - name: Setup Dart Code Metrics
+      #   working-directory: ${{ runner.temp }}
+      #   run: |
+      #     git clone https://github.com/dart-code-checker/dart-code-metrics-action --branch v2.0.0 --single-branch
+      #     cd ./dart-code-metrics-action/action_app/
+      #     flutter pub get
+
+      # - name: Hygiene - Code Metrics
+      #   env:
+      #     INPUT_FOLDERS: "./packages/method, ./packages/method_bloc, ./packages/domain, ./packages/method_ui, ./packages/method_isar, ./packages/method_data, ./packages/method_ui, ./packages/method_ui"
+      #     INPUT_GITHUB_TOKEN: ${{ github.token }}
+      #     # Defaults
+      #     INPUT_RELATIVE_PATH: ""
+      #     INPUT_PULL_REQUEST_COMMENT: false
+      #     INPUT_ANALYZE_REPORT_TITLE_PATTERN: "Code Metrics: $packageName ${{ inputs.env }} #${{ steps.hash.outputs.build_num }}"
+      #     INPUT_FATAL_WARNINGS: false
+      #     INPUT_FATAL_PERFORMANCE: false
+      #     INPUT_FATAL_STYLE: false
+      #     INPUT_CHECK_UNUSED_FILES: false
+      #     INPUT_UNUSED_FILES_REPORT_TITLE_PATTERN: "Dart Code Metrics unused files report of $packageName."
+      #   run: |
+      #     dart run ${{ runner.temp }}/dart-code-metrics-action/action_app/bin/main.dart
+
+      - name: Flutter fail-fast test
+        run: melos test:fast
