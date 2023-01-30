@@ -60,6 +60,13 @@ jobs:
           channel: "stable"
           cache: true
 
+      - name: Cache .dart_tool
+        uses: actions/cache@v3
+        id: cache_dart_tool
+        with:
+          path: "**/.dart_tool/"
+          key: ${{ github.sha }}-${{ runner.os }}
+
       - name: Setup ruby
         if: ${{ startsWith(runner.os, 'macos') }}
         uses: ruby/setup-ruby@v1
@@ -79,13 +86,6 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: ${{ matrix.target }}
-      
-      - name: Cache .dart_tool
-        uses: actions/cache@v3
-        id: cache_dart_tool
-        with:
-          path: "**/.dart_tool/"
-          key: ${{ github.ref }}-${{ runner.os }}
 
       # - name: "Deploying ${{ matrix.target }} #${{ inputs.build_num }}"
       #   if: ${{ matrix.deploy-command != 'web' }}

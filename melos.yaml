@@ -120,6 +120,10 @@ scripts:
       melos exec -c 1 -- \
         flutter pub outdated
 
+  setup:canvaskit:
+    run: |
+      dart ./tool/script/bin/version_canvaskit.dart
+
   #
   #   Hygiene
   #
@@ -328,6 +332,7 @@ scripts:
 
       melos setup:build && \
 
+      melos setup:canvaskit && \
       cd $APP_DIR && \
       flutter build web --verbose --release --target=lib/$BUILD_ENV.dart
 

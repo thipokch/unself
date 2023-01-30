@@ -46,7 +46,14 @@ jobs:
         with:
           channel: "stable"
           cache: true
-
+      
+      - name: Cache .dart_tool
+        uses: actions/cache@v3
+        id: cache_dart_tool
+        with:
+          path: "**/.dart_tool/"
+          key: ${{ github.sha }}-${{ runner.os }}
+          
       - name: Setup ruby
         if: ${{ startsWith(runner.os, 'macos') }}
         uses: ruby/setup-ruby@v1
@@ -61,13 +68,6 @@ jobs:
           SECRETS_GITHUB_PATH: ${{ secrets.SECRETS_GITHUB_PATH }}
           SECRETS_PASSWORD: ${{ secrets.SECRETS_PASSWORD }}
         run: dart pub global activate melos && melos setup:ci
-
-      - name: Cache .dart_tool
-        uses: actions/cache@v3
-        id: cache_dart_tool
-        with:
-          path: "**/.dart_tool/"
-          key: ${{ github.ref }}-${{ runner.os }}
 
       - name: Flutter Build ${{ matrix.target }}
         env:
