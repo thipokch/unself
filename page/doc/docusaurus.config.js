@@ -4,6 +4,11 @@
 const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
+
+// const {remarkMdxDisableExplicitJsx} = require('remark-mdx-disable-explicit-jsx');
+// import remarkMdxDisableExplicitJsx from 'remark-mdx-disable-explicit-jsx';
+const remarkDisableTokenizers = require('remark-disable-tokenizers')
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'unself. documentation',
@@ -33,20 +38,14 @@ const config = {
       'classic',
       /** @type {import('@docusaurus/preset-classic').Options} */
       {
-        docs: {
-          routeBasePath: '/', // Serve the docs at the site's root
-          sidebarPath: require.resolve('./sidebars.js'),
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/thipokch/unself/tree/master/page/doc/',
-        },
+        docs: false,
+        blog: false,
         // blog: {
         //   showReadingTime: true,
         //   // Please change this to your repo.
         //   // Remove this to remove the "edit this page" links.
         //   editUrl:
-        //     'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+        //     'https://github.com/thipokch/unself/tree/master/page/resource/',
         // },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
@@ -65,18 +64,16 @@ const config = {
           srcDark: 'img/unself-logo-wordmark--dark.svg',
         },
         items: [
-          // {
-          //   type: 'doc',
-          //   docId: 'intro',
-          //   position: 'left',
-          //   label: 'Tutorial',
-          //   routeBasePath: '/',
-          // },
-          // {
-          //   to: '/blog',
-          //   label: 'Blog',
-          //   position: 'left',
-          // },
+          {
+            to: '/',
+            label: 'Resources',
+            position: 'left',
+          },
+          {
+            to: '/reference',
+            label: 'Reference',
+            position: 'left',
+          },
           {
             href: 'https://unself.app',
             label: 'Home',
@@ -144,6 +141,30 @@ const config = {
     [
       '@docusaurus/plugin-google-tag-manager',
       { containerId: 'GTM-KVZ35TZ' }
+    ],
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        // id: 'resource', // omitted => default instance
+        path: 'resource',
+        routeBasePath: '/', // Serve the docs at the site's root
+        sidebarPath: require.resolve('./sidebars.js'),
+        sidebarCollapsible: false,
+        editUrl:
+          'https://github.com/thipokch/unself/tree/master/page/doc/',
+      }
+    ],
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'reference',
+        path: 'reference',
+        routeBasePath: '/reference', // Serve the docs at the site's root
+        sidebarPath: require.resolve('./sidebars.js'),
+        // sidebarCollapsible: false,
+        editUrl:
+          'https://github.com/thipokch/unself/tree/master/page/doc/',
+      }
     ],
   ],
 };

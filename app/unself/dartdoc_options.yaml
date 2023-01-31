@@ -1,0 +1,6 @@
+dartdoc:
+  nodoc:
+  - 'lib/config/**.dart'
+  - 'lib/dev.dart'
+  - 'lib/prd.dart'
+  - 'lib/stg.dart'

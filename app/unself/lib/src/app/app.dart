@@ -3,7 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 // ignore: depend_on_referenced_packages
 import 'package:rudder_integration_firebase_flutter/rudder_integration_firebase_flutter.dart';
-import 'package:unself_app/routing/routing.dart';
+import 'package:unself_app/unself_app.dart';
 import 'package:unself_license/unself_license.dart';
 import 'package:unself_monitoring/unself_monitoring.dart';
 import 'package:unself_style/unself_style.dart';

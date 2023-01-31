@@ -1,7 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
-import 'package:unself_app/routing/routing.dart';
-
+import 'package:unself_app/unself_app.dart';
 part 'app_routes.g.dart';
 
 // @TypedGoRoute<SessionFlow>(
@@ -26,16 +25,16 @@ part 'app_routes.g.dart';
 //   const ExerciseFlow();
 // }
 
-// @TypedGoRoute<UnpackRoutes>(
-//   path: '/unpack',
-//   routes: <TypedGoRoute<GoRouteData>>[
-//     // TypedGoRoute<ExerciseDetailRoute>(path: ':id'),
-//     // TypedGoRoute<ExerciseStartRoute>(path: ':id/start'),
-//   ],
-// )
-// class UnpackRoutes extends UnpackListRoute {
-//   const UnpackRoutes();
-// }
+@TypedGoRoute<UnpackRoutes>(
+  path: '/unpack',
+  routes: <TypedGoRoute<GoRouteData>>[
+    // TypedGoRoute<ExerciseDetailRoute>(path: ':id'),
+    // TypedGoRoute<ExerciseStartRoute>(path: ':id/start'),
+  ],
+)
+class UnpackRoutes extends UnpackAssistantRoute {
+  const UnpackRoutes();
+}
 
 @TypedGoRoute<SettingsRoutes>(
   path: '/settings',

@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
-import 'package:unself_app/routing/routing.dart';
+import 'package:unself_app/unself_app.dart';
 import 'package:unself_component/unself_component.dart';
 import 'package:unself_license_list/license_list.dart';
 

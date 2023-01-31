@@ -7,8 +7,26 @@ part of 'app_routes.dart';
 // **************************************************************************
 
 List<GoRoute> get $appRoutes => [
+      $unpackRoutes,
       $settingsRoutes,
     ];
+
+GoRoute get $unpackRoutes => GoRouteData.$route(
+      path: '/unpack',
+      factory: $UnpackRoutesExtension._fromState,
+    );
+
+extension $UnpackRoutesExtension on UnpackRoutes {
+  static UnpackRoutes _fromState(GoRouterState state) => const UnpackRoutes();
+
+  String get location => GoRouteData.$location(
+        '/unpack',
+      );
+
+  void go(BuildContext context) => context.go(location, extra: this);
+
+  void push(BuildContext context) => context.push(location, extra: this);
+}
 
 GoRoute get $settingsRoutes => GoRouteData.$route(
       path: '/settings',

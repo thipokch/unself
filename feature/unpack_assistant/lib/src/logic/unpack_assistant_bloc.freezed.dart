@@ -18,63 +18,51 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$UnpackAssistantEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() create,
+    required TResult Function(String app) selectApp,
+    required TResult Function(File file) selectArchive,
+    required TResult Function(List<String> data) selectData,
     required TResult Function() start,
-    required TResult Function() resume,
-    required TResult Function() pause,
-    required TResult Function() stop,
-    required TResult Function() destroy,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? create,
+    TResult? Function(String app)? selectApp,
+    TResult? Function(File file)? selectArchive,
+    TResult? Function(List<String> data)? selectData,
     TResult? Function()? start,
-    TResult? Function()? resume,
-    TResult? Function()? pause,
-    TResult? Function()? stop,
-    TResult? Function()? destroy,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? create,
+    TResult Function(String app)? selectApp,
+    TResult Function(File file)? selectArchive,
+    TResult Function(List<String> data)? selectData,
     TResult Function()? start,
-    TResult Function()? resume,
-    TResult Function()? pause,
-    TResult Function()? stop,
-    TResult Function()? destroy,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Create value) create,
+    required TResult Function(_SelectApp value) selectApp,
+    required TResult Function(_SelectArchive value) selectArchive,
+    required TResult Function(_SelectData value) selectData,
     required TResult Function(_Start value) start,
-    required TResult Function(_Resume value) resume,
-    required TResult Function(_Pause value) pause,
-    required TResult Function(_Stop value) stop,
-    required TResult Function(_Destroy value) destroy,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Create value)? create,
+    TResult? Function(_SelectApp value)? selectApp,
+    TResult? Function(_SelectArchive value)? selectArchive,
+    TResult? Function(_SelectData value)? selectData,
     TResult? Function(_Start value)? start,
-    TResult? Function(_Resume value)? resume,
-    TResult? Function(_Pause value)? pause,
-    TResult? Function(_Stop value)? stop,
-    TResult? Function(_Destroy value)? destroy,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Create value)? create,
+    TResult Function(_SelectApp value)? selectApp,
+    TResult Function(_SelectArchive value)? selectArchive,
+    TResult Function(_SelectData value)? selectData,
     TResult Function(_Start value)? start,
-    TResult Function(_Resume value)? resume,
-    TResult Function(_Pause value)? pause,
-    TResult Function(_Stop value)? stop,
-    TResult Function(_Destroy value)? destroy,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -100,77 +88,99 @@ class _$UnpackAssistantEventCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_CreateCopyWith<$Res> {
-  factory _$$_CreateCopyWith(_$_Create value, $Res Function(_$_Create) then) =
-      __$$_CreateCopyWithImpl<$Res>;
+abstract class _$$_SelectAppCopyWith<$Res> {
+  factory _$$_SelectAppCopyWith(
+          _$_SelectApp value, $Res Function(_$_SelectApp) then) =
+      __$$_SelectAppCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String app});
 }
 
 /// @nodoc
-class __$$_CreateCopyWithImpl<$Res>
-    extends _$UnpackAssistantEventCopyWithImpl<$Res, _$_Create>
-    implements _$$_CreateCopyWith<$Res> {
-  __$$_CreateCopyWithImpl(_$_Create _value, $Res Function(_$_Create) _then)
+class __$$_SelectAppCopyWithImpl<$Res>
+    extends _$UnpackAssistantEventCopyWithImpl<$Res, _$_SelectApp>
+    implements _$$_SelectAppCopyWith<$Res> {
+  __$$_SelectAppCopyWithImpl(
+      _$_SelectApp _value, $Res Function(_$_SelectApp) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? app = null,
+  }) {
+    return _then(_$_SelectApp(
+      app: null == app
+          ? _value.app
+          : app // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 
-class _$_Create extends _Create {
-  const _$_Create() : super._();
+class _$_SelectApp extends _SelectApp {
+  const _$_SelectApp({required this.app}) : super._();
+
+  @override
+  final String app;
 
   @override
   String toString() {
-    return 'UnpackAssistantEvent.create()';
+    return 'UnpackAssistantEvent.selectApp(app: $app)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Create);
+        (other.runtimeType == runtimeType &&
+            other is _$_SelectApp &&
+            (identical(other.app, app) || other.app == app));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, app);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_SelectAppCopyWith<_$_SelectApp> get copyWith =>
+      __$$_SelectAppCopyWithImpl<_$_SelectApp>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() create,
+    required TResult Function(String app) selectApp,
+    required TResult Function(File file) selectArchive,
+    required TResult Function(List<String> data) selectData,
     required TResult Function() start,
-    required TResult Function() resume,
-    required TResult Function() pause,
-    required TResult Function() stop,
-    required TResult Function() destroy,
   }) {
-    return create();
+    return selectApp(app);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? create,
+    TResult? Function(String app)? selectApp,
+    TResult? Function(File file)? selectArchive,
+    TResult? Function(List<String> data)? selectData,
     TResult? Function()? start,
-    TResult? Function()? resume,
-    TResult? Function()? pause,
-    TResult? Function()? stop,
-    TResult? Function()? destroy,
   }) {
-    return create?.call();
+    return selectApp?.call(app);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? create,
+    TResult Function(String app)? selectApp,
+    TResult Function(File file)? selectArchive,
+    TResult Function(List<String> data)? selectData,
     TResult Function()? start,
-    TResult Function()? resume,
-    TResult Function()? pause,
-    TResult Function()? stop,
-    TResult Function()? destroy,
     required TResult orElse(),
   }) {
-    if (create != null) {
-      return create();
+    if (selectApp != null) {
+      return selectApp(app);
     }
     return orElse();
   }
@@ -178,50 +188,348 @@ class _$_Create extends _Create {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Create value) create,
+    required TResult Function(_SelectApp value) selectApp,
+    required TResult Function(_SelectArchive value) selectArchive,
+    required TResult Function(_SelectData value) selectData,
     required TResult Function(_Start value) start,
-    required TResult Function(_Resume value) resume,
-    required TResult Function(_Pause value) pause,
-    required TResult Function(_Stop value) stop,
-    required TResult Function(_Destroy value) destroy,
   }) {
-    return create(this);
+    return selectApp(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Create value)? create,
+    TResult? Function(_SelectApp value)? selectApp,
+    TResult? Function(_SelectArchive value)? selectArchive,
+    TResult? Function(_SelectData value)? selectData,
     TResult? Function(_Start value)? start,
-    TResult? Function(_Resume value)? resume,
-    TResult? Function(_Pause value)? pause,
-    TResult? Function(_Stop value)? stop,
-    TResult? Function(_Destroy value)? destroy,
   }) {
-    return create?.call(this);
+    return selectApp?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Create value)? create,
+    TResult Function(_SelectApp value)? selectApp,
+    TResult Function(_SelectArchive value)? selectArchive,
+    TResult Function(_SelectData value)? selectData,
     TResult Function(_Start value)? start,
-    TResult Function(_Resume value)? resume,
-    TResult Function(_Pause value)? pause,
-    TResult Function(_Stop value)? stop,
-    TResult Function(_Destroy value)? destroy,
     required TResult orElse(),
   }) {
-    if (create != null) {
-      return create(this);
+    if (selectApp != null) {
+      return selectApp(this);
     }
     return orElse();
   }
 }
 
-abstract class _Create extends UnpackAssistantEvent {
-  const factory _Create() = _$_Create;
-  const _Create._() : super._();
+abstract class _SelectApp extends UnpackAssistantEvent {
+  const factory _SelectApp({required final String app}) = _$_SelectApp;
+  const _SelectApp._() : super._();
+
+  String get app;
+  @JsonKey(ignore: true)
+  _$$_SelectAppCopyWith<_$_SelectApp> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_SelectArchiveCopyWith<$Res> {
+  factory _$$_SelectArchiveCopyWith(
+          _$_SelectArchive value, $Res Function(_$_SelectArchive) then) =
+      __$$_SelectArchiveCopyWithImpl<$Res>;
+  @useResult
+  $Res call({File file});
+}
+
+/// @nodoc
+class __$$_SelectArchiveCopyWithImpl<$Res>
+    extends _$UnpackAssistantEventCopyWithImpl<$Res, _$_SelectArchive>
+    implements _$$_SelectArchiveCopyWith<$Res> {
+  __$$_SelectArchiveCopyWithImpl(
+      _$_SelectArchive _value, $Res Function(_$_SelectArchive) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? file = null,
+  }) {
+    return _then(_$_SelectArchive(
+      file: null == file
+          ? _value.file
+          : file // ignore: cast_nullable_to_non_nullable
+              as File,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_SelectArchive extends _SelectArchive {
+  const _$_SelectArchive({required this.file}) : super._();
+
+  @override
+  final File file;
+
+  @override
+  String toString() {
+    return 'UnpackAssistantEvent.selectArchive(file: $file)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_SelectArchive &&
+            (identical(other.file, file) || other.file == file));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, file);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_SelectArchiveCopyWith<_$_SelectArchive> get copyWith =>
+      __$$_SelectArchiveCopyWithImpl<_$_SelectArchive>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String app) selectApp,
+    required TResult Function(File file) selectArchive,
+    required TResult Function(List<String> data) selectData,
+    required TResult Function() start,
+  }) {
+    return selectArchive(file);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String app)? selectApp,
+    TResult? Function(File file)? selectArchive,
+    TResult? Function(List<String> data)? selectData,
+    TResult? Function()? start,
+  }) {
+    return selectArchive?.call(file);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String app)? selectApp,
+    TResult Function(File file)? selectArchive,
+    TResult Function(List<String> data)? selectData,
+    TResult Function()? start,
+    required TResult orElse(),
+  }) {
+    if (selectArchive != null) {
+      return selectArchive(file);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SelectApp value) selectApp,
+    required TResult Function(_SelectArchive value) selectArchive,
+    required TResult Function(_SelectData value) selectData,
+    required TResult Function(_Start value) start,
+  }) {
+    return selectArchive(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_SelectApp value)? selectApp,
+    TResult? Function(_SelectArchive value)? selectArchive,
+    TResult? Function(_SelectData value)? selectData,
+    TResult? Function(_Start value)? start,
+  }) {
+    return selectArchive?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SelectApp value)? selectApp,
+    TResult Function(_SelectArchive value)? selectArchive,
+    TResult Function(_SelectData value)? selectData,
+    TResult Function(_Start value)? start,
+    required TResult orElse(),
+  }) {
+    if (selectArchive != null) {
+      return selectArchive(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SelectArchive extends UnpackAssistantEvent {
+  const factory _SelectArchive({required final File file}) = _$_SelectArchive;
+  const _SelectArchive._() : super._();
+
+  File get file;
+  @JsonKey(ignore: true)
+  _$$_SelectArchiveCopyWith<_$_SelectArchive> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_SelectDataCopyWith<$Res> {
+  factory _$$_SelectDataCopyWith(
+          _$_SelectData value, $Res Function(_$_SelectData) then) =
+      __$$_SelectDataCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<String> data});
+}
+
+/// @nodoc
+class __$$_SelectDataCopyWithImpl<$Res>
+    extends _$UnpackAssistantEventCopyWithImpl<$Res, _$_SelectData>
+    implements _$$_SelectDataCopyWith<$Res> {
+  __$$_SelectDataCopyWithImpl(
+      _$_SelectData _value, $Res Function(_$_SelectData) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? data = null,
+  }) {
+    return _then(_$_SelectData(
+      data: null == data
+          ? _value._data
+          : data // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_SelectData extends _SelectData {
+  const _$_SelectData({required final List<String> data})
+      : _data = data,
+        super._();
+
+  final List<String> _data;
+  @override
+  List<String> get data {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_data);
+  }
+
+  @override
+  String toString() {
+    return 'UnpackAssistantEvent.selectData(data: $data)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_SelectData &&
+            const DeepCollectionEquality().equals(other._data, _data));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_data));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_SelectDataCopyWith<_$_SelectData> get copyWith =>
+      __$$_SelectDataCopyWithImpl<_$_SelectData>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String app) selectApp,
+    required TResult Function(File file) selectArchive,
+    required TResult Function(List<String> data) selectData,
+    required TResult Function() start,
+  }) {
+    return selectData(data);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String app)? selectApp,
+    TResult? Function(File file)? selectArchive,
+    TResult? Function(List<String> data)? selectData,
+    TResult? Function()? start,
+  }) {
+    return selectData?.call(data);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String app)? selectApp,
+    TResult Function(File file)? selectArchive,
+    TResult Function(List<String> data)? selectData,
+    TResult Function()? start,
+    required TResult orElse(),
+  }) {
+    if (selectData != null) {
+      return selectData(data);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SelectApp value) selectApp,
+    required TResult Function(_SelectArchive value) selectArchive,
+    required TResult Function(_SelectData value) selectData,
+    required TResult Function(_Start value) start,
+  }) {
+    return selectData(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_SelectApp value)? selectApp,
+    TResult? Function(_SelectArchive value)? selectArchive,
+    TResult? Function(_SelectData value)? selectData,
+    TResult? Function(_Start value)? start,
+  }) {
+    return selectData?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SelectApp value)? selectApp,
+    TResult Function(_SelectArchive value)? selectArchive,
+    TResult Function(_SelectData value)? selectData,
+    TResult Function(_Start value)? start,
+    required TResult orElse(),
+  }) {
+    if (selectData != null) {
+      return selectData(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SelectData extends UnpackAssistantEvent {
+  const factory _SelectData({required final List<String> data}) = _$_SelectData;
+  const _SelectData._() : super._();
+
+  List<String> get data;
+  @JsonKey(ignore: true)
+  _$$_SelectDataCopyWith<_$_SelectData> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -260,12 +568,10 @@ class _$_Start extends _Start {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() create,
+    required TResult Function(String app) selectApp,
+    required TResult Function(File file) selectArchive,
+    required TResult Function(List<String> data) selectData,
     required TResult Function() start,
-    required TResult Function() resume,
-    required TResult Function() pause,
-    required TResult Function() stop,
-    required TResult Function() destroy,
   }) {
     return start();
   }
@@ -273,12 +579,10 @@ class _$_Start extends _Start {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? create,
+    TResult? Function(String app)? selectApp,
+    TResult? Function(File file)? selectArchive,
+    TResult? Function(List<String> data)? selectData,
     TResult? Function()? start,
-    TResult? Function()? resume,
-    TResult? Function()? pause,
-    TResult? Function()? stop,
-    TResult? Function()? destroy,
   }) {
     return start?.call();
   }
@@ -286,12 +590,10 @@ class _$_Start extends _Start {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? create,
+    TResult Function(String app)? selectApp,
+    TResult Function(File file)? selectArchive,
+    TResult Function(List<String> data)? selectData,
     TResult Function()? start,
-    TResult Function()? resume,
-    TResult Function()? pause,
-    TResult Function()? stop,
-    TResult Function()? destroy,
     required TResult orElse(),
   }) {
     if (start != null) {
@@ -303,12 +605,10 @@ class _$_Start extends _Start {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Create value) create,
+    required TResult Function(_SelectApp value) selectApp,
+    required TResult Function(_SelectArchive value) selectArchive,
+    required TResult Function(_SelectData value) selectData,
     required TResult Function(_Start value) start,
-    required TResult Function(_Resume value) resume,
-    required TResult Function(_Pause value) pause,
-    required TResult Function(_Stop value) stop,
-    required TResult Function(_Destroy value) destroy,
   }) {
     return start(this);
   }
@@ -316,12 +616,10 @@ class _$_Start extends _Start {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Create value)? create,
+    TResult? Function(_SelectApp value)? selectApp,
+    TResult? Function(_SelectArchive value)? selectArchive,
+    TResult? Function(_SelectData value)? selectData,
     TResult? Function(_Start value)? start,
-    TResult? Function(_Resume value)? resume,
-    TResult? Function(_Pause value)? pause,
-    TResult? Function(_Stop value)? stop,
-    TResult? Function(_Destroy value)? destroy,
   }) {
     return start?.call(this);
   }
@@ -329,12 +627,10 @@ class _$_Start extends _Start {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Create value)? create,
+    TResult Function(_SelectApp value)? selectApp,
+    TResult Function(_SelectArchive value)? selectArchive,
+    TResult Function(_SelectData value)? selectData,
     TResult Function(_Start value)? start,
-    TResult Function(_Resume value)? resume,
-    TResult Function(_Pause value)? pause,
-    TResult Function(_Stop value)? stop,
-    TResult Function(_Destroy value)? destroy,
     required TResult orElse(),
   }) {
     if (start != null) {
@@ -350,535 +646,37 @@ abstract class _Start extends UnpackAssistantEvent {
 }
 
 /// @nodoc
-abstract class _$$_ResumeCopyWith<$Res> {
-  factory _$$_ResumeCopyWith(_$_Resume value, $Res Function(_$_Resume) then) =
-      __$$_ResumeCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_ResumeCopyWithImpl<$Res>
-    extends _$UnpackAssistantEventCopyWithImpl<$Res, _$_Resume>
-    implements _$$_ResumeCopyWith<$Res> {
-  __$$_ResumeCopyWithImpl(_$_Resume _value, $Res Function(_$_Resume) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$_Resume extends _Resume {
-  const _$_Resume() : super._();
-
-  @override
-  String toString() {
-    return 'UnpackAssistantEvent.resume()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Resume);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() create,
-    required TResult Function() start,
-    required TResult Function() resume,
-    required TResult Function() pause,
-    required TResult Function() stop,
-    required TResult Function() destroy,
-  }) {
-    return resume();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? create,
-    TResult? Function()? start,
-    TResult? Function()? resume,
-    TResult? Function()? pause,
-    TResult? Function()? stop,
-    TResult? Function()? destroy,
-  }) {
-    return resume?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? create,
-    TResult Function()? start,
-    TResult Function()? resume,
-    TResult Function()? pause,
-    TResult Function()? stop,
-    TResult Function()? destroy,
-    required TResult orElse(),
-  }) {
-    if (resume != null) {
-      return resume();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Create value) create,
-    required TResult Function(_Start value) start,
-    required TResult Function(_Resume value) resume,
-    required TResult Function(_Pause value) pause,
-    required TResult Function(_Stop value) stop,
-    required TResult Function(_Destroy value) destroy,
-  }) {
-    return resume(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Create value)? create,
-    TResult? Function(_Start value)? start,
-    TResult? Function(_Resume value)? resume,
-    TResult? Function(_Pause value)? pause,
-    TResult? Function(_Stop value)? stop,
-    TResult? Function(_Destroy value)? destroy,
-  }) {
-    return resume?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Create value)? create,
-    TResult Function(_Start value)? start,
-    TResult Function(_Resume value)? resume,
-    TResult Function(_Pause value)? pause,
-    TResult Function(_Stop value)? stop,
-    TResult Function(_Destroy value)? destroy,
-    required TResult orElse(),
-  }) {
-    if (resume != null) {
-      return resume(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Resume extends UnpackAssistantEvent {
-  const factory _Resume() = _$_Resume;
-  const _Resume._() : super._();
-}
-
-/// @nodoc
-abstract class _$$_PauseCopyWith<$Res> {
-  factory _$$_PauseCopyWith(_$_Pause value, $Res Function(_$_Pause) then) =
-      __$$_PauseCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_PauseCopyWithImpl<$Res>
-    extends _$UnpackAssistantEventCopyWithImpl<$Res, _$_Pause>
-    implements _$$_PauseCopyWith<$Res> {
-  __$$_PauseCopyWithImpl(_$_Pause _value, $Res Function(_$_Pause) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$_Pause extends _Pause {
-  const _$_Pause() : super._();
-
-  @override
-  String toString() {
-    return 'UnpackAssistantEvent.pause()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Pause);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() create,
-    required TResult Function() start,
-    required TResult Function() resume,
-    required TResult Function() pause,
-    required TResult Function() stop,
-    required TResult Function() destroy,
-  }) {
-    return pause();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? create,
-    TResult? Function()? start,
-    TResult? Function()? resume,
-    TResult? Function()? pause,
-    TResult? Function()? stop,
-    TResult? Function()? destroy,
-  }) {
-    return pause?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? create,
-    TResult Function()? start,
-    TResult Function()? resume,
-    TResult Function()? pause,
-    TResult Function()? stop,
-    TResult Function()? destroy,
-    required TResult orElse(),
-  }) {
-    if (pause != null) {
-      return pause();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Create value) create,
-    required TResult Function(_Start value) start,
-    required TResult Function(_Resume value) resume,
-    required TResult Function(_Pause value) pause,
-    required TResult Function(_Stop value) stop,
-    required TResult Function(_Destroy value) destroy,
-  }) {
-    return pause(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Create value)? create,
-    TResult? Function(_Start value)? start,
-    TResult? Function(_Resume value)? resume,
-    TResult? Function(_Pause value)? pause,
-    TResult? Function(_Stop value)? stop,
-    TResult? Function(_Destroy value)? destroy,
-  }) {
-    return pause?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Create value)? create,
-    TResult Function(_Start value)? start,
-    TResult Function(_Resume value)? resume,
-    TResult Function(_Pause value)? pause,
-    TResult Function(_Stop value)? stop,
-    TResult Function(_Destroy value)? destroy,
-    required TResult orElse(),
-  }) {
-    if (pause != null) {
-      return pause(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Pause extends UnpackAssistantEvent {
-  const factory _Pause() = _$_Pause;
-  const _Pause._() : super._();
-}
-
-/// @nodoc
-abstract class _$$_StopCopyWith<$Res> {
-  factory _$$_StopCopyWith(_$_Stop value, $Res Function(_$_Stop) then) =
-      __$$_StopCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_StopCopyWithImpl<$Res>
-    extends _$UnpackAssistantEventCopyWithImpl<$Res, _$_Stop>
-    implements _$$_StopCopyWith<$Res> {
-  __$$_StopCopyWithImpl(_$_Stop _value, $Res Function(_$_Stop) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$_Stop extends _Stop {
-  const _$_Stop() : super._();
-
-  @override
-  String toString() {
-    return 'UnpackAssistantEvent.stop()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Stop);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() create,
-    required TResult Function() start,
-    required TResult Function() resume,
-    required TResult Function() pause,
-    required TResult Function() stop,
-    required TResult Function() destroy,
-  }) {
-    return stop();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? create,
-    TResult? Function()? start,
-    TResult? Function()? resume,
-    TResult? Function()? pause,
-    TResult? Function()? stop,
-    TResult? Function()? destroy,
-  }) {
-    return stop?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? create,
-    TResult Function()? start,
-    TResult Function()? resume,
-    TResult Function()? pause,
-    TResult Function()? stop,
-    TResult Function()? destroy,
-    required TResult orElse(),
-  }) {
-    if (stop != null) {
-      return stop();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Create value) create,
-    required TResult Function(_Start value) start,
-    required TResult Function(_Resume value) resume,
-    required TResult Function(_Pause value) pause,
-    required TResult Function(_Stop value) stop,
-    required TResult Function(_Destroy value) destroy,
-  }) {
-    return stop(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Create value)? create,
-    TResult? Function(_Start value)? start,
-    TResult? Function(_Resume value)? resume,
-    TResult? Function(_Pause value)? pause,
-    TResult? Function(_Stop value)? stop,
-    TResult? Function(_Destroy value)? destroy,
-  }) {
-    return stop?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Create value)? create,
-    TResult Function(_Start value)? start,
-    TResult Function(_Resume value)? resume,
-    TResult Function(_Pause value)? pause,
-    TResult Function(_Stop value)? stop,
-    TResult Function(_Destroy value)? destroy,
-    required TResult orElse(),
-  }) {
-    if (stop != null) {
-      return stop(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Stop extends UnpackAssistantEvent {
-  const factory _Stop() = _$_Stop;
-  const _Stop._() : super._();
-}
-
-/// @nodoc
-abstract class _$$_DestroyCopyWith<$Res> {
-  factory _$$_DestroyCopyWith(
-          _$_Destroy value, $Res Function(_$_Destroy) then) =
-      __$$_DestroyCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_DestroyCopyWithImpl<$Res>
-    extends _$UnpackAssistantEventCopyWithImpl<$Res, _$_Destroy>
-    implements _$$_DestroyCopyWith<$Res> {
-  __$$_DestroyCopyWithImpl(_$_Destroy _value, $Res Function(_$_Destroy) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$_Destroy extends _Destroy {
-  const _$_Destroy() : super._();
-
-  @override
-  String toString() {
-    return 'UnpackAssistantEvent.destroy()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Destroy);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() create,
-    required TResult Function() start,
-    required TResult Function() resume,
-    required TResult Function() pause,
-    required TResult Function() stop,
-    required TResult Function() destroy,
-  }) {
-    return destroy();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? create,
-    TResult? Function()? start,
-    TResult? Function()? resume,
-    TResult? Function()? pause,
-    TResult? Function()? stop,
-    TResult? Function()? destroy,
-  }) {
-    return destroy?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? create,
-    TResult Function()? start,
-    TResult Function()? resume,
-    TResult Function()? pause,
-    TResult Function()? stop,
-    TResult Function()? destroy,
-    required TResult orElse(),
-  }) {
-    if (destroy != null) {
-      return destroy();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Create value) create,
-    required TResult Function(_Start value) start,
-    required TResult Function(_Resume value) resume,
-    required TResult Function(_Pause value) pause,
-    required TResult Function(_Stop value) stop,
-    required TResult Function(_Destroy value) destroy,
-  }) {
-    return destroy(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Create value)? create,
-    TResult? Function(_Start value)? start,
-    TResult? Function(_Resume value)? resume,
-    TResult? Function(_Pause value)? pause,
-    TResult? Function(_Stop value)? stop,
-    TResult? Function(_Destroy value)? destroy,
-  }) {
-    return destroy?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Create value)? create,
-    TResult Function(_Start value)? start,
-    TResult Function(_Resume value)? resume,
-    TResult Function(_Pause value)? pause,
-    TResult Function(_Stop value)? stop,
-    TResult Function(_Destroy value)? destroy,
-    required TResult orElse(),
-  }) {
-    if (destroy != null) {
-      return destroy(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Destroy extends UnpackAssistantEvent {
-  const factory _Destroy() = _$_Destroy;
-  const _Destroy._() : super._();
-}
-
-/// @nodoc
 mixin _$UnpackAssistantState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() created,
-    required TResult Function() started,
-    required TResult Function() resumed,
-    required TResult Function() destroyed,
+    required TResult Function(List<String> apps) apps,
+    required TResult Function() archive,
+    required TResult Function(List<String> data) data,
+    required TResult Function(int progress) processing,
+    required TResult Function() completed,
     required TResult Function(Object error, StackTrace stackTrace) errored,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? created,
-    TResult? Function()? started,
-    TResult? Function()? resumed,
-    TResult? Function()? destroyed,
+    TResult? Function(List<String> apps)? apps,
+    TResult? Function()? archive,
+    TResult? Function(List<String> data)? data,
+    TResult? Function(int progress)? processing,
+    TResult? Function()? completed,
     TResult? Function(Object error, StackTrace stackTrace)? errored,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? created,
-    TResult Function()? started,
-    TResult Function()? resumed,
-    TResult Function()? destroyed,
+    TResult Function(List<String> apps)? apps,
+    TResult Function()? archive,
+    TResult Function(List<String> data)? data,
+    TResult Function(int progress)? processing,
+    TResult Function()? completed,
     TResult Function(Object error, StackTrace stackTrace)? errored,
     required TResult orElse(),
   }) =>
@@ -886,30 +684,33 @@ mixin _$UnpackAssistantState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_Created value) created,
-    required TResult Function(_Started value) started,
-    required TResult Function(_Resumed value) resumed,
-    required TResult Function(_Destroyed value) destroyed,
+    required TResult Function(_Apps value) apps,
+    required TResult Function(_Archive value) archive,
+    required TResult Function(_Data value) data,
+    required TResult Function(_Processing value) processing,
+    required TResult Function(_Completed value) completed,
     required TResult Function(_Errored value) errored,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_Created value)? created,
-    TResult? Function(_Started value)? started,
-    TResult? Function(_Resumed value)? resumed,
-    TResult? Function(_Destroyed value)? destroyed,
+    TResult? Function(_Apps value)? apps,
+    TResult? Function(_Archive value)? archive,
+    TResult? Function(_Data value)? data,
+    TResult? Function(_Processing value)? processing,
+    TResult? Function(_Completed value)? completed,
     TResult? Function(_Errored value)? errored,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_Created value)? created,
-    TResult Function(_Started value)? started,
-    TResult Function(_Resumed value)? resumed,
-    TResult Function(_Destroyed value)? destroyed,
+    TResult Function(_Apps value)? apps,
+    TResult Function(_Archive value)? archive,
+    TResult Function(_Data value)? data,
+    TResult Function(_Processing value)? processing,
+    TResult Function(_Completed value)? completed,
     TResult Function(_Errored value)? errored,
     required TResult orElse(),
   }) =>
@@ -973,10 +774,11 @@ class _$_Initial extends _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() created,
-    required TResult Function() started,
-    required TResult Function() resumed,
-    required TResult Function() destroyed,
+    required TResult Function(List<String> apps) apps,
+    required TResult Function() archive,
+    required TResult Function(List<String> data) data,
+    required TResult Function(int progress) processing,
+    required TResult Function() completed,
     required TResult Function(Object error, StackTrace stackTrace) errored,
   }) {
     return initial();
@@ -986,10 +788,11 @@ class _$_Initial extends _Initial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? created,
-    TResult? Function()? started,
-    TResult? Function()? resumed,
-    TResult? Function()? destroyed,
+    TResult? Function(List<String> apps)? apps,
+    TResult? Function()? archive,
+    TResult? Function(List<String> data)? data,
+    TResult? Function(int progress)? processing,
+    TResult? Function()? completed,
     TResult? Function(Object error, StackTrace stackTrace)? errored,
   }) {
     return initial?.call();
@@ -999,10 +802,11 @@ class _$_Initial extends _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? created,
-    TResult Function()? started,
-    TResult Function()? resumed,
-    TResult Function()? destroyed,
+    TResult Function(List<String> apps)? apps,
+    TResult Function()? archive,
+    TResult Function(List<String> data)? data,
+    TResult Function(int progress)? processing,
+    TResult Function()? completed,
     TResult Function(Object error, StackTrace stackTrace)? errored,
     required TResult orElse(),
   }) {
@@ -1016,10 +820,11 @@ class _$_Initial extends _Initial {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_Created value) created,
-    required TResult Function(_Started value) started,
-    required TResult Function(_Resumed value) resumed,
-    required TResult Function(_Destroyed value) destroyed,
+    required TResult Function(_Apps value) apps,
+    required TResult Function(_Archive value) archive,
+    required TResult Function(_Data value) data,
+    required TResult Function(_Processing value) processing,
+    required TResult Function(_Completed value) completed,
     required TResult Function(_Errored value) errored,
   }) {
     return initial(this);
@@ -1029,10 +834,11 @@ class _$_Initial extends _Initial {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_Created value)? created,
-    TResult? Function(_Started value)? started,
-    TResult? Function(_Resumed value)? resumed,
-    TResult? Function(_Destroyed value)? destroyed,
+    TResult? Function(_Apps value)? apps,
+    TResult? Function(_Archive value)? archive,
+    TResult? Function(_Data value)? data,
+    TResult? Function(_Processing value)? processing,
+    TResult? Function(_Completed value)? completed,
     TResult? Function(_Errored value)? errored,
   }) {
     return initial?.call(this);
@@ -1042,10 +848,11 @@ class _$_Initial extends _Initial {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_Created value)? created,
-    TResult Function(_Started value)? started,
-    TResult Function(_Resumed value)? resumed,
-    TResult Function(_Destroyed value)? destroyed,
+    TResult Function(_Apps value)? apps,
+    TResult Function(_Archive value)? archive,
+    TResult Function(_Data value)? data,
+    TResult Function(_Processing value)? processing,
+    TResult Function(_Completed value)? completed,
     TResult Function(_Errored value)? errored,
     required TResult orElse(),
   }) {
@@ -1062,34 +869,202 @@ abstract class _Initial extends UnpackAssistantState {
 }
 
 /// @nodoc
-abstract class _$$_CreatedCopyWith<$Res> {
-  factory _$$_CreatedCopyWith(
-          _$_Created value, $Res Function(_$_Created) then) =
-      __$$_CreatedCopyWithImpl<$Res>;
+abstract class _$$_AppsCopyWith<$Res> {
+  factory _$$_AppsCopyWith(_$_Apps value, $Res Function(_$_Apps) then) =
+      __$$_AppsCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<String> apps});
 }
 
 /// @nodoc
-class __$$_CreatedCopyWithImpl<$Res>
-    extends _$UnpackAssistantStateCopyWithImpl<$Res, _$_Created>
-    implements _$$_CreatedCopyWith<$Res> {
-  __$$_CreatedCopyWithImpl(_$_Created _value, $Res Function(_$_Created) _then)
+class __$$_AppsCopyWithImpl<$Res>
+    extends _$UnpackAssistantStateCopyWithImpl<$Res, _$_Apps>
+    implements _$$_AppsCopyWith<$Res> {
+  __$$_AppsCopyWithImpl(_$_Apps _value, $Res Function(_$_Apps) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? apps = null,
+  }) {
+    return _then(_$_Apps(
+      apps: null == apps
+          ? _value._apps
+          : apps // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+    ));
+  }
 }
 
 /// @nodoc
 
-class _$_Created extends _Created {
-  const _$_Created() : super._();
+class _$_Apps extends _Apps {
+  const _$_Apps({required final List<String> apps})
+      : _apps = apps,
+        super._();
+
+  final List<String> _apps;
+  @override
+  List<String> get apps {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_apps);
+  }
 
   @override
   String toString() {
-    return 'UnpackAssistantState.created()';
+    return 'UnpackAssistantState.apps(apps: $apps)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Created);
+        (other.runtimeType == runtimeType &&
+            other is _$_Apps &&
+            const DeepCollectionEquality().equals(other._apps, _apps));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_apps));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_AppsCopyWith<_$_Apps> get copyWith =>
+      __$$_AppsCopyWithImpl<_$_Apps>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(List<String> apps) apps,
+    required TResult Function() archive,
+    required TResult Function(List<String> data) data,
+    required TResult Function(int progress) processing,
+    required TResult Function() completed,
+    required TResult Function(Object error, StackTrace stackTrace) errored,
+  }) {
+    return apps(this.apps);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function(List<String> apps)? apps,
+    TResult? Function()? archive,
+    TResult? Function(List<String> data)? data,
+    TResult? Function(int progress)? processing,
+    TResult? Function()? completed,
+    TResult? Function(Object error, StackTrace stackTrace)? errored,
+  }) {
+    return apps?.call(this.apps);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(List<String> apps)? apps,
+    TResult Function()? archive,
+    TResult Function(List<String> data)? data,
+    TResult Function(int progress)? processing,
+    TResult Function()? completed,
+    TResult Function(Object error, StackTrace stackTrace)? errored,
+    required TResult orElse(),
+  }) {
+    if (apps != null) {
+      return apps(this.apps);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Apps value) apps,
+    required TResult Function(_Archive value) archive,
+    required TResult Function(_Data value) data,
+    required TResult Function(_Processing value) processing,
+    required TResult Function(_Completed value) completed,
+    required TResult Function(_Errored value) errored,
+  }) {
+    return apps(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Apps value)? apps,
+    TResult? Function(_Archive value)? archive,
+    TResult? Function(_Data value)? data,
+    TResult? Function(_Processing value)? processing,
+    TResult? Function(_Completed value)? completed,
+    TResult? Function(_Errored value)? errored,
+  }) {
+    return apps?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Apps value)? apps,
+    TResult Function(_Archive value)? archive,
+    TResult Function(_Data value)? data,
+    TResult Function(_Processing value)? processing,
+    TResult Function(_Completed value)? completed,
+    TResult Function(_Errored value)? errored,
+    required TResult orElse(),
+  }) {
+    if (apps != null) {
+      return apps(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Apps extends UnpackAssistantState {
+  const factory _Apps({required final List<String> apps}) = _$_Apps;
+  const _Apps._() : super._();
+
+  List<String> get apps;
+  @JsonKey(ignore: true)
+  _$$_AppsCopyWith<_$_Apps> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_ArchiveCopyWith<$Res> {
+  factory _$$_ArchiveCopyWith(
+          _$_Archive value, $Res Function(_$_Archive) then) =
+      __$$_ArchiveCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_ArchiveCopyWithImpl<$Res>
+    extends _$UnpackAssistantStateCopyWithImpl<$Res, _$_Archive>
+    implements _$$_ArchiveCopyWith<$Res> {
+  __$$_ArchiveCopyWithImpl(_$_Archive _value, $Res Function(_$_Archive) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_Archive extends _Archive {
+  const _$_Archive() : super._();
+
+  @override
+  String toString() {
+    return 'UnpackAssistantState.archive()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_Archive);
   }
 
   @override
@@ -1099,41 +1074,44 @@ class _$_Created extends _Created {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() created,
-    required TResult Function() started,
-    required TResult Function() resumed,
-    required TResult Function() destroyed,
+    required TResult Function(List<String> apps) apps,
+    required TResult Function() archive,
+    required TResult Function(List<String> data) data,
+    required TResult Function(int progress) processing,
+    required TResult Function() completed,
     required TResult Function(Object error, StackTrace stackTrace) errored,
   }) {
-    return created();
+    return archive();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? created,
-    TResult? Function()? started,
-    TResult? Function()? resumed,
-    TResult? Function()? destroyed,
+    TResult? Function(List<String> apps)? apps,
+    TResult? Function()? archive,
+    TResult? Function(List<String> data)? data,
+    TResult? Function(int progress)? processing,
+    TResult? Function()? completed,
     TResult? Function(Object error, StackTrace stackTrace)? errored,
   }) {
-    return created?.call();
+    return archive?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? created,
-    TResult Function()? started,
-    TResult Function()? resumed,
-    TResult Function()? destroyed,
+    TResult Function(List<String> apps)? apps,
+    TResult Function()? archive,
+    TResult Function(List<String> data)? data,
+    TResult Function(int progress)? processing,
+    TResult Function()? completed,
     TResult Function(Object error, StackTrace stackTrace)? errored,
     required TResult orElse(),
   }) {
-    if (created != null) {
-      return created();
+    if (archive != null) {
+      return archive();
     }
     return orElse();
   }
@@ -1142,80 +1120,417 @@ class _$_Created extends _Created {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_Created value) created,
-    required TResult Function(_Started value) started,
-    required TResult Function(_Resumed value) resumed,
-    required TResult Function(_Destroyed value) destroyed,
+    required TResult Function(_Apps value) apps,
+    required TResult Function(_Archive value) archive,
+    required TResult Function(_Data value) data,
+    required TResult Function(_Processing value) processing,
+    required TResult Function(_Completed value) completed,
     required TResult Function(_Errored value) errored,
   }) {
-    return created(this);
+    return archive(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_Created value)? created,
-    TResult? Function(_Started value)? started,
-    TResult? Function(_Resumed value)? resumed,
-    TResult? Function(_Destroyed value)? destroyed,
+    TResult? Function(_Apps value)? apps,
+    TResult? Function(_Archive value)? archive,
+    TResult? Function(_Data value)? data,
+    TResult? Function(_Processing value)? processing,
+    TResult? Function(_Completed value)? completed,
     TResult? Function(_Errored value)? errored,
   }) {
-    return created?.call(this);
+    return archive?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_Created value)? created,
-    TResult Function(_Started value)? started,
-    TResult Function(_Resumed value)? resumed,
-    TResult Function(_Destroyed value)? destroyed,
+    TResult Function(_Apps value)? apps,
+    TResult Function(_Archive value)? archive,
+    TResult Function(_Data value)? data,
+    TResult Function(_Processing value)? processing,
+    TResult Function(_Completed value)? completed,
     TResult Function(_Errored value)? errored,
     required TResult orElse(),
   }) {
-    if (created != null) {
-      return created(this);
+    if (archive != null) {
+      return archive(this);
     }
     return orElse();
   }
 }
 
-abstract class _Created extends UnpackAssistantState {
-  const factory _Created() = _$_Created;
-  const _Created._() : super._();
+abstract class _Archive extends UnpackAssistantState {
+  const factory _Archive() = _$_Archive;
+  const _Archive._() : super._();
 }
 
 /// @nodoc
-abstract class _$$_StartedCopyWith<$Res> {
-  factory _$$_StartedCopyWith(
-          _$_Started value, $Res Function(_$_Started) then) =
-      __$$_StartedCopyWithImpl<$Res>;
+abstract class _$$_DataCopyWith<$Res> {
+  factory _$$_DataCopyWith(_$_Data value, $Res Function(_$_Data) then) =
+      __$$_DataCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<String> data});
 }
 
 /// @nodoc
-class __$$_StartedCopyWithImpl<$Res>
-    extends _$UnpackAssistantStateCopyWithImpl<$Res, _$_Started>
-    implements _$$_StartedCopyWith<$Res> {
-  __$$_StartedCopyWithImpl(_$_Started _value, $Res Function(_$_Started) _then)
+class __$$_DataCopyWithImpl<$Res>
+    extends _$UnpackAssistantStateCopyWithImpl<$Res, _$_Data>
+    implements _$$_DataCopyWith<$Res> {
+  __$$_DataCopyWithImpl(_$_Data _value, $Res Function(_$_Data) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? data = null,
+  }) {
+    return _then(_$_Data(
+      data: null == data
+          ? _value._data
+          : data // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+    ));
+  }
 }
 
 /// @nodoc
 
-class _$_Started extends _Started {
-  const _$_Started() : super._();
+class _$_Data extends _Data {
+  const _$_Data({required final List<String> data})
+      : _data = data,
+        super._();
+
+  final List<String> _data;
+  @override
+  List<String> get data {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_data);
+  }
 
   @override
   String toString() {
-    return 'UnpackAssistantState.started()';
+    return 'UnpackAssistantState.data(data: $data)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Started);
+        (other.runtimeType == runtimeType &&
+            other is _$_Data &&
+            const DeepCollectionEquality().equals(other._data, _data));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_data));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_DataCopyWith<_$_Data> get copyWith =>
+      __$$_DataCopyWithImpl<_$_Data>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(List<String> apps) apps,
+    required TResult Function() archive,
+    required TResult Function(List<String> data) data,
+    required TResult Function(int progress) processing,
+    required TResult Function() completed,
+    required TResult Function(Object error, StackTrace stackTrace) errored,
+  }) {
+    return data(this.data);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function(List<String> apps)? apps,
+    TResult? Function()? archive,
+    TResult? Function(List<String> data)? data,
+    TResult? Function(int progress)? processing,
+    TResult? Function()? completed,
+    TResult? Function(Object error, StackTrace stackTrace)? errored,
+  }) {
+    return data?.call(this.data);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(List<String> apps)? apps,
+    TResult Function()? archive,
+    TResult Function(List<String> data)? data,
+    TResult Function(int progress)? processing,
+    TResult Function()? completed,
+    TResult Function(Object error, StackTrace stackTrace)? errored,
+    required TResult orElse(),
+  }) {
+    if (data != null) {
+      return data(this.data);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Apps value) apps,
+    required TResult Function(_Archive value) archive,
+    required TResult Function(_Data value) data,
+    required TResult Function(_Processing value) processing,
+    required TResult Function(_Completed value) completed,
+    required TResult Function(_Errored value) errored,
+  }) {
+    return data(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Apps value)? apps,
+    TResult? Function(_Archive value)? archive,
+    TResult? Function(_Data value)? data,
+    TResult? Function(_Processing value)? processing,
+    TResult? Function(_Completed value)? completed,
+    TResult? Function(_Errored value)? errored,
+  }) {
+    return data?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Apps value)? apps,
+    TResult Function(_Archive value)? archive,
+    TResult Function(_Data value)? data,
+    TResult Function(_Processing value)? processing,
+    TResult Function(_Completed value)? completed,
+    TResult Function(_Errored value)? errored,
+    required TResult orElse(),
+  }) {
+    if (data != null) {
+      return data(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Data extends UnpackAssistantState {
+  const factory _Data({required final List<String> data}) = _$_Data;
+  const _Data._() : super._();
+
+  List<String> get data;
+  @JsonKey(ignore: true)
+  _$$_DataCopyWith<_$_Data> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_ProcessingCopyWith<$Res> {
+  factory _$$_ProcessingCopyWith(
+          _$_Processing value, $Res Function(_$_Processing) then) =
+      __$$_ProcessingCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int progress});
+}
+
+/// @nodoc
+class __$$_ProcessingCopyWithImpl<$Res>
+    extends _$UnpackAssistantStateCopyWithImpl<$Res, _$_Processing>
+    implements _$$_ProcessingCopyWith<$Res> {
+  __$$_ProcessingCopyWithImpl(
+      _$_Processing _value, $Res Function(_$_Processing) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? progress = null,
+  }) {
+    return _then(_$_Processing(
+      progress: null == progress
+          ? _value.progress
+          : progress // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_Processing extends _Processing {
+  const _$_Processing({required this.progress}) : super._();
+
+  @override
+  final int progress;
+
+  @override
+  String toString() {
+    return 'UnpackAssistantState.processing(progress: $progress)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_Processing &&
+            (identical(other.progress, progress) ||
+                other.progress == progress));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, progress);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_ProcessingCopyWith<_$_Processing> get copyWith =>
+      __$$_ProcessingCopyWithImpl<_$_Processing>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(List<String> apps) apps,
+    required TResult Function() archive,
+    required TResult Function(List<String> data) data,
+    required TResult Function(int progress) processing,
+    required TResult Function() completed,
+    required TResult Function(Object error, StackTrace stackTrace) errored,
+  }) {
+    return processing(progress);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function(List<String> apps)? apps,
+    TResult? Function()? archive,
+    TResult? Function(List<String> data)? data,
+    TResult? Function(int progress)? processing,
+    TResult? Function()? completed,
+    TResult? Function(Object error, StackTrace stackTrace)? errored,
+  }) {
+    return processing?.call(progress);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(List<String> apps)? apps,
+    TResult Function()? archive,
+    TResult Function(List<String> data)? data,
+    TResult Function(int progress)? processing,
+    TResult Function()? completed,
+    TResult Function(Object error, StackTrace stackTrace)? errored,
+    required TResult orElse(),
+  }) {
+    if (processing != null) {
+      return processing(progress);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Apps value) apps,
+    required TResult Function(_Archive value) archive,
+    required TResult Function(_Data value) data,
+    required TResult Function(_Processing value) processing,
+    required TResult Function(_Completed value) completed,
+    required TResult Function(_Errored value) errored,
+  }) {
+    return processing(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Apps value)? apps,
+    TResult? Function(_Archive value)? archive,
+    TResult? Function(_Data value)? data,
+    TResult? Function(_Processing value)? processing,
+    TResult? Function(_Completed value)? completed,
+    TResult? Function(_Errored value)? errored,
+  }) {
+    return processing?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Apps value)? apps,
+    TResult Function(_Archive value)? archive,
+    TResult Function(_Data value)? data,
+    TResult Function(_Processing value)? processing,
+    TResult Function(_Completed value)? completed,
+    TResult Function(_Errored value)? errored,
+    required TResult orElse(),
+  }) {
+    if (processing != null) {
+      return processing(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Processing extends UnpackAssistantState {
+  const factory _Processing({required final int progress}) = _$_Processing;
+  const _Processing._() : super._();
+
+  int get progress;
+  @JsonKey(ignore: true)
+  _$$_ProcessingCopyWith<_$_Processing> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_CompletedCopyWith<$Res> {
+  factory _$$_CompletedCopyWith(
+          _$_Completed value, $Res Function(_$_Completed) then) =
+      __$$_CompletedCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_CompletedCopyWithImpl<$Res>
+    extends _$UnpackAssistantStateCopyWithImpl<$Res, _$_Completed>
+    implements _$$_CompletedCopyWith<$Res> {
+  __$$_CompletedCopyWithImpl(
+      _$_Completed _value, $Res Function(_$_Completed) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_Completed extends _Completed {
+  const _$_Completed() : super._();
+
+  @override
+  String toString() {
+    return 'UnpackAssistantState.completed()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_Completed);
   }
 
   @override
@@ -1225,41 +1540,44 @@ class _$_Started extends _Started {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() created,
-    required TResult Function() started,
-    required TResult Function() resumed,
-    required TResult Function() destroyed,
+    required TResult Function(List<String> apps) apps,
+    required TResult Function() archive,
+    required TResult Function(List<String> data) data,
+    required TResult Function(int progress) processing,
+    required TResult Function() completed,
     required TResult Function(Object error, StackTrace stackTrace) errored,
   }) {
-    return started();
+    return completed();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? created,
-    TResult? Function()? started,
-    TResult? Function()? resumed,
-    TResult? Function()? destroyed,
+    TResult? Function(List<String> apps)? apps,
+    TResult? Function()? archive,
+    TResult? Function(List<String> data)? data,
+    TResult? Function(int progress)? processing,
+    TResult? Function()? completed,
     TResult? Function(Object error, StackTrace stackTrace)? errored,
   }) {
-    return started?.call();
+    return completed?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? created,
-    TResult Function()? started,
-    TResult Function()? resumed,
-    TResult Function()? destroyed,
+    TResult Function(List<String> apps)? apps,
+    TResult Function()? archive,
+    TResult Function(List<String> data)? data,
+    TResult Function(int progress)? processing,
+    TResult Function()? completed,
     TResult Function(Object error, StackTrace stackTrace)? errored,
     required TResult orElse(),
   }) {
-    if (started != null) {
-      return started();
+    if (completed != null) {
+      return completed();
     }
     return orElse();
   }
@@ -1268,302 +1586,52 @@ class _$_Started extends _Started {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_Created value) created,
-    required TResult Function(_Started value) started,
-    required TResult Function(_Resumed value) resumed,
-    required TResult Function(_Destroyed value) destroyed,
+    required TResult Function(_Apps value) apps,
+    required TResult Function(_Archive value) archive,
+    required TResult Function(_Data value) data,
+    required TResult Function(_Processing value) processing,
+    required TResult Function(_Completed value) completed,
     required TResult Function(_Errored value) errored,
   }) {
-    return started(this);
+    return completed(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_Created value)? created,
-    TResult? Function(_Started value)? started,
-    TResult? Function(_Resumed value)? resumed,
-    TResult? Function(_Destroyed value)? destroyed,
+    TResult? Function(_Apps value)? apps,
+    TResult? Function(_Archive value)? archive,
+    TResult? Function(_Data value)? data,
+    TResult? Function(_Processing value)? processing,
+    TResult? Function(_Completed value)? completed,
     TResult? Function(_Errored value)? errored,
   }) {
-    return started?.call(this);
+    return completed?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_Created value)? created,
-    TResult Function(_Started value)? started,
-    TResult Function(_Resumed value)? resumed,
-    TResult Function(_Destroyed value)? destroyed,
+    TResult Function(_Apps value)? apps,
+    TResult Function(_Archive value)? archive,
+    TResult Function(_Data value)? data,
+    TResult Function(_Processing value)? processing,
+    TResult Function(_Completed value)? completed,
     TResult Function(_Errored value)? errored,
     required TResult orElse(),
   }) {
-    if (started != null) {
-      return started(this);
+    if (completed != null) {
+      return completed(this);
     }
     return orElse();
   }
 }
 
-abstract class _Started extends UnpackAssistantState {
-  const factory _Started() = _$_Started;
-  const _Started._() : super._();
-}
-
-/// @nodoc
-abstract class _$$_ResumedCopyWith<$Res> {
-  factory _$$_ResumedCopyWith(
-          _$_Resumed value, $Res Function(_$_Resumed) then) =
-      __$$_ResumedCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_ResumedCopyWithImpl<$Res>
-    extends _$UnpackAssistantStateCopyWithImpl<$Res, _$_Resumed>
-    implements _$$_ResumedCopyWith<$Res> {
-  __$$_ResumedCopyWithImpl(_$_Resumed _value, $Res Function(_$_Resumed) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$_Resumed extends _Resumed {
-  const _$_Resumed() : super._();
-
-  @override
-  String toString() {
-    return 'UnpackAssistantState.resumed()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Resumed);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() created,
-    required TResult Function() started,
-    required TResult Function() resumed,
-    required TResult Function() destroyed,
-    required TResult Function(Object error, StackTrace stackTrace) errored,
-  }) {
-    return resumed();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? created,
-    TResult? Function()? started,
-    TResult? Function()? resumed,
-    TResult? Function()? destroyed,
-    TResult? Function(Object error, StackTrace stackTrace)? errored,
-  }) {
-    return resumed?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? created,
-    TResult Function()? started,
-    TResult Function()? resumed,
-    TResult Function()? destroyed,
-    TResult Function(Object error, StackTrace stackTrace)? errored,
-    required TResult orElse(),
-  }) {
-    if (resumed != null) {
-      return resumed();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Created value) created,
-    required TResult Function(_Started value) started,
-    required TResult Function(_Resumed value) resumed,
-    required TResult Function(_Destroyed value) destroyed,
-    required TResult Function(_Errored value) errored,
-  }) {
-    return resumed(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Created value)? created,
-    TResult? Function(_Started value)? started,
-    TResult? Function(_Resumed value)? resumed,
-    TResult? Function(_Destroyed value)? destroyed,
-    TResult? Function(_Errored value)? errored,
-  }) {
-    return resumed?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Created value)? created,
-    TResult Function(_Started value)? started,
-    TResult Function(_Resumed value)? resumed,
-    TResult Function(_Destroyed value)? destroyed,
-    TResult Function(_Errored value)? errored,
-    required TResult orElse(),
-  }) {
-    if (resumed != null) {
-      return resumed(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Resumed extends UnpackAssistantState {
-  const factory _Resumed() = _$_Resumed;
-  const _Resumed._() : super._();
-}
-
-/// @nodoc
-abstract class _$$_DestroyedCopyWith<$Res> {
-  factory _$$_DestroyedCopyWith(
-          _$_Destroyed value, $Res Function(_$_Destroyed) then) =
-      __$$_DestroyedCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_DestroyedCopyWithImpl<$Res>
-    extends _$UnpackAssistantStateCopyWithImpl<$Res, _$_Destroyed>
-    implements _$$_DestroyedCopyWith<$Res> {
-  __$$_DestroyedCopyWithImpl(
-      _$_Destroyed _value, $Res Function(_$_Destroyed) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$_Destroyed extends _Destroyed {
-  const _$_Destroyed() : super._();
-
-  @override
-  String toString() {
-    return 'UnpackAssistantState.destroyed()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Destroyed);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() created,
-    required TResult Function() started,
-    required TResult Function() resumed,
-    required TResult Function() destroyed,
-    required TResult Function(Object error, StackTrace stackTrace) errored,
-  }) {
-    return destroyed();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? created,
-    TResult? Function()? started,
-    TResult? Function()? resumed,
-    TResult? Function()? destroyed,
-    TResult? Function(Object error, StackTrace stackTrace)? errored,
-  }) {
-    return destroyed?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? created,
-    TResult Function()? started,
-    TResult Function()? resumed,
-    TResult Function()? destroyed,
-    TResult Function(Object error, StackTrace stackTrace)? errored,
-    required TResult orElse(),
-  }) {
-    if (destroyed != null) {
-      return destroyed();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Created value) created,
-    required TResult Function(_Started value) started,
-    required TResult Function(_Resumed value) resumed,
-    required TResult Function(_Destroyed value) destroyed,
-    required TResult Function(_Errored value) errored,
-  }) {
-    return destroyed(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Created value)? created,
-    TResult? Function(_Started value)? started,
-    TResult? Function(_Resumed value)? resumed,
-    TResult? Function(_Destroyed value)? destroyed,
-    TResult? Function(_Errored value)? errored,
-  }) {
-    return destroyed?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Created value)? created,
-    TResult Function(_Started value)? started,
-    TResult Function(_Resumed value)? resumed,
-    TResult Function(_Destroyed value)? destroyed,
-    TResult Function(_Errored value)? errored,
-    required TResult orElse(),
-  }) {
-    if (destroyed != null) {
-      return destroyed(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Destroyed extends UnpackAssistantState {
-  const factory _Destroyed() = _$_Destroyed;
-  const _Destroyed._() : super._();
+abstract class _Completed extends UnpackAssistantState {
+  const factory _Completed() = _$_Completed;
+  const _Completed._() : super._();
 }
 
 /// @nodoc
@@ -1637,10 +1705,11 @@ class _$_Errored extends _Errored {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() created,
-    required TResult Function() started,
-    required TResult Function() resumed,
-    required TResult Function() destroyed,
+    required TResult Function(List<String> apps) apps,
+    required TResult Function() archive,
+    required TResult Function(List<String> data) data,
+    required TResult Function(int progress) processing,
+    required TResult Function() completed,
     required TResult Function(Object error, StackTrace stackTrace) errored,
   }) {
     return errored(error, stackTrace);
@@ -1650,10 +1719,11 @@ class _$_Errored extends _Errored {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? created,
-    TResult? Function()? started,
-    TResult? Function()? resumed,
-    TResult? Function()? destroyed,
+    TResult? Function(List<String> apps)? apps,
+    TResult? Function()? archive,
+    TResult? Function(List<String> data)? data,
+    TResult? Function(int progress)? processing,
+    TResult? Function()? completed,
     TResult? Function(Object error, StackTrace stackTrace)? errored,
   }) {
     return errored?.call(error, stackTrace);
@@ -1663,10 +1733,11 @@ class _$_Errored extends _Errored {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? created,
-    TResult Function()? started,
-    TResult Function()? resumed,
-    TResult Function()? destroyed,
+    TResult Function(List<String> apps)? apps,
+    TResult Function()? archive,
+    TResult Function(List<String> data)? data,
+    TResult Function(int progress)? processing,
+    TResult Function()? completed,
     TResult Function(Object error, StackTrace stackTrace)? errored,
     required TResult orElse(),
   }) {
@@ -1680,10 +1751,11 @@ class _$_Errored extends _Errored {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_Created value) created,
-    required TResult Function(_Started value) started,
-    required TResult Function(_Resumed value) resumed,
-    required TResult Function(_Destroyed value) destroyed,
+    required TResult Function(_Apps value) apps,
+    required TResult Function(_Archive value) archive,
+    required TResult Function(_Data value) data,
+    required TResult Function(_Processing value) processing,
+    required TResult Function(_Completed value) completed,
     required TResult Function(_Errored value) errored,
   }) {
     return errored(this);
@@ -1693,10 +1765,11 @@ class _$_Errored extends _Errored {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_Created value)? created,
-    TResult? Function(_Started value)? started,
-    TResult? Function(_Resumed value)? resumed,
-    TResult? Function(_Destroyed value)? destroyed,
+    TResult? Function(_Apps value)? apps,
+    TResult? Function(_Archive value)? archive,
+    TResult? Function(_Data value)? data,
+    TResult? Function(_Processing value)? processing,
+    TResult? Function(_Completed value)? completed,
     TResult? Function(_Errored value)? errored,
   }) {
     return errored?.call(this);
@@ -1706,10 +1779,11 @@ class _$_Errored extends _Errored {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_Created value)? created,
-    TResult Function(_Started value)? started,
-    TResult Function(_Resumed value)? resumed,
-    TResult Function(_Destroyed value)? destroyed,
+    TResult Function(_Apps value)? apps,
+    TResult Function(_Archive value)? archive,
+    TResult Function(_Data value)? data,
+    TResult Function(_Processing value)? processing,
+    TResult Function(_Completed value)? completed,
     TResult Function(_Errored value)? errored,
     required TResult orElse(),
   }) {

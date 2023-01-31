@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
-import 'package:unself_app/routing/routing.dart';
+import 'package:unself_app/unself_app.dart';
 import 'package:unself_component/unself_component.dart';
 import 'package:unself_style/unself_style.dart';
 
@@ -26,7 +26,7 @@ class AppShell extends StatefulWidget {
         ],
         child: AppShell._(destinations: [
           _AppShellDestination(
-            path: const SettingsRoutes().location,
+            path: const UnpackRoutes().location,
             icon: const Icon(UnSymbols.list),
             selectedIcon: const Icon(UnSymbols.listFilled),
             label: 'Unpack',
@@ -63,7 +63,7 @@ class AppShell extends StatefulWidget {
       //         .buildPage(_, state),
       //   ),
       // ]),
-      // $unpackRoutes,
+      $unpackRoutes,
       $settingsRoutes,
     ],
   );

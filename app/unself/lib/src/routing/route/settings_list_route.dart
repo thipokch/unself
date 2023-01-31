@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
-import 'package:unself_app/routing/routing.dart';
+import 'package:unself_app/unself_app.dart';
 import 'package:unself_app_info/unself_app_info.dart';
 import 'package:unself_browser/unself_browser.dart';
 import 'package:unself_component/unself_component.dart';

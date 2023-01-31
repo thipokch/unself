@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:developer';
+import 'dart:io';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -17,36 +18,46 @@ typedef UnpackAssistantSelector<T>
 typedef UnpackAssistantConsumer
     = BlocConsumer<UnpackAssistantBloc, UnpackAssistantState>;
 
+// TODO: Consider breaking this into smaller components
+
+/// {@template unpack_assistant_bloc}
+/// [UnpackAssistantBloc] is responsible for helping the user importing or
+/// unpacking their exported archive from other apps. The assistant takes
+/// the user through the following steps to help them import their data:
+///
+/// 1. Select the app or services.
+/// 2. Select the archive file.
+/// 3. Select data from archive to import.
+/// 4. Process the archive.
+/// 5. Complete the import.
+///
+/// Constraints:
+/// 1. Run one at a time.
+/// 2. The app must be in the foreground.
+///
+/// {@endtemplate}
 class UnpackAssistantBloc
     extends Bloc<UnpackAssistantEvent, UnpackAssistantState> {
+  /// {@macro unpack_assistant_logic}
   UnpackAssistantBloc() : super(const _Initial()) {
-    on<_Create>(_onCreate);
+    on<_SelectApp>(_onSelectApp);
+    on<_SelectArchive>(_onSelectArchive);
+    on<_SelectData>(_onSelectData);
     on<_Start>(_onStart);
-    on<_Resume>(_onResume);
-    on<_Pause>(_onPause);
-    on<_Stop>(_onStop);
-    on<_Destroy>(_onDestroy);
-
-    add(const _Create());
   }
 
-  void _onCreate(_Create event, Emitter<UnpackAssistantState> emit) =>
-      emit(const _Created());
+  void _onSelectApp(_SelectApp event, Emitter<UnpackAssistantState> emit) =>
+      emit(const _Archive());
+
+  void _onSelectArchive(
+          _SelectArchive event, Emitter<UnpackAssistantState> emit) =>
+      emit(const _Data(data: []));
+
+  void _onSelectData(_SelectData event, Emitter<UnpackAssistantState> emit) =>
+      emit(const _Processing(progress: 0));
 
   void _onStart(_Start event, Emitter<UnpackAssistantState> emit) =>
-      emit(const _Started());
-
-  void _onResume(_Resume event, Emitter<UnpackAssistantState> emit) =>
-      emit(const _Resumed());
-
-  void _onPause(_Pause event, Emitter<UnpackAssistantState> emit) =>
-      emit(const _Started());
-
-  void _onStop(_Stop event, Emitter<UnpackAssistantState> emit) =>
-      emit(const _Created());
-
-  void _onDestroy(_Destroy event, Emitter<UnpackAssistantState> emit) =>
-      emit(const _Destroyed());
+      emit(const _Completed());
 
   // STREAM EVENTS
 
@@ -72,12 +83,5 @@ class UnpackAssistantBloc
     // TODO: implement analytics here
     log("$runtimeType - error", error: error, stackTrace: stackTrace);
     super.onError(error, stackTrace);
-  }
-
-  @override
-  Future<void> close() {
-    add(const _Destroy());
-
-    return super.close();
   }
 }

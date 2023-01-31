@@ -10,3 +10,4 @@ export 'route/license_list_route.dart';
 export 'route/settings_appearance_route.dart';
 export 'route/settings_data_route.dart';
 export 'route/settings_list_route.dart';
+export 'route/unpack_assistant_route.dart';
