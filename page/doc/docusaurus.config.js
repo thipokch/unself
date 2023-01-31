@@ -48,7 +48,10 @@ const config = {
         //     'https://github.com/thipokch/unself/tree/master/page/resource/',
         // },
         theme: {
-          customCss: require.resolve('./src/css/custom.css'),
+          customCss: [
+            require.resolve('./src/css/custom.css'),
+            require.resolve('./reference/packages/static-assets/dartdoc.css')
+          ],
         },
       },
     ],
@@ -164,6 +167,9 @@ const config = {
         // sidebarCollapsible: false,
         editUrl:
           'https://github.com/thipokch/unself/tree/master/page/doc/',
+        exclude: [
+          '**/packages/static-assets/**',
+        ]
       }
     ],
   ],

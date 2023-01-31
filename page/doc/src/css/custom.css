@@ -18,6 +18,39 @@
   --ifm-navbar-background-color: #fffdf9;
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+
+  /*background-color body, listdropdown*/
+  --dartdoc-main-content-bg-color: #fff;
+  /*header id-tittle*/
+  --dartdoc-main-content-header-color: #eeeeee;
+  /*package-name*/
+  --dartdoc-main-content-sidebar-color: #727272;
+  /*section-title and section subtitle, desc markdown(body, dd, h3), header a*/
+  --dartdoc-main-content-text-color: #111111;
+  /*typehead search-box*/
+  --dartdoc-main-content-search-bar: #fff;
+  /* scrollbar-thumb */
+  --dartdoc-main-content-scrollbar-color: #CCC;
+  /* footer */
+  --dartdoc-main-content-footer-background: #111111;
+  /*header text color*/
+  --dartdoc-main-content-h-text: black;
+  /* hyperlinks*/
+  --dartdoc-main-content-hyperlinks-color: #0175C2;
+  /*search background*/
+  --dartdoc-main-content-search-background: transparent;
+
+  /*code snippets*/
+  --dartdoc-main-content-code-bg: #f8f8f8;
+  --dartdoc-main-content-keyword-color: #333;
+  --dartdoc-main-content-tag-color: #000080;
+  --dartdoc-main-content-section-color: #900;
+  --dartdoc-main-content-comment-color: #998;
+  --dartdoc-main-content-var-color: #008080;
+  --dartdoc-main-content-string-color: #d14;
+
+  --dartdoc-main-content-number-filter: invert(0%);
+  --dartdoc-main-content-icon-color: black;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
@@ -33,6 +66,37 @@
   --ifm-navbar-background-color: #2d2e2e;
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  
+  /*background-color body, listdropdown*/
+  --dartdoc-main-content-bg-color: #10161E;
+  /*header id-tittle*/
+  --dartdoc-main-content-header-color: #1C2834;
+  /*package-name*/
+  --dartdoc-main-content-sidebar-color: #fff;
+  /*section-title and section subtitle, desc markdown(body, dd, h3), header a*/
+  --dartdoc-main-content-text-color: #fff;
+  /*typehead search-box*/
+  --dartdoc-main-content-search-bar: #454545;
+  /* scrollbar-thumb */
+  --dartdoc-main-content-scrollbar-color: #5f6368;
+  /* footer */
+  --dartdoc-main-content-footer-background: #27323a;
+  /* hyperlinks*/
+  --dartdoc-main-content-hyperlinks-color: #00D2FA;
+  /*search background*/
+  --dartdoc-main-content-search-background: black;
+
+  /*code snippets*/
+  --dartdoc-main-content-code-bg: #10161E;
+  --dartdoc-main-content-keyword-color: white;
+  --dartdoc-main-content-tag-color: #00D2FA;
+  --dartdoc-main-content-section-color: #FF2D64;
+  --dartdoc-main-content-comment-color: #909CC3;
+  --dartdoc-main-content-var-color: #55A09B;
+  --dartdoc-main-content-string-color: #FF2D64;
+
+  --dartdoc-main-content-number-filter: invert(100%);
+  --dartdoc-main-content-icon-color: white;
 }
 
 .footer--dark {

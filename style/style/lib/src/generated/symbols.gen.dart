@@ -3,6 +3,8 @@ import 'package:unself_style/unself_style.dart';
 
 typedef _ = UnMaterialSymbols;
 
+// https://github.com/dart-lang/dartdoc/issues/2657
+/// @nodoc
 class UnMaterialSymbols extends IconData {
   const UnMaterialSymbols(
     super.codePoint,

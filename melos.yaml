@@ -239,11 +239,9 @@ scripts:
   build:doc:
     description: Generate documentation for the package.
     run: |
-      melos exec -- \
-        dart doc . --output $MELOS_ROOT_PATH/page/doc/reference/packages/ && \
-      dart ./tool/script/bin/docusaurify.dart && \ 
-      cd page/doc && \
-      yarn format
+      dart ./tool/script/bin/docusaurify.dart
+    # melos exec -c 5 --scope="unself*" -- \
+    #     dart doc . --output=$MELOS_ROOT_PATH/page/doc/reference/packages/ && \
 
   #   iOS
 
