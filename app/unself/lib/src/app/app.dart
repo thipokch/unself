@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:rudder_integration_firebase_flutter/rudder_integration_firebase_flutter.dart';
 import 'package:unself_app/unself_app.dart';
 import 'package:unself_license/unself_license.dart';
+import 'package:unself_local_database/unself_local_database.dart';
 import 'package:unself_monitoring/unself_monitoring.dart';
 import 'package:unself_style/unself_style.dart';
 import 'package:unself_user/unself_user.dart';
@@ -80,6 +81,10 @@ class App extends StatefulWidget {
         // Provider<Browser>(
         //   create: (context) => Browser(analytics: ),
         // ),
+
+        Provider<LocalDatabase>(
+          create: (_) => LocalDatabase(),
+        ),
       ],
       child: const App._(),
     );

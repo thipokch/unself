@@ -1,9 +1,9 @@
-import 'dart:async';
 import 'dart:developer';
 import 'dart:io';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:unself_unpack/unself_unpack.dart';
 
 part 'unpack_assistant_event.dart';
 part 'unpack_assistant_state.dart';
@@ -39,12 +39,20 @@ typedef UnpackAssistantConsumer
 class UnpackAssistantBloc
     extends Bloc<UnpackAssistantEvent, UnpackAssistantState> {
   /// {@macro unpack_assistant_logic}
-  UnpackAssistantBloc() : super(const _Initial()) {
+  UnpackAssistantBloc({
+    required UnpackService unpackService,
+  })  : _unpackService = unpackService,
+        super(const _Initial()) {
     on<_SelectApp>(_onSelectApp);
     on<_SelectArchive>(_onSelectArchive);
     on<_SelectData>(_onSelectData);
     on<_Start>(_onStart);
   }
+
+  // Delegates
+
+  // ignore: unused_field
+  final UnpackService _unpackService;
 
   void _onSelectApp(_SelectApp event, Emitter<UnpackAssistantState> emit) =>
       emit(const _Archive());

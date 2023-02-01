@@ -6,8 +6,6 @@ import 'dart:async';
 import 'package:unself_local_database/unself_local_database.dart'
     show LocalDatabase;
 import 'package:unself_model/unself_model.dart';
-import 'package:unself_unpack/src/collector/collector.dart';
-import 'package:unself_unpack/src/processor/processor.dart';
 
 part 'iunpack_service.dart';
 
@@ -18,16 +16,10 @@ class UnpackService implements IUnpackService {
   /// {@macro unpack_service}
   const UnpackService({
     required LocalDatabase localDb,
-    required ICollector collector,
-    required IProcessor processor,
-  })  : _localDb = localDb,
-        _collector = collector,
-        _processor = processor;
+  }) : _localDb = localDb;
 
   // Delegate
   final LocalDatabase _localDb;
-  final ICollector _collector;
-  final IProcessor _processor;
 
   @override
   FutureOr<List> collect() {

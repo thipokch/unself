@@ -20,6 +20,7 @@ dependencies:
   unself_license:
   unself_monitoring:
   unself_user:
+  unself_unpack:
 
   # style
 
