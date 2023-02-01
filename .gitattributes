@@ -1,2 +1,3 @@
-page/* linguist-vendored
-resource/* linguist-vendored
+page/**/* linguist-vendored
+resource/**/* linguist-vendored
+patch/**/* linguist-vendored

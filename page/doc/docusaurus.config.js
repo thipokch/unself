@@ -45,12 +45,12 @@ const config = {
         //   // Please change this to your repo.
         //   // Remove this to remove the "edit this page" links.
         //   editUrl:
-        //     'https://github.com/thipokch/unself/tree/master/page/resource/',
+        //     'https://github.com/thipokch/unself/tree/master/page/guide/',
         // },
         theme: {
           customCss: [
             require.resolve('./src/css/custom.css'),
-            require.resolve('./reference/api/static-assets/dartdoc.css')
+            require.resolve('./developer/api/static-assets/dartdoc.css')
           ],
         },
       },
@@ -69,12 +69,12 @@ const config = {
         items: [
           {
             to: '/',
-            label: 'Resources',
+            label: 'Guide',
             position: 'left',
           },
           {
-            to: '/reference',
-            label: 'Reference',
+            to: '/developer',
+            label: 'Developer',
             position: 'left',
           },
           {
@@ -149,7 +149,7 @@ const config = {
       '@docusaurus/plugin-content-docs',
       {
         // id: 'resource', // omitted => default instance
-        path: 'resource',
+        path: 'guide',
         routeBasePath: '/', // Serve the docs at the site's root
         sidebarPath: require.resolve('./sidebars.js'),
         sidebarCollapsible: false,
@@ -161,9 +161,9 @@ const config = {
     [
       '@docusaurus/plugin-content-docs',
       {
-        id: 'reference',
-        path: 'reference',
-        routeBasePath: '/reference', // Serve the docs at the site's root
+        id: 'developer',
+        path: 'developer',
+        routeBasePath: '/developer', // Serve the docs at the site's root
         sidebarPath: require.resolve('./sidebars.js'),
         // sidebarCollapsible: false,
         editUrl:
