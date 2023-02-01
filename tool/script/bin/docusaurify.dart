@@ -5,11 +5,14 @@ import 'package:glob/glob.dart';
 import 'package:glob/list_local_fs.dart';
 import 'package:beautiful_soup_dart/beautiful_soup.dart';
 
-final htmlFiles = Glob("page/doc/reference/packages/**/*.html");
-final jsFiles = Glob("page/doc/reference/packages/**/*.js");
-final mdxFiles = Glob("page/doc/reference/packages/**/*.mdx");
+final _htmlFiles = Glob("page/doc/reference/api/**/*.html");
+final _jsFiles = Glob("page/doc/reference/api/**/*.js");
+final _mdxFiles = Glob("page/doc/reference/api/**/*.mdx");
 
-String htmlFormat(Bs4Element? e) {
+String _htmlFormat(
+  Bs4Element? e, {
+  bool isBuggyLib = false, // Buggy relative link on library page
+}) {
   for (final Bs4Element a in e?.findAll('a') ?? []) {
     Uri uri = Uri.parse(a.attributes['href']!);
     final ps = uri.pathSegments;
@@ -20,6 +23,11 @@ String htmlFormat(Bs4Element? e) {
         ps.length >= 2 && ps.last == '${ps[ps.length - 2]}.html';
     final isClass = ps.last.endsWith('-class.html');
     final isProperties = ps.last == 'Properties.html';
+
+    // Buggy relative link on library page
+    if (isRelative && isBuggyLib) {
+      uri = uri.replace(path: uri.path.replaceAll('../', './'));
+    }
 
     if (isRelative && isLibrary) {
       uri = uri.replace(
@@ -33,14 +41,14 @@ String htmlFormat(Bs4Element? e) {
       uri = uri.replace(
         path: uri.path.replaceAllMapped(
           RegExp(r'''(.*\/)(\S*?)(-class\.html)$'''),
-          (_) => '${_[1]!}${_[2]!}/${_[2]!}',
+          (_) => '${_[1]!}${_[2]!}',
         ),
       );
     } else if (isRelative && isProperties) {
       uri = uri.replace(
         path: uri.path.replaceAllMapped(
           RegExp(r'''(.*\/)(\S*?)(\.html)$'''),
-          (_) => '${_[1]!}${_[2]!}/${_[2]!}',
+          (_) => '${_[1]!}${_[2]!}',
         ),
       );
     } else if (isRelative) {
@@ -58,17 +66,17 @@ String htmlFormat(Bs4Element? e) {
 }
 
 main(List<String> arguments) {
-  for (final item in jsFiles.listSync()) {
+  for (final item in _jsFiles.listSync()) {
     File.fromUri(item.uri).deleteSync();
     print('Deleted : ${item.uri.path}');
   }
 
-  for (final item in mdxFiles.listSync()) {
+  for (final item in _mdxFiles.listSync()) {
     File.fromUri(item.uri).deleteSync();
     print('Deleted : ${item.uri.path}');
   }
 
-  for (final item in htmlFiles.listSync()) {
+  for (final item in _htmlFiles.listSync()) {
     final ps = item.uri.pathSegments;
 
     final bs = BeautifulSoup(
@@ -78,14 +86,14 @@ main(List<String> arguments) {
     String fileName = ps.last.split('-').first.split('.').first;
 
     String title = bs.body!.find('li', class_: 'self-crumb')!.text;
-    String shortTitle = title.split(' ').first;
+    String shortTitle = bs.body!.find('div', class_: 'self-name')!.text;
     String jsPath = './$fileName.js';
     String mdxPath = './$fileName.mdx';
 
     final isLibrary = title.endsWith('library');
     final isClass = title.endsWith('class');
     final isConstructor = title.endsWith('constructor');
-    final isProperties = title == 'Properties';
+    final isProperties = shortTitle == 'Properties';
 
     if (isLibrary) {
       jsPath = './$fileName.js';
@@ -103,7 +111,7 @@ main(List<String> arguments) {
 import React from 'react';
 
 export default function RawHtml() {
-  const data = `${htmlFormat(bs.body!.find('main'))}`;
+  const data = `${_htmlFormat(bs.body!.find('main'), isBuggyLib: isLibrary)}`;
 
   return (
     <div

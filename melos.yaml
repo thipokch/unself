@@ -241,7 +241,7 @@ scripts:
     run: |
       dart ./tool/script/bin/docusaurify.dart
     # melos exec -c 5 --scope="unself*" -- \
-    #     dart doc . --output=$MELOS_ROOT_PATH/page/doc/reference/packages/ && \
+    #     dart doc . --output=$MELOS_ROOT_PATH/page/doc/reference/api/ && \
 
   #   iOS
 
