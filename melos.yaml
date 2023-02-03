@@ -339,9 +339,9 @@ scripts:
 
       melos setup:build && \
 
-      melos setup:canvaskit && \
       cd $APP_DIR && \
       flutter build web --verbose --release --target=lib/$BUILD_ENV.dart
+    # melos setup:canvaskit && \
 
   build:web:dev:
     description: Builds web for development.
