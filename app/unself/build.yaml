@@ -6,4 +6,4 @@ targets:
       go_router_builder:go_router_builder:
         generate_for:
           # Example glob for only the Dart files under `lib/models`
-          - lib/routing/**.dart
+          - lib/src/routing/**.dart
