@@ -19,7 +19,7 @@ mixin _$UnpackAssistantEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String app) selectApp,
-    required TResult Function(File file) selectArchive,
+    required TResult Function(XFile xFile) selectArchive,
     required TResult Function(List<String> data) selectData,
     required TResult Function() start,
   }) =>
@@ -27,7 +27,7 @@ mixin _$UnpackAssistantEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String app)? selectApp,
-    TResult? Function(File file)? selectArchive,
+    TResult? Function(XFile xFile)? selectArchive,
     TResult? Function(List<String> data)? selectData,
     TResult? Function()? start,
   }) =>
@@ -35,7 +35,7 @@ mixin _$UnpackAssistantEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String app)? selectApp,
-    TResult Function(File file)? selectArchive,
+    TResult Function(XFile xFile)? selectArchive,
     TResult Function(List<String> data)? selectData,
     TResult Function()? start,
     required TResult orElse(),
@@ -152,7 +152,7 @@ class _$_SelectApp extends _SelectApp {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String app) selectApp,
-    required TResult Function(File file) selectArchive,
+    required TResult Function(XFile xFile) selectArchive,
     required TResult Function(List<String> data) selectData,
     required TResult Function() start,
   }) {
@@ -163,7 +163,7 @@ class _$_SelectApp extends _SelectApp {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String app)? selectApp,
-    TResult? Function(File file)? selectArchive,
+    TResult? Function(XFile xFile)? selectArchive,
     TResult? Function(List<String> data)? selectData,
     TResult? Function()? start,
   }) {
@@ -174,7 +174,7 @@ class _$_SelectApp extends _SelectApp {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String app)? selectApp,
-    TResult Function(File file)? selectArchive,
+    TResult Function(XFile xFile)? selectArchive,
     TResult Function(List<String> data)? selectData,
     TResult Function()? start,
     required TResult orElse(),
@@ -239,7 +239,7 @@ abstract class _$$_SelectArchiveCopyWith<$Res> {
           _$_SelectArchive value, $Res Function(_$_SelectArchive) then) =
       __$$_SelectArchiveCopyWithImpl<$Res>;
   @useResult
-  $Res call({File file});
+  $Res call({XFile xFile});
 }
 
 /// @nodoc
@@ -253,13 +253,13 @@ class __$$_SelectArchiveCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? file = null,
+    Object? xFile = null,
   }) {
     return _then(_$_SelectArchive(
-      file: null == file
-          ? _value.file
-          : file // ignore: cast_nullable_to_non_nullable
-              as File,
+      xFile: null == xFile
+          ? _value.xFile
+          : xFile // ignore: cast_nullable_to_non_nullable
+              as XFile,
     ));
   }
 }
@@ -267,14 +267,14 @@ class __$$_SelectArchiveCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_SelectArchive extends _SelectArchive {
-  const _$_SelectArchive({required this.file}) : super._();
+  const _$_SelectArchive({required this.xFile}) : super._();
 
   @override
-  final File file;
+  final XFile xFile;
 
   @override
   String toString() {
-    return 'UnpackAssistantEvent.selectArchive(file: $file)';
+    return 'UnpackAssistantEvent.selectArchive(xFile: $xFile)';
   }
 
   @override
@@ -282,11 +282,11 @@ class _$_SelectArchive extends _SelectArchive {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_SelectArchive &&
-            (identical(other.file, file) || other.file == file));
+            (identical(other.xFile, xFile) || other.xFile == xFile));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, file);
+  int get hashCode => Object.hash(runtimeType, xFile);
 
   @JsonKey(ignore: true)
   @override
@@ -298,35 +298,35 @@ class _$_SelectArchive extends _SelectArchive {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String app) selectApp,
-    required TResult Function(File file) selectArchive,
+    required TResult Function(XFile xFile) selectArchive,
     required TResult Function(List<String> data) selectData,
     required TResult Function() start,
   }) {
-    return selectArchive(file);
+    return selectArchive(xFile);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String app)? selectApp,
-    TResult? Function(File file)? selectArchive,
+    TResult? Function(XFile xFile)? selectArchive,
     TResult? Function(List<String> data)? selectData,
     TResult? Function()? start,
   }) {
-    return selectArchive?.call(file);
+    return selectArchive?.call(xFile);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String app)? selectApp,
-    TResult Function(File file)? selectArchive,
+    TResult Function(XFile xFile)? selectArchive,
     TResult Function(List<String> data)? selectData,
     TResult Function()? start,
     required TResult orElse(),
   }) {
     if (selectArchive != null) {
-      return selectArchive(file);
+      return selectArchive(xFile);
     }
     return orElse();
   }
@@ -370,10 +370,10 @@ class _$_SelectArchive extends _SelectArchive {
 }
 
 abstract class _SelectArchive extends UnpackAssistantEvent {
-  const factory _SelectArchive({required final File file}) = _$_SelectArchive;
+  const factory _SelectArchive({required final XFile xFile}) = _$_SelectArchive;
   const _SelectArchive._() : super._();
 
-  File get file;
+  XFile get xFile;
   @JsonKey(ignore: true)
   _$$_SelectArchiveCopyWith<_$_SelectArchive> get copyWith =>
       throw _privateConstructorUsedError;
@@ -451,7 +451,7 @@ class _$_SelectData extends _SelectData {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String app) selectApp,
-    required TResult Function(File file) selectArchive,
+    required TResult Function(XFile xFile) selectArchive,
     required TResult Function(List<String> data) selectData,
     required TResult Function() start,
   }) {
@@ -462,7 +462,7 @@ class _$_SelectData extends _SelectData {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String app)? selectApp,
-    TResult? Function(File file)? selectArchive,
+    TResult? Function(XFile xFile)? selectArchive,
     TResult? Function(List<String> data)? selectData,
     TResult? Function()? start,
   }) {
@@ -473,7 +473,7 @@ class _$_SelectData extends _SelectData {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String app)? selectApp,
-    TResult Function(File file)? selectArchive,
+    TResult Function(XFile xFile)? selectArchive,
     TResult Function(List<String> data)? selectData,
     TResult Function()? start,
     required TResult orElse(),
@@ -569,7 +569,7 @@ class _$_Start extends _Start {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String app) selectApp,
-    required TResult Function(File file) selectArchive,
+    required TResult Function(XFile xFile) selectArchive,
     required TResult Function(List<String> data) selectData,
     required TResult Function() start,
   }) {
@@ -580,7 +580,7 @@ class _$_Start extends _Start {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String app)? selectApp,
-    TResult? Function(File file)? selectArchive,
+    TResult? Function(XFile xFile)? selectArchive,
     TResult? Function(List<String> data)? selectData,
     TResult? Function()? start,
   }) {
@@ -591,7 +591,7 @@ class _$_Start extends _Start {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String app)? selectApp,
-    TResult Function(File file)? selectArchive,
+    TResult Function(XFile xFile)? selectArchive,
     TResult Function(List<String> data)? selectData,
     TResult Function()? start,
     required TResult orElse(),

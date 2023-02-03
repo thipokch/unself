@@ -14,6 +14,8 @@ dependencies:
   unself_local_database:
   unself_model:
 
+  unself_file:
+
   archive: ^3.3.0
 
 dev_dependencies:

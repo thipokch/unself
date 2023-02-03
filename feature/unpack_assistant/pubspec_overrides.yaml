@@ -1,9 +1,11 @@
-# melos_managed_dependency_overrides: unself_analysis,unself_component,unself_local_database,unself_model,unself_monitoring,unself_style,unself_unpack
+# melos_managed_dependency_overrides: unself_analysis,unself_component,unself_file,unself_local_database,unself_model,unself_monitoring,unself_style,unself_unpack
 dependency_overrides:
   unself_analysis:
     path: ../../tool/analysis
   unself_component:
     path: ../../style/component
+  unself_file:
+    path: ../../patch/file
   unself_local_database:
     path: ../../service/local_database
   unself_model:

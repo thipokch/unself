@@ -28,6 +28,7 @@ dependencies:
   # Common
 
   unself_model:
+  unself_file:
 
   file_picker: ^5.2.5
 

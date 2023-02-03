@@ -20,6 +20,7 @@ class UnpackService implements IUnpackService {
 
   // Delegate
   final LocalDatabase _localDb;
+  // final ArchiveCollector _archiveCollector;
 
   @override
   FutureOr<List> collect() {

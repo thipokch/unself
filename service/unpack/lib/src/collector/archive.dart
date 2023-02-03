@@ -2,7 +2,6 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:archive/archive.dart';
-import 'package:archive/archive_io.dart' show InputFileStream;
 import 'package:unself_model/unself_model.dart';
 import 'package:unself_unpack/src/collector/collector.dart'; // TODO: remove to support web
 
@@ -22,12 +21,13 @@ class ArchiveCollector implements ICollector {
         archive: ZipDecoder().decodeBytes(bytes),
       );
 
-  factory ArchiveCollector.fromZipPath({
-    required String path,
-  }) =>
-      ArchiveCollector(
-        archive: ZipDecoder().decodeBuffer(InputFileStream(path)),
-      );
+  // factory ArchiveCollector.fromXFile({
+  //   required XFile xFile,
+  // }) =>
+  //     ArchiveCollector(
+  //       archive: ZipDecoderWeb().decodeXFile(xFile),
+  //       // archive: ZipDecoder().decodeBuffer(InputXFileStream(xFile)),
+  //     );
 
   // Delegate
   final Archive _archive;
@@ -44,20 +44,19 @@ class ArchiveCollector implements ICollector {
         .where((_) => _.name.endsWith("json"))
         .toList();
 
-    // archiveFiles.map((e) => null);
-
     final collectionFileMap = <String, ArchiveFile>{
       for (final rawFile in archiveFiles) _dotPath(rawFile.name): rawFile
     };
 
-    // final collectionJson = <String, Object>{
-    //   for (final rawFile in archiveFiles)
-    //     _dotPath(rawFile.name):
-    //         jsonDecode(String.fromCharCodes(rawFile.content))
-    // };
+    final collectionJson = <String, Object>{
+      for (final rawFile in archiveFiles)
+        _dotPath(rawFile.name): String.fromCharCodes(rawFile.content)
+      // jsonDecode(String.fromCharCodes(rawFile.content))
+    };
 
     // ignore: avoid_print
-    print(jsonEncode(collectionFileMap.keys.toList()));
+    print(jsonEncode(collectionJson));
+    // print(jsonEncode(collectionFileMap.keys.toList()));
 
     return [];
   }

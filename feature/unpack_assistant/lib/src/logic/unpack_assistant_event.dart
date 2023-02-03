@@ -16,7 +16,7 @@ class UnpackAssistantEvent with _$UnpackAssistantEvent {
 
   /// User selected the archive file to be imported
   const factory UnpackAssistantEvent.selectArchive({
-    required File file,
+    required XFile xFile,
   }) = _SelectArchive;
 
   /// User selected the data to be imported from the archive.

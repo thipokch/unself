@@ -1,8 +1,8 @@
 import 'dart:developer';
-import 'dart:io';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:unself_file/unself_file.dart';
 import 'package:unself_unpack/unself_unpack.dart';
 
 part 'unpack_assistant_event.dart';
@@ -57,9 +57,17 @@ class UnpackAssistantBloc
   void _onSelectApp(_SelectApp event, Emitter<UnpackAssistantState> emit) =>
       emit(const _Archive());
 
-  void _onSelectArchive(
-          _SelectArchive event, Emitter<UnpackAssistantState> emit) =>
-      emit(const _Data(data: []));
+  Future<void> _onSelectArchive(
+      _SelectArchive event, Emitter<UnpackAssistantState> emit) async {
+    // final
+    final archiveCollector =
+        ArchiveCollector(archive: await XZipDecoder.decodeXFile(event.xFile));
+
+    archiveCollector.collect();
+    // _unpackService.
+
+    emit(const _Data(data: []));
+  }
 
   void _onSelectData(_SelectData event, Emitter<UnpackAssistantState> emit) =>
       emit(const _Processing(progress: 0));
