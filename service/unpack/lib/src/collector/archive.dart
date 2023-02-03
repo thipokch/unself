@@ -44,9 +44,9 @@ class ArchiveCollector implements ICollector {
         .where((_) => _.name.endsWith("json"))
         .toList();
 
-    final collectionFileMap = <String, ArchiveFile>{
-      for (final rawFile in archiveFiles) _dotPath(rawFile.name): rawFile
-    };
+    // final collectionFileMap = <String, ArchiveFile>{
+    //   for (final rawFile in archiveFiles) _dotPath(rawFile.name): rawFile
+    // };
 
     final collectionJson = <String, Object>{
       for (final rawFile in archiveFiles)
