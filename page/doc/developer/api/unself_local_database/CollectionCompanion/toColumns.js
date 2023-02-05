@@ -46,8 +46,15 @@ Map&lt;String, Expression&gt; toColumns(bool nullToAbsent) {
   if (id.present) {
     map['id'] = Variable&lt;String&gt;(id.value);
   }
+  if (created.present) {
+    map['created'] = Variable&lt;DateTime&gt;(created.value);
+  }
+  if (updated.present) {
+    map['updated'] = Variable&lt;DateTime&gt;(updated.value);
+  }
   if (type.present) {
-    map['type'] = Variable&lt;String&gt;(type.value);
+    final converter = \$CollectionTable.\$convertertype;
+    map['type'] = Variable&lt;String&gt;(converter.toSql(type.value));
   }
   if (name.present) {
     map['name'] = Variable&lt;String&gt;(name.value);
@@ -70,8 +77,8 @@ Map&lt;String, Expression&gt; toColumns(bool nullToAbsent) {
   if (deleteRule.present) {
     map['delete_rule'] = Variable&lt;String&gt;(deleteRule.value);
   }
-  if (options.present) {
-    map['options'] = Variable&lt;String&gt;(options.value);
+  if (extra.present) {
+    map['extra'] = Variable&lt;String&gt;(extra.value);
   }
   return map;
 }</code></pre>
@@ -106,16 +113,18 @@ Map&lt;String, Expression&gt; toColumns(bool nullToAbsent) {
         <li class="section-title">
           <a href="../../unself_local_database/CollectionCompanion#instance-properties">Properties</a>
         </li>
+          <li><a href="../../unself_local_database/CollectionCompanion/created">created</a></li>
           <li><a href="../../unself_local_database/CollectionCompanion/createRule">createRule</a></li>
           <li><a href="../../unself_local_database/CollectionCompanion/deleteRule">deleteRule</a></li>
+          <li><a href="../../unself_local_database/CollectionCompanion/extra">extra</a></li>
           <li class="inherited"><a href="https://pub.dev/documentation/drift/2.4.2/drift/UpdateCompanion/hashCode.html">hashCode</a></li>
           <li><a href="../../unself_local_database/CollectionCompanion/id">id</a></li>
           <li><a href="../../unself_local_database/CollectionCompanion/listRule">listRule</a></li>
           <li><a href="../../unself_local_database/CollectionCompanion/name">name</a></li>
-          <li><a href="../../unself_local_database/CollectionCompanion/options">options</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></li>
           <li><a href="../../unself_local_database/CollectionCompanion/system">system</a></li>
           <li><a href="../../unself_local_database/CollectionCompanion/type">type</a></li>
+          <li><a href="../../unself_local_database/CollectionCompanion/updated">updated</a></li>
           <li><a href="../../unself_local_database/CollectionCompanion/updateRule">updateRule</a></li>
           <li><a href="../../unself_local_database/CollectionCompanion/viewRule">viewRule</a></li>
 

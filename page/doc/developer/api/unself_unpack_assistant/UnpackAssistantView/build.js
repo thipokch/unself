@@ -66,13 +66,32 @@ and</li>
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">@override
-Widget build(BuildContext context) {
-  return BlocBuilder&lt;UnpackAssistantBloc, UnpackAssistantState&gt;(
-    builder: (context, state) {
-      return Center(child: Text(state.toString()));
-    },
-  );
-}</code></pre>
+Widget build(BuildContext context) =&gt; UnpackAssistantBuilder(
+      builder: (context, state) =&gt; Center(
+        child: Column(
+          children: [
+            Text(state.toString()),
+            ButtonText(
+              onPressed: () =&gt; XFilePicker.instance
+                  .pickFiles(
+                    type: FileType.custom,
+                    allowedExtensions: ['zip'],
+                    withData: false,
+                    withReadStream: false,
+                  )
+                  .then(
+                    (_) =&gt; context
+                        .read&lt;UnpackAssistantBloc&gt;()
+                        .add(UnpackAssistantEvent.selectArchive(
+                          xFile: _!.files.single.xFile,
+                        )),
+                  ),
+              child: const Text('Select Archive'),
+            ),
+          ],
+        ),
+      ),
+    );</code></pre>
 </section>
 
 

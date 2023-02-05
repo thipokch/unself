@@ -11,7 +11,7 @@ export default function RawHtml() {
 
     <section class="multi-line-signature">
       const
-      <span class="name ">UnpackAssistantEvent.selectArchive</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="selectArchive-param-file">{<span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-io/File-class.html">File</a></span> <span class="parameter-name">file</span>}</span></li>
+      <span class="name ">UnpackAssistantEvent.selectArchive</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="selectArchive-param-xFile">{<span>required</span> <span class="type-annotation"><a href="https://pub.dev/documentation/cross_file/0.3.3+4/cross_file/XFile-class.html">XFile</a></span> <span class="parameter-name">xFile</span>}</span></li>
 </ol>)
     </section>
 
@@ -25,7 +25,7 @@ export default function RawHtml() {
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">const factory UnpackAssistantEvent.selectArchive({
-  required File file,
+  required XFile xFile,
 }) = _SelectArchive;</code></pre>
 </section>
 

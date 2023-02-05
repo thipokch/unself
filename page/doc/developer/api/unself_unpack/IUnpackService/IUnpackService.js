@@ -193,12 +193,15 @@ Begins importing data, format and store it as <code>Collection</code>.
     <h5>unself_unpack library</h5>
     <ol>
       <li class="section-title"><a href="../unself_unpack/unself_unpack#classes">Classes</a></li>
+        <li><a href="../unself_unpack/ArchiveCollector">ArchiveCollector</a></li>
         <li><a href="../unself_unpack/IUnpackService">IUnpackService</a></li>
         <li><a href="../unself_unpack/UnpackService">UnpackService</a></li>
 
 
 
 
+      <li class="section-title"><a href="../unself_unpack/unself_unpack#properties">Properties</a></li>
+        <li><a href="../unself_unpack/facebookKeys">facebookKeys</a></li>
 
 
 

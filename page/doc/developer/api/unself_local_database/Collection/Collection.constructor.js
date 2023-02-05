@@ -47,22 +47,24 @@ export default function RawHtml() {
         <li class="section-title">
           <a href="../../unself_local_database/Collection#instance-properties">Properties</a>
         </li>
+          <li><a href="../../unself_local_database/Collection/created">created</a></li>
           <li><a href="../../unself_local_database/Collection/createRule">createRule</a></li>
           <li class="inherited"><a href="https://pub.dev/documentation/drift/2.4.2/drift/Table/customConstraints.html">customConstraints</a></li>
           <li><a href="../../unself_local_database/Collection/deleteRule">deleteRule</a></li>
           <li class="inherited"><a href="https://pub.dev/documentation/drift/2.4.2/drift/Table/dontWriteConstraints.html">dontWriteConstraints</a></li>
+          <li><a href="../../unself_local_database/Collection/extra">extra</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/hashCode.html">hashCode</a></li>
           <li><a href="../../unself_local_database/Collection/id">id</a></li>
           <li class="inherited"><a href="https://pub.dev/documentation/drift/2.4.2/drift/Table/isStrict.html">isStrict</a></li>
           <li><a href="../../unself_local_database/Collection/listRule">listRule</a></li>
           <li><a href="../../unself_local_database/Collection/name">name</a></li>
-          <li><a href="../../unself_local_database/Collection/options">options</a></li>
           <li><a href="../../unself_local_database/Collection/primaryKey">primaryKey</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></li>
           <li><a href="../../unself_local_database/Collection/system">system</a></li>
           <li class="inherited"><a href="https://pub.dev/documentation/drift/2.4.2/drift/Table/tableName.html">tableName</a></li>
           <li><a href="../../unself_local_database/Collection/type">type</a></li>
           <li class="inherited"><a href="https://pub.dev/documentation/drift/2.4.2/drift/Table/uniqueKeys.html">uniqueKeys</a></li>
+          <li><a href="../../unself_local_database/Collection/updated">updated</a></li>
           <li><a href="../../unself_local_database/Collection/updateRule">updateRule</a></li>
           <li><a href="../../unself_local_database/Collection/viewRule">viewRule</a></li>
           <li class="inherited"><a href="https://pub.dev/documentation/drift/2.4.2/drift/Table/withoutRowId.html">withoutRowId</a></li>

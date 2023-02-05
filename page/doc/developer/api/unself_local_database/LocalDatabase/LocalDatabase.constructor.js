@@ -24,7 +24,7 @@ export default function RawHtml() {
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">LocalDatabase([QueryExecutor? qe]) : super(qe ?? _openConnection());</code></pre>
+  <pre class="language-dart"><code class="language-dart">LocalDatabase([QueryExecutor? qe]) : super(qe ?? connect().executor);</code></pre>
 </section>
 
 

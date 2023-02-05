@@ -32,7 +32,7 @@ export default function RawHtml() {
     <h2>Methods</h2>
     <dl class="callables">
         <dt id="toDomain" class="callable">
-  <span class="name"><a href="../unself_local_database/FieldToOrm/toDomain">toDomain</a></span><span class="signature">(<wbr>)
+  <span class="name"><a href="../unself_local_database/FieldToOrm/toDomain">toDomain</a></span><span class="signature">(<wbr><span class="parameter" id="toDomain-param-collection">{<span>required</span> <span class="type-annotation">Collection</span> <span class="parameter-name">collection</span>}</span>)
     <span class="returntype parameter">→ Field</span>
   </span>
   
@@ -101,15 +101,15 @@ export default function RawHtml() {
 
       <li class="section-title"><a href="../unself_local_database/unself_local_database#extensions">Extensions</a></li>
         <li><a href="../unself_local_database/CollectionFromDomain">CollectionFromDomain</a></li>
-        <li><a href="../unself_local_database/CollectionFromOrm">CollectionFromOrm</a></li>
         <li><a href="../unself_local_database/CollectionToOrm">CollectionToOrm</a></li>
         <li><a href="../unself_local_database/FieldFromDomain">FieldFromDomain</a></li>
-        <li><a href="../unself_local_database/FieldFromOrm">FieldFromOrm</a></li>
         <li><a href="../unself_local_database/FieldToOrm">FieldToOrm</a></li>
 
 
 
 
+      <li class="section-title"><a href="../unself_local_database/unself_local_database#functions">Functions</a></li>
+        <li><a href="../unself_local_database/connect">connect</a></li>
 
 
 

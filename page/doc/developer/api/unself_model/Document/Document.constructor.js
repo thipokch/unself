@@ -11,26 +11,33 @@ export default function RawHtml() {
 
     <section class="multi-line-signature">
       const
-      <span class="name ">Document</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="-param-id">{<span>@<a href="https://pub.dev/documentation/freezed_annotation/2.2.0/freezed_annotation/Default-class.html">Default</a>('')</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">id</span>, </span></li>
-<li><span class="parameter" id="-param-created"><span>@<a href="https://pub.dev/documentation/freezed_annotation/2.2.0/freezed_annotation/Default-class.html">Default</a>('')</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">created</span>, </span></li>
-<li><span class="parameter" id="-param-updated"><span>@<a href="https://pub.dev/documentation/freezed_annotation/2.2.0/freezed_annotation/Default-class.html">Default</a>('')</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">updated</span>, </span></li>
+      <span class="name ">Document</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="-param-id">{<span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">id</span>, </span></li>
+<li><span class="parameter" id="-param-created"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span> <span class="parameter-name">created</span>, </span></li>
+<li><span class="parameter" id="-param-updated"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span> <span class="parameter-name">updated</span>, </span></li>
 <li><span class="parameter" id="-param-collectionId"><span>@<a href="https://pub.dev/documentation/freezed_annotation/2.2.0/freezed_annotation/Default-class.html">Default</a>('')</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">collectionId</span>, </span></li>
-<li><span class="parameter" id="-param-collectionName"><span>@<a href="https://pub.dev/documentation/freezed_annotation/2.2.0/freezed_annotation/Default-class.html">Default</a>('')</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">collectionName</span>}</span></li>
+<li><span class="parameter" id="-param-collectionName"><span>@<a href="https://pub.dev/documentation/freezed_annotation/2.2.0/freezed_annotation/Default-class.html">Default</a>('')</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">collectionName</span>, </span></li>
+<li><span class="parameter" id="-param-archive"><span>required</span> <span class="type-annotation"><a href="../../unself_model/Archive">Archive</a></span> <span class="parameter-name">archive</span>, </span></li>
+<li><span class="parameter" id="-param-extra"><span>@<a href="../../unself_model/JsonExtra">JsonExtra</a>()</span> <span>@<a href="https://pub.dev/documentation/freezed_annotation/2.2.0/freezed_annotation/Default-class.html">Default</a>({})</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>, <span class="type-parameter">dynamic</span>&gt;</span></span> <span class="parameter-name">extra</span>}</span></li>
 </ol>)
     </section>
 
     
+<section class="desc markdown">
+  <p><a href="../../unself_model/Document">Document</a> is a record inside of a <a href="../../unself_model/Collection">Collection</a>.</p>
+</section>
 
 
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">const factory Document({
-  @Default('') String id,
-  @Default('') String created,
-  @Default('') String updated,
+  required String id,
+  required DateTime created,
+  required DateTime updated,
   @Default('') String collectionId,
   @Default('') String collectionName,
+  required Archive archive,
+  @JsonExtra() @Default({}) Map&lt;String, dynamic&gt; extra,
 }) = _Document;</code></pre>
 </section>
 
@@ -63,10 +70,12 @@ export default function RawHtml() {
         <li class="section-title inherited">
           <a href="../../unself_model/Document#instance-properties">Properties</a>
         </li>
+          <li class="inherited"><a href="../../unself_model/Document/archive">archive</a></li>
           <li class="inherited"><a href="../../unself_model/Document/collectionId">collectionId</a></li>
           <li class="inherited"><a href="../../unself_model/Document/collectionName">collectionName</a></li>
           <li class="inherited"><a href="../../unself_model/Document/copyWith">copyWith</a></li>
           <li class="inherited"><a href="../../unself_model/Document/created">created</a></li>
+          <li class="inherited"><a href="../../unself_model/Document/extra">extra</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/hashCode.html">hashCode</a></li>
           <li class="inherited"><a href="../../unself_model/Document/id">id</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></li>

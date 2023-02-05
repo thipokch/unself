@@ -410,15 +410,15 @@ already ready.
 
 </dd>
 
-        <dt id="getCollectionByName" class="callable">
-  <span class="name"><a href="../unself_local_database/CollectionDao/getCollectionByName">getCollectionByName</a></span><span class="signature">&lt;<wbr><span class="type-parameter">D</span>&gt;</span><span class="signature">(<wbr><span class="parameter" id="getCollectionByName-param-name"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">name</span></span>)
+        <dt id="getCollectionById" class="callable">
+  <span class="name"><a href="../unself_local_database/CollectionDao/getCollectionById">getCollectionById</a></span><span class="signature">&lt;<wbr><span class="type-parameter">D</span>&gt;</span><span class="signature">(<wbr><span class="parameter" id="getCollectionById-param-name"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">name</span></span>)
     <span class="returntype parameter">→ <a href="../unself_local_database/CollectionOrm">CollectionOrm</a><span class="signature">&lt;<wbr><span class="type-parameter">D</span>&gt;</span></span>
   </span>
   
 
 </dt>
 <dd>
-  <a href="../unself_local_database/CollectionDao/getCollectionByName">getCollectionByName</a> finds a single <a href="../unself_local_database/Collection">Collection</a> by its name (case insensitive).
+  <a href="../unself_local_database/CollectionDao/getCollectionById">getCollectionById</a> finds a single <a href="../unself_local_database/Collection">Collection</a> by its id (case insensitive).
   
 
 </dd>
@@ -634,15 +634,15 @@ clause on that table and then use <a href="https://pub.dev/documentation/drift/2
 
       <li class="section-title"><a href="../unself_local_database/unself_local_database#extensions">Extensions</a></li>
         <li><a href="../unself_local_database/CollectionFromDomain">CollectionFromDomain</a></li>
-        <li><a href="../unself_local_database/CollectionFromOrm">CollectionFromOrm</a></li>
         <li><a href="../unself_local_database/CollectionToOrm">CollectionToOrm</a></li>
         <li><a href="../unself_local_database/FieldFromDomain">FieldFromDomain</a></li>
-        <li><a href="../unself_local_database/FieldFromOrm">FieldFromOrm</a></li>
         <li><a href="../unself_local_database/FieldToOrm">FieldToOrm</a></li>
 
 
 
 
+      <li class="section-title"><a href="../unself_local_database/unself_local_database#functions">Functions</a></li>
+        <li><a href="../unself_local_database/connect">connect</a></li>
 
 
 
@@ -688,7 +688,7 @@ clause on that table and then use <a href="https://pub.dev/documentation/drift/2
           <li class="inherited"><a href="https://pub.dev/documentation/drift/2.4.2/drift/DatabaseConnectionUser/delete.html">delete</a></li>
           <li><a href="../unself_local_database/CollectionDao/deleteCollection">deleteCollection</a></li>
           <li class="inherited"><a href="https://pub.dev/documentation/drift/2.4.2/drift/DatabaseConnectionUser/doWhenOpened.html">doWhenOpened</a></li>
-          <li><a href="../unself_local_database/CollectionDao/getCollectionByName">getCollectionByName</a></li>
+          <li><a href="../unself_local_database/CollectionDao/getCollectionById">getCollectionById</a></li>
           <li class="inherited"><a href="https://pub.dev/documentation/drift/2.4.2/drift/DatabaseConnectionUser/into.html">into</a></li>
           <li class="inherited"><a href="https://pub.dev/documentation/drift/2.4.2/drift/DatabaseConnectionUser/markTablesUpdated.html">markTablesUpdated</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>

@@ -11,7 +11,7 @@ export default function RawHtml() {
 
         <section class="multi-line-signature">
           
-          <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>
+          CollectionType
           <span class="name ">type</span>
           <div class="features"><span class="feature">final</span></div>
 
@@ -21,7 +21,7 @@ export default function RawHtml() {
         
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">final String type;</code></pre>
+  <pre class="language-dart"><code class="language-dart">final CollectionType type;</code></pre>
 </section>
 
 
@@ -53,16 +53,18 @@ export default function RawHtml() {
         <li class="section-title">
           <a href="../../unself_local_database/CollectionData#instance-properties">Properties</a>
         </li>
+          <li><a href="../../unself_local_database/CollectionData/created">created</a></li>
           <li><a href="../../unself_local_database/CollectionData/createRule">createRule</a></li>
           <li><a href="../../unself_local_database/CollectionData/deleteRule">deleteRule</a></li>
+          <li><a href="../../unself_local_database/CollectionData/extra">extra</a></li>
           <li><a href="../../unself_local_database/CollectionData/hashCode">hashCode</a></li>
           <li><a href="../../unself_local_database/CollectionData/id">id</a></li>
           <li><a href="../../unself_local_database/CollectionData/listRule">listRule</a></li>
           <li><a href="../../unself_local_database/CollectionData/name">name</a></li>
-          <li><a href="../../unself_local_database/CollectionData/options">options</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></li>
           <li><a href="../../unself_local_database/CollectionData/system">system</a></li>
           <li><a href="../../unself_local_database/CollectionData/type">type</a></li>
+          <li><a href="../../unself_local_database/CollectionData/updated">updated</a></li>
           <li><a href="../../unself_local_database/CollectionData/updateRule">updateRule</a></li>
           <li><a href="../../unself_local_database/CollectionData/viewRule">viewRule</a></li>
 

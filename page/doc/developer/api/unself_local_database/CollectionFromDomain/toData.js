@@ -26,15 +26,17 @@ export default function RawHtml() {
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">CollectionData toData() =&gt; CollectionData(
       id: id,
-      name: name,
+      created: created,
+      updated: updated,
       type: type,
+      name: name,
       system: system,
       listRule: listRule,
       viewRule: viewRule,
       createRule: createRule,
       updateRule: updateRule,
       deleteRule: deleteRule,
-      options: jsonEncode(options),
+      extra: jsonEncode(extra),
     );</code></pre>
 </section>
 

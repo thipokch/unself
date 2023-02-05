@@ -45,13 +45,15 @@ mainly for debugging or logging.</p>
 String toString() {
   return (StringBuffer('FieldData(')
         ..write('id: \$id, ')
-        ..write('name: \$name, ')
+        ..write('created: \$created, ')
+        ..write('updated: \$updated, ')
         ..write('type: \$type, ')
+        ..write('name: \$name, ')
         ..write('system: \$system, ')
         ..write('required: \$required, ')
         ..write('unique: \$unique, ')
-        ..write('options: \$options, ')
-        ..write('collectionId: \$collectionId')
+        ..write('collectionId: \$collectionId, ')
+        ..write('extra: \$extra')
         ..write(')'))
       .toString();
 }</code></pre>
@@ -87,15 +89,17 @@ String toString() {
           <a href="../../unself_local_database/FieldData#instance-properties">Properties</a>
         </li>
           <li><a href="../../unself_local_database/FieldData/collectionId">collectionId</a></li>
+          <li><a href="../../unself_local_database/FieldData/created">created</a></li>
+          <li><a href="../../unself_local_database/FieldData/extra">extra</a></li>
           <li><a href="../../unself_local_database/FieldData/hashCode">hashCode</a></li>
           <li><a href="../../unself_local_database/FieldData/id">id</a></li>
           <li><a href="../../unself_local_database/FieldData/name">name</a></li>
-          <li><a href="../../unself_local_database/FieldData/options">options</a></li>
           <li><a href="../../unself_local_database/FieldData/required">required</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></li>
           <li><a href="../../unself_local_database/FieldData/system">system</a></li>
           <li><a href="../../unself_local_database/FieldData/type">type</a></li>
           <li><a href="../../unself_local_database/FieldData/unique">unique</a></li>
+          <li><a href="../../unself_local_database/FieldData/updated">updated</a></li>
 
         <li class="section-title"><a href="../../unself_local_database/FieldData#instance-methods">Methods</a></li>
           <li><a href="../../unself_local_database/FieldData/copyWith">copyWith</a></li>

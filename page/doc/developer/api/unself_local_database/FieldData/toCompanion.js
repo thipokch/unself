@@ -28,15 +28,15 @@ export default function RawHtml() {
   <pre class="language-dart"><code class="language-dart">FieldCompanion toCompanion(bool nullToAbsent) {
   return FieldCompanion(
     id: Value(id),
-    name: Value(name),
+    created: Value(created),
+    updated: Value(updated),
     type: Value(type),
+    name: Value(name),
     system: Value(system),
     required: Value(required),
     unique: Value(unique),
-    options: options == null &amp;&amp; nullToAbsent
-        ? const Value.absent()
-        : Value(options),
     collectionId: Value(collectionId),
+    extra: Value(extra),
   );
 }</code></pre>
 </section>
@@ -71,15 +71,17 @@ export default function RawHtml() {
           <a href="../../unself_local_database/FieldData#instance-properties">Properties</a>
         </li>
           <li><a href="../../unself_local_database/FieldData/collectionId">collectionId</a></li>
+          <li><a href="../../unself_local_database/FieldData/created">created</a></li>
+          <li><a href="../../unself_local_database/FieldData/extra">extra</a></li>
           <li><a href="../../unself_local_database/FieldData/hashCode">hashCode</a></li>
           <li><a href="../../unself_local_database/FieldData/id">id</a></li>
           <li><a href="../../unself_local_database/FieldData/name">name</a></li>
-          <li><a href="../../unself_local_database/FieldData/options">options</a></li>
           <li><a href="../../unself_local_database/FieldData/required">required</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></li>
           <li><a href="../../unself_local_database/FieldData/system">system</a></li>
           <li><a href="../../unself_local_database/FieldData/type">type</a></li>
           <li><a href="../../unself_local_database/FieldData/unique">unique</a></li>
+          <li><a href="../../unself_local_database/FieldData/updated">updated</a></li>
 
         <li class="section-title"><a href="../../unself_local_database/FieldData#instance-methods">Methods</a></li>
           <li><a href="../../unself_local_database/FieldData/copyWith">copyWith</a></li>

@@ -45,13 +45,25 @@ VerificationContext validateIntegrity(Insertable&lt;FieldData&gt; instance,
   } else if (isInserting) {
     context.missing(_idMeta);
   }
+  if (data.containsKey('created')) {
+    context.handle(_createdMeta,
+        created.isAcceptableOrUnknown(data['created']!, _createdMeta));
+  } else if (isInserting) {
+    context.missing(_createdMeta);
+  }
+  if (data.containsKey('updated')) {
+    context.handle(_updatedMeta,
+        updated.isAcceptableOrUnknown(data['updated']!, _updatedMeta));
+  } else if (isInserting) {
+    context.missing(_updatedMeta);
+  }
+  context.handle(_typeMeta, const VerificationResult.success());
   if (data.containsKey('name')) {
     context.handle(
         _nameMeta, name.isAcceptableOrUnknown(data['name']!, _nameMeta));
   } else if (isInserting) {
     context.missing(_nameMeta);
   }
-  context.handle(_typeMeta, const VerificationResult.success());
   if (data.containsKey('system')) {
     context.handle(_systemMeta,
         system.isAcceptableOrUnknown(data['system']!, _systemMeta));
@@ -70,10 +82,6 @@ VerificationContext validateIntegrity(Insertable&lt;FieldData&gt; instance,
   } else if (isInserting) {
     context.missing(_uniqueMeta);
   }
-  if (data.containsKey('options')) {
-    context.handle(_optionsMeta,
-        options.isAcceptableOrUnknown(data['options']!, _optionsMeta));
-  }
   if (data.containsKey('collection_id')) {
     context.handle(
         _collectionIdMeta,
@@ -81,6 +89,12 @@ VerificationContext validateIntegrity(Insertable&lt;FieldData&gt; instance,
             data['collection_id']!, _collectionIdMeta));
   } else if (isInserting) {
     context.missing(_collectionIdMeta);
+  }
+  if (data.containsKey('extra')) {
+    context.handle(
+        _extraMeta, extra.isAcceptableOrUnknown(data['extra']!, _extraMeta));
+  } else if (isInserting) {
+    context.missing(_extraMeta);
   }
   return context;
 }</code></pre>
@@ -122,14 +136,15 @@ VerificationContext validateIntegrity(Insertable&lt;FieldData&gt; instance,
           <li><a href="../../unself_local_database/\$FieldTable/attachedDatabase">attachedDatabase</a></li>
           <li><a href="../../unself_local_database/\$FieldTable/collectionId">collectionId</a></li>
           <li class="inherited"><a href="https://pub.dev/documentation/drift/2.4.2/drift/TableInfo/columnsByName.html">columnsByName</a></li>
+          <li><a href="../../unself_local_database/\$FieldTable/created">created</a></li>
           <li class="inherited"><a href="https://pub.dev/documentation/drift/2.4.2/drift/Table/customConstraints.html">customConstraints</a></li>
           <li class="inherited"><a href="https://pub.dev/documentation/drift/2.4.2/drift/Table/dontWriteConstraints.html">dontWriteConstraints</a></li>
           <li class="inherited"><a href="https://pub.dev/documentation/drift/2.4.2/drift/TableInfo/entityName.html">entityName</a></li>
+          <li><a href="../../unself_local_database/\$FieldTable/extra">extra</a></li>
           <li class="inherited"><a href="https://pub.dev/documentation/drift/2.4.2/drift/TableInfo/hashCode.html">hashCode</a></li>
           <li><a href="../../unself_local_database/\$FieldTable/id">id</a></li>
           <li class="inherited"><a href="https://pub.dev/documentation/drift/2.4.2/drift/Table/isStrict.html">isStrict</a></li>
           <li><a href="../../unself_local_database/\$FieldTable/name">name</a></li>
-          <li><a href="../../unself_local_database/\$FieldTable/options">options</a></li>
           <li class="inherited"><a href="https://pub.dev/documentation/drift/2.4.2/drift/TableInfo/primaryKey.html">primaryKey</a></li>
           <li><a href="../../unself_local_database/\$FieldTable/required">required</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></li>
@@ -138,6 +153,7 @@ VerificationContext validateIntegrity(Insertable&lt;FieldData&gt; instance,
           <li><a href="../../unself_local_database/\$FieldTable/type">type</a></li>
           <li><a href="../../unself_local_database/\$FieldTable/unique">unique</a></li>
           <li class="inherited"><a href="https://pub.dev/documentation/drift/2.4.2/drift/TableInfo/uniqueKeys.html">uniqueKeys</a></li>
+          <li><a href="../../unself_local_database/\$FieldTable/updated">updated</a></li>
           <li class="inherited"><a href="https://pub.dev/documentation/drift/2.4.2/drift/Table/withoutRowId.html">withoutRowId</a></li>
 
         <li class="section-title"><a href="../../unself_local_database/\$FieldTable#instance-methods">Methods</a></li>

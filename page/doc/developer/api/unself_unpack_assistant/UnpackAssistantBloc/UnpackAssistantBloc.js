@@ -60,7 +60,7 @@ the user through the following steps to help them import their data:</p>
 
     <dl class="constructor-summary-list">
         <dt id="UnpackAssistantBloc" class="callable">
-          <span class="name"><a href="../unself_unpack_assistant/UnpackAssistantBloc/UnpackAssistantBloc.constructor">UnpackAssistantBloc</a></span><span class="signature">()</span>
+          <span class="name"><a href="../unself_unpack_assistant/UnpackAssistantBloc/UnpackAssistantBloc.constructor">UnpackAssistantBloc</a></span><span class="signature">(<span class="parameter" id="-param-unpackService">{<span>required</span> <span class="type-annotation">UnpackService</span> <span class="parameter-name">unpackService</span>}</span>)</span>
         </dt>
         <dd>
           

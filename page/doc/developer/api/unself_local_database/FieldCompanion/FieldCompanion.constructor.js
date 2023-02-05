@@ -12,13 +12,15 @@ export default function RawHtml() {
     <section class="multi-line-signature">
       const
       <span class="name ">FieldCompanion</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="-param-id">{<span class="type-annotation"><a href="https://pub.dev/documentation/drift/2.4.2/drift/Value-class.html">Value</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span> <span class="parameter-name">id</span> = <span class="default-value">const Value.absent()</span>, </span></li>
-<li><span class="parameter" id="-param-name"><span class="type-annotation"><a href="https://pub.dev/documentation/drift/2.4.2/drift/Value-class.html">Value</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span> <span class="parameter-name">name</span> = <span class="default-value">const Value.absent()</span>, </span></li>
+<li><span class="parameter" id="-param-created"><span class="type-annotation"><a href="https://pub.dev/documentation/drift/2.4.2/drift/Value-class.html">Value</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span>&gt;</span></span> <span class="parameter-name">created</span> = <span class="default-value">const Value.absent()</span>, </span></li>
+<li><span class="parameter" id="-param-updated"><span class="type-annotation"><a href="https://pub.dev/documentation/drift/2.4.2/drift/Value-class.html">Value</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span>&gt;</span></span> <span class="parameter-name">updated</span> = <span class="default-value">const Value.absent()</span>, </span></li>
 <li><span class="parameter" id="-param-type"><span class="type-annotation"><a href="https://pub.dev/documentation/drift/2.4.2/drift/Value-class.html">Value</a><span class="signature">&lt;<wbr><span class="type-parameter">FieldType</span>&gt;</span></span> <span class="parameter-name">type</span> = <span class="default-value">const Value.absent()</span>, </span></li>
+<li><span class="parameter" id="-param-name"><span class="type-annotation"><a href="https://pub.dev/documentation/drift/2.4.2/drift/Value-class.html">Value</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span> <span class="parameter-name">name</span> = <span class="default-value">const Value.absent()</span>, </span></li>
 <li><span class="parameter" id="-param-system"><span class="type-annotation"><a href="https://pub.dev/documentation/drift/2.4.2/drift/Value-class.html">Value</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>&gt;</span></span> <span class="parameter-name">system</span> = <span class="default-value">const Value.absent()</span>, </span></li>
 <li><span class="parameter" id="-param-required"><span class="type-annotation"><a href="https://pub.dev/documentation/drift/2.4.2/drift/Value-class.html">Value</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>&gt;</span></span> <span class="parameter-name">required</span> = <span class="default-value">const Value.absent()</span>, </span></li>
 <li><span class="parameter" id="-param-unique"><span class="type-annotation"><a href="https://pub.dev/documentation/drift/2.4.2/drift/Value-class.html">Value</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>&gt;</span></span> <span class="parameter-name">unique</span> = <span class="default-value">const Value.absent()</span>, </span></li>
-<li><span class="parameter" id="-param-options"><span class="type-annotation"><a href="https://pub.dev/documentation/drift/2.4.2/drift/Value-class.html">Value</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span>&gt;</span></span> <span class="parameter-name">options</span> = <span class="default-value">const Value.absent()</span>, </span></li>
-<li><span class="parameter" id="-param-collectionId"><span class="type-annotation"><a href="https://pub.dev/documentation/drift/2.4.2/drift/Value-class.html">Value</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span> <span class="parameter-name">collectionId</span> = <span class="default-value">const Value.absent()</span>}</span></li>
+<li><span class="parameter" id="-param-collectionId"><span class="type-annotation"><a href="https://pub.dev/documentation/drift/2.4.2/drift/Value-class.html">Value</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span> <span class="parameter-name">collectionId</span> = <span class="default-value">const Value.absent()</span>, </span></li>
+<li><span class="parameter" id="-param-extra"><span class="type-annotation"><a href="https://pub.dev/documentation/drift/2.4.2/drift/Value-class.html">Value</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span> <span class="parameter-name">extra</span> = <span class="default-value">const Value.absent()</span>}</span></li>
 </ol>)
     </section>
 
@@ -30,13 +32,15 @@ export default function RawHtml() {
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">const FieldCompanion({
   this.id = const Value.absent(),
-  this.name = const Value.absent(),
+  this.created = const Value.absent(),
+  this.updated = const Value.absent(),
   this.type = const Value.absent(),
+  this.name = const Value.absent(),
   this.system = const Value.absent(),
   this.required = const Value.absent(),
   this.unique = const Value.absent(),
-  this.options = const Value.absent(),
   this.collectionId = const Value.absent(),
+  this.extra = const Value.absent(),
 });</code></pre>
 </section>
 
@@ -70,15 +74,17 @@ export default function RawHtml() {
           <a href="../../unself_local_database/FieldCompanion#instance-properties">Properties</a>
         </li>
           <li><a href="../../unself_local_database/FieldCompanion/collectionId">collectionId</a></li>
+          <li><a href="../../unself_local_database/FieldCompanion/created">created</a></li>
+          <li><a href="../../unself_local_database/FieldCompanion/extra">extra</a></li>
           <li class="inherited"><a href="https://pub.dev/documentation/drift/2.4.2/drift/UpdateCompanion/hashCode.html">hashCode</a></li>
           <li><a href="../../unself_local_database/FieldCompanion/id">id</a></li>
           <li><a href="../../unself_local_database/FieldCompanion/name">name</a></li>
-          <li><a href="../../unself_local_database/FieldCompanion/options">options</a></li>
           <li><a href="../../unself_local_database/FieldCompanion/required">required</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></li>
           <li><a href="../../unself_local_database/FieldCompanion/system">system</a></li>
           <li><a href="../../unself_local_database/FieldCompanion/type">type</a></li>
           <li><a href="../../unself_local_database/FieldCompanion/unique">unique</a></li>
+          <li><a href="../../unself_local_database/FieldCompanion/updated">updated</a></li>
 
         <li class="section-title"><a href="../../unself_local_database/FieldCompanion#instance-methods">Methods</a></li>
           <li><a href="../../unself_local_database/FieldCompanion/copyWith">copyWith</a></li>

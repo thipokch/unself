@@ -44,18 +44,18 @@ legacy reasons.</p>
 Map&lt;String, Expression&gt; toColumns(bool nullToAbsent) {
   final map = &lt;String, Expression&gt;{};
   map['id'] = Variable&lt;String&gt;(id);
-  map['name'] = Variable&lt;String&gt;(name);
+  map['created'] = Variable&lt;DateTime&gt;(created);
+  map['updated'] = Variable&lt;DateTime&gt;(updated);
   {
     final converter = \$FieldTable.\$convertertype;
     map['type'] = Variable&lt;String&gt;(converter.toSql(type));
   }
+  map['name'] = Variable&lt;String&gt;(name);
   map['system'] = Variable&lt;bool&gt;(system);
   map['required'] = Variable&lt;bool&gt;(required);
   map['unique'] = Variable&lt;bool&gt;(unique);
-  if (!nullToAbsent || options != null) {
-    map['options'] = Variable&lt;String&gt;(options);
-  }
   map['collection_id'] = Variable&lt;String&gt;(collectionId);
+  map['extra'] = Variable&lt;String&gt;(extra);
   return map;
 }</code></pre>
 </section>
@@ -90,15 +90,17 @@ Map&lt;String, Expression&gt; toColumns(bool nullToAbsent) {
           <a href="../../unself_local_database/FieldData#instance-properties">Properties</a>
         </li>
           <li><a href="../../unself_local_database/FieldData/collectionId">collectionId</a></li>
+          <li><a href="../../unself_local_database/FieldData/created">created</a></li>
+          <li><a href="../../unself_local_database/FieldData/extra">extra</a></li>
           <li><a href="../../unself_local_database/FieldData/hashCode">hashCode</a></li>
           <li><a href="../../unself_local_database/FieldData/id">id</a></li>
           <li><a href="../../unself_local_database/FieldData/name">name</a></li>
-          <li><a href="../../unself_local_database/FieldData/options">options</a></li>
           <li><a href="../../unself_local_database/FieldData/required">required</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></li>
           <li><a href="../../unself_local_database/FieldData/system">system</a></li>
           <li><a href="../../unself_local_database/FieldData/type">type</a></li>
           <li><a href="../../unself_local_database/FieldData/unique">unique</a></li>
+          <li><a href="../../unself_local_database/FieldData/updated">updated</a></li>
 
         <li class="section-title"><a href="../../unself_local_database/FieldData#instance-methods">Methods</a></li>
           <li><a href="../../unself_local_database/FieldData/copyWith">copyWith</a></li>

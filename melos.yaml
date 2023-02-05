@@ -239,9 +239,9 @@ scripts:
   build:doc:
     description: Generate documentation for the package.
     run: |
+      melos exec -c 5 --scope="unself*" -- \
+          dart doc . --output=$MELOS_ROOT_PATH/page/doc/developer/api/ && \
       dart ./tool/script/bin/docusaurify.dart
-    # melos exec -c 5 --scope="unself*" -- \
-    #     dart doc . --output=$MELOS_ROOT_PATH/page/doc/reference/api/ && \
 
   #   iOS
 

@@ -45,13 +45,15 @@ mainly for debugging or logging.</p>
 String toString() {
   return (StringBuffer('FieldCompanion(')
         ..write('id: \$id, ')
-        ..write('name: \$name, ')
+        ..write('created: \$created, ')
+        ..write('updated: \$updated, ')
         ..write('type: \$type, ')
+        ..write('name: \$name, ')
         ..write('system: \$system, ')
         ..write('required: \$required, ')
         ..write('unique: \$unique, ')
-        ..write('options: \$options, ')
-        ..write('collectionId: \$collectionId')
+        ..write('collectionId: \$collectionId, ')
+        ..write('extra: \$extra')
         ..write(')'))
       .toString();
 }</code></pre>
@@ -87,15 +89,17 @@ String toString() {
           <a href="../../unself_local_database/FieldCompanion#instance-properties">Properties</a>
         </li>
           <li><a href="../../unself_local_database/FieldCompanion/collectionId">collectionId</a></li>
+          <li><a href="../../unself_local_database/FieldCompanion/created">created</a></li>
+          <li><a href="../../unself_local_database/FieldCompanion/extra">extra</a></li>
           <li class="inherited"><a href="https://pub.dev/documentation/drift/2.4.2/drift/UpdateCompanion/hashCode.html">hashCode</a></li>
           <li><a href="../../unself_local_database/FieldCompanion/id">id</a></li>
           <li><a href="../../unself_local_database/FieldCompanion/name">name</a></li>
-          <li><a href="../../unself_local_database/FieldCompanion/options">options</a></li>
           <li><a href="../../unself_local_database/FieldCompanion/required">required</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></li>
           <li><a href="../../unself_local_database/FieldCompanion/system">system</a></li>
           <li><a href="../../unself_local_database/FieldCompanion/type">type</a></li>
           <li><a href="../../unself_local_database/FieldCompanion/unique">unique</a></li>
+          <li><a href="../../unself_local_database/FieldCompanion/updated">updated</a></li>
 
         <li class="section-title"><a href="../../unself_local_database/FieldCompanion#instance-methods">Methods</a></li>
           <li><a href="../../unself_local_database/FieldCompanion/copyWith">copyWith</a></li>

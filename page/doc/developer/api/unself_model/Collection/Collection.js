@@ -11,6 +11,10 @@ export default function RawHtml() {
 </h1></div>
 
     
+<section class="desc markdown">
+  <p><a href="../unself_model/Collection">Collection</a> is a dynamic data structure that can be used to store any kind of data.
+It is used to store a generalized data structure of user's <a href="../unself_model/Archive">Archive</a>s.</p>
+</section>
 
 
     <section>
@@ -18,6 +22,12 @@ export default function RawHtml() {
         
 
         
+  <dt>Implemented types</dt>
+  <dd>
+    <ul class="comma-separated clazz-relationships">
+        <li><a href="../unself_model/Base">Base</a></li>
+    </ul>
+  </dd>
         
 
 
@@ -40,10 +50,11 @@ export default function RawHtml() {
 
     <dl class="constructor-summary-list">
         <dt id="Collection" class="callable">
-          <span class="name"><a href="../unself_model/Collection/Collection.constructor">Collection</a></span><span class="signature">(<span class="parameter" id="-param-id">{<span>@<a href="https://pub.dev/documentation/freezed_annotation/2.2.0/freezed_annotation/Default-class.html">Default</a>('')</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">id</span>, </span><span class="parameter" id="-param-type"><span>@<a href="https://pub.dev/documentation/freezed_annotation/2.2.0/freezed_annotation/Default-class.html">Default</a>('')</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">type</span>, </span><span class="parameter" id="-param-name"><span>@<a href="https://pub.dev/documentation/freezed_annotation/2.2.0/freezed_annotation/Default-class.html">Default</a>('')</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">name</span>, </span><span class="parameter" id="-param-system"><span>@<a href="https://pub.dev/documentation/freezed_annotation/2.2.0/freezed_annotation/Default-class.html">Default</a>(false)</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">system</span>, </span><span class="parameter" id="-param-listRule"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">listRule</span>, </span><span class="parameter" id="-param-viewRule"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">viewRule</span>, </span><span class="parameter" id="-param-createRule"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">createRule</span>, </span><span class="parameter" id="-param-updateRule"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">updateRule</span>, </span><span class="parameter" id="-param-deleteRule"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">deleteRule</span>, </span><span class="parameter" id="-param-schema"><span>@<a href="https://pub.dev/documentation/freezed_annotation/2.2.0/freezed_annotation/Default-class.html">Default</a>([])</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../unself_model/Field">Field</a></span>&gt;</span></span> <span class="parameter-name">schema</span>, </span><span class="parameter" id="-param-options"><span>@<a href="https://pub.dev/documentation/freezed_annotation/2.2.0/freezed_annotation/Default-class.html">Default</a>({})</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>, <span class="type-parameter">dynamic</span>&gt;</span></span> <span class="parameter-name">options</span>}</span>)</span>
+          <span class="name"><a href="../unself_model/Collection/Collection.constructor">Collection</a></span><span class="signature">(<span class="parameter" id="-param-id">{<span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">id</span>, </span><span class="parameter" id="-param-created"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span> <span class="parameter-name">created</span>, </span><span class="parameter" id="-param-updated"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span> <span class="parameter-name">updated</span>, </span><span class="parameter" id="-param-type"><span>required</span> <span class="type-annotation"><a href="../unself_model/CollectionType">CollectionType</a></span> <span class="parameter-name">type</span>, </span><span class="parameter" id="-param-name"><span>@<a href="https://pub.dev/documentation/freezed_annotation/2.2.0/freezed_annotation/Default-class.html">Default</a>('')</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">name</span>, </span><span class="parameter" id="-param-system"><span>@<a href="https://pub.dev/documentation/freezed_annotation/2.2.0/freezed_annotation/Default-class.html">Default</a>(false)</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">system</span>, </span><span class="parameter" id="-param-listRule"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">listRule</span>, </span><span class="parameter" id="-param-viewRule"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">viewRule</span>, </span><span class="parameter" id="-param-createRule"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">createRule</span>, </span><span class="parameter" id="-param-updateRule"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">updateRule</span>, </span><span class="parameter" id="-param-deleteRule"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">deleteRule</span>, </span><span class="parameter" id="-param-extra"><span>@<a href="../unself_model/JsonExtra">JsonExtra</a>()</span> <span>@<a href="https://pub.dev/documentation/freezed_annotation/2.2.0/freezed_annotation/Default-class.html">Default</a>({})</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>, <span class="type-parameter">dynamic</span>&gt;</span></span> <span class="parameter-name">extra</span>}</span>)</span>
         </dt>
         <dd>
-          
+          <a href="../unself_model/Collection">Collection</a> is a dynamic data structure that can be used to store any kind of data.
+It is used to store a generalized data structure of user's <a href="../unself_model/Archive">Archive</a>s.
             <div class="constructor-modifier features">const</div>
             <div class="constructor-modifier features">factory</div>
         </dd>
@@ -51,7 +62,7 @@ export default function RawHtml() {
           <span class="name"><a href="../unself_model/Collection/Collection.fromJson">Collection.fromJson</a></span><span class="signature">(<span class="parameter" id="fromJson-param-json"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>, <span class="type-parameter">dynamic</span>&gt;</span></span> <span class="parameter-name">json</span></span>)</span>
         </dt>
         <dd>
-          
+          Creates a <a href="../unself_model/Collection">Collection</a> from Json map
             <div class="constructor-modifier features">factory</div>
         </dd>
     </dl>
@@ -72,13 +83,24 @@ export default function RawHtml() {
 
 </dd>
 
+        <dt id="created" class="property inherited">
+  <span class="name"><a href="../unself_model/Collection/created">created</a></span>
+  <span class="signature">→ <a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span> 
+
+</dt>
+<dd class="inherited">
+  <a href="../unself_model/Collection/created">created</a> is the date and time when the <a href="../unself_model/Collection">Collection</a> was created inside unself app.
+  <div class="features"><span class="feature">read-only</span><span class="feature">inherited</span></div>
+
+</dd>
+
         <dt id="createRule" class="property inherited">
   <span class="name"><a href="../unself_model/Collection/createRule">createRule</a></span>
   <span class="signature">→ <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> 
 
 </dt>
 <dd class="inherited">
-  
+  <a href="../unself_model/Collection/createRule">createRule</a> is the rule that determines if the user can create the <a href="../unself_model/Collection">Collection</a>.
   <div class="features"><span class="feature">read-only</span><span class="feature">inherited</span></div>
 
 </dd>
@@ -89,7 +111,18 @@ export default function RawHtml() {
 
 </dt>
 <dd class="inherited">
-  
+  <a href="../unself_model/Collection/deleteRule">deleteRule</a> is the rule that determines if the user can delete the <a href="../unself_model/Collection">Collection</a>.
+  <div class="features"><span class="feature">read-only</span><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="extra" class="property inherited">
+  <span class="name"><a href="../unself_model/Collection/extra">extra</a></span>
+  <span class="signature">→ <a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>, <span class="type-parameter">dynamic</span>&gt;</span></span> 
+
+</dt>
+<dd class="inherited">
+  <a href="../unself_model/Collection/extra">extra</a> is a map of additional properties.
   <div class="features"><span class="feature">read-only</span><span class="feature">inherited</span></div>
 
 </dd>
@@ -111,7 +144,7 @@ export default function RawHtml() {
 
 </dt>
 <dd class="inherited">
-  
+  <a href="../unself_model/Collection/id">id</a> is unself unique identifier for the <a href="../unself_model/Collection">Collection</a>.
   <div class="features"><span class="feature">read-only</span><span class="feature">inherited</span></div>
 
 </dd>
@@ -122,7 +155,7 @@ export default function RawHtml() {
 
 </dt>
 <dd class="inherited">
-  
+  <a href="../unself_model/Collection/listRule">listRule</a> is the rule that determines if the user can list the <a href="../unself_model/Collection">Collection</a>.
   <div class="features"><span class="feature">read-only</span><span class="feature">inherited</span></div>
 
 </dd>
@@ -133,18 +166,7 @@ export default function RawHtml() {
 
 </dt>
 <dd class="inherited">
-  
-  <div class="features"><span class="feature">read-only</span><span class="feature">inherited</span></div>
-
-</dd>
-
-        <dt id="options" class="property inherited">
-  <span class="name"><a href="../unself_model/Collection/options">options</a></span>
-  <span class="signature">→ <a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>, <span class="type-parameter">dynamic</span>&gt;</span></span> 
-
-</dt>
-<dd class="inherited">
-  
+  <a href="../unself_model/Collection/name">name</a> is the name of the <a href="../unself_model/Collection">Collection</a>.
   <div class="features"><span class="feature">read-only</span><span class="feature">inherited</span></div>
 
 </dd>
@@ -160,35 +182,35 @@ export default function RawHtml() {
 
 </dd>
 
-        <dt id="schema" class="property inherited">
-  <span class="name"><a href="../unself_model/Collection/schema">schema</a></span>
-  <span class="signature">→ <a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../unself_model/Field">Field</a></span>&gt;</span></span> 
-
-</dt>
-<dd class="inherited">
-  
-  <div class="features"><span class="feature">read-only</span><span class="feature">inherited</span></div>
-
-</dd>
-
         <dt id="system" class="property inherited">
   <span class="name"><a href="../unself_model/Collection/system">system</a></span>
   <span class="signature">→ <a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span> 
 
 </dt>
 <dd class="inherited">
-  
+  <a href="../unself_model/Collection/system">system</a> is a flag that indicates if the <a href="../unself_model/Collection">Collection</a> is a system collection.
   <div class="features"><span class="feature">read-only</span><span class="feature">inherited</span></div>
 
 </dd>
 
         <dt id="type" class="property inherited">
   <span class="name"><a href="../unself_model/Collection/type">type</a></span>
-  <span class="signature">→ <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> 
+  <span class="signature">→ <a href="../unself_model/CollectionType">CollectionType</a></span> 
 
 </dt>
 <dd class="inherited">
-  
+  <a href="../unself_model/Collection/type">type</a> is the type of the <a href="../unself_model/Collection">Collection</a>.
+  <div class="features"><span class="feature">read-only</span><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="updated" class="property inherited">
+  <span class="name"><a href="../unself_model/Collection/updated">updated</a></span>
+  <span class="signature">→ <a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span> 
+
+</dt>
+<dd class="inherited">
+  <a href="../unself_model/Collection/updated">updated</a> is the date and time when the <a href="../unself_model/Collection">Collection</a> was last updated inside unself app.
   <div class="features"><span class="feature">read-only</span><span class="feature">inherited</span></div>
 
 </dd>
@@ -199,7 +221,7 @@ export default function RawHtml() {
 
 </dt>
 <dd class="inherited">
-  
+  <a href="../unself_model/Collection/updateRule">updateRule</a> is the rule that determines if the user can update the <a href="../unself_model/Collection">Collection</a>.
   <div class="features"><span class="feature">read-only</span><span class="feature">inherited</span></div>
 
 </dd>
@@ -210,7 +232,7 @@ export default function RawHtml() {
 
 </dt>
 <dd class="inherited">
-  
+  <a href="../unself_model/Collection/viewRule">viewRule</a> is the rule that determines if the user can view the <a href="../unself_model/Collection">Collection</a>.
   <div class="features"><span class="feature">read-only</span><span class="feature">inherited</span></div>
 
 </dd>
@@ -306,10 +328,22 @@ export default function RawHtml() {
     <h5>unself_model library</h5>
     <ol>
       <li class="section-title"><a href="../unself_model/unself_model#classes">Classes</a></li>
+        <li><a href="../unself_model/Account">Account</a></li>
+        <li><a href="../unself_model/App">App</a></li>
+        <li><a href="../unself_model/Archive">Archive</a></li>
+        <li><a href="../unself_model/Base">Base</a></li>
         <li><a href="../unself_model/Collection">Collection</a></li>
         <li><a href="../unself_model/Document">Document</a></li>
         <li><a href="../unself_model/Field">Field</a></li>
+        <li><a href="../unself_model/JsonExtra">JsonExtra</a></li>
+        <li><a href="../unself_model/JsonVersion">JsonVersion</a></li>
+        <li><a href="../unself_model/JsonVersionConstraint">JsonVersionConstraint</a></li>
+        <li><a href="../unself_model/Mapping">Mapping</a></li>
         <li><a href="../unself_model/User">User</a></li>
+        <li><a href="https://pub.dev/documentation/pub_semver/2.1.3/pub_semver/Version-class.html">Version</a></li>
+        <li><a href="https://pub.dev/documentation/pub_semver/2.1.3/pub_semver/VersionConstraint-class.html">VersionConstraint</a></li>
+        <li><a href="https://pub.dev/documentation/pub_semver/2.1.3/pub_semver/VersionRange-class.html">VersionRange</a></li>
+        <li><a href="https://pub.dev/documentation/pub_semver/2.1.3/pub_semver/VersionUnion-class.html">VersionUnion</a></li>
 
 
 
@@ -317,6 +351,7 @@ export default function RawHtml() {
 
 
       <li class="section-title"><a href="../unself_model/unself_model#enums">Enums</a></li>
+        <li><a href="../unself_model/CollectionType">CollectionType</a></li>
         <li><a href="../unself_model/FieldType">FieldType</a></li>
 
 
@@ -336,17 +371,18 @@ export default function RawHtml() {
           <a href="../unself_model/Collection#instance-properties">Properties</a>
         </li>
           <li class="inherited"><a href="../unself_model/Collection/copyWith">copyWith</a></li>
+          <li class="inherited"><a href="../unself_model/Collection/created">created</a></li>
           <li class="inherited"><a href="../unself_model/Collection/createRule">createRule</a></li>
           <li class="inherited"><a href="../unself_model/Collection/deleteRule">deleteRule</a></li>
+          <li class="inherited"><a href="../unself_model/Collection/extra">extra</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/hashCode.html">hashCode</a></li>
           <li class="inherited"><a href="../unself_model/Collection/id">id</a></li>
           <li class="inherited"><a href="../unself_model/Collection/listRule">listRule</a></li>
           <li class="inherited"><a href="../unself_model/Collection/name">name</a></li>
-          <li class="inherited"><a href="../unself_model/Collection/options">options</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></li>
-          <li class="inherited"><a href="../unself_model/Collection/schema">schema</a></li>
           <li class="inherited"><a href="../unself_model/Collection/system">system</a></li>
           <li class="inherited"><a href="../unself_model/Collection/type">type</a></li>
+          <li class="inherited"><a href="../unself_model/Collection/updated">updated</a></li>
           <li class="inherited"><a href="../unself_model/Collection/updateRule">updateRule</a></li>
           <li class="inherited"><a href="../unself_model/Collection/viewRule">viewRule</a></li>
 

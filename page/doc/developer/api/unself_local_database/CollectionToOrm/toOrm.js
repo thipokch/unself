@@ -31,7 +31,6 @@ export default function RawHtml() {
     CollectionOrm(
       undb,
       id,
-      name,
       columns,
     );</code></pre>
 </section>

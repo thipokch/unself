@@ -15,7 +15,7 @@ export default function RawHtml() {
 
 <section class="multi-line-signature">
   
-  <span class="returntype"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  <span class="returntype"><a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span>
   <span class="name ">created</span>
   <div class="features"><span class="feature">inherited</span></div>
 
@@ -26,7 +26,7 @@ export default function RawHtml() {
 
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">String get created =&gt; throw _privateConstructorUsedError;</code></pre>
+  <pre class="language-dart"><code class="language-dart">DateTime get created =&gt; throw _privateConstructorUsedError;</code></pre>
 </section>
 
 </section>
@@ -60,10 +60,12 @@ export default function RawHtml() {
         <li class="section-title inherited">
           <a href="../../unself_model/Document#instance-properties">Properties</a>
         </li>
+          <li class="inherited"><a href="../../unself_model/Document/archive">archive</a></li>
           <li class="inherited"><a href="../../unself_model/Document/collectionId">collectionId</a></li>
           <li class="inherited"><a href="../../unself_model/Document/collectionName">collectionName</a></li>
           <li class="inherited"><a href="../../unself_model/Document/copyWith">copyWith</a></li>
           <li class="inherited"><a href="../../unself_model/Document/created">created</a></li>
+          <li class="inherited"><a href="../../unself_model/Document/extra">extra</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/hashCode.html">hashCode</a></li>
           <li class="inherited"><a href="../../unself_model/Document/id">id</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></li>

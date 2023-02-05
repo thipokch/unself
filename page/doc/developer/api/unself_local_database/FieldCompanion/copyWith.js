@@ -14,13 +14,15 @@ export default function RawHtml() {
 
 <span class="returntype"><a href="../../unself_local_database/FieldCompanion">FieldCompanion</a></span>
 <span class="name ">copyWith</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="copyWith-param-id">{<span class="type-annotation"><a href="https://pub.dev/documentation/drift/2.4.2/drift/Value-class.html">Value</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">id</span>, </span></li>
-<li><span class="parameter" id="copyWith-param-name"><span class="type-annotation"><a href="https://pub.dev/documentation/drift/2.4.2/drift/Value-class.html">Value</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">name</span>, </span></li>
+<li><span class="parameter" id="copyWith-param-created"><span class="type-annotation"><a href="https://pub.dev/documentation/drift/2.4.2/drift/Value-class.html">Value</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span>&gt;</span>?</span> <span class="parameter-name">created</span>, </span></li>
+<li><span class="parameter" id="copyWith-param-updated"><span class="type-annotation"><a href="https://pub.dev/documentation/drift/2.4.2/drift/Value-class.html">Value</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span>&gt;</span>?</span> <span class="parameter-name">updated</span>, </span></li>
 <li><span class="parameter" id="copyWith-param-type"><span class="type-annotation"><a href="https://pub.dev/documentation/drift/2.4.2/drift/Value-class.html">Value</a><span class="signature">&lt;<wbr><span class="type-parameter">FieldType</span>&gt;</span>?</span> <span class="parameter-name">type</span>, </span></li>
+<li><span class="parameter" id="copyWith-param-name"><span class="type-annotation"><a href="https://pub.dev/documentation/drift/2.4.2/drift/Value-class.html">Value</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">name</span>, </span></li>
 <li><span class="parameter" id="copyWith-param-system"><span class="type-annotation"><a href="https://pub.dev/documentation/drift/2.4.2/drift/Value-class.html">Value</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>&gt;</span>?</span> <span class="parameter-name">system</span>, </span></li>
 <li><span class="parameter" id="copyWith-param-required"><span class="type-annotation"><a href="https://pub.dev/documentation/drift/2.4.2/drift/Value-class.html">Value</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>&gt;</span>?</span> <span class="parameter-name">required</span>, </span></li>
 <li><span class="parameter" id="copyWith-param-unique"><span class="type-annotation"><a href="https://pub.dev/documentation/drift/2.4.2/drift/Value-class.html">Value</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>&gt;</span>?</span> <span class="parameter-name">unique</span>, </span></li>
-<li><span class="parameter" id="copyWith-param-options"><span class="type-annotation"><a href="https://pub.dev/documentation/drift/2.4.2/drift/Value-class.html">Value</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span>&gt;</span>?</span> <span class="parameter-name">options</span>, </span></li>
-<li><span class="parameter" id="copyWith-param-collectionId"><span class="type-annotation"><a href="https://pub.dev/documentation/drift/2.4.2/drift/Value-class.html">Value</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">collectionId</span>}</span></li>
+<li><span class="parameter" id="copyWith-param-collectionId"><span class="type-annotation"><a href="https://pub.dev/documentation/drift/2.4.2/drift/Value-class.html">Value</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">collectionId</span>, </span></li>
+<li><span class="parameter" id="copyWith-param-extra"><span class="type-annotation"><a href="https://pub.dev/documentation/drift/2.4.2/drift/Value-class.html">Value</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>?</span> <span class="parameter-name">extra</span>}</span></li>
 </ol>)
 
       
@@ -34,22 +36,26 @@ export default function RawHtml() {
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">FieldCompanion copyWith(
     {Value&lt;String&gt;? id,
-    Value&lt;String&gt;? name,
+    Value&lt;DateTime&gt;? created,
+    Value&lt;DateTime&gt;? updated,
     Value&lt;FieldType&gt;? type,
+    Value&lt;String&gt;? name,
     Value&lt;bool&gt;? system,
     Value&lt;bool&gt;? required,
     Value&lt;bool&gt;? unique,
-    Value&lt;String?&gt;? options,
-    Value&lt;String&gt;? collectionId}) {
+    Value&lt;String&gt;? collectionId,
+    Value&lt;String&gt;? extra}) {
   return FieldCompanion(
     id: id ?? this.id,
-    name: name ?? this.name,
+    created: created ?? this.created,
+    updated: updated ?? this.updated,
     type: type ?? this.type,
+    name: name ?? this.name,
     system: system ?? this.system,
     required: required ?? this.required,
     unique: unique ?? this.unique,
-    options: options ?? this.options,
     collectionId: collectionId ?? this.collectionId,
+    extra: extra ?? this.extra,
   );
 }</code></pre>
 </section>
@@ -84,15 +90,17 @@ export default function RawHtml() {
           <a href="../../unself_local_database/FieldCompanion#instance-properties">Properties</a>
         </li>
           <li><a href="../../unself_local_database/FieldCompanion/collectionId">collectionId</a></li>
+          <li><a href="../../unself_local_database/FieldCompanion/created">created</a></li>
+          <li><a href="../../unself_local_database/FieldCompanion/extra">extra</a></li>
           <li class="inherited"><a href="https://pub.dev/documentation/drift/2.4.2/drift/UpdateCompanion/hashCode.html">hashCode</a></li>
           <li><a href="../../unself_local_database/FieldCompanion/id">id</a></li>
           <li><a href="../../unself_local_database/FieldCompanion/name">name</a></li>
-          <li><a href="../../unself_local_database/FieldCompanion/options">options</a></li>
           <li><a href="../../unself_local_database/FieldCompanion/required">required</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></li>
           <li><a href="../../unself_local_database/FieldCompanion/system">system</a></li>
           <li><a href="../../unself_local_database/FieldCompanion/type">type</a></li>
           <li><a href="../../unself_local_database/FieldCompanion/unique">unique</a></li>
+          <li><a href="../../unself_local_database/FieldCompanion/updated">updated</a></li>
 
         <li class="section-title"><a href="../../unself_local_database/FieldCompanion#instance-methods">Methods</a></li>
           <li><a href="../../unself_local_database/FieldCompanion/copyWith">copyWith</a></li>

@@ -80,7 +80,7 @@ export default function RawHtml() {
           <li class="inherited"><a href="https://pub.dev/documentation/drift/2.4.2/drift/DatabaseConnectionUser/delete.html">delete</a></li>
           <li><a href="../../unself_local_database/CollectionDao/deleteCollection">deleteCollection</a></li>
           <li class="inherited"><a href="https://pub.dev/documentation/drift/2.4.2/drift/DatabaseConnectionUser/doWhenOpened.html">doWhenOpened</a></li>
-          <li><a href="../../unself_local_database/CollectionDao/getCollectionByName">getCollectionByName</a></li>
+          <li><a href="../../unself_local_database/CollectionDao/getCollectionById">getCollectionById</a></li>
           <li class="inherited"><a href="https://pub.dev/documentation/drift/2.4.2/drift/DatabaseConnectionUser/into.html">into</a></li>
           <li class="inherited"><a href="https://pub.dev/documentation/drift/2.4.2/drift/DatabaseConnectionUser/markTablesUpdated.html">markTablesUpdated</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>

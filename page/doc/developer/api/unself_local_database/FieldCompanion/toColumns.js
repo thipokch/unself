@@ -46,12 +46,18 @@ Map&lt;String, Expression&gt; toColumns(bool nullToAbsent) {
   if (id.present) {
     map['id'] = Variable&lt;String&gt;(id.value);
   }
-  if (name.present) {
-    map['name'] = Variable&lt;String&gt;(name.value);
+  if (created.present) {
+    map['created'] = Variable&lt;DateTime&gt;(created.value);
+  }
+  if (updated.present) {
+    map['updated'] = Variable&lt;DateTime&gt;(updated.value);
   }
   if (type.present) {
     final converter = \$FieldTable.\$convertertype;
     map['type'] = Variable&lt;String&gt;(converter.toSql(type.value));
+  }
+  if (name.present) {
+    map['name'] = Variable&lt;String&gt;(name.value);
   }
   if (system.present) {
     map['system'] = Variable&lt;bool&gt;(system.value);
@@ -62,11 +68,11 @@ Map&lt;String, Expression&gt; toColumns(bool nullToAbsent) {
   if (unique.present) {
     map['unique'] = Variable&lt;bool&gt;(unique.value);
   }
-  if (options.present) {
-    map['options'] = Variable&lt;String&gt;(options.value);
-  }
   if (collectionId.present) {
     map['collection_id'] = Variable&lt;String&gt;(collectionId.value);
+  }
+  if (extra.present) {
+    map['extra'] = Variable&lt;String&gt;(extra.value);
   }
   return map;
 }</code></pre>
@@ -102,15 +108,17 @@ Map&lt;String, Expression&gt; toColumns(bool nullToAbsent) {
           <a href="../../unself_local_database/FieldCompanion#instance-properties">Properties</a>
         </li>
           <li><a href="../../unself_local_database/FieldCompanion/collectionId">collectionId</a></li>
+          <li><a href="../../unself_local_database/FieldCompanion/created">created</a></li>
+          <li><a href="../../unself_local_database/FieldCompanion/extra">extra</a></li>
           <li class="inherited"><a href="https://pub.dev/documentation/drift/2.4.2/drift/UpdateCompanion/hashCode.html">hashCode</a></li>
           <li><a href="../../unself_local_database/FieldCompanion/id">id</a></li>
           <li><a href="../../unself_local_database/FieldCompanion/name">name</a></li>
-          <li><a href="../../unself_local_database/FieldCompanion/options">options</a></li>
           <li><a href="../../unself_local_database/FieldCompanion/required">required</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></li>
           <li><a href="../../unself_local_database/FieldCompanion/system">system</a></li>
           <li><a href="../../unself_local_database/FieldCompanion/type">type</a></li>
           <li><a href="../../unself_local_database/FieldCompanion/unique">unique</a></li>
+          <li><a href="../../unself_local_database/FieldCompanion/updated">updated</a></li>
 
         <li class="section-title"><a href="../../unself_local_database/FieldCompanion#instance-methods">Methods</a></li>
           <li><a href="../../unself_local_database/FieldCompanion/copyWith">copyWith</a></li>

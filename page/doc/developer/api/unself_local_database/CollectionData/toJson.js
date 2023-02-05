@@ -41,7 +41,10 @@ Map&lt;String, dynamic&gt; toJson({ValueSerializer? serializer}) {
   serializer ??= driftRuntimeOptions.defaultSerializer;
   return &lt;String, dynamic&gt;{
     'id': serializer.toJson&lt;String&gt;(id),
-    'type': serializer.toJson&lt;String&gt;(type),
+    'created': serializer.toJson&lt;DateTime&gt;(created),
+    'updated': serializer.toJson&lt;DateTime&gt;(updated),
+    'type': serializer
+        .toJson&lt;String&gt;(\$CollectionTable.\$convertertype.toJson(type)),
     'name': serializer.toJson&lt;String&gt;(name),
     'system': serializer.toJson&lt;bool&gt;(system),
     'listRule': serializer.toJson&lt;String?&gt;(listRule),
@@ -49,7 +52,7 @@ Map&lt;String, dynamic&gt; toJson({ValueSerializer? serializer}) {
     'createRule': serializer.toJson&lt;String?&gt;(createRule),
     'updateRule': serializer.toJson&lt;String?&gt;(updateRule),
     'deleteRule': serializer.toJson&lt;String?&gt;(deleteRule),
-    'options': serializer.toJson&lt;String?&gt;(options),
+    'extra': serializer.toJson&lt;String&gt;(extra),
   };
 }</code></pre>
 </section>
@@ -83,16 +86,18 @@ Map&lt;String, dynamic&gt; toJson({ValueSerializer? serializer}) {
         <li class="section-title">
           <a href="../../unself_local_database/CollectionData#instance-properties">Properties</a>
         </li>
+          <li><a href="../../unself_local_database/CollectionData/created">created</a></li>
           <li><a href="../../unself_local_database/CollectionData/createRule">createRule</a></li>
           <li><a href="../../unself_local_database/CollectionData/deleteRule">deleteRule</a></li>
+          <li><a href="../../unself_local_database/CollectionData/extra">extra</a></li>
           <li><a href="../../unself_local_database/CollectionData/hashCode">hashCode</a></li>
           <li><a href="../../unself_local_database/CollectionData/id">id</a></li>
           <li><a href="../../unself_local_database/CollectionData/listRule">listRule</a></li>
           <li><a href="../../unself_local_database/CollectionData/name">name</a></li>
-          <li><a href="../../unself_local_database/CollectionData/options">options</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></li>
           <li><a href="../../unself_local_database/CollectionData/system">system</a></li>
           <li><a href="../../unself_local_database/CollectionData/type">type</a></li>
+          <li><a href="../../unself_local_database/CollectionData/updated">updated</a></li>
           <li><a href="../../unself_local_database/CollectionData/updateRule">updateRule</a></li>
           <li><a href="../../unself_local_database/CollectionData/viewRule">viewRule</a></li>
 

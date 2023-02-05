@@ -311,10 +311,22 @@ export default function RawHtml() {
     <h5>unself_model library</h5>
     <ol>
       <li class="section-title"><a href="../unself_model/unself_model#classes">Classes</a></li>
+        <li><a href="../unself_model/Account">Account</a></li>
+        <li><a href="../unself_model/App">App</a></li>
+        <li><a href="../unself_model/Archive">Archive</a></li>
+        <li><a href="../unself_model/Base">Base</a></li>
         <li><a href="../unself_model/Collection">Collection</a></li>
         <li><a href="../unself_model/Document">Document</a></li>
         <li><a href="../unself_model/Field">Field</a></li>
+        <li><a href="../unself_model/JsonExtra">JsonExtra</a></li>
+        <li><a href="../unself_model/JsonVersion">JsonVersion</a></li>
+        <li><a href="../unself_model/JsonVersionConstraint">JsonVersionConstraint</a></li>
+        <li><a href="../unself_model/Mapping">Mapping</a></li>
         <li><a href="../unself_model/User">User</a></li>
+        <li><a href="https://pub.dev/documentation/pub_semver/2.1.3/pub_semver/Version-class.html">Version</a></li>
+        <li><a href="https://pub.dev/documentation/pub_semver/2.1.3/pub_semver/VersionConstraint-class.html">VersionConstraint</a></li>
+        <li><a href="https://pub.dev/documentation/pub_semver/2.1.3/pub_semver/VersionRange-class.html">VersionRange</a></li>
+        <li><a href="https://pub.dev/documentation/pub_semver/2.1.3/pub_semver/VersionUnion-class.html">VersionUnion</a></li>
 
 
 
@@ -322,6 +334,7 @@ export default function RawHtml() {
 
 
       <li class="section-title"><a href="../unself_model/unself_model#enums">Enums</a></li>
+        <li><a href="../unself_model/CollectionType">CollectionType</a></li>
         <li><a href="../unself_model/FieldType">FieldType</a></li>
 
 

@@ -26,10 +26,20 @@ export default function RawHtml() {
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">GeneratedColumn toOrm() =&gt; GeneratedColumn(
       name,
-      name,
+      collectionId,
       !required,
-      type: DriftSqlType.any, // TODO: Implement type conversion
-      defaultConstraints: null, // TODO: Implement unique constraint
+      type: &lt;FieldType, DriftSqlType&gt;{
+        FieldType.text: DriftSqlType.string,
+        FieldType.number: DriftSqlType.int,
+        FieldType.bool: DriftSqlType.bool,
+        FieldType.email: DriftSqlType.string,
+        FieldType.url: DriftSqlType.string,
+        FieldType.date: DriftSqlType.dateTime,
+        FieldType.select: DriftSqlType.string,
+        FieldType.file: DriftSqlType.string,
+        FieldType.relation: DriftSqlType.string,
+      }[type]!,
+      // defaultConstraints: GeneratedColumn, // TODO: Implement unique constraint
     );</code></pre>
 </section>
 

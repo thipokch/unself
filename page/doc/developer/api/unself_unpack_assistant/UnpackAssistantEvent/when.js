@@ -21,7 +21,7 @@ export default function RawHtml() {
 <span class="name ">when</span>&lt;<wbr><span class="type-parameter">TResult extends Object?</span>&gt;(<wbr><ol class="parameter-list"><li><span class="parameter" id="when-param-selectApp">{<span>required</span> <span class="type-annotation">TResult</span> <span class="parameter-name">selectApp</span>(<ol class="parameter-list"><li><span class="parameter" id="param-app"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">app</span></span></li>
 </ol>
 ), </span></li>
-<li><span class="parameter" id="when-param-selectArchive"><span>required</span> <span class="type-annotation">TResult</span> <span class="parameter-name">selectArchive</span>(<ol class="parameter-list"><li><span class="parameter" id="param-file"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-io/File-class.html">File</a></span> <span class="parameter-name">file</span></span></li>
+<li><span class="parameter" id="when-param-selectArchive"><span>required</span> <span class="type-annotation">TResult</span> <span class="parameter-name">selectArchive</span>(<ol class="parameter-list"><li><span class="parameter" id="param-xFile"><span class="type-annotation"><a href="https://pub.dev/documentation/cross_file/0.3.3+4/cross_file/XFile-class.html">XFile</a></span> <span class="parameter-name">xFile</span></span></li>
 </ol>
 ), </span></li>
 <li><span class="parameter" id="when-param-selectData"><span>required</span> <span class="type-annotation">TResult</span> <span class="parameter-name">selectData</span>(<ol class="parameter-list"><li><span class="parameter" id="param-data"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span> <span class="parameter-name">data</span></span></li>
@@ -43,7 +43,7 @@ export default function RawHtml() {
   <pre class="language-dart"><code class="language-dart">@optionalTypeArgs
 TResult when&lt;TResult extends Object?&gt;({
   required TResult Function(String app) selectApp,
-  required TResult Function(File file) selectArchive,
+  required TResult Function(XFile xFile) selectArchive,
   required TResult Function(List&lt;String&gt; data) selectData,
   required TResult Function() start,
 }) =&gt;

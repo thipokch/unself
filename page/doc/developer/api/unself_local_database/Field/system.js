@@ -60,13 +60,14 @@ export default function RawHtml() {
           <a href="../../unself_local_database/Field#instance-properties">Properties</a>
         </li>
           <li><a href="../../unself_local_database/Field/collectionId">collectionId</a></li>
+          <li><a href="../../unself_local_database/Field/created">created</a></li>
           <li class="inherited"><a href="https://pub.dev/documentation/drift/2.4.2/drift/Table/customConstraints.html">customConstraints</a></li>
           <li class="inherited"><a href="https://pub.dev/documentation/drift/2.4.2/drift/Table/dontWriteConstraints.html">dontWriteConstraints</a></li>
+          <li><a href="../../unself_local_database/Field/extra">extra</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/hashCode.html">hashCode</a></li>
           <li><a href="../../unself_local_database/Field/id">id</a></li>
           <li class="inherited"><a href="https://pub.dev/documentation/drift/2.4.2/drift/Table/isStrict.html">isStrict</a></li>
           <li><a href="../../unself_local_database/Field/name">name</a></li>
-          <li><a href="../../unself_local_database/Field/options">options</a></li>
           <li><a href="../../unself_local_database/Field/primaryKey">primaryKey</a></li>
           <li><a href="../../unself_local_database/Field/required">required</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></li>
@@ -75,6 +76,7 @@ export default function RawHtml() {
           <li><a href="../../unself_local_database/Field/type">type</a></li>
           <li><a href="../../unself_local_database/Field/unique">unique</a></li>
           <li class="inherited"><a href="https://pub.dev/documentation/drift/2.4.2/drift/Table/uniqueKeys.html">uniqueKeys</a></li>
+          <li><a href="../../unself_local_database/Field/updated">updated</a></li>
           <li class="inherited"><a href="https://pub.dev/documentation/drift/2.4.2/drift/Table/withoutRowId.html">withoutRowId</a></li>
 
         <li class="section-title inherited"><a href="../../unself_local_database/Field#instance-methods">Methods</a></li>

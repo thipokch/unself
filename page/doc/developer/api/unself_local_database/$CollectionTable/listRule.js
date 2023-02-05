@@ -67,23 +67,25 @@ late final GeneratedColumn&lt;String&gt; listRule = GeneratedColumn&lt;String&gt
           <li class="inherited"><a href="https://pub.dev/documentation/drift/2.4.2/drift/TableInfo/asDslTable.html">asDslTable</a></li>
           <li><a href="../../unself_local_database/\$CollectionTable/attachedDatabase">attachedDatabase</a></li>
           <li class="inherited"><a href="https://pub.dev/documentation/drift/2.4.2/drift/TableInfo/columnsByName.html">columnsByName</a></li>
+          <li><a href="../../unself_local_database/\$CollectionTable/created">created</a></li>
           <li><a href="../../unself_local_database/\$CollectionTable/createRule">createRule</a></li>
           <li class="inherited"><a href="https://pub.dev/documentation/drift/2.4.2/drift/Table/customConstraints.html">customConstraints</a></li>
           <li><a href="../../unself_local_database/\$CollectionTable/deleteRule">deleteRule</a></li>
           <li class="inherited"><a href="https://pub.dev/documentation/drift/2.4.2/drift/Table/dontWriteConstraints.html">dontWriteConstraints</a></li>
           <li class="inherited"><a href="https://pub.dev/documentation/drift/2.4.2/drift/TableInfo/entityName.html">entityName</a></li>
+          <li><a href="../../unself_local_database/\$CollectionTable/extra">extra</a></li>
           <li class="inherited"><a href="https://pub.dev/documentation/drift/2.4.2/drift/TableInfo/hashCode.html">hashCode</a></li>
           <li><a href="../../unself_local_database/\$CollectionTable/id">id</a></li>
           <li class="inherited"><a href="https://pub.dev/documentation/drift/2.4.2/drift/Table/isStrict.html">isStrict</a></li>
           <li><a href="../../unself_local_database/\$CollectionTable/listRule">listRule</a></li>
           <li><a href="../../unself_local_database/\$CollectionTable/name">name</a></li>
-          <li><a href="../../unself_local_database/\$CollectionTable/options">options</a></li>
           <li class="inherited"><a href="https://pub.dev/documentation/drift/2.4.2/drift/TableInfo/primaryKey.html">primaryKey</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></li>
           <li><a href="../../unself_local_database/\$CollectionTable/system">system</a></li>
           <li class="inherited"><a href="https://pub.dev/documentation/drift/2.4.2/drift/Table/tableName.html">tableName</a></li>
           <li><a href="../../unself_local_database/\$CollectionTable/type">type</a></li>
           <li class="inherited"><a href="https://pub.dev/documentation/drift/2.4.2/drift/TableInfo/uniqueKeys.html">uniqueKeys</a></li>
+          <li><a href="../../unself_local_database/\$CollectionTable/updated">updated</a></li>
           <li><a href="../../unself_local_database/\$CollectionTable/updateRule">updateRule</a></li>
           <li><a href="../../unself_local_database/\$CollectionTable/viewRule">viewRule</a></li>
           <li class="inherited"><a href="https://pub.dev/documentation/drift/2.4.2/drift/Table/withoutRowId.html">withoutRowId</a></li>
@@ -109,6 +111,8 @@ late final GeneratedColumn&lt;String&gt; listRule = GeneratedColumn&lt;String&gt
           <li class="inherited"><a href="https://pub.dev/documentation/drift/2.4.2/drift/TableInfo/operator_equals.html">operator ==</a></li>
 
 
+        <li class="section-title"><a href="../../unself_local_database/\$CollectionTable#static-properties">Static properties</a></li>
+          <li><a href="../../unself_local_database/\$CollectionTable/\$convertertype">\$convertertype</a></li>
 
 
 </ol>

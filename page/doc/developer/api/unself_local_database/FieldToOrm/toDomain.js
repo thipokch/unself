@@ -13,7 +13,8 @@ export default function RawHtml() {
       
 
 <span class="returntype">Field</span>
-<span class="name ">toDomain</span>(<wbr>)
+<span class="name ">toDomain</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="toDomain-param-collection">{<span>required</span> <span class="type-annotation">Collection</span> <span class="parameter-name">collection</span>}</span></li>
+</ol>)
 
       
 
@@ -24,14 +25,20 @@ export default function RawHtml() {
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">Field toDomain() =&gt; Field(
+  <pre class="language-dart"><code class="language-dart">Field toDomain({
+  required Collection collection,
+}) =&gt;
+    Field(
       id: id,
+      created: created,
+      updated: updated,
       name: name,
       type: type,
       system: system,
       required: required,
       unique: unique,
-      options: jsonDecode(options ?? "{}"),
+      collection: collection,
+      extra: jsonDecode(extra),
     );</code></pre>
 </section>
 

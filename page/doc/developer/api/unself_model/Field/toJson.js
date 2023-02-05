@@ -56,16 +56,19 @@ export default function RawHtml() {
         <li class="section-title inherited">
           <a href="../../unself_model/Field#instance-properties">Properties</a>
         </li>
+          <li class="inherited"><a href="../../unself_model/Field/collection">collection</a></li>
           <li class="inherited"><a href="../../unself_model/Field/copyWith">copyWith</a></li>
+          <li class="inherited"><a href="../../unself_model/Field/created">created</a></li>
+          <li class="inherited"><a href="../../unself_model/Field/extra">extra</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/hashCode.html">hashCode</a></li>
           <li class="inherited"><a href="../../unself_model/Field/id">id</a></li>
           <li class="inherited"><a href="../../unself_model/Field/name">name</a></li>
-          <li class="inherited"><a href="../../unself_model/Field/options">options</a></li>
           <li class="inherited"><a href="../../unself_model/Field/required">required</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></li>
           <li class="inherited"><a href="../../unself_model/Field/system">system</a></li>
           <li class="inherited"><a href="../../unself_model/Field/type">type</a></li>
           <li class="inherited"><a href="../../unself_model/Field/unique">unique</a></li>
+          <li class="inherited"><a href="../../unself_model/Field/updated">updated</a></li>
 
         <li class="section-title inherited"><a href="../../unself_model/Field#instance-methods">Methods</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>

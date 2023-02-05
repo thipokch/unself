@@ -11,7 +11,7 @@ export default function RawHtml() {
 
         <section class="multi-line-signature">
           
-          <a href="https://pub.dev/documentation/drift/2.4.2/drift/Value-class.html">Value</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span>
+          <a href="https://pub.dev/documentation/drift/2.4.2/drift/Value-class.html">Value</a><span class="signature">&lt;<wbr><span class="type-parameter">CollectionType</span>&gt;</span>
           <span class="name ">type</span>
           <div class="features"><span class="feature">final</span></div>
 
@@ -21,7 +21,7 @@ export default function RawHtml() {
         
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">final Value&lt;String&gt; type;</code></pre>
+  <pre class="language-dart"><code class="language-dart">final Value&lt;CollectionType&gt; type;</code></pre>
 </section>
 
 
@@ -53,16 +53,18 @@ export default function RawHtml() {
         <li class="section-title">
           <a href="../../unself_local_database/CollectionCompanion#instance-properties">Properties</a>
         </li>
+          <li><a href="../../unself_local_database/CollectionCompanion/created">created</a></li>
           <li><a href="../../unself_local_database/CollectionCompanion/createRule">createRule</a></li>
           <li><a href="../../unself_local_database/CollectionCompanion/deleteRule">deleteRule</a></li>
+          <li><a href="../../unself_local_database/CollectionCompanion/extra">extra</a></li>
           <li class="inherited"><a href="https://pub.dev/documentation/drift/2.4.2/drift/UpdateCompanion/hashCode.html">hashCode</a></li>
           <li><a href="../../unself_local_database/CollectionCompanion/id">id</a></li>
           <li><a href="../../unself_local_database/CollectionCompanion/listRule">listRule</a></li>
           <li><a href="../../unself_local_database/CollectionCompanion/name">name</a></li>
-          <li><a href="../../unself_local_database/CollectionCompanion/options">options</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></li>
           <li><a href="../../unself_local_database/CollectionCompanion/system">system</a></li>
           <li><a href="../../unself_local_database/CollectionCompanion/type">type</a></li>
+          <li><a href="../../unself_local_database/CollectionCompanion/updated">updated</a></li>
           <li><a href="../../unself_local_database/CollectionCompanion/updateRule">updateRule</a></li>
           <li><a href="../../unself_local_database/CollectionCompanion/viewRule">viewRule</a></li>
 

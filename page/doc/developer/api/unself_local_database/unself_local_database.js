@@ -147,15 +147,6 @@ export default function RawHtml() {
 </dd>
 
 
-        <dt id="CollectionFromOrm">
-    <span class="name "><a href="unself_local_database/CollectionFromOrm">CollectionFromOrm</a></span> 
-
-</dt>
-<dd>
-    
-</dd>
-
-
         <dt id="CollectionToOrm">
     <span class="name "><a href="unself_local_database/CollectionToOrm">CollectionToOrm</a></span> 
 
@@ -167,15 +158,6 @@ export default function RawHtml() {
 
         <dt id="FieldFromDomain">
     <span class="name "><a href="unself_local_database/FieldFromDomain">FieldFromDomain</a></span> 
-
-</dt>
-<dd>
-    
-</dd>
-
-
-        <dt id="FieldFromOrm">
-    <span class="name "><a href="unself_local_database/FieldFromOrm">FieldFromOrm</a></span> 
 
 </dt>
 <dd>
@@ -197,6 +179,25 @@ export default function RawHtml() {
 
 
 
+    <section class="summary offset-anchor" id="functions">
+      <h2>Functions</h2>
+
+      <dl class="callables">
+        <dt id="connect" class="callable">
+  <span class="name"><a href="unself_local_database/connect">connect</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">→ <a href="https://pub.dev/documentation/drift/2.4.2/drift/DatabaseConnection-class.html">DatabaseConnection</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  
+  
+
+</dd>
+
+      </dl>
+    </section>
 
 
 
@@ -245,15 +246,15 @@ export default function RawHtml() {
 
       <li class="section-title"><a href="unself_local_database/unself_local_database#extensions">Extensions</a></li>
         <li><a href="unself_local_database/CollectionFromDomain">CollectionFromDomain</a></li>
-        <li><a href="unself_local_database/CollectionFromOrm">CollectionFromOrm</a></li>
         <li><a href="unself_local_database/CollectionToOrm">CollectionToOrm</a></li>
         <li><a href="unself_local_database/FieldFromDomain">FieldFromDomain</a></li>
-        <li><a href="unself_local_database/FieldFromOrm">FieldFromOrm</a></li>
         <li><a href="unself_local_database/FieldToOrm">FieldToOrm</a></li>
 
 
 
 
+      <li class="section-title"><a href="unself_local_database/unself_local_database#functions">Functions</a></li>
+        <li><a href="unself_local_database/connect">connect</a></li>
 
 
 

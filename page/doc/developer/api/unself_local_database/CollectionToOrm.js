@@ -101,15 +101,15 @@ export default function RawHtml() {
 
       <li class="section-title"><a href="../unself_local_database/unself_local_database#extensions">Extensions</a></li>
         <li><a href="../unself_local_database/CollectionFromDomain">CollectionFromDomain</a></li>
-        <li><a href="../unself_local_database/CollectionFromOrm">CollectionFromOrm</a></li>
         <li><a href="../unself_local_database/CollectionToOrm">CollectionToOrm</a></li>
         <li><a href="../unself_local_database/FieldFromDomain">FieldFromDomain</a></li>
-        <li><a href="../unself_local_database/FieldFromOrm">FieldFromOrm</a></li>
         <li><a href="../unself_local_database/FieldToOrm">FieldToOrm</a></li>
 
 
 
 
+      <li class="section-title"><a href="../unself_local_database/unself_local_database#functions">Functions</a></li>
+        <li><a href="../unself_local_database/connect">connect</a></li>
 
 
 

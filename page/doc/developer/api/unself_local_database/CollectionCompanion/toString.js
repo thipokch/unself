@@ -45,6 +45,8 @@ mainly for debugging or logging.</p>
 String toString() {
   return (StringBuffer('CollectionCompanion(')
         ..write('id: \$id, ')
+        ..write('created: \$created, ')
+        ..write('updated: \$updated, ')
         ..write('type: \$type, ')
         ..write('name: \$name, ')
         ..write('system: \$system, ')
@@ -53,7 +55,7 @@ String toString() {
         ..write('createRule: \$createRule, ')
         ..write('updateRule: \$updateRule, ')
         ..write('deleteRule: \$deleteRule, ')
-        ..write('options: \$options')
+        ..write('extra: \$extra')
         ..write(')'))
       .toString();
 }</code></pre>
@@ -88,16 +90,18 @@ String toString() {
         <li class="section-title">
           <a href="../../unself_local_database/CollectionCompanion#instance-properties">Properties</a>
         </li>
+          <li><a href="../../unself_local_database/CollectionCompanion/created">created</a></li>
           <li><a href="../../unself_local_database/CollectionCompanion/createRule">createRule</a></li>
           <li><a href="../../unself_local_database/CollectionCompanion/deleteRule">deleteRule</a></li>
+          <li><a href="../../unself_local_database/CollectionCompanion/extra">extra</a></li>
           <li class="inherited"><a href="https://pub.dev/documentation/drift/2.4.2/drift/UpdateCompanion/hashCode.html">hashCode</a></li>
           <li><a href="../../unself_local_database/CollectionCompanion/id">id</a></li>
           <li><a href="../../unself_local_database/CollectionCompanion/listRule">listRule</a></li>
           <li><a href="../../unself_local_database/CollectionCompanion/name">name</a></li>
-          <li><a href="../../unself_local_database/CollectionCompanion/options">options</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></li>
           <li><a href="../../unself_local_database/CollectionCompanion/system">system</a></li>
           <li><a href="../../unself_local_database/CollectionCompanion/type">type</a></li>
+          <li><a href="../../unself_local_database/CollectionCompanion/updated">updated</a></li>
           <li><a href="../../unself_local_database/CollectionCompanion/updateRule">updateRule</a></li>
           <li><a href="../../unself_local_database/CollectionCompanion/viewRule">viewRule</a></li>
 

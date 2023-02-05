@@ -11,9 +11,7 @@ export default function RawHtml() {
 
     <section class="multi-line-signature">
       const
-      <span class="name ">UnpackService</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="-param-localDb">{<span>required</span> <span class="type-annotation">LocalDatabase</span> <span class="parameter-name">localDb</span>, </span></li>
-<li><span class="parameter" id="-param-collector"><span>required</span> <span class="type-annotation">ICollector</span> <span class="parameter-name">collector</span>, </span></li>
-<li><span class="parameter" id="-param-processor"><span>required</span> <span class="type-annotation">IProcessor</span> <span class="parameter-name">processor</span>}</span></li>
+      <span class="name ">UnpackService</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="-param-localDb">{<span>required</span> <span class="type-annotation">LocalDatabase</span> <span class="parameter-name">localDb</span>}</span></li>
 </ol>)
     </section>
 
@@ -28,11 +26,7 @@ export default function RawHtml() {
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">const UnpackService({
   required LocalDatabase localDb,
-  required ICollector collector,
-  required IProcessor processor,
-})  : _localDb = localDb,
-      _collector = collector,
-      _processor = processor;</code></pre>
+}) : _localDb = localDb;</code></pre>
 </section>
 
 

@@ -43,7 +43,7 @@ export default function RawHtml() {
 
     <dl class="constructor-summary-list">
         <dt id="UnpackService" class="callable">
-          <span class="name"><a href="../unself_unpack/UnpackService/UnpackService.constructor">UnpackService</a></span><span class="signature">(<span class="parameter" id="-param-localDb">{<span>required</span> <span class="type-annotation">LocalDatabase</span> <span class="parameter-name">localDb</span>, </span><span class="parameter" id="-param-collector"><span>required</span> <span class="type-annotation">ICollector</span> <span class="parameter-name">collector</span>, </span><span class="parameter" id="-param-processor"><span>required</span> <span class="type-annotation">IProcessor</span> <span class="parameter-name">processor</span>}</span>)</span>
+          <span class="name"><a href="../unself_unpack/UnpackService/UnpackService.constructor">UnpackService</a></span><span class="signature">(<span class="parameter" id="-param-localDb">{<span>required</span> <span class="type-annotation">LocalDatabase</span> <span class="parameter-name">localDb</span>}</span>)</span>
         </dt>
         <dd>
           <a href="../unself_unpack/UnpackService">UnpackService</a> description
@@ -196,12 +196,15 @@ Begins importing data, format and store it as <code>Collection</code>.
     <h5>unself_unpack library</h5>
     <ol>
       <li class="section-title"><a href="../unself_unpack/unself_unpack#classes">Classes</a></li>
+        <li><a href="../unself_unpack/ArchiveCollector">ArchiveCollector</a></li>
         <li><a href="../unself_unpack/IUnpackService">IUnpackService</a></li>
         <li><a href="../unself_unpack/UnpackService">UnpackService</a></li>
 
 
 
 
+      <li class="section-title"><a href="../unself_unpack/unself_unpack#properties">Properties</a></li>
+        <li><a href="../unself_unpack/facebookKeys">facebookKeys</a></li>
 
 
 

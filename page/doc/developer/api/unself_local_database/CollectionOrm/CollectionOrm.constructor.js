@@ -12,7 +12,6 @@ export default function RawHtml() {
     <section class="multi-line-signature">
       
       <span class="name ">CollectionOrm&lt;<wbr><span class="type-parameter">D</span>&gt;</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="-param-attachedDatabase"><span class="type-annotation"><a href="../../unself_local_database/LocalDatabase">LocalDatabase</a></span> <span class="parameter-name">attachedDatabase</span>, </span></li>
-<li><span class="parameter" id="-param-id"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">id</span>, </span></li>
 <li><span class="parameter" id="-param-actualTableName"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">actualTableName</span>, </span></li>
 <li><span class="parameter" id="-param-\$columns"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://pub.dev/documentation/drift/2.4.2/drift/GeneratedColumn-class.html">GeneratedColumn</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/Object-class.html">Object</a></span>&gt;</span></span>&gt;</span></span> <span class="parameter-name">\$columns</span>, </span></li>
 <li><span class="parameter" id="-param-_alias">[<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">_alias</span>]</span></li>
@@ -27,7 +26,6 @@ export default function RawHtml() {
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">CollectionOrm(
   this.attachedDatabase,
-  this.id,
   this.actualTableName,
   this.\$columns, [
   this._alias,

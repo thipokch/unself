@@ -9,19 +9,29 @@ export default function RawHtml() {
     <a href="https://dart.dev/null-safety" class="feature feature-null-safety" title="Supports the null safety language feature.">Null safety</a>
 </h1></div>
 
-        <section class="multi-line-signature">
-          
-          <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>
-          <span class="name ">id</span>
-          <div class="features"><span class="feature">final</span></div>
-
-        </section>
-        
 
         
+<section id="getter">
+
+<section class="multi-line-signature">
+  
+  <span class="returntype"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  <span class="name ">id</span>
+  
+
+</section>
+
+
+<section class="desc markdown">
+  <p>Collection Id for reference</p>
+</section>
+
+
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">final String id;</code></pre>
+  <pre class="language-dart"><code class="language-dart">String get id =&gt; actualTableName;</code></pre>
+</section>
+
 </section>
 
 

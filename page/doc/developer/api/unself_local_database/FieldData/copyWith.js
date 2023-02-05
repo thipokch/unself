@@ -14,13 +14,15 @@ export default function RawHtml() {
 
 <span class="returntype"><a href="../../unself_local_database/FieldData">FieldData</a></span>
 <span class="name ">copyWith</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="copyWith-param-id">{<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">id</span>, </span></li>
-<li><span class="parameter" id="copyWith-param-name"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">name</span>, </span></li>
+<li><span class="parameter" id="copyWith-param-created"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a>?</span> <span class="parameter-name">created</span>, </span></li>
+<li><span class="parameter" id="copyWith-param-updated"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a>?</span> <span class="parameter-name">updated</span>, </span></li>
 <li><span class="parameter" id="copyWith-param-type"><span class="type-annotation">FieldType?</span> <span class="parameter-name">type</span>, </span></li>
+<li><span class="parameter" id="copyWith-param-name"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">name</span>, </span></li>
 <li><span class="parameter" id="copyWith-param-system"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">system</span>, </span></li>
 <li><span class="parameter" id="copyWith-param-required"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">required</span>, </span></li>
 <li><span class="parameter" id="copyWith-param-unique"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">unique</span>, </span></li>
-<li><span class="parameter" id="copyWith-param-options"><span class="type-annotation"><a href="https://pub.dev/documentation/drift/2.4.2/drift/Value-class.html">Value</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span>&gt;</span></span> <span class="parameter-name">options</span> = <span class="default-value">const Value.absent()</span>, </span></li>
-<li><span class="parameter" id="copyWith-param-collectionId"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">collectionId</span>}</span></li>
+<li><span class="parameter" id="copyWith-param-collectionId"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">collectionId</span>, </span></li>
+<li><span class="parameter" id="copyWith-param-extra"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">extra</span>}</span></li>
 </ol>)
 
       
@@ -34,22 +36,26 @@ export default function RawHtml() {
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">FieldData copyWith(
         {String? id,
-        String? name,
+        DateTime? created,
+        DateTime? updated,
         FieldType? type,
+        String? name,
         bool? system,
         bool? required,
         bool? unique,
-        Value&lt;String?&gt; options = const Value.absent(),
-        String? collectionId}) =&gt;
+        String? collectionId,
+        String? extra}) =&gt;
     FieldData(
       id: id ?? this.id,
-      name: name ?? this.name,
+      created: created ?? this.created,
+      updated: updated ?? this.updated,
       type: type ?? this.type,
+      name: name ?? this.name,
       system: system ?? this.system,
       required: required ?? this.required,
       unique: unique ?? this.unique,
-      options: options.present ? options.value : this.options,
       collectionId: collectionId ?? this.collectionId,
+      extra: extra ?? this.extra,
     );</code></pre>
 </section>
 
@@ -83,15 +89,17 @@ export default function RawHtml() {
           <a href="../../unself_local_database/FieldData#instance-properties">Properties</a>
         </li>
           <li><a href="../../unself_local_database/FieldData/collectionId">collectionId</a></li>
+          <li><a href="../../unself_local_database/FieldData/created">created</a></li>
+          <li><a href="../../unself_local_database/FieldData/extra">extra</a></li>
           <li><a href="../../unself_local_database/FieldData/hashCode">hashCode</a></li>
           <li><a href="../../unself_local_database/FieldData/id">id</a></li>
           <li><a href="../../unself_local_database/FieldData/name">name</a></li>
-          <li><a href="../../unself_local_database/FieldData/options">options</a></li>
           <li><a href="../../unself_local_database/FieldData/required">required</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></li>
           <li><a href="../../unself_local_database/FieldData/system">system</a></li>
           <li><a href="../../unself_local_database/FieldData/type">type</a></li>
           <li><a href="../../unself_local_database/FieldData/unique">unique</a></li>
+          <li><a href="../../unself_local_database/FieldData/updated">updated</a></li>
 
         <li class="section-title"><a href="../../unself_local_database/FieldData#instance-methods">Methods</a></li>
           <li><a href="../../unself_local_database/FieldData/copyWith">copyWith</a></li>

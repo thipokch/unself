@@ -38,7 +38,6 @@ export default function RawHtml() {
 
         <dt>Available Extensions</dt>
         <dd><ul class="comma-separated clazz-relationships">
-          <li><a href="../unself_local_database/CollectionFromOrm">CollectionFromOrm</a></li>
           <li><a href="https://pub.dev/documentation/drift/2.4.2/drift/NameWithAlias.html">NameWithAlias</a></li>
           <li><a href="https://pub.dev/documentation/drift/2.4.2/drift/RowIdExtension.html">RowIdExtension</a></li>
           <li><a href="https://pub.dev/documentation/drift/2.4.2/drift/TableInfoUtils.html">TableInfoUtils</a></li>
@@ -58,7 +57,7 @@ export default function RawHtml() {
 
     <dl class="constructor-summary-list">
         <dt id="CollectionOrm" class="callable">
-          <span class="name"><a href="../unself_local_database/CollectionOrm/CollectionOrm.constructor">CollectionOrm</a></span><span class="signature">(<span class="parameter" id="-param-attachedDatabase"><span class="type-annotation"><a href="../unself_local_database/LocalDatabase">LocalDatabase</a></span> <span class="parameter-name">attachedDatabase</span>, </span><span class="parameter" id="-param-id"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">id</span>, </span><span class="parameter" id="-param-actualTableName"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">actualTableName</span>, </span><span class="parameter" id="-param-\$columns"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://pub.dev/documentation/drift/2.4.2/drift/GeneratedColumn-class.html">GeneratedColumn</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/Object-class.html">Object</a></span>&gt;</span></span>&gt;</span></span> <span class="parameter-name">\$columns</span>, </span><span class="parameter" id="-param-_alias">[<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">_alias</span>]</span>)</span>
+          <span class="name"><a href="../unself_local_database/CollectionOrm/CollectionOrm.constructor">CollectionOrm</a></span><span class="signature">(<span class="parameter" id="-param-attachedDatabase"><span class="type-annotation"><a href="../unself_local_database/LocalDatabase">LocalDatabase</a></span> <span class="parameter-name">attachedDatabase</span>, </span><span class="parameter" id="-param-actualTableName"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">actualTableName</span>, </span><span class="parameter" id="-param-\$columns"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://pub.dev/documentation/drift/2.4.2/drift/GeneratedColumn-class.html">GeneratedColumn</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/Object-class.html">Object</a></span>&gt;</span></span>&gt;</span></span> <span class="parameter-name">\$columns</span>, </span><span class="parameter" id="-param-_alias">[<span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">_alias</span>]</span>)</span>
         </dt>
         <dd>
           
@@ -130,12 +129,12 @@ be aliased.
 
         <dt id="attachedDatabase" class="property">
   <span class="name"><a href="../unself_local_database/CollectionOrm/attachedDatabase">attachedDatabase</a></span>
-  <span class="signature">↔ <a href="../unself_local_database/LocalDatabase">LocalDatabase</a></span> 
+  <span class="signature">→ <a href="../unself_local_database/LocalDatabase">LocalDatabase</a></span> 
 
 </dt>
 <dd>
   The generated database instance that this view or table is attached to.
-  <div class="features"><span class="feature">read / write</span><span class="feature">override-getter</span></div>
+  <div class="features"><span class="feature">final</span></div>
 
 </dd>
 
@@ -202,8 +201,8 @@ This is intended to be used by generated code only.
 
 </dt>
 <dd>
-  
-  <div class="features"><span class="feature">final</span></div>
+  Collection Id for reference
+  <div class="features"><span class="feature">read-only</span></div>
 
 </dd>
 
@@ -555,15 +554,15 @@ that it respects all constraints (nullability, text length, etc.).
 
       <li class="section-title"><a href="../unself_local_database/unself_local_database#extensions">Extensions</a></li>
         <li><a href="../unself_local_database/CollectionFromDomain">CollectionFromDomain</a></li>
-        <li><a href="../unself_local_database/CollectionFromOrm">CollectionFromOrm</a></li>
         <li><a href="../unself_local_database/CollectionToOrm">CollectionToOrm</a></li>
         <li><a href="../unself_local_database/FieldFromDomain">FieldFromDomain</a></li>
-        <li><a href="../unself_local_database/FieldFromOrm">FieldFromOrm</a></li>
         <li><a href="../unself_local_database/FieldToOrm">FieldToOrm</a></li>
 
 
 
 
+      <li class="section-title"><a href="../unself_local_database/unself_local_database#functions">Functions</a></li>
+        <li><a href="../unself_local_database/connect">connect</a></li>
 
 
 

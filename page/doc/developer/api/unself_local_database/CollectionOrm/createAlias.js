@@ -37,7 +37,6 @@ when used in a query.</p>
   <pre class="language-dart"><code class="language-dart">@override
 CollectionOrm&lt;D&gt; createAlias(String alias) =&gt; CollectionOrm(
       attachedDatabase,
-      id,
       actualTableName,
       \$columns,
       alias,

@@ -41,14 +41,16 @@ Map&lt;String, dynamic&gt; toJson({ValueSerializer? serializer}) {
   serializer ??= driftRuntimeOptions.defaultSerializer;
   return &lt;String, dynamic&gt;{
     'id': serializer.toJson&lt;String&gt;(id),
-    'name': serializer.toJson&lt;String&gt;(name),
+    'created': serializer.toJson&lt;DateTime&gt;(created),
+    'updated': serializer.toJson&lt;DateTime&gt;(updated),
     'type':
         serializer.toJson&lt;String&gt;(\$FieldTable.\$convertertype.toJson(type)),
+    'name': serializer.toJson&lt;String&gt;(name),
     'system': serializer.toJson&lt;bool&gt;(system),
     'required': serializer.toJson&lt;bool&gt;(required),
     'unique': serializer.toJson&lt;bool&gt;(unique),
-    'options': serializer.toJson&lt;String?&gt;(options),
     'collectionId': serializer.toJson&lt;String&gt;(collectionId),
+    'extra': serializer.toJson&lt;String&gt;(extra),
   };
 }</code></pre>
 </section>
@@ -83,15 +85,17 @@ Map&lt;String, dynamic&gt; toJson({ValueSerializer? serializer}) {
           <a href="../../unself_local_database/FieldData#instance-properties">Properties</a>
         </li>
           <li><a href="../../unself_local_database/FieldData/collectionId">collectionId</a></li>
+          <li><a href="../../unself_local_database/FieldData/created">created</a></li>
+          <li><a href="../../unself_local_database/FieldData/extra">extra</a></li>
           <li><a href="../../unself_local_database/FieldData/hashCode">hashCode</a></li>
           <li><a href="../../unself_local_database/FieldData/id">id</a></li>
           <li><a href="../../unself_local_database/FieldData/name">name</a></li>
-          <li><a href="../../unself_local_database/FieldData/options">options</a></li>
           <li><a href="../../unself_local_database/FieldData/required">required</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></li>
           <li><a href="../../unself_local_database/FieldData/system">system</a></li>
           <li><a href="../../unself_local_database/FieldData/type">type</a></li>
           <li><a href="../../unself_local_database/FieldData/unique">unique</a></li>
+          <li><a href="../../unself_local_database/FieldData/updated">updated</a></li>
 
         <li class="section-title"><a href="../../unself_local_database/FieldData#instance-methods">Methods</a></li>
           <li><a href="../../unself_local_database/FieldData/copyWith">copyWith</a></li>

@@ -60,8 +60,8 @@ like <a href="https://api.flutter.dev/flutter/dart-collection/HashSet-class.html
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">@override
-int get hashCode =&gt; Object.hash(id, type, name, system, listRule, viewRule,
-    createRule, updateRule, deleteRule, options);</code></pre>
+int get hashCode =&gt; Object.hash(id, created, updated, type, name, system,
+    listRule, viewRule, createRule, updateRule, deleteRule, extra);</code></pre>
 </section>
 
 </section>
@@ -95,16 +95,18 @@ int get hashCode =&gt; Object.hash(id, type, name, system, listRule, viewRule,
         <li class="section-title">
           <a href="../../unself_local_database/CollectionData#instance-properties">Properties</a>
         </li>
+          <li><a href="../../unself_local_database/CollectionData/created">created</a></li>
           <li><a href="../../unself_local_database/CollectionData/createRule">createRule</a></li>
           <li><a href="../../unself_local_database/CollectionData/deleteRule">deleteRule</a></li>
+          <li><a href="../../unself_local_database/CollectionData/extra">extra</a></li>
           <li><a href="../../unself_local_database/CollectionData/hashCode">hashCode</a></li>
           <li><a href="../../unself_local_database/CollectionData/id">id</a></li>
           <li><a href="../../unself_local_database/CollectionData/listRule">listRule</a></li>
           <li><a href="../../unself_local_database/CollectionData/name">name</a></li>
-          <li><a href="../../unself_local_database/CollectionData/options">options</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></li>
           <li><a href="../../unself_local_database/CollectionData/system">system</a></li>
           <li><a href="../../unself_local_database/CollectionData/type">type</a></li>
+          <li><a href="../../unself_local_database/CollectionData/updated">updated</a></li>
           <li><a href="../../unself_local_database/CollectionData/updateRule">updateRule</a></li>
           <li><a href="../../unself_local_database/CollectionData/viewRule">viewRule</a></li>
 

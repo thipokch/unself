@@ -64,13 +64,15 @@ bool operator ==(Object other) =&gt;
     identical(this, other) ||
     (other is FieldData &amp;&amp;
         other.id == this.id &amp;&amp;
-        other.name == this.name &amp;&amp;
+        other.created == this.created &amp;&amp;
+        other.updated == this.updated &amp;&amp;
         other.type == this.type &amp;&amp;
+        other.name == this.name &amp;&amp;
         other.system == this.system &amp;&amp;
         other.required == this.required &amp;&amp;
         other.unique == this.unique &amp;&amp;
-        other.options == this.options &amp;&amp;
-        other.collectionId == this.collectionId);</code></pre>
+        other.collectionId == this.collectionId &amp;&amp;
+        other.extra == this.extra);</code></pre>
 </section>
 
 
@@ -103,15 +105,17 @@ bool operator ==(Object other) =&gt;
           <a href="../../unself_local_database/FieldData#instance-properties">Properties</a>
         </li>
           <li><a href="../../unself_local_database/FieldData/collectionId">collectionId</a></li>
+          <li><a href="../../unself_local_database/FieldData/created">created</a></li>
+          <li><a href="../../unself_local_database/FieldData/extra">extra</a></li>
           <li><a href="../../unself_local_database/FieldData/hashCode">hashCode</a></li>
           <li><a href="../../unself_local_database/FieldData/id">id</a></li>
           <li><a href="../../unself_local_database/FieldData/name">name</a></li>
-          <li><a href="../../unself_local_database/FieldData/options">options</a></li>
           <li><a href="../../unself_local_database/FieldData/required">required</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></li>
           <li><a href="../../unself_local_database/FieldData/system">system</a></li>
           <li><a href="../../unself_local_database/FieldData/type">type</a></li>
           <li><a href="../../unself_local_database/FieldData/unique">unique</a></li>
+          <li><a href="../../unself_local_database/FieldData/updated">updated</a></li>
 
         <li class="section-title"><a href="../../unself_local_database/FieldData#instance-methods">Methods</a></li>
           <li><a href="../../unself_local_database/FieldData/copyWith">copyWith</a></li>

@@ -99,6 +99,10 @@ export default function RawHtml() {
       // Provider&lt;Browser&gt;(
       //   create: (context) =&gt; Browser(analytics: ),
       // ),
+
+      Provider&lt;LocalDatabase&gt;(
+        create: (_) =&gt; LocalDatabase(),
+      ),
     ],
     child: const App._(),
   );

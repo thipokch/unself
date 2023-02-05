@@ -5,9 +5,9 @@ import 'package:glob/glob.dart';
 import 'package:glob/list_local_fs.dart';
 import 'package:beautiful_soup_dart/beautiful_soup.dart';
 
-final _htmlFiles = Glob("page/doc/reference/api/**/*.html");
-final _jsFiles = Glob("page/doc/reference/api/**/*.js");
-final _mdxFiles = Glob("page/doc/reference/api/**/*.mdx");
+final _htmlFiles = Glob("page/doc/developer/api/**/*.html");
+final _jsFiles = Glob("page/doc/developer/api/**/*.js");
+final _mdxFiles = Glob("page/doc/developer/api/**/*.mdx");
 
 String _htmlFormat(
   Bs4Element? e, {

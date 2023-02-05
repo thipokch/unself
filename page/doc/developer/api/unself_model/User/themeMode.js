@@ -22,6 +22,9 @@ export default function RawHtml() {
 </section>
 
 
+<section class="desc markdown">
+  <p><a href="../../unself_model/User/themeMode">themeMode</a> is the current theme mode set by the user.</p>
+</section>
 
 
 <section class="summary source-code" id="source">
@@ -61,6 +64,7 @@ export default function RawHtml() {
           <a href="../../unself_model/User#instance-properties">Properties</a>
         </li>
           <li class="inherited"><a href="../../unself_model/User/copyWith">copyWith</a></li>
+          <li class="inherited"><a href="../../unself_model/User/extra">extra</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/hashCode.html">hashCode</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></li>
           <li class="inherited"><a href="../../unself_model/User/themeMode">themeMode</a></li>

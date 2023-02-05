@@ -59,6 +59,17 @@ export default function RawHtml() {
       <h2>Properties</h2>
 
       <dl class="properties">
+        <dt id="created" class="property">
+  <span class="name"><a href="../unself_local_database/Collection/created">created</a></span>
+  <span class="signature">→ <a href="https://pub.dev/documentation/drift/2.4.2/drift/DateTimeColumn.html">DateTimeColumn</a></span> 
+
+</dt>
+<dd>
+  
+  <div class="features"><span class="feature">read-only</span></div>
+
+</dd>
+
         <dt id="createRule" class="property">
   <span class="name"><a href="../unself_local_database/Collection/createRule">createRule</a></span>
   <span class="signature">→ <a href="https://pub.dev/documentation/drift/2.4.2/drift/TextColumn.html">TextColumn</a></span> 
@@ -102,6 +113,17 @@ export default function RawHtml() {
 you override <a href="../unself_local_database/Collection/primaryKey">primaryKey</a>. You can turn this behavior off if you want to.
 This is intended to be used by generated code only.
   <div class="features"><span class="feature">read-only</span><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="extra" class="property">
+  <span class="name"><a href="../unself_local_database/Collection/extra">extra</a></span>
+  <span class="signature">→ <a href="https://pub.dev/documentation/drift/2.4.2/drift/TextColumn.html">TextColumn</a></span> 
+
+</dt>
+<dd>
+  
+  <div class="features"><span class="feature">read-only</span></div>
 
 </dd>
 
@@ -151,17 +173,6 @@ This is intended to be used by generated code only.
 
         <dt id="name" class="property">
   <span class="name"><a href="../unself_local_database/Collection/name">name</a></span>
-  <span class="signature">→ <a href="https://pub.dev/documentation/drift/2.4.2/drift/TextColumn.html">TextColumn</a></span> 
-
-</dt>
-<dd>
-  
-  <div class="features"><span class="feature">read-only</span></div>
-
-</dd>
-
-        <dt id="options" class="property">
-  <span class="name"><a href="../unself_local_database/Collection/options">options</a></span>
   <span class="signature">→ <a href="https://pub.dev/documentation/drift/2.4.2/drift/TextColumn.html">TextColumn</a></span> 
 
 </dt>
@@ -242,6 +253,17 @@ valid, whereas <code>@override final String tableName = 'my_table';</code> or
 <dd class="inherited">
   Unique constraints in this table.
   <div class="features"><span class="feature">read-only</span><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="updated" class="property">
+  <span class="name"><a href="../unself_local_database/Collection/updated">updated</a></span>
+  <span class="signature">→ <a href="https://pub.dev/documentation/drift/2.4.2/drift/DateTimeColumn.html">DateTimeColumn</a></span> 
+
+</dt>
+<dd>
+  
+  <div class="features"><span class="feature">read-only</span></div>
 
 </dd>
 
@@ -497,15 +519,15 @@ Example (inside the body of a table class):
 
       <li class="section-title"><a href="../unself_local_database/unself_local_database#extensions">Extensions</a></li>
         <li><a href="../unself_local_database/CollectionFromDomain">CollectionFromDomain</a></li>
-        <li><a href="../unself_local_database/CollectionFromOrm">CollectionFromOrm</a></li>
         <li><a href="../unself_local_database/CollectionToOrm">CollectionToOrm</a></li>
         <li><a href="../unself_local_database/FieldFromDomain">FieldFromDomain</a></li>
-        <li><a href="../unself_local_database/FieldFromOrm">FieldFromOrm</a></li>
         <li><a href="../unself_local_database/FieldToOrm">FieldToOrm</a></li>
 
 
 
 
+      <li class="section-title"><a href="../unself_local_database/unself_local_database#functions">Functions</a></li>
+        <li><a href="../unself_local_database/connect">connect</a></li>
 
 
 
@@ -523,22 +545,24 @@ Example (inside the body of a table class):
         <li class="section-title">
           <a href="../unself_local_database/Collection#instance-properties">Properties</a>
         </li>
+          <li><a href="../unself_local_database/Collection/created">created</a></li>
           <li><a href="../unself_local_database/Collection/createRule">createRule</a></li>
           <li class="inherited"><a href="https://pub.dev/documentation/drift/2.4.2/drift/Table/customConstraints.html">customConstraints</a></li>
           <li><a href="../unself_local_database/Collection/deleteRule">deleteRule</a></li>
           <li class="inherited"><a href="https://pub.dev/documentation/drift/2.4.2/drift/Table/dontWriteConstraints.html">dontWriteConstraints</a></li>
+          <li><a href="../unself_local_database/Collection/extra">extra</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/hashCode.html">hashCode</a></li>
           <li><a href="../unself_local_database/Collection/id">id</a></li>
           <li class="inherited"><a href="https://pub.dev/documentation/drift/2.4.2/drift/Table/isStrict.html">isStrict</a></li>
           <li><a href="../unself_local_database/Collection/listRule">listRule</a></li>
           <li><a href="../unself_local_database/Collection/name">name</a></li>
-          <li><a href="../unself_local_database/Collection/options">options</a></li>
           <li><a href="../unself_local_database/Collection/primaryKey">primaryKey</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></li>
           <li><a href="../unself_local_database/Collection/system">system</a></li>
           <li class="inherited"><a href="https://pub.dev/documentation/drift/2.4.2/drift/Table/tableName.html">tableName</a></li>
           <li><a href="../unself_local_database/Collection/type">type</a></li>
           <li class="inherited"><a href="https://pub.dev/documentation/drift/2.4.2/drift/Table/uniqueKeys.html">uniqueKeys</a></li>
+          <li><a href="../unself_local_database/Collection/updated">updated</a></li>
           <li><a href="../unself_local_database/Collection/updateRule">updateRule</a></li>
           <li><a href="../unself_local_database/Collection/viewRule">viewRule</a></li>
           <li class="inherited"><a href="https://pub.dev/documentation/drift/2.4.2/drift/Table/withoutRowId.html">withoutRowId</a></li>

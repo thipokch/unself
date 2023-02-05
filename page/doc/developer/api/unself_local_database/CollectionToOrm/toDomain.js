@@ -26,6 +26,8 @@ export default function RawHtml() {
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">Collection toDomain() =&gt; Collection(
       id: id,
+      created: created,
+      updated: updated,
       name: name,
       type: type,
       system: system,
@@ -34,7 +36,7 @@ export default function RawHtml() {
       createRule: createRule,
       updateRule: updateRule,
       deleteRule: deleteRule,
-      options: jsonDecode(options ?? "{}"),
+      extra: jsonDecode(extra),
     );</code></pre>
 </section>
 

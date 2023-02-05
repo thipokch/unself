@@ -22,6 +22,9 @@ export default function RawHtml() {
 </section>
 
 
+<section class="desc markdown">
+  <p><a href="../../unself_model/Collection/listRule">listRule</a> is the rule that determines if the user can list the <a href="../../unself_model/Collection">Collection</a>.</p>
+</section>
 
 
 <section class="summary source-code" id="source">
@@ -61,17 +64,18 @@ export default function RawHtml() {
           <a href="../../unself_model/Collection#instance-properties">Properties</a>
         </li>
           <li class="inherited"><a href="../../unself_model/Collection/copyWith">copyWith</a></li>
+          <li class="inherited"><a href="../../unself_model/Collection/created">created</a></li>
           <li class="inherited"><a href="../../unself_model/Collection/createRule">createRule</a></li>
           <li class="inherited"><a href="../../unself_model/Collection/deleteRule">deleteRule</a></li>
+          <li class="inherited"><a href="../../unself_model/Collection/extra">extra</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/hashCode.html">hashCode</a></li>
           <li class="inherited"><a href="../../unself_model/Collection/id">id</a></li>
           <li class="inherited"><a href="../../unself_model/Collection/listRule">listRule</a></li>
           <li class="inherited"><a href="../../unself_model/Collection/name">name</a></li>
-          <li class="inherited"><a href="../../unself_model/Collection/options">options</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></li>
-          <li class="inherited"><a href="../../unself_model/Collection/schema">schema</a></li>
           <li class="inherited"><a href="../../unself_model/Collection/system">system</a></li>
           <li class="inherited"><a href="../../unself_model/Collection/type">type</a></li>
+          <li class="inherited"><a href="../../unself_model/Collection/updated">updated</a></li>
           <li class="inherited"><a href="../../unself_model/Collection/updateRule">updateRule</a></li>
           <li class="inherited"><a href="../../unself_model/Collection/viewRule">viewRule</a></li>
 

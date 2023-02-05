@@ -74,14 +74,15 @@ late final GeneratedColumn&lt;bool&gt; system =
           <li><a href="../../unself_local_database/\$FieldTable/attachedDatabase">attachedDatabase</a></li>
           <li><a href="../../unself_local_database/\$FieldTable/collectionId">collectionId</a></li>
           <li class="inherited"><a href="https://pub.dev/documentation/drift/2.4.2/drift/TableInfo/columnsByName.html">columnsByName</a></li>
+          <li><a href="../../unself_local_database/\$FieldTable/created">created</a></li>
           <li class="inherited"><a href="https://pub.dev/documentation/drift/2.4.2/drift/Table/customConstraints.html">customConstraints</a></li>
           <li class="inherited"><a href="https://pub.dev/documentation/drift/2.4.2/drift/Table/dontWriteConstraints.html">dontWriteConstraints</a></li>
           <li class="inherited"><a href="https://pub.dev/documentation/drift/2.4.2/drift/TableInfo/entityName.html">entityName</a></li>
+          <li><a href="../../unself_local_database/\$FieldTable/extra">extra</a></li>
           <li class="inherited"><a href="https://pub.dev/documentation/drift/2.4.2/drift/TableInfo/hashCode.html">hashCode</a></li>
           <li><a href="../../unself_local_database/\$FieldTable/id">id</a></li>
           <li class="inherited"><a href="https://pub.dev/documentation/drift/2.4.2/drift/Table/isStrict.html">isStrict</a></li>
           <li><a href="../../unself_local_database/\$FieldTable/name">name</a></li>
-          <li><a href="../../unself_local_database/\$FieldTable/options">options</a></li>
           <li class="inherited"><a href="https://pub.dev/documentation/drift/2.4.2/drift/TableInfo/primaryKey.html">primaryKey</a></li>
           <li><a href="../../unself_local_database/\$FieldTable/required">required</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></li>
@@ -90,6 +91,7 @@ late final GeneratedColumn&lt;bool&gt; system =
           <li><a href="../../unself_local_database/\$FieldTable/type">type</a></li>
           <li><a href="../../unself_local_database/\$FieldTable/unique">unique</a></li>
           <li class="inherited"><a href="https://pub.dev/documentation/drift/2.4.2/drift/TableInfo/uniqueKeys.html">uniqueKeys</a></li>
+          <li><a href="../../unself_local_database/\$FieldTable/updated">updated</a></li>
           <li class="inherited"><a href="https://pub.dev/documentation/drift/2.4.2/drift/Table/withoutRowId.html">withoutRowId</a></li>
 
         <li class="section-title"><a href="../../unself_local_database/\$FieldTable#instance-methods">Methods</a></li>

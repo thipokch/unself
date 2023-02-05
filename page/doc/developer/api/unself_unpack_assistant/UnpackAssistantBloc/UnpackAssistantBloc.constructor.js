@@ -11,7 +11,8 @@ export default function RawHtml() {
 
     <section class="multi-line-signature">
       
-      <span class="name ">UnpackAssistantBloc</span>(<wbr>)
+      <span class="name ">UnpackAssistantBloc</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="-param-unpackService">{<span>required</span> <span class="type-annotation">UnpackService</span> <span class="parameter-name">unpackService</span>}</span></li>
+</ol>)
     </section>
 
     
@@ -20,7 +21,10 @@ export default function RawHtml() {
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">UnpackAssistantBloc() : super(const _Initial()) {
+  <pre class="language-dart"><code class="language-dart">UnpackAssistantBloc({
+  required UnpackService unpackService,
+})  : _unpackService = unpackService,
+      super(const _Initial()) {
   on&lt;_SelectApp&gt;(_onSelectApp);
   on&lt;_SelectArchive&gt;(_onSelectArchive);
   on&lt;_SelectData&gt;(_onSelectData);

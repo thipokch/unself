@@ -66,14 +66,16 @@ and</li>
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">@override
-Widget build(BuildContext context) {
-  return BlocProvider(
-    create: (context) =&gt; UnpackAssistantBloc(),
-    child: const Scaffold(
-      body: UnpackAssistantView(),
-    ),
-  );
-}</code></pre>
+Widget build(BuildContext context) =&gt; BlocProvider(
+      create: (context) =&gt; UnpackAssistantBloc(
+        unpackService: UnpackService(
+          localDb: context.read(),
+        ),
+      ),
+      child: const Scaffold(
+        body: UnpackAssistantView(),
+      ),
+    );</code></pre>
 </section>
 
 

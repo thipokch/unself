@@ -18,7 +18,7 @@ export default function RawHtml() {
   </div>
           <a href="../../unself_local_database/LocalDatabase">LocalDatabase</a>
           <span class="name ">attachedDatabase</span>
-          <div class="features"><span class="feature">read / write</span><span class="feature">override-getter</span></div>
+          <div class="features"><span class="feature">final</span></div>
 
         </section>
         
@@ -30,7 +30,7 @@ export default function RawHtml() {
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">@override
-LocalDatabase attachedDatabase;</code></pre>
+final LocalDatabase attachedDatabase;</code></pre>
 </section>
 
 

@@ -64,6 +64,8 @@ bool operator ==(Object other) =&gt;
     identical(this, other) ||
     (other is CollectionData &amp;&amp;
         other.id == this.id &amp;&amp;
+        other.created == this.created &amp;&amp;
+        other.updated == this.updated &amp;&amp;
         other.type == this.type &amp;&amp;
         other.name == this.name &amp;&amp;
         other.system == this.system &amp;&amp;
@@ -72,7 +74,7 @@ bool operator ==(Object other) =&gt;
         other.createRule == this.createRule &amp;&amp;
         other.updateRule == this.updateRule &amp;&amp;
         other.deleteRule == this.deleteRule &amp;&amp;
-        other.options == this.options);</code></pre>
+        other.extra == this.extra);</code></pre>
 </section>
 
 
@@ -104,16 +106,18 @@ bool operator ==(Object other) =&gt;
         <li class="section-title">
           <a href="../../unself_local_database/CollectionData#instance-properties">Properties</a>
         </li>
+          <li><a href="../../unself_local_database/CollectionData/created">created</a></li>
           <li><a href="../../unself_local_database/CollectionData/createRule">createRule</a></li>
           <li><a href="../../unself_local_database/CollectionData/deleteRule">deleteRule</a></li>
+          <li><a href="../../unself_local_database/CollectionData/extra">extra</a></li>
           <li><a href="../../unself_local_database/CollectionData/hashCode">hashCode</a></li>
           <li><a href="../../unself_local_database/CollectionData/id">id</a></li>
           <li><a href="../../unself_local_database/CollectionData/listRule">listRule</a></li>
           <li><a href="../../unself_local_database/CollectionData/name">name</a></li>
-          <li><a href="../../unself_local_database/CollectionData/options">options</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></li>
           <li><a href="../../unself_local_database/CollectionData/system">system</a></li>
           <li><a href="../../unself_local_database/CollectionData/type">type</a></li>
+          <li><a href="../../unself_local_database/CollectionData/updated">updated</a></li>
           <li><a href="../../unself_local_database/CollectionData/updateRule">updateRule</a></li>
           <li><a href="../../unself_local_database/CollectionData/viewRule">viewRule</a></li>
 

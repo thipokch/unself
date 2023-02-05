@@ -161,6 +161,17 @@ be aliased.
 
 </dd>
 
+        <dt id="created" class="property">
+  <span class="name"><a href="../unself_local_database/\$FieldTable/created">created</a></span>
+  <span class="signature">→ <a href="https://pub.dev/documentation/drift/2.4.2/drift/GeneratedColumn-class.html">GeneratedColumn</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span>&gt;</span></span> 
+
+</dt>
+<dd>
+  
+  <div class="features"><span class="feature">late</span><span class="feature">final</span></div>
+
+</dd>
+
         <dt id="customConstraints" class="property inherited">
   <span class="name"><a href="https://pub.dev/documentation/drift/2.4.2/drift/Table/customConstraints.html">customConstraints</a></span>
   <span class="signature">→ <a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span> 
@@ -193,6 +204,17 @@ This is intended to be used by generated code only.
 <dd class="inherited">
   The (unalised) name of this entity in the database.
   <div class="features"><span class="feature">read-only</span><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="extra" class="property">
+  <span class="name"><a href="../unself_local_database/\$FieldTable/extra">extra</a></span>
+  <span class="signature">→ <a href="https://pub.dev/documentation/drift/2.4.2/drift/GeneratedColumn-class.html">GeneratedColumn</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span> 
+
+</dt>
+<dd>
+  
+  <div class="features"><span class="feature">late</span><span class="feature">final</span></div>
 
 </dd>
 
@@ -231,17 +253,6 @@ This is intended to be used by generated code only.
 
         <dt id="name" class="property">
   <span class="name"><a href="../unself_local_database/\$FieldTable/name">name</a></span>
-  <span class="signature">→ <a href="https://pub.dev/documentation/drift/2.4.2/drift/GeneratedColumn-class.html">GeneratedColumn</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span> 
-
-</dt>
-<dd>
-  
-  <div class="features"><span class="feature">late</span><span class="feature">final</span></div>
-
-</dd>
-
-        <dt id="options" class="property">
-  <span class="name"><a href="../unself_local_database/\$FieldTable/options">options</a></span>
   <span class="signature">→ <a href="https://pub.dev/documentation/drift/2.4.2/drift/GeneratedColumn-class.html">GeneratedColumn</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span> 
 
 </dt>
@@ -345,6 +356,17 @@ valid, whereas <code>@override final String tableName = 'my_table';</code> or
   The unique key of this table. Can be empty if no custom primary key has
 been specified.
   <div class="features"><span class="feature">read-only</span><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="updated" class="property">
+  <span class="name"><a href="../unself_local_database/\$FieldTable/updated">updated</a></span>
+  <span class="signature">→ <a href="https://pub.dev/documentation/drift/2.4.2/drift/GeneratedColumn-class.html">GeneratedColumn</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span>&gt;</span></span> 
+
+</dt>
+<dd>
+  
+  <div class="features"><span class="feature">late</span><span class="feature">final</span></div>
 
 </dd>
 
@@ -649,15 +671,15 @@ that it respects all constraints (nullability, text length, etc.).
 
       <li class="section-title"><a href="../unself_local_database/unself_local_database#extensions">Extensions</a></li>
         <li><a href="../unself_local_database/CollectionFromDomain">CollectionFromDomain</a></li>
-        <li><a href="../unself_local_database/CollectionFromOrm">CollectionFromOrm</a></li>
         <li><a href="../unself_local_database/CollectionToOrm">CollectionToOrm</a></li>
         <li><a href="../unself_local_database/FieldFromDomain">FieldFromDomain</a></li>
-        <li><a href="../unself_local_database/FieldFromOrm">FieldFromOrm</a></li>
         <li><a href="../unself_local_database/FieldToOrm">FieldToOrm</a></li>
 
 
 
 
+      <li class="section-title"><a href="../unself_local_database/unself_local_database#functions">Functions</a></li>
+        <li><a href="../unself_local_database/connect">connect</a></li>
 
 
 
@@ -683,14 +705,15 @@ that it respects all constraints (nullability, text length, etc.).
           <li><a href="../unself_local_database/\$FieldTable/attachedDatabase">attachedDatabase</a></li>
           <li><a href="../unself_local_database/\$FieldTable/collectionId">collectionId</a></li>
           <li class="inherited"><a href="https://pub.dev/documentation/drift/2.4.2/drift/TableInfo/columnsByName.html">columnsByName</a></li>
+          <li><a href="../unself_local_database/\$FieldTable/created">created</a></li>
           <li class="inherited"><a href="https://pub.dev/documentation/drift/2.4.2/drift/Table/customConstraints.html">customConstraints</a></li>
           <li class="inherited"><a href="https://pub.dev/documentation/drift/2.4.2/drift/Table/dontWriteConstraints.html">dontWriteConstraints</a></li>
           <li class="inherited"><a href="https://pub.dev/documentation/drift/2.4.2/drift/TableInfo/entityName.html">entityName</a></li>
+          <li><a href="../unself_local_database/\$FieldTable/extra">extra</a></li>
           <li class="inherited"><a href="https://pub.dev/documentation/drift/2.4.2/drift/TableInfo/hashCode.html">hashCode</a></li>
           <li><a href="../unself_local_database/\$FieldTable/id">id</a></li>
           <li class="inherited"><a href="https://pub.dev/documentation/drift/2.4.2/drift/Table/isStrict.html">isStrict</a></li>
           <li><a href="../unself_local_database/\$FieldTable/name">name</a></li>
-          <li><a href="../unself_local_database/\$FieldTable/options">options</a></li>
           <li class="inherited"><a href="https://pub.dev/documentation/drift/2.4.2/drift/TableInfo/primaryKey.html">primaryKey</a></li>
           <li><a href="../unself_local_database/\$FieldTable/required">required</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></li>
@@ -699,6 +722,7 @@ that it respects all constraints (nullability, text length, etc.).
           <li><a href="../unself_local_database/\$FieldTable/type">type</a></li>
           <li><a href="../unself_local_database/\$FieldTable/unique">unique</a></li>
           <li class="inherited"><a href="https://pub.dev/documentation/drift/2.4.2/drift/TableInfo/uniqueKeys.html">uniqueKeys</a></li>
+          <li><a href="../unself_local_database/\$FieldTable/updated">updated</a></li>
           <li class="inherited"><a href="https://pub.dev/documentation/drift/2.4.2/drift/Table/withoutRowId.html">withoutRowId</a></li>
 
         <li class="section-title"><a href="../unself_local_database/\$FieldTable#instance-methods">Methods</a></li>

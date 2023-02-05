@@ -150,6 +150,17 @@ be aliased.
 
 </dd>
 
+        <dt id="created" class="property">
+  <span class="name"><a href="../unself_local_database/\$CollectionTable/created">created</a></span>
+  <span class="signature">→ <a href="https://pub.dev/documentation/drift/2.4.2/drift/GeneratedColumn-class.html">GeneratedColumn</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span>&gt;</span></span> 
+
+</dt>
+<dd>
+  
+  <div class="features"><span class="feature">late</span><span class="feature">final</span></div>
+
+</dd>
+
         <dt id="createRule" class="property">
   <span class="name"><a href="../unself_local_database/\$CollectionTable/createRule">createRule</a></span>
   <span class="signature">→ <a href="https://pub.dev/documentation/drift/2.4.2/drift/GeneratedColumn-class.html">GeneratedColumn</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span> 
@@ -207,6 +218,17 @@ This is intended to be used by generated code only.
 
 </dd>
 
+        <dt id="extra" class="property">
+  <span class="name"><a href="../unself_local_database/\$CollectionTable/extra">extra</a></span>
+  <span class="signature">→ <a href="https://pub.dev/documentation/drift/2.4.2/drift/GeneratedColumn-class.html">GeneratedColumn</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span> 
+
+</dt>
+<dd>
+  
+  <div class="features"><span class="feature">late</span><span class="feature">final</span></div>
+
+</dd>
+
         <dt id="hashCode" class="property inherited">
   <span class="name"><a href="https://pub.dev/documentation/drift/2.4.2/drift/TableInfo/hashCode.html">hashCode</a></span>
   <span class="signature">→ <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> 
@@ -253,17 +275,6 @@ This is intended to be used by generated code only.
 
         <dt id="name" class="property">
   <span class="name"><a href="../unself_local_database/\$CollectionTable/name">name</a></span>
-  <span class="signature">→ <a href="https://pub.dev/documentation/drift/2.4.2/drift/GeneratedColumn-class.html">GeneratedColumn</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span> 
-
-</dt>
-<dd>
-  
-  <div class="features"><span class="feature">late</span><span class="feature">final</span></div>
-
-</dd>
-
-        <dt id="options" class="property">
-  <span class="name"><a href="../unself_local_database/\$CollectionTable/options">options</a></span>
   <span class="signature">→ <a href="https://pub.dev/documentation/drift/2.4.2/drift/GeneratedColumn-class.html">GeneratedColumn</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span> 
 
 </dt>
@@ -327,7 +338,7 @@ valid, whereas <code>@override final String tableName = 'my_table';</code> or
 
         <dt id="type" class="property">
   <span class="name"><a href="../unself_local_database/\$CollectionTable/type">type</a></span>
-  <span class="signature">→ <a href="https://pub.dev/documentation/drift/2.4.2/drift/GeneratedColumn-class.html">GeneratedColumn</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span> 
+  <span class="signature">→ <a href="https://pub.dev/documentation/drift/2.4.2/drift/GeneratedColumnWithTypeConverter-class.html">GeneratedColumnWithTypeConverter</a><span class="signature">&lt;<wbr><span class="type-parameter">CollectionType</span>, <span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span> 
 
 </dt>
 <dd>
@@ -345,6 +356,17 @@ valid, whereas <code>@override final String tableName = 'my_table';</code> or
   The unique key of this table. Can be empty if no custom primary key has
 been specified.
   <div class="features"><span class="feature">read-only</span><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="updated" class="property">
+  <span class="name"><a href="../unself_local_database/\$CollectionTable/updated">updated</a></span>
+  <span class="signature">→ <a href="https://pub.dev/documentation/drift/2.4.2/drift/GeneratedColumn-class.html">GeneratedColumn</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span>&gt;</span></span> 
+
+</dt>
+<dd>
+  
+  <div class="features"><span class="feature">late</span><span class="feature">final</span></div>
 
 </dd>
 
@@ -614,6 +636,23 @@ that it respects all constraints (nullability, text length, etc.).
     </dl>
   </section>
     
+  <section class="summary offset-anchor" id="static-properties">
+    <h2>Static Properties</h2>
+
+    <dl class="properties">
+        <dt id="\$convertertype" class="property">
+  <span class="name"><a href="../unself_local_database/\$CollectionTable/\$convertertype">\$convertertype</a></span>
+  <span class="signature">↔ <a href="https://pub.dev/documentation/drift/2.4.2/drift/JsonTypeConverter2-mixin.html">JsonTypeConverter2</a><span class="signature">&lt;<wbr><span class="type-parameter">CollectionType</span>, <span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>, <span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span> 
+
+</dt>
+<dd>
+  
+  <div class="features"><span class="feature">read / write</span></div>
+
+</dd>
+
+    </dl>
+  </section>
     
     
 
@@ -654,15 +693,15 @@ that it respects all constraints (nullability, text length, etc.).
 
       <li class="section-title"><a href="../unself_local_database/unself_local_database#extensions">Extensions</a></li>
         <li><a href="../unself_local_database/CollectionFromDomain">CollectionFromDomain</a></li>
-        <li><a href="../unself_local_database/CollectionFromOrm">CollectionFromOrm</a></li>
         <li><a href="../unself_local_database/CollectionToOrm">CollectionToOrm</a></li>
         <li><a href="../unself_local_database/FieldFromDomain">FieldFromDomain</a></li>
-        <li><a href="../unself_local_database/FieldFromOrm">FieldFromOrm</a></li>
         <li><a href="../unself_local_database/FieldToOrm">FieldToOrm</a></li>
 
 
 
 
+      <li class="section-title"><a href="../unself_local_database/unself_local_database#functions">Functions</a></li>
+        <li><a href="../unself_local_database/connect">connect</a></li>
 
 
 
@@ -687,23 +726,25 @@ that it respects all constraints (nullability, text length, etc.).
           <li class="inherited"><a href="https://pub.dev/documentation/drift/2.4.2/drift/TableInfo/asDslTable.html">asDslTable</a></li>
           <li><a href="../unself_local_database/\$CollectionTable/attachedDatabase">attachedDatabase</a></li>
           <li class="inherited"><a href="https://pub.dev/documentation/drift/2.4.2/drift/TableInfo/columnsByName.html">columnsByName</a></li>
+          <li><a href="../unself_local_database/\$CollectionTable/created">created</a></li>
           <li><a href="../unself_local_database/\$CollectionTable/createRule">createRule</a></li>
           <li class="inherited"><a href="https://pub.dev/documentation/drift/2.4.2/drift/Table/customConstraints.html">customConstraints</a></li>
           <li><a href="../unself_local_database/\$CollectionTable/deleteRule">deleteRule</a></li>
           <li class="inherited"><a href="https://pub.dev/documentation/drift/2.4.2/drift/Table/dontWriteConstraints.html">dontWriteConstraints</a></li>
           <li class="inherited"><a href="https://pub.dev/documentation/drift/2.4.2/drift/TableInfo/entityName.html">entityName</a></li>
+          <li><a href="../unself_local_database/\$CollectionTable/extra">extra</a></li>
           <li class="inherited"><a href="https://pub.dev/documentation/drift/2.4.2/drift/TableInfo/hashCode.html">hashCode</a></li>
           <li><a href="../unself_local_database/\$CollectionTable/id">id</a></li>
           <li class="inherited"><a href="https://pub.dev/documentation/drift/2.4.2/drift/Table/isStrict.html">isStrict</a></li>
           <li><a href="../unself_local_database/\$CollectionTable/listRule">listRule</a></li>
           <li><a href="../unself_local_database/\$CollectionTable/name">name</a></li>
-          <li><a href="../unself_local_database/\$CollectionTable/options">options</a></li>
           <li class="inherited"><a href="https://pub.dev/documentation/drift/2.4.2/drift/TableInfo/primaryKey.html">primaryKey</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></li>
           <li><a href="../unself_local_database/\$CollectionTable/system">system</a></li>
           <li class="inherited"><a href="https://pub.dev/documentation/drift/2.4.2/drift/Table/tableName.html">tableName</a></li>
           <li><a href="../unself_local_database/\$CollectionTable/type">type</a></li>
           <li class="inherited"><a href="https://pub.dev/documentation/drift/2.4.2/drift/TableInfo/uniqueKeys.html">uniqueKeys</a></li>
+          <li><a href="../unself_local_database/\$CollectionTable/updated">updated</a></li>
           <li><a href="../unself_local_database/\$CollectionTable/updateRule">updateRule</a></li>
           <li><a href="../unself_local_database/\$CollectionTable/viewRule">viewRule</a></li>
           <li class="inherited"><a href="https://pub.dev/documentation/drift/2.4.2/drift/Table/withoutRowId.html">withoutRowId</a></li>
@@ -729,6 +770,8 @@ that it respects all constraints (nullability, text length, etc.).
           <li class="inherited"><a href="https://pub.dev/documentation/drift/2.4.2/drift/TableInfo/operator_equals.html">operator ==</a></li>
 
 
+        <li class="section-title"><a href="../unself_local_database/\$CollectionTable#static-properties">Static properties</a></li>
+          <li><a href="../unself_local_database/\$CollectionTable/\$convertertype">\$convertertype</a></li>
 
 
 </ol>

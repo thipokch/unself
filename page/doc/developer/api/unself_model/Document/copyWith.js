@@ -67,10 +67,12 @@ export default function RawHtml() {
         <li class="section-title inherited">
           <a href="../../unself_model/Document#instance-properties">Properties</a>
         </li>
+          <li class="inherited"><a href="../../unself_model/Document/archive">archive</a></li>
           <li class="inherited"><a href="../../unself_model/Document/collectionId">collectionId</a></li>
           <li class="inherited"><a href="../../unself_model/Document/collectionName">collectionName</a></li>
           <li class="inherited"><a href="../../unself_model/Document/copyWith">copyWith</a></li>
           <li class="inherited"><a href="../../unself_model/Document/created">created</a></li>
+          <li class="inherited"><a href="../../unself_model/Document/extra">extra</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/hashCode.html">hashCode</a></li>
           <li class="inherited"><a href="../../unself_model/Document/id">id</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></li>

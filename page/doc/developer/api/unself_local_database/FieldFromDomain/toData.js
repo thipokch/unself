@@ -26,13 +26,15 @@ export default function RawHtml() {
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">FieldData toData() =&gt; FieldData(
       id: id,
+      created: created,
+      updated: updated,
       collectionId: id,
       name: name,
       type: type,
       system: system,
       required: required,
       unique: unique,
-      options: jsonEncode(options),
+      extra: jsonEncode(extra),
     );</code></pre>
 </section>
 
