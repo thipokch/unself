@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'document.dart';
+part of 'app.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,48 +14,49 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-Document _$DocumentFromJson(Map<String, dynamic> json) {
-  return _Document.fromJson(json);
+App _$AppFromJson(Map<String, dynamic> json) {
+  return _App.fromJson(json);
 }
 
 /// @nodoc
-mixin _$Document {
+mixin _$App {
+  /// [id] is unself unique identifier for the [App].
   String get id => throw _privateConstructorUsedError;
+
+  /// [created] is the date and time when the [App] was created inside unself app.
   DateTime get created => throw _privateConstructorUsedError;
+
+  /// [updated] is the date and time when the [App] was last updated inside unself app.
   DateTime get updated => throw _privateConstructorUsedError;
-  String get collectionId => throw _privateConstructorUsedError;
-  String get collectionName => throw _privateConstructorUsedError;
-  Archive get archive => throw _privateConstructorUsedError;
+
+  /// [name] is the name of the [App].
+  String get name => throw _privateConstructorUsedError;
+
+  /// [extra] is a map of additional properties.
   @JsonExtra()
   Map<String, dynamic> get extra => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $DocumentCopyWith<Document> get copyWith =>
-      throw _privateConstructorUsedError;
+  $AppCopyWith<App> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $DocumentCopyWith<$Res> {
-  factory $DocumentCopyWith(Document value, $Res Function(Document) then) =
-      _$DocumentCopyWithImpl<$Res, Document>;
+abstract class $AppCopyWith<$Res> {
+  factory $AppCopyWith(App value, $Res Function(App) then) =
+      _$AppCopyWithImpl<$Res, App>;
   @useResult
   $Res call(
       {String id,
       DateTime created,
       DateTime updated,
-      String collectionId,
-      String collectionName,
-      Archive archive,
+      String name,
       @JsonExtra() Map<String, dynamic> extra});
-
-  $ArchiveCopyWith<$Res> get archive;
 }
 
 /// @nodoc
-class _$DocumentCopyWithImpl<$Res, $Val extends Document>
-    implements $DocumentCopyWith<$Res> {
-  _$DocumentCopyWithImpl(this._value, this._then);
+class _$AppCopyWithImpl<$Res, $Val extends App> implements $AppCopyWith<$Res> {
+  _$AppCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -68,9 +69,7 @@ class _$DocumentCopyWithImpl<$Res, $Val extends Document>
     Object? id = null,
     Object? created = null,
     Object? updated = null,
-    Object? collectionId = null,
-    Object? collectionName = null,
-    Object? archive = null,
+    Object? name = null,
     Object? extra = null,
   }) {
     return _then(_value.copyWith(
@@ -86,60 +85,36 @@ class _$DocumentCopyWithImpl<$Res, $Val extends Document>
           ? _value.updated
           : updated // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      collectionId: null == collectionId
-          ? _value.collectionId
-          : collectionId // ignore: cast_nullable_to_non_nullable
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
               as String,
-      collectionName: null == collectionName
-          ? _value.collectionName
-          : collectionName // ignore: cast_nullable_to_non_nullable
-              as String,
-      archive: null == archive
-          ? _value.archive
-          : archive // ignore: cast_nullable_to_non_nullable
-              as Archive,
       extra: null == extra
           ? _value.extra
           : extra // ignore: cast_nullable_to_non_nullable
               as Map<String, dynamic>,
     ) as $Val);
   }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $ArchiveCopyWith<$Res> get archive {
-    return $ArchiveCopyWith<$Res>(_value.archive, (value) {
-      return _then(_value.copyWith(archive: value) as $Val);
-    });
-  }
 }
 
 /// @nodoc
-abstract class _$$_DocumentCopyWith<$Res> implements $DocumentCopyWith<$Res> {
-  factory _$$_DocumentCopyWith(
-          _$_Document value, $Res Function(_$_Document) then) =
-      __$$_DocumentCopyWithImpl<$Res>;
+abstract class _$$_AppCopyWith<$Res> implements $AppCopyWith<$Res> {
+  factory _$$_AppCopyWith(_$_App value, $Res Function(_$_App) then) =
+      __$$_AppCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
       {String id,
       DateTime created,
       DateTime updated,
-      String collectionId,
-      String collectionName,
-      Archive archive,
+      String name,
       @JsonExtra() Map<String, dynamic> extra});
-
-  @override
-  $ArchiveCopyWith<$Res> get archive;
 }
 
 /// @nodoc
-class __$$_DocumentCopyWithImpl<$Res>
-    extends _$DocumentCopyWithImpl<$Res, _$_Document>
-    implements _$$_DocumentCopyWith<$Res> {
-  __$$_DocumentCopyWithImpl(
-      _$_Document _value, $Res Function(_$_Document) _then)
+class __$$_AppCopyWithImpl<$Res> extends _$AppCopyWithImpl<$Res, _$_App>
+    implements _$$_AppCopyWith<$Res> {
+  __$$_AppCopyWithImpl(_$_App _value, $Res Function(_$_App) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -148,12 +123,10 @@ class __$$_DocumentCopyWithImpl<$Res>
     Object? id = null,
     Object? created = null,
     Object? updated = null,
-    Object? collectionId = null,
-    Object? collectionName = null,
-    Object? archive = null,
+    Object? name = null,
     Object? extra = null,
   }) {
-    return _then(_$_Document(
+    return _then(_$_App(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -166,18 +139,10 @@ class __$$_DocumentCopyWithImpl<$Res>
           ? _value.updated
           : updated // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      collectionId: null == collectionId
-          ? _value.collectionId
-          : collectionId // ignore: cast_nullable_to_non_nullable
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
               as String,
-      collectionName: null == collectionName
-          ? _value.collectionName
-          : collectionName // ignore: cast_nullable_to_non_nullable
-              as String,
-      archive: null == archive
-          ? _value.archive
-          : archive // ignore: cast_nullable_to_non_nullable
-              as Archive,
       extra: null == extra
           ? _value._extra
           : extra // ignore: cast_nullable_to_non_nullable
@@ -188,35 +153,38 @@ class __$$_DocumentCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Document implements _Document {
-  const _$_Document(
+class _$_App extends _App {
+  const _$_App(
       {required this.id,
       required this.created,
       required this.updated,
-      this.collectionId = '',
-      this.collectionName = '',
-      required this.archive,
+      required this.name,
       @JsonExtra() final Map<String, dynamic> extra = const {}})
-      : _extra = extra;
+      : _extra = extra,
+        super._();
 
-  factory _$_Document.fromJson(Map<String, dynamic> json) =>
-      _$$_DocumentFromJson(json);
+  factory _$_App.fromJson(Map<String, dynamic> json) => _$$_AppFromJson(json);
 
+  /// [id] is unself unique identifier for the [App].
   @override
   final String id;
+
+  /// [created] is the date and time when the [App] was created inside unself app.
   @override
   final DateTime created;
+
+  /// [updated] is the date and time when the [App] was last updated inside unself app.
   @override
   final DateTime updated;
+
+  /// [name] is the name of the [App].
   @override
-  @JsonKey()
-  final String collectionId;
-  @override
-  @JsonKey()
-  final String collectionName;
-  @override
-  final Archive archive;
+  final String name;
+
+  /// [extra] is a map of additional properties.
   final Map<String, dynamic> _extra;
+
+  /// [extra] is a map of additional properties.
   @override
   @JsonKey()
   @JsonExtra()
@@ -228,80 +196,73 @@ class _$_Document implements _Document {
 
   @override
   String toString() {
-    return 'Document(id: $id, created: $created, updated: $updated, collectionId: $collectionId, collectionName: $collectionName, archive: $archive, extra: $extra)';
+    return 'App(id: $id, created: $created, updated: $updated, name: $name, extra: $extra)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Document &&
+            other is _$_App &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.created, created) || other.created == created) &&
             (identical(other.updated, updated) || other.updated == updated) &&
-            (identical(other.collectionId, collectionId) ||
-                other.collectionId == collectionId) &&
-            (identical(other.collectionName, collectionName) ||
-                other.collectionName == collectionName) &&
-            (identical(other.archive, archive) || other.archive == archive) &&
+            (identical(other.name, name) || other.name == name) &&
             const DeepCollectionEquality().equals(other._extra, _extra));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      id,
-      created,
-      updated,
-      collectionId,
-      collectionName,
-      archive,
+  int get hashCode => Object.hash(runtimeType, id, created, updated, name,
       const DeepCollectionEquality().hash(_extra));
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_DocumentCopyWith<_$_Document> get copyWith =>
-      __$$_DocumentCopyWithImpl<_$_Document>(this, _$identity);
+  _$$_AppCopyWith<_$_App> get copyWith =>
+      __$$_AppCopyWithImpl<_$_App>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_DocumentToJson(
+    return _$$_AppToJson(
       this,
     );
   }
 }
 
-abstract class _Document implements Document {
-  const factory _Document(
+abstract class _App extends App {
+  const factory _App(
       {required final String id,
       required final DateTime created,
       required final DateTime updated,
-      final String collectionId,
-      final String collectionName,
-      required final Archive archive,
-      @JsonExtra() final Map<String, dynamic> extra}) = _$_Document;
+      required final String name,
+      @JsonExtra() final Map<String, dynamic> extra}) = _$_App;
+  const _App._() : super._();
 
-  factory _Document.fromJson(Map<String, dynamic> json) = _$_Document.fromJson;
+  factory _App.fromJson(Map<String, dynamic> json) = _$_App.fromJson;
 
   @override
+
+  /// [id] is unself unique identifier for the [App].
   String get id;
   @override
+
+  /// [created] is the date and time when the [App] was created inside unself app.
   DateTime get created;
   @override
+
+  /// [updated] is the date and time when the [App] was last updated inside unself app.
   DateTime get updated;
   @override
-  String get collectionId;
+
+  /// [name] is the name of the [App].
+  String get name;
   @override
-  String get collectionName;
-  @override
-  Archive get archive;
-  @override
+
+  /// [extra] is a map of additional properties.
   @JsonExtra()
   Map<String, dynamic> get extra;
   @override
   @JsonKey(ignore: true)
-  _$$_DocumentCopyWith<_$_Document> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_AppCopyWith<_$_App> get copyWith => throw _privateConstructorUsedError;
 }

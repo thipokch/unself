@@ -1,6 +1,6 @@
 import 'package:drift/drift.dart';
 import 'package:unself_local_database/unself_local_database.dart';
-import 'package:unself_model/unself_model.dart' show FieldType;
+import 'package:unself_model/unself_model.dart' show FieldType, CollectionType;
 
 part 'local_database.g.dart';
 

@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'document.dart';
+part of 'account.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,48 +14,60 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-Document _$DocumentFromJson(Map<String, dynamic> json) {
-  return _Document.fromJson(json);
+Account _$AccountFromJson(Map<String, dynamic> json) {
+  return _Account.fromJson(json);
 }
 
 /// @nodoc
-mixin _$Document {
+mixin _$Account {
+  /// [id] is unself unique identifier for the [Account].
   String get id => throw _privateConstructorUsedError;
+
+  /// [created] is the date and time when the [Account] was created inside unself app.
   DateTime get created => throw _privateConstructorUsedError;
+
+  /// [updated] is the date and time when the [Account] was last updated inside unself app.
   DateTime get updated => throw _privateConstructorUsedError;
-  String get collectionId => throw _privateConstructorUsedError;
-  String get collectionName => throw _privateConstructorUsedError;
-  Archive get archive => throw _privateConstructorUsedError;
+
+  /// [name] is the name used by the [Account] on the [App].
+  String get name => throw _privateConstructorUsedError;
+
+  /// [email] is the email used by the [Account] on the [App].
+  String get email => throw _privateConstructorUsedError;
+
+  /// [app] is the [App] where the [Account] is registered.
+  App get app => throw _privateConstructorUsedError;
+
+  /// [extra] is a map of additional properties.
   @JsonExtra()
   Map<String, dynamic> get extra => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $DocumentCopyWith<Document> get copyWith =>
-      throw _privateConstructorUsedError;
+  $AccountCopyWith<Account> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $DocumentCopyWith<$Res> {
-  factory $DocumentCopyWith(Document value, $Res Function(Document) then) =
-      _$DocumentCopyWithImpl<$Res, Document>;
+abstract class $AccountCopyWith<$Res> {
+  factory $AccountCopyWith(Account value, $Res Function(Account) then) =
+      _$AccountCopyWithImpl<$Res, Account>;
   @useResult
   $Res call(
       {String id,
       DateTime created,
       DateTime updated,
-      String collectionId,
-      String collectionName,
-      Archive archive,
+      String name,
+      String email,
+      App app,
       @JsonExtra() Map<String, dynamic> extra});
 
-  $ArchiveCopyWith<$Res> get archive;
+  $AppCopyWith<$Res> get app;
 }
 
 /// @nodoc
-class _$DocumentCopyWithImpl<$Res, $Val extends Document>
-    implements $DocumentCopyWith<$Res> {
-  _$DocumentCopyWithImpl(this._value, this._then);
+class _$AccountCopyWithImpl<$Res, $Val extends Account>
+    implements $AccountCopyWith<$Res> {
+  _$AccountCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -68,9 +80,9 @@ class _$DocumentCopyWithImpl<$Res, $Val extends Document>
     Object? id = null,
     Object? created = null,
     Object? updated = null,
-    Object? collectionId = null,
-    Object? collectionName = null,
-    Object? archive = null,
+    Object? name = null,
+    Object? email = null,
+    Object? app = null,
     Object? extra = null,
   }) {
     return _then(_value.copyWith(
@@ -86,18 +98,18 @@ class _$DocumentCopyWithImpl<$Res, $Val extends Document>
           ? _value.updated
           : updated // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      collectionId: null == collectionId
-          ? _value.collectionId
-          : collectionId // ignore: cast_nullable_to_non_nullable
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
               as String,
-      collectionName: null == collectionName
-          ? _value.collectionName
-          : collectionName // ignore: cast_nullable_to_non_nullable
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
               as String,
-      archive: null == archive
-          ? _value.archive
-          : archive // ignore: cast_nullable_to_non_nullable
-              as Archive,
+      app: null == app
+          ? _value.app
+          : app // ignore: cast_nullable_to_non_nullable
+              as App,
       extra: null == extra
           ? _value.extra
           : extra // ignore: cast_nullable_to_non_nullable
@@ -107,39 +119,38 @@ class _$DocumentCopyWithImpl<$Res, $Val extends Document>
 
   @override
   @pragma('vm:prefer-inline')
-  $ArchiveCopyWith<$Res> get archive {
-    return $ArchiveCopyWith<$Res>(_value.archive, (value) {
-      return _then(_value.copyWith(archive: value) as $Val);
+  $AppCopyWith<$Res> get app {
+    return $AppCopyWith<$Res>(_value.app, (value) {
+      return _then(_value.copyWith(app: value) as $Val);
     });
   }
 }
 
 /// @nodoc
-abstract class _$$_DocumentCopyWith<$Res> implements $DocumentCopyWith<$Res> {
-  factory _$$_DocumentCopyWith(
-          _$_Document value, $Res Function(_$_Document) then) =
-      __$$_DocumentCopyWithImpl<$Res>;
+abstract class _$$_AccountCopyWith<$Res> implements $AccountCopyWith<$Res> {
+  factory _$$_AccountCopyWith(
+          _$_Account value, $Res Function(_$_Account) then) =
+      __$$_AccountCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
       {String id,
       DateTime created,
       DateTime updated,
-      String collectionId,
-      String collectionName,
-      Archive archive,
+      String name,
+      String email,
+      App app,
       @JsonExtra() Map<String, dynamic> extra});
 
   @override
-  $ArchiveCopyWith<$Res> get archive;
+  $AppCopyWith<$Res> get app;
 }
 
 /// @nodoc
-class __$$_DocumentCopyWithImpl<$Res>
-    extends _$DocumentCopyWithImpl<$Res, _$_Document>
-    implements _$$_DocumentCopyWith<$Res> {
-  __$$_DocumentCopyWithImpl(
-      _$_Document _value, $Res Function(_$_Document) _then)
+class __$$_AccountCopyWithImpl<$Res>
+    extends _$AccountCopyWithImpl<$Res, _$_Account>
+    implements _$$_AccountCopyWith<$Res> {
+  __$$_AccountCopyWithImpl(_$_Account _value, $Res Function(_$_Account) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -148,12 +159,12 @@ class __$$_DocumentCopyWithImpl<$Res>
     Object? id = null,
     Object? created = null,
     Object? updated = null,
-    Object? collectionId = null,
-    Object? collectionName = null,
-    Object? archive = null,
+    Object? name = null,
+    Object? email = null,
+    Object? app = null,
     Object? extra = null,
   }) {
-    return _then(_$_Document(
+    return _then(_$_Account(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -166,18 +177,18 @@ class __$$_DocumentCopyWithImpl<$Res>
           ? _value.updated
           : updated // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      collectionId: null == collectionId
-          ? _value.collectionId
-          : collectionId // ignore: cast_nullable_to_non_nullable
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
               as String,
-      collectionName: null == collectionName
-          ? _value.collectionName
-          : collectionName // ignore: cast_nullable_to_non_nullable
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
               as String,
-      archive: null == archive
-          ? _value.archive
-          : archive // ignore: cast_nullable_to_non_nullable
-              as Archive,
+      app: null == app
+          ? _value.app
+          : app // ignore: cast_nullable_to_non_nullable
+              as App,
       extra: null == extra
           ? _value._extra
           : extra // ignore: cast_nullable_to_non_nullable
@@ -188,35 +199,49 @@ class __$$_DocumentCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Document implements _Document {
-  const _$_Document(
+class _$_Account extends _Account {
+  const _$_Account(
       {required this.id,
       required this.created,
       required this.updated,
-      this.collectionId = '',
-      this.collectionName = '',
-      required this.archive,
+      required this.name,
+      required this.email,
+      required this.app,
       @JsonExtra() final Map<String, dynamic> extra = const {}})
-      : _extra = extra;
+      : _extra = extra,
+        super._();
 
-  factory _$_Document.fromJson(Map<String, dynamic> json) =>
-      _$$_DocumentFromJson(json);
+  factory _$_Account.fromJson(Map<String, dynamic> json) =>
+      _$$_AccountFromJson(json);
 
+  /// [id] is unself unique identifier for the [Account].
   @override
   final String id;
+
+  /// [created] is the date and time when the [Account] was created inside unself app.
   @override
   final DateTime created;
+
+  /// [updated] is the date and time when the [Account] was last updated inside unself app.
   @override
   final DateTime updated;
+
+  /// [name] is the name used by the [Account] on the [App].
   @override
-  @JsonKey()
-  final String collectionId;
+  final String name;
+
+  /// [email] is the email used by the [Account] on the [App].
   @override
-  @JsonKey()
-  final String collectionName;
+  final String email;
+
+  /// [app] is the [App] where the [Account] is registered.
   @override
-  final Archive archive;
+  final App app;
+
+  /// [extra] is a map of additional properties.
   final Map<String, dynamic> _extra;
+
+  /// [extra] is a map of additional properties.
   @override
   @JsonKey()
   @JsonExtra()
@@ -228,80 +253,86 @@ class _$_Document implements _Document {
 
   @override
   String toString() {
-    return 'Document(id: $id, created: $created, updated: $updated, collectionId: $collectionId, collectionName: $collectionName, archive: $archive, extra: $extra)';
+    return 'Account(id: $id, created: $created, updated: $updated, name: $name, email: $email, app: $app, extra: $extra)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Document &&
+            other is _$_Account &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.created, created) || other.created == created) &&
             (identical(other.updated, updated) || other.updated == updated) &&
-            (identical(other.collectionId, collectionId) ||
-                other.collectionId == collectionId) &&
-            (identical(other.collectionName, collectionName) ||
-                other.collectionName == collectionName) &&
-            (identical(other.archive, archive) || other.archive == archive) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.email, email) || other.email == email) &&
+            (identical(other.app, app) || other.app == app) &&
             const DeepCollectionEquality().equals(other._extra, _extra));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      id,
-      created,
-      updated,
-      collectionId,
-      collectionName,
-      archive,
-      const DeepCollectionEquality().hash(_extra));
+  int get hashCode => Object.hash(runtimeType, id, created, updated, name,
+      email, app, const DeepCollectionEquality().hash(_extra));
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_DocumentCopyWith<_$_Document> get copyWith =>
-      __$$_DocumentCopyWithImpl<_$_Document>(this, _$identity);
+  _$$_AccountCopyWith<_$_Account> get copyWith =>
+      __$$_AccountCopyWithImpl<_$_Account>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_DocumentToJson(
+    return _$$_AccountToJson(
       this,
     );
   }
 }
 
-abstract class _Document implements Document {
-  const factory _Document(
+abstract class _Account extends Account {
+  const factory _Account(
       {required final String id,
       required final DateTime created,
       required final DateTime updated,
-      final String collectionId,
-      final String collectionName,
-      required final Archive archive,
-      @JsonExtra() final Map<String, dynamic> extra}) = _$_Document;
+      required final String name,
+      required final String email,
+      required final App app,
+      @JsonExtra() final Map<String, dynamic> extra}) = _$_Account;
+  const _Account._() : super._();
 
-  factory _Document.fromJson(Map<String, dynamic> json) = _$_Document.fromJson;
+  factory _Account.fromJson(Map<String, dynamic> json) = _$_Account.fromJson;
 
   @override
+
+  /// [id] is unself unique identifier for the [Account].
   String get id;
   @override
+
+  /// [created] is the date and time when the [Account] was created inside unself app.
   DateTime get created;
   @override
+
+  /// [updated] is the date and time when the [Account] was last updated inside unself app.
   DateTime get updated;
   @override
-  String get collectionId;
+
+  /// [name] is the name used by the [Account] on the [App].
+  String get name;
   @override
-  String get collectionName;
+
+  /// [email] is the email used by the [Account] on the [App].
+  String get email;
   @override
-  Archive get archive;
+
+  /// [app] is the [App] where the [Account] is registered.
+  App get app;
   @override
+
+  /// [extra] is a map of additional properties.
   @JsonExtra()
   Map<String, dynamic> get extra;
   @override
   @JsonKey(ignore: true)
-  _$$_DocumentCopyWith<_$_Document> get copyWith =>
+  _$$_AccountCopyWith<_$_Account> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -11,12 +11,13 @@ extension CollectionToOrm on CollectionData {
       CollectionOrm(
         undb,
         id,
-        name,
         columns,
       );
 
   Collection toDomain() => Collection(
         id: id,
+        created: created,
+        updated: updated,
         name: name,
         type: type,
         system: system,
@@ -25,30 +26,23 @@ extension CollectionToOrm on CollectionData {
         createRule: createRule,
         updateRule: updateRule,
         deleteRule: deleteRule,
-        options: jsonDecode(options ?? "{}"),
-      );
-}
-
-extension CollectionFromOrm on CollectionOrm {
-  CollectionData toData() => CollectionData(
-        id: id,
-        name: actualTableName,
-        type: "collection",
-        system: false,
+        extra: jsonDecode(extra),
       );
 }
 
 extension CollectionFromDomain on Collection {
   CollectionData toData() => CollectionData(
         id: id,
-        name: name,
+        created: created,
+        updated: updated,
         type: type,
+        name: name,
         system: system,
         listRule: listRule,
         viewRule: viewRule,
         createRule: createRule,
         updateRule: updateRule,
         deleteRule: deleteRule,
-        options: jsonEncode(options),
+        extra: jsonEncode(extra),
       );
 }

@@ -3,49 +3,56 @@ import 'dart:convert';
 import 'package:drift/drift.dart';
 import 'package:unself_local_database/unself_local_database.dart'
     show FieldData;
-import 'package:unself_model/unself_model.dart' show Field, FieldType;
+import 'package:unself_model/unself_model.dart'
+    show Collection, Field, FieldType;
 
 extension FieldToOrm on FieldData {
   GeneratedColumn toOrm() => GeneratedColumn(
         name,
-        name,
+        collectionId,
         !required,
-        type: DriftSqlType.any, // TODO: Implement type conversion
-        defaultConstraints: null, // TODO: Implement unique constraint
+        type: <FieldType, DriftSqlType>{
+          FieldType.text: DriftSqlType.string,
+          FieldType.number: DriftSqlType.int,
+          FieldType.bool: DriftSqlType.bool,
+          FieldType.email: DriftSqlType.string,
+          FieldType.url: DriftSqlType.string,
+          FieldType.date: DriftSqlType.dateTime,
+          FieldType.select: DriftSqlType.string,
+          FieldType.file: DriftSqlType.string,
+          FieldType.relation: DriftSqlType.string,
+        }[type]!,
+        // defaultConstraints: GeneratedColumn, // TODO: Implement unique constraint
       );
 
-  Field toDomain() => Field(
+  Field toDomain({
+    required Collection collection,
+  }) =>
+      Field(
         id: id,
+        created: created,
+        updated: updated,
         name: name,
         type: type,
         system: system,
         required: required,
         unique: unique,
-        options: jsonDecode(options ?? "{}"),
-      );
-}
-
-extension FieldFromOrm on GeneratedColumn {
-  FieldData toData(String collectionId) => FieldData(
-        id: "",
-        name: name,
-        type: FieldType.text,
-        system: false,
-        required: !$nullable,
-        unique: true,
-        collectionId: collectionId,
+        collection: collection,
+        extra: jsonDecode(extra),
       );
 }
 
 extension FieldFromDomain on Field {
   FieldData toData() => FieldData(
         id: id,
+        created: created,
+        updated: updated,
         collectionId: id,
         name: name,
         type: type,
         system: system,
         required: required,
         unique: unique,
-        options: jsonEncode(options),
+        extra: jsonEncode(extra),
       );
 }

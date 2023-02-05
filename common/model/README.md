@@ -1,3 +1,3 @@
-# model
+# Unself Model
 
-Add your README.md
+This is the model for the Unself project.

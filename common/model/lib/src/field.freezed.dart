@@ -20,13 +20,36 @@ Field _$FieldFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Field {
+  /// [id] is unself unique identifier for the [Field].
   String get id => throw _privateConstructorUsedError;
-  String get name => throw _privateConstructorUsedError;
+
+  /// [created] is the date and time when the [Field] was created inside unself app.
+  DateTime get created => throw _privateConstructorUsedError;
+
+  /// [updated] is the date and time when the [Field] was last updated inside unself app.
+  DateTime get updated => throw _privateConstructorUsedError;
+
+  /// [type] is the data type of the [Field].
   FieldType get type => throw _privateConstructorUsedError;
+
+  /// [name] is the name of the [Field].
+  String get name => throw _privateConstructorUsedError;
+
+  /// [system] is a flag that indicates if the [Field] is a system field.
   bool get system => throw _privateConstructorUsedError;
+
+  /// [required] is a flag that indicates if the [Field] is required.
   bool get required => throw _privateConstructorUsedError;
+
+  /// [unique] is a flag that indicates if the [Field] must be unique.
   bool get unique => throw _privateConstructorUsedError;
-  Map<String, dynamic> get options => throw _privateConstructorUsedError;
+
+  /// [collection] is the [Collection] that the [Field] belongs to.
+  Collection get collection => throw _privateConstructorUsedError;
+
+  /// [extra] is a map of additional properties.
+  @JsonExtra()
+  Map<String, dynamic> get extra => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -40,12 +63,17 @@ abstract class $FieldCopyWith<$Res> {
   @useResult
   $Res call(
       {String id,
-      String name,
+      DateTime created,
+      DateTime updated,
       FieldType type,
+      String name,
       bool system,
       bool required,
       bool unique,
-      Map<String, dynamic> options});
+      Collection collection,
+      @JsonExtra() Map<String, dynamic> extra});
+
+  $CollectionCopyWith<$Res> get collection;
 }
 
 /// @nodoc
@@ -62,26 +90,37 @@ class _$FieldCopyWithImpl<$Res, $Val extends Field>
   @override
   $Res call({
     Object? id = null,
-    Object? name = null,
+    Object? created = null,
+    Object? updated = null,
     Object? type = null,
+    Object? name = null,
     Object? system = null,
     Object? required = null,
     Object? unique = null,
-    Object? options = null,
+    Object? collection = null,
+    Object? extra = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
+      created: null == created
+          ? _value.created
+          : created // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      updated: null == updated
+          ? _value.updated
+          : updated // ignore: cast_nullable_to_non_nullable
+              as DateTime,
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as FieldType,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
       system: null == system
           ? _value.system
           : system // ignore: cast_nullable_to_non_nullable
@@ -94,11 +133,23 @@ class _$FieldCopyWithImpl<$Res, $Val extends Field>
           ? _value.unique
           : unique // ignore: cast_nullable_to_non_nullable
               as bool,
-      options: null == options
-          ? _value.options
-          : options // ignore: cast_nullable_to_non_nullable
+      collection: null == collection
+          ? _value.collection
+          : collection // ignore: cast_nullable_to_non_nullable
+              as Collection,
+      extra: null == extra
+          ? _value.extra
+          : extra // ignore: cast_nullable_to_non_nullable
               as Map<String, dynamic>,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $CollectionCopyWith<$Res> get collection {
+    return $CollectionCopyWith<$Res>(_value.collection, (value) {
+      return _then(_value.copyWith(collection: value) as $Val);
+    });
   }
 }
 
@@ -110,12 +161,18 @@ abstract class _$$_FieldCopyWith<$Res> implements $FieldCopyWith<$Res> {
   @useResult
   $Res call(
       {String id,
-      String name,
+      DateTime created,
+      DateTime updated,
       FieldType type,
+      String name,
       bool system,
       bool required,
       bool unique,
-      Map<String, dynamic> options});
+      Collection collection,
+      @JsonExtra() Map<String, dynamic> extra});
+
+  @override
+  $CollectionCopyWith<$Res> get collection;
 }
 
 /// @nodoc
@@ -128,26 +185,37 @@ class __$$_FieldCopyWithImpl<$Res> extends _$FieldCopyWithImpl<$Res, _$_Field>
   @override
   $Res call({
     Object? id = null,
-    Object? name = null,
+    Object? created = null,
+    Object? updated = null,
     Object? type = null,
+    Object? name = null,
     Object? system = null,
     Object? required = null,
     Object? unique = null,
-    Object? options = null,
+    Object? collection = null,
+    Object? extra = null,
   }) {
     return _then(_$_Field(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
+      created: null == created
+          ? _value.created
+          : created // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      updated: null == updated
+          ? _value.updated
+          : updated // ignore: cast_nullable_to_non_nullable
+              as DateTime,
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as FieldType,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
       system: null == system
           ? _value.system
           : system // ignore: cast_nullable_to_non_nullable
@@ -160,9 +228,13 @@ class __$$_FieldCopyWithImpl<$Res> extends _$FieldCopyWithImpl<$Res, _$_Field>
           ? _value.unique
           : unique // ignore: cast_nullable_to_non_nullable
               as bool,
-      options: null == options
-          ? _value._options
-          : options // ignore: cast_nullable_to_non_nullable
+      collection: null == collection
+          ? _value.collection
+          : collection // ignore: cast_nullable_to_non_nullable
+              as Collection,
+      extra: null == extra
+          ? _value._extra
+          : extra // ignore: cast_nullable_to_non_nullable
               as Map<String, dynamic>,
     ));
   }
@@ -172,48 +244,73 @@ class __$$_FieldCopyWithImpl<$Res> extends _$FieldCopyWithImpl<$Res, _$_Field>
 @JsonSerializable()
 class _$_Field implements _Field {
   const _$_Field(
-      {this.id = '',
-      this.name = '',
-      this.type = FieldType.text,
-      this.system = false,
-      this.required = false,
-      this.unique = false,
-      final Map<String, dynamic> options = const {}})
-      : _options = options;
+      {required this.id,
+      required this.created,
+      required this.updated,
+      required this.type,
+      required this.name,
+      required this.system,
+      required this.required,
+      required this.unique,
+      required this.collection,
+      @JsonExtra() final Map<String, dynamic> extra = const {}})
+      : _extra = extra;
 
   factory _$_Field.fromJson(Map<String, dynamic> json) =>
       _$$_FieldFromJson(json);
 
+  /// [id] is unself unique identifier for the [Field].
   @override
-  @JsonKey()
   final String id;
+
+  /// [created] is the date and time when the [Field] was created inside unself app.
   @override
-  @JsonKey()
-  final String name;
+  final DateTime created;
+
+  /// [updated] is the date and time when the [Field] was last updated inside unself app.
   @override
-  @JsonKey()
+  final DateTime updated;
+
+  /// [type] is the data type of the [Field].
+  @override
   final FieldType type;
+
+  /// [name] is the name of the [Field].
   @override
-  @JsonKey()
+  final String name;
+
+  /// [system] is a flag that indicates if the [Field] is a system field.
+  @override
   final bool system;
+
+  /// [required] is a flag that indicates if the [Field] is required.
   @override
-  @JsonKey()
   final bool required;
+
+  /// [unique] is a flag that indicates if the [Field] must be unique.
   @override
-  @JsonKey()
   final bool unique;
-  final Map<String, dynamic> _options;
+
+  /// [collection] is the [Collection] that the [Field] belongs to.
+  @override
+  final Collection collection;
+
+  /// [extra] is a map of additional properties.
+  final Map<String, dynamic> _extra;
+
+  /// [extra] is a map of additional properties.
   @override
   @JsonKey()
-  Map<String, dynamic> get options {
-    if (_options is EqualUnmodifiableMapView) return _options;
+  @JsonExtra()
+  Map<String, dynamic> get extra {
+    if (_extra is EqualUnmodifiableMapView) return _extra;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(_options);
+    return EqualUnmodifiableMapView(_extra);
   }
 
   @override
   String toString() {
-    return 'Field(id: $id, name: $name, type: $type, system: $system, required: $required, unique: $unique, options: $options)';
+    return 'Field(id: $id, created: $created, updated: $updated, type: $type, name: $name, system: $system, required: $required, unique: $unique, collection: $collection, extra: $extra)';
   }
 
   @override
@@ -222,19 +319,33 @@ class _$_Field implements _Field {
         (other.runtimeType == runtimeType &&
             other is _$_Field &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.name, name) || other.name == name) &&
+            (identical(other.created, created) || other.created == created) &&
+            (identical(other.updated, updated) || other.updated == updated) &&
             (identical(other.type, type) || other.type == type) &&
+            (identical(other.name, name) || other.name == name) &&
             (identical(other.system, system) || other.system == system) &&
             (identical(other.required, required) ||
                 other.required == required) &&
             (identical(other.unique, unique) || other.unique == unique) &&
-            const DeepCollectionEquality().equals(other._options, _options));
+            (identical(other.collection, collection) ||
+                other.collection == collection) &&
+            const DeepCollectionEquality().equals(other._extra, _extra));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, type, system, required,
-      unique, const DeepCollectionEquality().hash(_options));
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      created,
+      updated,
+      type,
+      name,
+      system,
+      required,
+      unique,
+      collection,
+      const DeepCollectionEquality().hash(_extra));
 
   @JsonKey(ignore: true)
   @override
@@ -252,30 +363,60 @@ class _$_Field implements _Field {
 
 abstract class _Field implements Field {
   const factory _Field(
-      {final String id,
-      final String name,
-      final FieldType type,
-      final bool system,
-      final bool required,
-      final bool unique,
-      final Map<String, dynamic> options}) = _$_Field;
+      {required final String id,
+      required final DateTime created,
+      required final DateTime updated,
+      required final FieldType type,
+      required final String name,
+      required final bool system,
+      required final bool required,
+      required final bool unique,
+      required final Collection collection,
+      @JsonExtra() final Map<String, dynamic> extra}) = _$_Field;
 
   factory _Field.fromJson(Map<String, dynamic> json) = _$_Field.fromJson;
 
   @override
+
+  /// [id] is unself unique identifier for the [Field].
   String get id;
   @override
-  String get name;
+
+  /// [created] is the date and time when the [Field] was created inside unself app.
+  DateTime get created;
   @override
+
+  /// [updated] is the date and time when the [Field] was last updated inside unself app.
+  DateTime get updated;
+  @override
+
+  /// [type] is the data type of the [Field].
   FieldType get type;
   @override
+
+  /// [name] is the name of the [Field].
+  String get name;
+  @override
+
+  /// [system] is a flag that indicates if the [Field] is a system field.
   bool get system;
   @override
+
+  /// [required] is a flag that indicates if the [Field] is required.
   bool get required;
   @override
+
+  /// [unique] is a flag that indicates if the [Field] must be unique.
   bool get unique;
   @override
-  Map<String, dynamic> get options;
+
+  /// [collection] is the [Collection] that the [Field] belongs to.
+  Collection get collection;
+  @override
+
+  /// [extra] is a map of additional properties.
+  @JsonExtra()
+  Map<String, dynamic> get extra;
   @override
   @JsonKey(ignore: true)
   _$$_FieldCopyWith<_$_Field> get copyWith =>

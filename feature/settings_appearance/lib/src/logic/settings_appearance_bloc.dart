@@ -6,6 +6,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:unself_model/unself_model.dart';
 import 'package:unself_monitoring/unself_monitoring.dart';
 import 'package:unself_user/unself_user.dart';
+
 part 'settings_appearance_event.dart';
 part 'settings_appearance_state.dart';
 part 'settings_appearance_bloc.freezed.dart';

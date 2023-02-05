@@ -14,11 +14,24 @@ class $CollectionTable extends Collection
   late final GeneratedColumn<String> id = GeneratedColumn<String>(
       'id', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _createdMeta =
+      const VerificationMeta('created');
+  @override
+  late final GeneratedColumn<DateTime> created = GeneratedColumn<DateTime>(
+      'created', aliasedName, false,
+      type: DriftSqlType.dateTime, requiredDuringInsert: true);
+  static const VerificationMeta _updatedMeta =
+      const VerificationMeta('updated');
+  @override
+  late final GeneratedColumn<DateTime> updated = GeneratedColumn<DateTime>(
+      'updated', aliasedName, false,
+      type: DriftSqlType.dateTime, requiredDuringInsert: true);
   static const VerificationMeta _typeMeta = const VerificationMeta('type');
   @override
-  late final GeneratedColumn<String> type = GeneratedColumn<String>(
-      'type', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
+  late final GeneratedColumnWithTypeConverter<CollectionType, String> type =
+      GeneratedColumn<String>('type', aliasedName, false,
+              type: DriftSqlType.string, requiredDuringInsert: true)
+          .withConverter<CollectionType>($CollectionTable.$convertertype);
   static const VerificationMeta _nameMeta = const VerificationMeta('name');
   @override
   late final GeneratedColumn<String> name = GeneratedColumn<String>(
@@ -65,15 +78,16 @@ class $CollectionTable extends Collection
   late final GeneratedColumn<String> deleteRule = GeneratedColumn<String>(
       'delete_rule', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  static const VerificationMeta _optionsMeta =
-      const VerificationMeta('options');
+  static const VerificationMeta _extraMeta = const VerificationMeta('extra');
   @override
-  late final GeneratedColumn<String> options = GeneratedColumn<String>(
-      'options', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
+  late final GeneratedColumn<String> extra = GeneratedColumn<String>(
+      'extra', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
   @override
   List<GeneratedColumn> get $columns => [
         id,
+        created,
+        updated,
         type,
         name,
         system,
@@ -82,7 +96,7 @@ class $CollectionTable extends Collection
         createRule,
         updateRule,
         deleteRule,
-        options
+        extra
       ];
   @override
   String get aliasedName => _alias ?? 'collection';
@@ -98,12 +112,19 @@ class $CollectionTable extends Collection
     } else if (isInserting) {
       context.missing(_idMeta);
     }
-    if (data.containsKey('type')) {
-      context.handle(
-          _typeMeta, type.isAcceptableOrUnknown(data['type']!, _typeMeta));
+    if (data.containsKey('created')) {
+      context.handle(_createdMeta,
+          created.isAcceptableOrUnknown(data['created']!, _createdMeta));
     } else if (isInserting) {
-      context.missing(_typeMeta);
+      context.missing(_createdMeta);
     }
+    if (data.containsKey('updated')) {
+      context.handle(_updatedMeta,
+          updated.isAcceptableOrUnknown(data['updated']!, _updatedMeta));
+    } else if (isInserting) {
+      context.missing(_updatedMeta);
+    }
+    context.handle(_typeMeta, const VerificationResult.success());
     if (data.containsKey('name')) {
       context.handle(
           _nameMeta, name.isAcceptableOrUnknown(data['name']!, _nameMeta));
@@ -142,9 +163,11 @@ class $CollectionTable extends Collection
           deleteRule.isAcceptableOrUnknown(
               data['delete_rule']!, _deleteRuleMeta));
     }
-    if (data.containsKey('options')) {
-      context.handle(_optionsMeta,
-          options.isAcceptableOrUnknown(data['options']!, _optionsMeta));
+    if (data.containsKey('extra')) {
+      context.handle(
+          _extraMeta, extra.isAcceptableOrUnknown(data['extra']!, _extraMeta));
+    } else if (isInserting) {
+      context.missing(_extraMeta);
     }
     return context;
   }
@@ -157,8 +180,12 @@ class $CollectionTable extends Collection
     return CollectionData(
       id: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}id'])!,
-      type: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}type'])!,
+      created: attachedDatabase.typeMapping
+          .read(DriftSqlType.dateTime, data['${effectivePrefix}created'])!,
+      updated: attachedDatabase.typeMapping
+          .read(DriftSqlType.dateTime, data['${effectivePrefix}updated'])!,
+      type: $CollectionTable.$convertertype.fromSql(attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}type'])!),
       name: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}name'])!,
       system: attachedDatabase.typeMapping
@@ -173,8 +200,8 @@ class $CollectionTable extends Collection
           .read(DriftSqlType.string, data['${effectivePrefix}update_rule']),
       deleteRule: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}delete_rule']),
-      options: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}options']),
+      extra: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}extra'])!,
     );
   }
 
@@ -182,11 +209,16 @@ class $CollectionTable extends Collection
   $CollectionTable createAlias(String alias) {
     return $CollectionTable(attachedDatabase, alias);
   }
+
+  static JsonTypeConverter2<CollectionType, String, String> $convertertype =
+      const EnumNameConverter<CollectionType>(CollectionType.values);
 }
 
 class CollectionData extends DataClass implements Insertable<CollectionData> {
   final String id;
-  final String type;
+  final DateTime created;
+  final DateTime updated;
+  final CollectionType type;
   final String name;
   final bool system;
   final String? listRule;
@@ -194,9 +226,11 @@ class CollectionData extends DataClass implements Insertable<CollectionData> {
   final String? createRule;
   final String? updateRule;
   final String? deleteRule;
-  final String? options;
+  final String extra;
   const CollectionData(
       {required this.id,
+      required this.created,
+      required this.updated,
       required this.type,
       required this.name,
       required this.system,
@@ -205,12 +239,17 @@ class CollectionData extends DataClass implements Insertable<CollectionData> {
       this.createRule,
       this.updateRule,
       this.deleteRule,
-      this.options});
+      required this.extra});
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
     map['id'] = Variable<String>(id);
-    map['type'] = Variable<String>(type);
+    map['created'] = Variable<DateTime>(created);
+    map['updated'] = Variable<DateTime>(updated);
+    {
+      final converter = $CollectionTable.$convertertype;
+      map['type'] = Variable<String>(converter.toSql(type));
+    }
     map['name'] = Variable<String>(name);
     map['system'] = Variable<bool>(system);
     if (!nullToAbsent || listRule != null) {
@@ -228,15 +267,15 @@ class CollectionData extends DataClass implements Insertable<CollectionData> {
     if (!nullToAbsent || deleteRule != null) {
       map['delete_rule'] = Variable<String>(deleteRule);
     }
-    if (!nullToAbsent || options != null) {
-      map['options'] = Variable<String>(options);
-    }
+    map['extra'] = Variable<String>(extra);
     return map;
   }
 
   CollectionCompanion toCompanion(bool nullToAbsent) {
     return CollectionCompanion(
       id: Value(id),
+      created: Value(created),
+      updated: Value(updated),
       type: Value(type),
       name: Value(name),
       system: Value(system),
@@ -255,9 +294,7 @@ class CollectionData extends DataClass implements Insertable<CollectionData> {
       deleteRule: deleteRule == null && nullToAbsent
           ? const Value.absent()
           : Value(deleteRule),
-      options: options == null && nullToAbsent
-          ? const Value.absent()
-          : Value(options),
+      extra: Value(extra),
     );
   }
 
@@ -266,7 +303,10 @@ class CollectionData extends DataClass implements Insertable<CollectionData> {
     serializer ??= driftRuntimeOptions.defaultSerializer;
     return CollectionData(
       id: serializer.fromJson<String>(json['id']),
-      type: serializer.fromJson<String>(json['type']),
+      created: serializer.fromJson<DateTime>(json['created']),
+      updated: serializer.fromJson<DateTime>(json['updated']),
+      type: $CollectionTable.$convertertype
+          .fromJson(serializer.fromJson<String>(json['type'])),
       name: serializer.fromJson<String>(json['name']),
       system: serializer.fromJson<bool>(json['system']),
       listRule: serializer.fromJson<String?>(json['listRule']),
@@ -274,7 +314,7 @@ class CollectionData extends DataClass implements Insertable<CollectionData> {
       createRule: serializer.fromJson<String?>(json['createRule']),
       updateRule: serializer.fromJson<String?>(json['updateRule']),
       deleteRule: serializer.fromJson<String?>(json['deleteRule']),
-      options: serializer.fromJson<String?>(json['options']),
+      extra: serializer.fromJson<String>(json['extra']),
     );
   }
   @override
@@ -282,7 +322,10 @@ class CollectionData extends DataClass implements Insertable<CollectionData> {
     serializer ??= driftRuntimeOptions.defaultSerializer;
     return <String, dynamic>{
       'id': serializer.toJson<String>(id),
-      'type': serializer.toJson<String>(type),
+      'created': serializer.toJson<DateTime>(created),
+      'updated': serializer.toJson<DateTime>(updated),
+      'type': serializer
+          .toJson<String>($CollectionTable.$convertertype.toJson(type)),
       'name': serializer.toJson<String>(name),
       'system': serializer.toJson<bool>(system),
       'listRule': serializer.toJson<String?>(listRule),
@@ -290,13 +333,15 @@ class CollectionData extends DataClass implements Insertable<CollectionData> {
       'createRule': serializer.toJson<String?>(createRule),
       'updateRule': serializer.toJson<String?>(updateRule),
       'deleteRule': serializer.toJson<String?>(deleteRule),
-      'options': serializer.toJson<String?>(options),
+      'extra': serializer.toJson<String>(extra),
     };
   }
 
   CollectionData copyWith(
           {String? id,
-          String? type,
+          DateTime? created,
+          DateTime? updated,
+          CollectionType? type,
           String? name,
           bool? system,
           Value<String?> listRule = const Value.absent(),
@@ -304,9 +349,11 @@ class CollectionData extends DataClass implements Insertable<CollectionData> {
           Value<String?> createRule = const Value.absent(),
           Value<String?> updateRule = const Value.absent(),
           Value<String?> deleteRule = const Value.absent(),
-          Value<String?> options = const Value.absent()}) =>
+          String? extra}) =>
       CollectionData(
         id: id ?? this.id,
+        created: created ?? this.created,
+        updated: updated ?? this.updated,
         type: type ?? this.type,
         name: name ?? this.name,
         system: system ?? this.system,
@@ -315,12 +362,14 @@ class CollectionData extends DataClass implements Insertable<CollectionData> {
         createRule: createRule.present ? createRule.value : this.createRule,
         updateRule: updateRule.present ? updateRule.value : this.updateRule,
         deleteRule: deleteRule.present ? deleteRule.value : this.deleteRule,
-        options: options.present ? options.value : this.options,
+        extra: extra ?? this.extra,
       );
   @override
   String toString() {
     return (StringBuffer('CollectionData(')
           ..write('id: $id, ')
+          ..write('created: $created, ')
+          ..write('updated: $updated, ')
           ..write('type: $type, ')
           ..write('name: $name, ')
           ..write('system: $system, ')
@@ -329,19 +378,21 @@ class CollectionData extends DataClass implements Insertable<CollectionData> {
           ..write('createRule: $createRule, ')
           ..write('updateRule: $updateRule, ')
           ..write('deleteRule: $deleteRule, ')
-          ..write('options: $options')
+          ..write('extra: $extra')
           ..write(')'))
         .toString();
   }
 
   @override
-  int get hashCode => Object.hash(id, type, name, system, listRule, viewRule,
-      createRule, updateRule, deleteRule, options);
+  int get hashCode => Object.hash(id, created, updated, type, name, system,
+      listRule, viewRule, createRule, updateRule, deleteRule, extra);
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       (other is CollectionData &&
           other.id == this.id &&
+          other.created == this.created &&
+          other.updated == this.updated &&
           other.type == this.type &&
           other.name == this.name &&
           other.system == this.system &&
@@ -350,12 +401,14 @@ class CollectionData extends DataClass implements Insertable<CollectionData> {
           other.createRule == this.createRule &&
           other.updateRule == this.updateRule &&
           other.deleteRule == this.deleteRule &&
-          other.options == this.options);
+          other.extra == this.extra);
 }
 
 class CollectionCompanion extends UpdateCompanion<CollectionData> {
   final Value<String> id;
-  final Value<String> type;
+  final Value<DateTime> created;
+  final Value<DateTime> updated;
+  final Value<CollectionType> type;
   final Value<String> name;
   final Value<bool> system;
   final Value<String?> listRule;
@@ -363,9 +416,11 @@ class CollectionCompanion extends UpdateCompanion<CollectionData> {
   final Value<String?> createRule;
   final Value<String?> updateRule;
   final Value<String?> deleteRule;
-  final Value<String?> options;
+  final Value<String> extra;
   const CollectionCompanion({
     this.id = const Value.absent(),
+    this.created = const Value.absent(),
+    this.updated = const Value.absent(),
     this.type = const Value.absent(),
     this.name = const Value.absent(),
     this.system = const Value.absent(),
@@ -374,11 +429,13 @@ class CollectionCompanion extends UpdateCompanion<CollectionData> {
     this.createRule = const Value.absent(),
     this.updateRule = const Value.absent(),
     this.deleteRule = const Value.absent(),
-    this.options = const Value.absent(),
+    this.extra = const Value.absent(),
   });
   CollectionCompanion.insert({
     required String id,
-    required String type,
+    required DateTime created,
+    required DateTime updated,
+    required CollectionType type,
     required String name,
     required bool system,
     this.listRule = const Value.absent(),
@@ -386,13 +443,18 @@ class CollectionCompanion extends UpdateCompanion<CollectionData> {
     this.createRule = const Value.absent(),
     this.updateRule = const Value.absent(),
     this.deleteRule = const Value.absent(),
-    this.options = const Value.absent(),
+    required String extra,
   })  : id = Value(id),
+        created = Value(created),
+        updated = Value(updated),
         type = Value(type),
         name = Value(name),
-        system = Value(system);
+        system = Value(system),
+        extra = Value(extra);
   static Insertable<CollectionData> custom({
     Expression<String>? id,
+    Expression<DateTime>? created,
+    Expression<DateTime>? updated,
     Expression<String>? type,
     Expression<String>? name,
     Expression<bool>? system,
@@ -401,10 +463,12 @@ class CollectionCompanion extends UpdateCompanion<CollectionData> {
     Expression<String>? createRule,
     Expression<String>? updateRule,
     Expression<String>? deleteRule,
-    Expression<String>? options,
+    Expression<String>? extra,
   }) {
     return RawValuesInsertable({
       if (id != null) 'id': id,
+      if (created != null) 'created': created,
+      if (updated != null) 'updated': updated,
       if (type != null) 'type': type,
       if (name != null) 'name': name,
       if (system != null) 'system': system,
@@ -413,13 +477,15 @@ class CollectionCompanion extends UpdateCompanion<CollectionData> {
       if (createRule != null) 'create_rule': createRule,
       if (updateRule != null) 'update_rule': updateRule,
       if (deleteRule != null) 'delete_rule': deleteRule,
-      if (options != null) 'options': options,
+      if (extra != null) 'extra': extra,
     });
   }
 
   CollectionCompanion copyWith(
       {Value<String>? id,
-      Value<String>? type,
+      Value<DateTime>? created,
+      Value<DateTime>? updated,
+      Value<CollectionType>? type,
       Value<String>? name,
       Value<bool>? system,
       Value<String?>? listRule,
@@ -427,9 +493,11 @@ class CollectionCompanion extends UpdateCompanion<CollectionData> {
       Value<String?>? createRule,
       Value<String?>? updateRule,
       Value<String?>? deleteRule,
-      Value<String?>? options}) {
+      Value<String>? extra}) {
     return CollectionCompanion(
       id: id ?? this.id,
+      created: created ?? this.created,
+      updated: updated ?? this.updated,
       type: type ?? this.type,
       name: name ?? this.name,
       system: system ?? this.system,
@@ -438,7 +506,7 @@ class CollectionCompanion extends UpdateCompanion<CollectionData> {
       createRule: createRule ?? this.createRule,
       updateRule: updateRule ?? this.updateRule,
       deleteRule: deleteRule ?? this.deleteRule,
-      options: options ?? this.options,
+      extra: extra ?? this.extra,
     );
   }
 
@@ -448,8 +516,15 @@ class CollectionCompanion extends UpdateCompanion<CollectionData> {
     if (id.present) {
       map['id'] = Variable<String>(id.value);
     }
+    if (created.present) {
+      map['created'] = Variable<DateTime>(created.value);
+    }
+    if (updated.present) {
+      map['updated'] = Variable<DateTime>(updated.value);
+    }
     if (type.present) {
-      map['type'] = Variable<String>(type.value);
+      final converter = $CollectionTable.$convertertype;
+      map['type'] = Variable<String>(converter.toSql(type.value));
     }
     if (name.present) {
       map['name'] = Variable<String>(name.value);
@@ -472,8 +547,8 @@ class CollectionCompanion extends UpdateCompanion<CollectionData> {
     if (deleteRule.present) {
       map['delete_rule'] = Variable<String>(deleteRule.value);
     }
-    if (options.present) {
-      map['options'] = Variable<String>(options.value);
+    if (extra.present) {
+      map['extra'] = Variable<String>(extra.value);
     }
     return map;
   }
@@ -482,6 +557,8 @@ class CollectionCompanion extends UpdateCompanion<CollectionData> {
   String toString() {
     return (StringBuffer('CollectionCompanion(')
           ..write('id: $id, ')
+          ..write('created: $created, ')
+          ..write('updated: $updated, ')
           ..write('type: $type, ')
           ..write('name: $name, ')
           ..write('system: $system, ')
@@ -490,7 +567,7 @@ class CollectionCompanion extends UpdateCompanion<CollectionData> {
           ..write('createRule: $createRule, ')
           ..write('updateRule: $updateRule, ')
           ..write('deleteRule: $deleteRule, ')
-          ..write('options: $options')
+          ..write('extra: $extra')
           ..write(')'))
         .toString();
   }
@@ -506,17 +583,29 @@ class $FieldTable extends Field with TableInfo<$FieldTable, FieldData> {
   late final GeneratedColumn<String> id = GeneratedColumn<String>(
       'id', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  static const VerificationMeta _nameMeta = const VerificationMeta('name');
+  static const VerificationMeta _createdMeta =
+      const VerificationMeta('created');
   @override
-  late final GeneratedColumn<String> name = GeneratedColumn<String>(
-      'name', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
+  late final GeneratedColumn<DateTime> created = GeneratedColumn<DateTime>(
+      'created', aliasedName, false,
+      type: DriftSqlType.dateTime, requiredDuringInsert: true);
+  static const VerificationMeta _updatedMeta =
+      const VerificationMeta('updated');
+  @override
+  late final GeneratedColumn<DateTime> updated = GeneratedColumn<DateTime>(
+      'updated', aliasedName, false,
+      type: DriftSqlType.dateTime, requiredDuringInsert: true);
   static const VerificationMeta _typeMeta = const VerificationMeta('type');
   @override
   late final GeneratedColumnWithTypeConverter<FieldType, String> type =
       GeneratedColumn<String>('type', aliasedName, false,
               type: DriftSqlType.string, requiredDuringInsert: true)
           .withConverter<FieldType>($FieldTable.$convertertype);
+  static const VerificationMeta _nameMeta = const VerificationMeta('name');
+  @override
+  late final GeneratedColumn<String> name = GeneratedColumn<String>(
+      'name', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
   static const VerificationMeta _systemMeta = const VerificationMeta('system');
   @override
   late final GeneratedColumn<bool> system =
@@ -551,12 +640,6 @@ class $FieldTable extends Field with TableInfo<$FieldTable, FieldData> {
             SqlDialect.mysql: '',
             SqlDialect.postgres: '',
           }));
-  static const VerificationMeta _optionsMeta =
-      const VerificationMeta('options');
-  @override
-  late final GeneratedColumn<String> options = GeneratedColumn<String>(
-      'options', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
   static const VerificationMeta _collectionIdMeta =
       const VerificationMeta('collectionId');
   @override
@@ -566,9 +649,24 @@ class $FieldTable extends Field with TableInfo<$FieldTable, FieldData> {
       requiredDuringInsert: true,
       defaultConstraints:
           GeneratedColumn.constraintIsAlways('REFERENCES collection (id)'));
+  static const VerificationMeta _extraMeta = const VerificationMeta('extra');
   @override
-  List<GeneratedColumn> get $columns =>
-      [id, name, type, system, required, unique, options, collectionId];
+  late final GeneratedColumn<String> extra = GeneratedColumn<String>(
+      'extra', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  @override
+  List<GeneratedColumn> get $columns => [
+        id,
+        created,
+        updated,
+        type,
+        name,
+        system,
+        required,
+        unique,
+        collectionId,
+        extra
+      ];
   @override
   String get aliasedName => _alias ?? 'field';
   @override
@@ -583,13 +681,25 @@ class $FieldTable extends Field with TableInfo<$FieldTable, FieldData> {
     } else if (isInserting) {
       context.missing(_idMeta);
     }
+    if (data.containsKey('created')) {
+      context.handle(_createdMeta,
+          created.isAcceptableOrUnknown(data['created']!, _createdMeta));
+    } else if (isInserting) {
+      context.missing(_createdMeta);
+    }
+    if (data.containsKey('updated')) {
+      context.handle(_updatedMeta,
+          updated.isAcceptableOrUnknown(data['updated']!, _updatedMeta));
+    } else if (isInserting) {
+      context.missing(_updatedMeta);
+    }
+    context.handle(_typeMeta, const VerificationResult.success());
     if (data.containsKey('name')) {
       context.handle(
           _nameMeta, name.isAcceptableOrUnknown(data['name']!, _nameMeta));
     } else if (isInserting) {
       context.missing(_nameMeta);
     }
-    context.handle(_typeMeta, const VerificationResult.success());
     if (data.containsKey('system')) {
       context.handle(_systemMeta,
           system.isAcceptableOrUnknown(data['system']!, _systemMeta));
@@ -608,10 +718,6 @@ class $FieldTable extends Field with TableInfo<$FieldTable, FieldData> {
     } else if (isInserting) {
       context.missing(_uniqueMeta);
     }
-    if (data.containsKey('options')) {
-      context.handle(_optionsMeta,
-          options.isAcceptableOrUnknown(data['options']!, _optionsMeta));
-    }
     if (data.containsKey('collection_id')) {
       context.handle(
           _collectionIdMeta,
@@ -619,6 +725,12 @@ class $FieldTable extends Field with TableInfo<$FieldTable, FieldData> {
               data['collection_id']!, _collectionIdMeta));
     } else if (isInserting) {
       context.missing(_collectionIdMeta);
+    }
+    if (data.containsKey('extra')) {
+      context.handle(
+          _extraMeta, extra.isAcceptableOrUnknown(data['extra']!, _extraMeta));
+    } else if (isInserting) {
+      context.missing(_extraMeta);
     }
     return context;
   }
@@ -631,20 +743,24 @@ class $FieldTable extends Field with TableInfo<$FieldTable, FieldData> {
     return FieldData(
       id: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}id'])!,
-      name: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}name'])!,
+      created: attachedDatabase.typeMapping
+          .read(DriftSqlType.dateTime, data['${effectivePrefix}created'])!,
+      updated: attachedDatabase.typeMapping
+          .read(DriftSqlType.dateTime, data['${effectivePrefix}updated'])!,
       type: $FieldTable.$convertertype.fromSql(attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}type'])!),
+      name: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}name'])!,
       system: attachedDatabase.typeMapping
           .read(DriftSqlType.bool, data['${effectivePrefix}system'])!,
       required: attachedDatabase.typeMapping
           .read(DriftSqlType.bool, data['${effectivePrefix}required'])!,
       unique: attachedDatabase.typeMapping
           .read(DriftSqlType.bool, data['${effectivePrefix}unique'])!,
-      options: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}options']),
       collectionId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}collection_id'])!,
+      extra: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}extra'])!,
     );
   }
 
@@ -659,53 +775,57 @@ class $FieldTable extends Field with TableInfo<$FieldTable, FieldData> {
 
 class FieldData extends DataClass implements Insertable<FieldData> {
   final String id;
-  final String name;
+  final DateTime created;
+  final DateTime updated;
   final FieldType type;
+  final String name;
   final bool system;
   final bool required;
   final bool unique;
-  final String? options;
   final String collectionId;
+  final String extra;
   const FieldData(
       {required this.id,
-      required this.name,
+      required this.created,
+      required this.updated,
       required this.type,
+      required this.name,
       required this.system,
       required this.required,
       required this.unique,
-      this.options,
-      required this.collectionId});
+      required this.collectionId,
+      required this.extra});
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
     map['id'] = Variable<String>(id);
-    map['name'] = Variable<String>(name);
+    map['created'] = Variable<DateTime>(created);
+    map['updated'] = Variable<DateTime>(updated);
     {
       final converter = $FieldTable.$convertertype;
       map['type'] = Variable<String>(converter.toSql(type));
     }
+    map['name'] = Variable<String>(name);
     map['system'] = Variable<bool>(system);
     map['required'] = Variable<bool>(required);
     map['unique'] = Variable<bool>(unique);
-    if (!nullToAbsent || options != null) {
-      map['options'] = Variable<String>(options);
-    }
     map['collection_id'] = Variable<String>(collectionId);
+    map['extra'] = Variable<String>(extra);
     return map;
   }
 
   FieldCompanion toCompanion(bool nullToAbsent) {
     return FieldCompanion(
       id: Value(id),
-      name: Value(name),
+      created: Value(created),
+      updated: Value(updated),
       type: Value(type),
+      name: Value(name),
       system: Value(system),
       required: Value(required),
       unique: Value(unique),
-      options: options == null && nullToAbsent
-          ? const Value.absent()
-          : Value(options),
       collectionId: Value(collectionId),
+      extra: Value(extra),
     );
   }
 
@@ -714,14 +834,16 @@ class FieldData extends DataClass implements Insertable<FieldData> {
     serializer ??= driftRuntimeOptions.defaultSerializer;
     return FieldData(
       id: serializer.fromJson<String>(json['id']),
-      name: serializer.fromJson<String>(json['name']),
+      created: serializer.fromJson<DateTime>(json['created']),
+      updated: serializer.fromJson<DateTime>(json['updated']),
       type: $FieldTable.$convertertype
           .fromJson(serializer.fromJson<String>(json['type'])),
+      name: serializer.fromJson<String>(json['name']),
       system: serializer.fromJson<bool>(json['system']),
       required: serializer.fromJson<bool>(json['required']),
       unique: serializer.fromJson<bool>(json['unique']),
-      options: serializer.fromJson<String?>(json['options']),
       collectionId: serializer.fromJson<String>(json['collectionId']),
+      extra: serializer.fromJson<String>(json['extra']),
     );
   }
   @override
@@ -729,143 +851,170 @@ class FieldData extends DataClass implements Insertable<FieldData> {
     serializer ??= driftRuntimeOptions.defaultSerializer;
     return <String, dynamic>{
       'id': serializer.toJson<String>(id),
-      'name': serializer.toJson<String>(name),
+      'created': serializer.toJson<DateTime>(created),
+      'updated': serializer.toJson<DateTime>(updated),
       'type':
           serializer.toJson<String>($FieldTable.$convertertype.toJson(type)),
+      'name': serializer.toJson<String>(name),
       'system': serializer.toJson<bool>(system),
       'required': serializer.toJson<bool>(required),
       'unique': serializer.toJson<bool>(unique),
-      'options': serializer.toJson<String?>(options),
       'collectionId': serializer.toJson<String>(collectionId),
+      'extra': serializer.toJson<String>(extra),
     };
   }
 
   FieldData copyWith(
           {String? id,
-          String? name,
+          DateTime? created,
+          DateTime? updated,
           FieldType? type,
+          String? name,
           bool? system,
           bool? required,
           bool? unique,
-          Value<String?> options = const Value.absent(),
-          String? collectionId}) =>
+          String? collectionId,
+          String? extra}) =>
       FieldData(
         id: id ?? this.id,
-        name: name ?? this.name,
+        created: created ?? this.created,
+        updated: updated ?? this.updated,
         type: type ?? this.type,
+        name: name ?? this.name,
         system: system ?? this.system,
         required: required ?? this.required,
         unique: unique ?? this.unique,
-        options: options.present ? options.value : this.options,
         collectionId: collectionId ?? this.collectionId,
+        extra: extra ?? this.extra,
       );
   @override
   String toString() {
     return (StringBuffer('FieldData(')
           ..write('id: $id, ')
-          ..write('name: $name, ')
+          ..write('created: $created, ')
+          ..write('updated: $updated, ')
           ..write('type: $type, ')
+          ..write('name: $name, ')
           ..write('system: $system, ')
           ..write('required: $required, ')
           ..write('unique: $unique, ')
-          ..write('options: $options, ')
-          ..write('collectionId: $collectionId')
+          ..write('collectionId: $collectionId, ')
+          ..write('extra: $extra')
           ..write(')'))
         .toString();
   }
 
   @override
-  int get hashCode => Object.hash(
-      id, name, type, system, required, unique, options, collectionId);
+  int get hashCode => Object.hash(id, created, updated, type, name, system,
+      required, unique, collectionId, extra);
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       (other is FieldData &&
           other.id == this.id &&
-          other.name == this.name &&
+          other.created == this.created &&
+          other.updated == this.updated &&
           other.type == this.type &&
+          other.name == this.name &&
           other.system == this.system &&
           other.required == this.required &&
           other.unique == this.unique &&
-          other.options == this.options &&
-          other.collectionId == this.collectionId);
+          other.collectionId == this.collectionId &&
+          other.extra == this.extra);
 }
 
 class FieldCompanion extends UpdateCompanion<FieldData> {
   final Value<String> id;
-  final Value<String> name;
+  final Value<DateTime> created;
+  final Value<DateTime> updated;
   final Value<FieldType> type;
+  final Value<String> name;
   final Value<bool> system;
   final Value<bool> required;
   final Value<bool> unique;
-  final Value<String?> options;
   final Value<String> collectionId;
+  final Value<String> extra;
   const FieldCompanion({
     this.id = const Value.absent(),
-    this.name = const Value.absent(),
+    this.created = const Value.absent(),
+    this.updated = const Value.absent(),
     this.type = const Value.absent(),
+    this.name = const Value.absent(),
     this.system = const Value.absent(),
     this.required = const Value.absent(),
     this.unique = const Value.absent(),
-    this.options = const Value.absent(),
     this.collectionId = const Value.absent(),
+    this.extra = const Value.absent(),
   });
   FieldCompanion.insert({
     required String id,
-    required String name,
+    required DateTime created,
+    required DateTime updated,
     required FieldType type,
+    required String name,
     required bool system,
     required bool required,
     required bool unique,
-    this.options = const Value.absent(),
     required String collectionId,
+    required String extra,
   })  : id = Value(id),
-        name = Value(name),
+        created = Value(created),
+        updated = Value(updated),
         type = Value(type),
+        name = Value(name),
         system = Value(system),
         required = Value(required),
         unique = Value(unique),
-        collectionId = Value(collectionId);
+        collectionId = Value(collectionId),
+        extra = Value(extra);
   static Insertable<FieldData> custom({
     Expression<String>? id,
-    Expression<String>? name,
+    Expression<DateTime>? created,
+    Expression<DateTime>? updated,
     Expression<String>? type,
+    Expression<String>? name,
     Expression<bool>? system,
     Expression<bool>? required,
     Expression<bool>? unique,
-    Expression<String>? options,
     Expression<String>? collectionId,
+    Expression<String>? extra,
   }) {
     return RawValuesInsertable({
       if (id != null) 'id': id,
-      if (name != null) 'name': name,
+      if (created != null) 'created': created,
+      if (updated != null) 'updated': updated,
       if (type != null) 'type': type,
+      if (name != null) 'name': name,
       if (system != null) 'system': system,
       if (required != null) 'required': required,
       if (unique != null) 'unique': unique,
-      if (options != null) 'options': options,
       if (collectionId != null) 'collection_id': collectionId,
+      if (extra != null) 'extra': extra,
     });
   }
 
   FieldCompanion copyWith(
       {Value<String>? id,
-      Value<String>? name,
+      Value<DateTime>? created,
+      Value<DateTime>? updated,
       Value<FieldType>? type,
+      Value<String>? name,
       Value<bool>? system,
       Value<bool>? required,
       Value<bool>? unique,
-      Value<String?>? options,
-      Value<String>? collectionId}) {
+      Value<String>? collectionId,
+      Value<String>? extra}) {
     return FieldCompanion(
       id: id ?? this.id,
-      name: name ?? this.name,
+      created: created ?? this.created,
+      updated: updated ?? this.updated,
       type: type ?? this.type,
+      name: name ?? this.name,
       system: system ?? this.system,
       required: required ?? this.required,
       unique: unique ?? this.unique,
-      options: options ?? this.options,
       collectionId: collectionId ?? this.collectionId,
+      extra: extra ?? this.extra,
     );
   }
 
@@ -875,12 +1024,18 @@ class FieldCompanion extends UpdateCompanion<FieldData> {
     if (id.present) {
       map['id'] = Variable<String>(id.value);
     }
-    if (name.present) {
-      map['name'] = Variable<String>(name.value);
+    if (created.present) {
+      map['created'] = Variable<DateTime>(created.value);
+    }
+    if (updated.present) {
+      map['updated'] = Variable<DateTime>(updated.value);
     }
     if (type.present) {
       final converter = $FieldTable.$convertertype;
       map['type'] = Variable<String>(converter.toSql(type.value));
+    }
+    if (name.present) {
+      map['name'] = Variable<String>(name.value);
     }
     if (system.present) {
       map['system'] = Variable<bool>(system.value);
@@ -891,11 +1046,11 @@ class FieldCompanion extends UpdateCompanion<FieldData> {
     if (unique.present) {
       map['unique'] = Variable<bool>(unique.value);
     }
-    if (options.present) {
-      map['options'] = Variable<String>(options.value);
-    }
     if (collectionId.present) {
       map['collection_id'] = Variable<String>(collectionId.value);
+    }
+    if (extra.present) {
+      map['extra'] = Variable<String>(extra.value);
     }
     return map;
   }
@@ -904,13 +1059,15 @@ class FieldCompanion extends UpdateCompanion<FieldData> {
   String toString() {
     return (StringBuffer('FieldCompanion(')
           ..write('id: $id, ')
-          ..write('name: $name, ')
+          ..write('created: $created, ')
+          ..write('updated: $updated, ')
           ..write('type: $type, ')
+          ..write('name: $name, ')
           ..write('system: $system, ')
           ..write('required: $required, ')
           ..write('unique: $unique, ')
-          ..write('options: $options, ')
-          ..write('collectionId: $collectionId')
+          ..write('collectionId: $collectionId, ')
+          ..write('extra: $extra')
           ..write(')'))
         .toString();
   }

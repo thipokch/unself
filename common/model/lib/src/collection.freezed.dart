@@ -20,19 +20,43 @@ Collection _$CollectionFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Collection {
+  /// [id] is unself unique identifier for the [Collection].
   String get id => throw _privateConstructorUsedError;
-  String get type =>
-      throw _privateConstructorUsedError; // @Default('') DateTime created,
-// @Default('') DateTime updated,
+
+  /// [created] is the date and time when the [Collection] was created inside unself app.
+  DateTime get created => throw _privateConstructorUsedError;
+
+  /// [updated] is the date and time when the [Collection] was last updated inside unself app.
+  DateTime get updated => throw _privateConstructorUsedError;
+
+  /// [type] is the type of the [Collection].
+  CollectionType get type => throw _privateConstructorUsedError;
+
+  /// [name] is the name of the [Collection].
   String get name => throw _privateConstructorUsedError;
-  bool get system => throw _privateConstructorUsedError;
+
+  /// [system] is a flag that indicates if the [Collection] is a system collection.
+  bool get system =>
+      throw _privateConstructorUsedError; // TODO: Review dart package for rules (https://github.com/appsup-dart/expressions)
+  /// [listRule] is the rule that determines if the user can list the [Collection].
   String? get listRule => throw _privateConstructorUsedError;
+
+  /// [viewRule] is the rule that determines if the user can view the [Collection].
   String? get viewRule => throw _privateConstructorUsedError;
+
+  /// [createRule] is the rule that determines if the user can create the [Collection].
   String? get createRule => throw _privateConstructorUsedError;
+
+  /// [updateRule] is the rule that determines if the user can update the [Collection].
   String? get updateRule => throw _privateConstructorUsedError;
-  String? get deleteRule => throw _privateConstructorUsedError;
-  List<Field> get schema => throw _privateConstructorUsedError;
-  Map<String, dynamic> get options => throw _privateConstructorUsedError;
+
+  /// [deleteRule] is the rule that determines if the user can delete the [Collection].
+  String? get deleteRule =>
+      throw _privateConstructorUsedError; //  /// [schema] is list fields for the [Collection].
+// @Default([]) List<Field> schema,
+  /// [extra] is a map of additional properties.
+  @JsonExtra()
+  Map<String, dynamic> get extra => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -48,7 +72,9 @@ abstract class $CollectionCopyWith<$Res> {
   @useResult
   $Res call(
       {String id,
-      String type,
+      DateTime created,
+      DateTime updated,
+      CollectionType type,
       String name,
       bool system,
       String? listRule,
@@ -56,8 +82,7 @@ abstract class $CollectionCopyWith<$Res> {
       String? createRule,
       String? updateRule,
       String? deleteRule,
-      List<Field> schema,
-      Map<String, dynamic> options});
+      @JsonExtra() Map<String, dynamic> extra});
 }
 
 /// @nodoc
@@ -74,6 +99,8 @@ class _$CollectionCopyWithImpl<$Res, $Val extends Collection>
   @override
   $Res call({
     Object? id = null,
+    Object? created = null,
+    Object? updated = null,
     Object? type = null,
     Object? name = null,
     Object? system = null,
@@ -82,18 +109,25 @@ class _$CollectionCopyWithImpl<$Res, $Val extends Collection>
     Object? createRule = freezed,
     Object? updateRule = freezed,
     Object? deleteRule = freezed,
-    Object? schema = null,
-    Object? options = null,
+    Object? extra = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
+      created: null == created
+          ? _value.created
+          : created // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      updated: null == updated
+          ? _value.updated
+          : updated // ignore: cast_nullable_to_non_nullable
+              as DateTime,
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as String,
+              as CollectionType,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -122,13 +156,9 @@ class _$CollectionCopyWithImpl<$Res, $Val extends Collection>
           ? _value.deleteRule
           : deleteRule // ignore: cast_nullable_to_non_nullable
               as String?,
-      schema: null == schema
-          ? _value.schema
-          : schema // ignore: cast_nullable_to_non_nullable
-              as List<Field>,
-      options: null == options
-          ? _value.options
-          : options // ignore: cast_nullable_to_non_nullable
+      extra: null == extra
+          ? _value.extra
+          : extra // ignore: cast_nullable_to_non_nullable
               as Map<String, dynamic>,
     ) as $Val);
   }
@@ -144,7 +174,9 @@ abstract class _$$_CollectionCopyWith<$Res>
   @useResult
   $Res call(
       {String id,
-      String type,
+      DateTime created,
+      DateTime updated,
+      CollectionType type,
       String name,
       bool system,
       String? listRule,
@@ -152,8 +184,7 @@ abstract class _$$_CollectionCopyWith<$Res>
       String? createRule,
       String? updateRule,
       String? deleteRule,
-      List<Field> schema,
-      Map<String, dynamic> options});
+      @JsonExtra() Map<String, dynamic> extra});
 }
 
 /// @nodoc
@@ -168,6 +199,8 @@ class __$$_CollectionCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
+    Object? created = null,
+    Object? updated = null,
     Object? type = null,
     Object? name = null,
     Object? system = null,
@@ -176,18 +209,25 @@ class __$$_CollectionCopyWithImpl<$Res>
     Object? createRule = freezed,
     Object? updateRule = freezed,
     Object? deleteRule = freezed,
-    Object? schema = null,
-    Object? options = null,
+    Object? extra = null,
   }) {
     return _then(_$_Collection(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
+      created: null == created
+          ? _value.created
+          : created // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      updated: null == updated
+          ? _value.updated
+          : updated // ignore: cast_nullable_to_non_nullable
+              as DateTime,
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as String,
+              as CollectionType,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -216,13 +256,9 @@ class __$$_CollectionCopyWithImpl<$Res>
           ? _value.deleteRule
           : deleteRule // ignore: cast_nullable_to_non_nullable
               as String?,
-      schema: null == schema
-          ? _value._schema
-          : schema // ignore: cast_nullable_to_non_nullable
-              as List<Field>,
-      options: null == options
-          ? _value._options
-          : options // ignore: cast_nullable_to_non_nullable
+      extra: null == extra
+          ? _value._extra
+          : extra // ignore: cast_nullable_to_non_nullable
               as Map<String, dynamic>,
     ));
   }
@@ -232,8 +268,10 @@ class __$$_CollectionCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_Collection implements _Collection {
   const _$_Collection(
-      {this.id = '',
-      this.type = '',
+      {required this.id,
+      required this.created,
+      required this.updated,
+      required this.type,
       this.name = '',
       this.system = false,
       this.listRule,
@@ -241,59 +279,76 @@ class _$_Collection implements _Collection {
       this.createRule,
       this.updateRule,
       this.deleteRule,
-      final List<Field> schema = const [],
-      final Map<String, dynamic> options = const {}})
-      : _schema = schema,
-        _options = options;
+      @JsonExtra() final Map<String, dynamic> extra = const {}})
+      : _extra = extra;
 
   factory _$_Collection.fromJson(Map<String, dynamic> json) =>
       _$$_CollectionFromJson(json);
 
+  /// [id] is unself unique identifier for the [Collection].
   @override
-  @JsonKey()
   final String id;
+
+  /// [created] is the date and time when the [Collection] was created inside unself app.
   @override
-  @JsonKey()
-  final String type;
-// @Default('') DateTime created,
-// @Default('') DateTime updated,
+  final DateTime created;
+
+  /// [updated] is the date and time when the [Collection] was last updated inside unself app.
+  @override
+  final DateTime updated;
+
+  /// [type] is the type of the [Collection].
+  @override
+  final CollectionType type;
+
+  /// [name] is the name of the [Collection].
   @override
   @JsonKey()
   final String name;
+
+  /// [system] is a flag that indicates if the [Collection] is a system collection.
   @override
   @JsonKey()
   final bool system;
+// TODO: Review dart package for rules (https://github.com/appsup-dart/expressions)
+  /// [listRule] is the rule that determines if the user can list the [Collection].
   @override
   final String? listRule;
+
+  /// [viewRule] is the rule that determines if the user can view the [Collection].
   @override
   final String? viewRule;
+
+  /// [createRule] is the rule that determines if the user can create the [Collection].
   @override
   final String? createRule;
+
+  /// [updateRule] is the rule that determines if the user can update the [Collection].
   @override
   final String? updateRule;
+
+  /// [deleteRule] is the rule that determines if the user can delete the [Collection].
   @override
   final String? deleteRule;
-  final List<Field> _schema;
+//  /// [schema] is list fields for the [Collection].
+// @Default([]) List<Field> schema,
+  /// [extra] is a map of additional properties.
+  final Map<String, dynamic> _extra;
+//  /// [schema] is list fields for the [Collection].
+// @Default([]) List<Field> schema,
+  /// [extra] is a map of additional properties.
   @override
   @JsonKey()
-  List<Field> get schema {
-    if (_schema is EqualUnmodifiableListView) return _schema;
+  @JsonExtra()
+  Map<String, dynamic> get extra {
+    if (_extra is EqualUnmodifiableMapView) return _extra;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_schema);
-  }
-
-  final Map<String, dynamic> _options;
-  @override
-  @JsonKey()
-  Map<String, dynamic> get options {
-    if (_options is EqualUnmodifiableMapView) return _options;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(_options);
+    return EqualUnmodifiableMapView(_extra);
   }
 
   @override
   String toString() {
-    return 'Collection(id: $id, type: $type, name: $name, system: $system, listRule: $listRule, viewRule: $viewRule, createRule: $createRule, updateRule: $updateRule, deleteRule: $deleteRule, schema: $schema, options: $options)';
+    return 'Collection(id: $id, created: $created, updated: $updated, type: $type, name: $name, system: $system, listRule: $listRule, viewRule: $viewRule, createRule: $createRule, updateRule: $updateRule, deleteRule: $deleteRule, extra: $extra)';
   }
 
   @override
@@ -302,6 +357,8 @@ class _$_Collection implements _Collection {
         (other.runtimeType == runtimeType &&
             other is _$_Collection &&
             (identical(other.id, id) || other.id == id) &&
+            (identical(other.created, created) || other.created == created) &&
+            (identical(other.updated, updated) || other.updated == updated) &&
             (identical(other.type, type) || other.type == type) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.system, system) || other.system == system) &&
@@ -315,8 +372,7 @@ class _$_Collection implements _Collection {
                 other.updateRule == updateRule) &&
             (identical(other.deleteRule, deleteRule) ||
                 other.deleteRule == deleteRule) &&
-            const DeepCollectionEquality().equals(other._schema, _schema) &&
-            const DeepCollectionEquality().equals(other._options, _options));
+            const DeepCollectionEquality().equals(other._extra, _extra));
   }
 
   @JsonKey(ignore: true)
@@ -324,6 +380,8 @@ class _$_Collection implements _Collection {
   int get hashCode => Object.hash(
       runtimeType,
       id,
+      created,
+      updated,
       type,
       name,
       system,
@@ -332,8 +390,7 @@ class _$_Collection implements _Collection {
       createRule,
       updateRule,
       deleteRule,
-      const DeepCollectionEquality().hash(_schema),
-      const DeepCollectionEquality().hash(_options));
+      const DeepCollectionEquality().hash(_extra));
 
   @JsonKey(ignore: true)
   @override
@@ -351,8 +408,10 @@ class _$_Collection implements _Collection {
 
 abstract class _Collection implements Collection {
   const factory _Collection(
-      {final String id,
-      final String type,
+      {required final String id,
+      required final DateTime created,
+      required final DateTime updated,
+      required final CollectionType type,
       final String name,
       final bool system,
       final String? listRule,
@@ -360,35 +419,59 @@ abstract class _Collection implements Collection {
       final String? createRule,
       final String? updateRule,
       final String? deleteRule,
-      final List<Field> schema,
-      final Map<String, dynamic> options}) = _$_Collection;
+      @JsonExtra() final Map<String, dynamic> extra}) = _$_Collection;
 
   factory _Collection.fromJson(Map<String, dynamic> json) =
       _$_Collection.fromJson;
 
   @override
+
+  /// [id] is unself unique identifier for the [Collection].
   String get id;
   @override
-  String get type;
-  @override // @Default('') DateTime created,
-// @Default('') DateTime updated,
+
+  /// [created] is the date and time when the [Collection] was created inside unself app.
+  DateTime get created;
+  @override
+
+  /// [updated] is the date and time when the [Collection] was last updated inside unself app.
+  DateTime get updated;
+  @override
+
+  /// [type] is the type of the [Collection].
+  CollectionType get type;
+  @override
+
+  /// [name] is the name of the [Collection].
   String get name;
   @override
+
+  /// [system] is a flag that indicates if the [Collection] is a system collection.
   bool get system;
-  @override
+  @override // TODO: Review dart package for rules (https://github.com/appsup-dart/expressions)
+  /// [listRule] is the rule that determines if the user can list the [Collection].
   String? get listRule;
   @override
+
+  /// [viewRule] is the rule that determines if the user can view the [Collection].
   String? get viewRule;
   @override
+
+  /// [createRule] is the rule that determines if the user can create the [Collection].
   String? get createRule;
   @override
+
+  /// [updateRule] is the rule that determines if the user can update the [Collection].
   String? get updateRule;
   @override
+
+  /// [deleteRule] is the rule that determines if the user can delete the [Collection].
   String? get deleteRule;
-  @override
-  List<Field> get schema;
-  @override
-  Map<String, dynamic> get options;
+  @override //  /// [schema] is list fields for the [Collection].
+// @Default([]) List<Field> schema,
+  /// [extra] is a map of additional properties.
+  @JsonExtra()
+  Map<String, dynamic> get extra;
   @override
   @JsonKey(ignore: true)
   _$$_CollectionCopyWith<_$_Collection> get copyWith =>

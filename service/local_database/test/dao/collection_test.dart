@@ -1,5 +1,6 @@
-// ignore_for_file: avoid_print
+// ignore_for_file: avoid_print, depend_on_referenced_packages, unused_local_variable
 
+import 'package:flutter/foundation.dart';
 import 'package:drift/native.dart';
 import 'package:unself_local_database/unself_local_database.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -7,11 +8,17 @@ import 'package:unself_model/unself_model.dart';
 
 void main() {
   group('Database', () {
-    // ignore: unused_local_variable
     late LocalDatabase database;
 
+    final now = DateTime.now();
+    final nowString = now.toIso8601String();
+
+    final later = now.add(const Duration(minutes: 1));
+    final laterString = later.toIso8601String();
+
     setUp(() {
-      database = LocalDatabase(NativeDatabase.memory(logStatements: true));
+      database =
+          LocalDatabase(NativeDatabase.memory(logStatements: kDebugMode));
     });
 
     tearDown(() async {
@@ -19,38 +26,47 @@ void main() {
     });
 
     test('loading collections from db', () async {
-      const a = CollectionData(
+      final a = CollectionData(
         id: 'veggie',
+        created: now,
+        updated: now,
         name: 'fruits',
         system: false,
-        type: 'food',
+        type: CollectionType.node,
+        extra: '{}',
       );
 
       database.into(database.collection).insert(a);
       await database.collectionDao.loadCollectionsFromDb();
 
-      final result = database.collectionDao.getCollectionByName('fruits');
+      final result = database.collectionDao.getCollectionById('veggie');
       expect(result, const TypeMatcher<CollectionOrm>());
       expect(result.id, a.id);
-      expect(result.actualTableName, a.name);
+      expect(result.actualTableName, a.id);
     });
 
     test('saving collections to db', () async {
-      const a = CollectionData(
+      final a = CollectionData(
         id: 'veggie',
+        created: now,
+        updated: now,
         name: 'fruits',
         system: false,
-        type: 'table',
+        type: CollectionType.node,
+        extra: '{}',
       );
 
-      const b = FieldData(
+      final b = FieldData(
         id: 'veggie',
+        created: now,
+        updated: now,
         name: 'name',
         type: FieldType.text,
         system: false,
         required: true,
         unique: false,
         collectionId: 'veggie',
+        extra: '{}',
       );
 
       print('saving collections to db');
@@ -59,33 +75,37 @@ void main() {
       print('loadCollectionsFromDb');
       await database.collectionDao.loadCollectionsFromDb();
 
-      database.collectionDao.getCollectionByName('fruits');
       expect(
           // allTables has only registered tables
           await database.allTablesCollections,
           containsAll([
             'collection',
             'field',
-            'fruits',
+            'veggie',
           ]));
     });
 
     test('deleting collections from db', () async {
-      const a = CollectionData(
-        id: 'veggie',
-        name: 'fruits',
-        system: false,
-        type: 'table',
-      );
+      final a = CollectionData(
+          id: 'veggie',
+          created: now,
+          updated: now,
+          name: 'fruits',
+          system: false,
+          type: CollectionType.node,
+          extra: '{}');
 
-      const b = FieldData(
+      final b = FieldData(
         id: 'veggie',
         name: 'name',
+        created: now,
+        updated: now,
         type: FieldType.text,
         system: false,
         required: true,
         unique: false,
         collectionId: 'veggie',
+        extra: '{}',
       );
 
       print('saving collections to db');
@@ -97,7 +117,7 @@ void main() {
           containsAll([
             'collection',
             'field',
-            'fruits',
+            'veggie',
           ]));
 
       print('deleting collections from db');
@@ -108,7 +128,7 @@ void main() {
           await database.allTablesCollections,
           containsAll([
             'collection',
-            'field',
+            'veggie',
           ]));
     });
   });

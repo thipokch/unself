@@ -20,7 +20,12 @@ User _$UserFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$User {
+  /// [themeMode] is the current theme mode set by the user.
   ThemeMode get themeMode => throw _privateConstructorUsedError;
+
+  /// [extra] is a map of additional properties.
+  @JsonExtra()
+  Map<String, dynamic> get extra => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -32,7 +37,7 @@ abstract class $UserCopyWith<$Res> {
   factory $UserCopyWith(User value, $Res Function(User) then) =
       _$UserCopyWithImpl<$Res, User>;
   @useResult
-  $Res call({ThemeMode themeMode});
+  $Res call({ThemeMode themeMode, @JsonExtra() Map<String, dynamic> extra});
 }
 
 /// @nodoc
@@ -49,12 +54,17 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
   @override
   $Res call({
     Object? themeMode = null,
+    Object? extra = null,
   }) {
     return _then(_value.copyWith(
       themeMode: null == themeMode
           ? _value.themeMode
           : themeMode // ignore: cast_nullable_to_non_nullable
               as ThemeMode,
+      extra: null == extra
+          ? _value.extra
+          : extra // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>,
     ) as $Val);
   }
 }
@@ -65,7 +75,7 @@ abstract class _$$_UserCopyWith<$Res> implements $UserCopyWith<$Res> {
       __$$_UserCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({ThemeMode themeMode});
+  $Res call({ThemeMode themeMode, @JsonExtra() Map<String, dynamic> extra});
 }
 
 /// @nodoc
@@ -78,12 +88,17 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
   @override
   $Res call({
     Object? themeMode = null,
+    Object? extra = null,
   }) {
     return _then(_$_User(
       themeMode: null == themeMode
           ? _value.themeMode
           : themeMode // ignore: cast_nullable_to_non_nullable
               as ThemeMode,
+      extra: null == extra
+          ? _value._extra
+          : extra // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>,
     ));
   }
 }
@@ -91,16 +106,33 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
 /// @nodoc
 @JsonSerializable()
 class _$_User implements _User {
-  const _$_User({required this.themeMode});
+  const _$_User(
+      {required this.themeMode,
+      @JsonExtra() final Map<String, dynamic> extra = const {}})
+      : _extra = extra;
 
   factory _$_User.fromJson(Map<String, dynamic> json) => _$$_UserFromJson(json);
 
+  /// [themeMode] is the current theme mode set by the user.
   @override
   final ThemeMode themeMode;
 
+  /// [extra] is a map of additional properties.
+  final Map<String, dynamic> _extra;
+
+  /// [extra] is a map of additional properties.
+  @override
+  @JsonKey()
+  @JsonExtra()
+  Map<String, dynamic> get extra {
+    if (_extra is EqualUnmodifiableMapView) return _extra;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_extra);
+  }
+
   @override
   String toString() {
-    return 'User(themeMode: $themeMode)';
+    return 'User(themeMode: $themeMode, extra: $extra)';
   }
 
   @override
@@ -109,12 +141,14 @@ class _$_User implements _User {
         (other.runtimeType == runtimeType &&
             other is _$_User &&
             (identical(other.themeMode, themeMode) ||
-                other.themeMode == themeMode));
+                other.themeMode == themeMode) &&
+            const DeepCollectionEquality().equals(other._extra, _extra));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, themeMode);
+  int get hashCode => Object.hash(
+      runtimeType, themeMode, const DeepCollectionEquality().hash(_extra));
 
   @JsonKey(ignore: true)
   @override
@@ -131,12 +165,21 @@ class _$_User implements _User {
 }
 
 abstract class _User implements User {
-  const factory _User({required final ThemeMode themeMode}) = _$_User;
+  const factory _User(
+      {required final ThemeMode themeMode,
+      @JsonExtra() final Map<String, dynamic> extra}) = _$_User;
 
   factory _User.fromJson(Map<String, dynamic> json) = _$_User.fromJson;
 
   @override
+
+  /// [themeMode] is the current theme mode set by the user.
   ThemeMode get themeMode;
+  @override
+
+  /// [extra] is a map of additional properties.
+  @JsonExtra()
+  Map<String, dynamic> get extra;
   @override
   @JsonKey(ignore: true)
   _$$_UserCopyWith<_$_User> get copyWith => throw _privateConstructorUsedError;

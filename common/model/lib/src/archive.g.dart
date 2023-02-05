@@ -1,31 +1,31 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'document.dart';
+part of 'archive.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_Document _$$_DocumentFromJson(Map<String, dynamic> json) => _$_Document(
+_$_Archive _$$_ArchiveFromJson(Map<String, dynamic> json) => _$_Archive(
       id: json['id'] as String,
       created: DateTime.parse(json['created'] as String),
       updated: DateTime.parse(json['updated'] as String),
-      collectionId: json['collectionId'] as String? ?? '',
-      collectionName: json['collectionName'] as String? ?? '',
-      archive: Archive.fromJson(json['archive'] as Map<String, dynamic>),
+      name: json['name'] as String,
+      account: Account.fromJson(json['account'] as Map<String, dynamic>),
+      mapping: Mapping.fromJson(json['mapping'] as Map<String, dynamic>),
       extra: json['extra'] == null
           ? const {}
           : const JsonExtra().fromJson(json['extra'] as Map?),
     );
 
-Map<String, dynamic> _$$_DocumentToJson(_$_Document instance) {
+Map<String, dynamic> _$$_ArchiveToJson(_$_Archive instance) {
   final val = <String, dynamic>{
     'id': instance.id,
     'created': instance.created.toIso8601String(),
     'updated': instance.updated.toIso8601String(),
-    'collectionId': instance.collectionId,
-    'collectionName': instance.collectionName,
-    'archive': instance.archive.toJson(),
+    'name': instance.name,
+    'account': instance.account.toJson(),
+    'mapping': instance.mapping.toJson(),
   };
 
   void writeNotNull(String key, dynamic value) {

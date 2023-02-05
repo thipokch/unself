@@ -1,9 +1,9 @@
 import 'dart:async';
 import 'dart:convert';
 
-import 'package:archive/archive.dart';
+import 'package:archive/archive.dart' as archive;
 import 'package:unself_model/unself_model.dart';
-import 'package:unself_unpack/src/collector/collector.dart'; // TODO: remove to support web
+import 'package:unself_unpack/src/collector/collector.dart';
 
 /// {@template archive_collector}
 /// [ArchiveCollector] unpacks archive files and collect metadata.
@@ -11,14 +11,14 @@ import 'package:unself_unpack/src/collector/collector.dart'; // TODO: remove to 
 class ArchiveCollector implements ICollector {
   /// {@macro archive_collector}
   const ArchiveCollector({
-    required Archive archive,
+    required archive.Archive archive,
   }) : _archive = archive;
 
   factory ArchiveCollector.fromZipBytes({
     required List<int> bytes,
   }) =>
       ArchiveCollector(
-        archive: ZipDecoder().decodeBytes(bytes),
+        archive: archive.ZipDecoder().decodeBytes(bytes),
       );
 
   // factory ArchiveCollector.fromXFile({
@@ -30,7 +30,7 @@ class ArchiveCollector implements ICollector {
   //     );
 
   // Delegate
-  final Archive _archive;
+  final archive.Archive _archive;
 
   static String _dotPath(String name) {
     final splitted = name.split(RegExp(r'[\\|\/|.]'));

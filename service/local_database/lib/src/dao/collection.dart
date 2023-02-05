@@ -10,7 +10,7 @@ class CollectionDao extends DatabaseAccessor<LocalDatabase> {
   late final _migrator = Migrator(attachedDatabase);
 
   // late final Map<Type, UnCollection<dynamic>> _collections;
-  late final Map<String, CollectionOrm<dynamic>> _collectionsByName;
+  late final Map<String, CollectionOrm<dynamic>> _collectionsById;
 
   $CollectionTable get collection => attachedDatabase.collection;
   $FieldTable get field => attachedDatabase.field;
@@ -26,18 +26,18 @@ class CollectionDao extends DatabaseAccessor<LocalDatabase> {
             .get()
     };
 
-    _collectionsByName = <String, CollectionOrm>{
+    _collectionsById = <String, CollectionOrm>{
       for (final schema in collectionSchema.entries)
-        schema.key.name.toLowerCase(): schema.key.toOrm(
+        schema.key.id.toLowerCase(): schema.key.toOrm(
           attachedDatabase,
           schema.value.map((e) => e.toOrm()).toList(),
         )
     };
   }
 
-  /// [getCollectionByName] finds a single [Collection] by its name (case insensitive).
-  CollectionOrm<D> getCollectionByName<D>(String name) =>
-      _collectionsByName[name.toLowerCase()] as CollectionOrm<D>;
+  /// [getCollectionById] finds a single [Collection] by its id (case insensitive).
+  CollectionOrm<D> getCollectionById<D>(String name) =>
+      _collectionsById[name.toLowerCase()] as CollectionOrm<D>;
 
   /// [saveCollection] upserts the provided [CollectionData] model and updates
   /// its related records table schema.
