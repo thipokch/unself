@@ -56,6 +56,7 @@ void main() {
       app: aApp,
       version: Version(0, 0, 1),
       constraint: VersionConstraint.compatibleWith(Version(0, 0, 1)),
+      entries: [],
     );
 
     final bMapping = Mapping(
@@ -66,6 +67,7 @@ void main() {
       extra: extra,
       version: Version(0, 0, 2),
       constraint: VersionConstraint.compatibleWith(Version(0, 0, 2)),
+      entries: [],
     );
 
     final aArchive = Archive(
@@ -88,74 +90,76 @@ void main() {
     );
 
     final aObject = Map<String, dynamic>.unmodifiable({
-      "id": "aArchive",
-      "created": nowString,
-      "updated": nowString,
-      "name": "name",
-      "account": {
-        "id": "aAccount",
-        "created": nowString,
-        "updated": nowString,
-        "name": "name",
-        "email": "email",
-        "app": {
-          "id": "aApp",
-          "created": nowString,
-          "updated": nowString,
-          "name": "name",
+      'id': 'aArchive',
+      'created': nowString,
+      'updated': nowString,
+      'name': 'name',
+      'account': {
+        'id': 'aAccount',
+        'created': nowString,
+        'updated': nowString,
+        'name': 'name',
+        'email': 'email',
+        'app': {
+          'id': 'aApp',
+          'created': nowString,
+          'updated': nowString,
+          'name': 'name',
         }
       },
-      "mapping": {
-        "id": "aMapping",
-        "created": nowString,
-        "updated": nowString,
-        "app": {
-          "id": "aApp",
-          "created": nowString,
-          "updated": nowString,
-          "name": "name",
+      'mapping': {
+        'id': 'aMapping',
+        'created': nowString,
+        'updated': nowString,
+        'app': {
+          'id': 'aApp',
+          'created': nowString,
+          'updated': nowString,
+          'name': 'name',
         },
-        "version": "0.0.1",
-        "constraint": "^0.0.1",
+        'version': '0.0.1',
+        'constraint': '^0.0.1',
+        'entries': [],
       },
     });
 
     final bObject = Map<String, dynamic>.unmodifiable({
-      "id": "bArchive",
-      "created": nowString,
-      "updated": nowString,
-      "name": "name",
-      "account": {
-        "id": "bAccount",
-        "created": nowString,
-        "updated": nowString,
-        "name": "name",
-        "email": "email",
-        "app": {
-          "id": "bApp",
-          "created": nowString,
-          "updated": nowString,
-          "name": "name",
-          "extra": extra,
+      'id': 'bArchive',
+      'created': nowString,
+      'updated': nowString,
+      'name': 'name',
+      'account': {
+        'id': 'bAccount',
+        'created': nowString,
+        'updated': nowString,
+        'name': 'name',
+        'email': 'email',
+        'app': {
+          'id': 'bApp',
+          'created': nowString,
+          'updated': nowString,
+          'name': 'name',
+          'extra': extra,
         },
-        "extra": extra,
+        'extra': extra,
       },
-      "mapping": {
-        "id": "bMapping",
-        "created": nowString,
-        "updated": nowString,
-        "app": {
-          "id": "bApp",
-          "created": nowString,
-          "updated": nowString,
-          "name": "name",
-          "extra": extra,
+      'mapping': {
+        'id': 'bMapping',
+        'created': nowString,
+        'updated': nowString,
+        'app': {
+          'id': 'bApp',
+          'created': nowString,
+          'updated': nowString,
+          'name': 'name',
+          'extra': extra,
         },
-        "version": "0.0.2",
-        "constraint": "^0.0.2",
-        "extra": extra,
+        'version': '0.0.2',
+        'constraint': '^0.0.2',
+        'entries': [],
+        'extra': extra,
       },
-      "extra": extra,
+      'extra': extra,
     });
 
     setUp(() {});

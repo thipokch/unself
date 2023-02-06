@@ -58,6 +58,7 @@ void main() {
       app: aApp,
       version: Version(0, 0, 1),
       constraint: VersionConstraint.compatibleWith(Version(0, 0, 1)),
+      entries: [],
     );
 
     final bMapping = Mapping(
@@ -67,6 +68,7 @@ void main() {
       app: bApp,
       version: Version(0, 0, 2),
       constraint: VersionConstraint.compatibleWith(Version(0, 0, 2)),
+      entries: [],
       extra: extra,
     );
 
@@ -82,6 +84,7 @@ void main() {
       },
       'version': '0.0.1',
       'constraint': '^0.0.1',
+      'entries': [],
     });
 
     final bObject = Map<String, dynamic>.unmodifiable({
@@ -97,6 +100,7 @@ void main() {
       },
       'version': '0.0.2',
       'constraint': '^0.0.2',
+      'entries': [],
       'extra': extra,
     });
 

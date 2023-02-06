@@ -33,6 +33,9 @@ class Mapping with _$Mapping implements Base {
     /// [VersionConstraint.compatibleWith] is used to define the minimum version.
     @JsonVersionConstraint() required VersionConstraint constraint,
 
+    /// [entries] is a list of [MappingEntry]s.
+    required List<MappingEntry> entries,
+
     /// [extra] is a map of additional properties.
     @JsonExtra() @Default({}) Map<String, dynamic> extra,
   }) = _Mapping;

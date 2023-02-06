@@ -44,6 +44,9 @@ mixin _$Mapping {
   @JsonVersionConstraint()
   VersionConstraint get constraint => throw _privateConstructorUsedError;
 
+  /// [entries] is a list of [MappingEntry]s.
+  List<MappingEntry> get entries => throw _privateConstructorUsedError;
+
   /// [extra] is a map of additional properties.
   @JsonExtra()
   Map<String, dynamic> get extra => throw _privateConstructorUsedError;
@@ -65,6 +68,7 @@ abstract class $MappingCopyWith<$Res> {
       App app,
       @JsonVersion() Version version,
       @JsonVersionConstraint() VersionConstraint constraint,
+      List<MappingEntry> entries,
       @JsonExtra() Map<String, dynamic> extra});
 
   $AppCopyWith<$Res> get app;
@@ -89,6 +93,7 @@ class _$MappingCopyWithImpl<$Res, $Val extends Mapping>
     Object? app = null,
     Object? version = null,
     Object? constraint = null,
+    Object? entries = null,
     Object? extra = null,
   }) {
     return _then(_value.copyWith(
@@ -116,6 +121,10 @@ class _$MappingCopyWithImpl<$Res, $Val extends Mapping>
           ? _value.constraint
           : constraint // ignore: cast_nullable_to_non_nullable
               as VersionConstraint,
+      entries: null == entries
+          ? _value.entries
+          : entries // ignore: cast_nullable_to_non_nullable
+              as List<MappingEntry>,
       extra: null == extra
           ? _value.extra
           : extra // ignore: cast_nullable_to_non_nullable
@@ -146,6 +155,7 @@ abstract class _$$_MappingCopyWith<$Res> implements $MappingCopyWith<$Res> {
       App app,
       @JsonVersion() Version version,
       @JsonVersionConstraint() VersionConstraint constraint,
+      List<MappingEntry> entries,
       @JsonExtra() Map<String, dynamic> extra});
 
   @override
@@ -168,6 +178,7 @@ class __$$_MappingCopyWithImpl<$Res>
     Object? app = null,
     Object? version = null,
     Object? constraint = null,
+    Object? entries = null,
     Object? extra = null,
   }) {
     return _then(_$_Mapping(
@@ -195,6 +206,10 @@ class __$$_MappingCopyWithImpl<$Res>
           ? _value.constraint
           : constraint // ignore: cast_nullable_to_non_nullable
               as VersionConstraint,
+      entries: null == entries
+          ? _value._entries
+          : entries // ignore: cast_nullable_to_non_nullable
+              as List<MappingEntry>,
       extra: null == extra
           ? _value._extra
           : extra // ignore: cast_nullable_to_non_nullable
@@ -213,8 +228,10 @@ class _$_Mapping implements _Mapping {
       required this.app,
       @JsonVersion() required this.version,
       @JsonVersionConstraint() required this.constraint,
+      required final List<MappingEntry> entries,
       @JsonExtra() final Map<String, dynamic> extra = const {}})
-      : _extra = extra;
+      : _entries = entries,
+        _extra = extra;
 
   factory _$_Mapping.fromJson(Map<String, dynamic> json) =>
       _$$_MappingFromJson(json);
@@ -249,6 +266,17 @@ class _$_Mapping implements _Mapping {
   @JsonVersionConstraint()
   final VersionConstraint constraint;
 
+  /// [entries] is a list of [MappingEntry]s.
+  final List<MappingEntry> _entries;
+
+  /// [entries] is a list of [MappingEntry]s.
+  @override
+  List<MappingEntry> get entries {
+    if (_entries is EqualUnmodifiableListView) return _entries;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_entries);
+  }
+
   /// [extra] is a map of additional properties.
   final Map<String, dynamic> _extra;
 
@@ -264,7 +292,7 @@ class _$_Mapping implements _Mapping {
 
   @override
   String toString() {
-    return 'Mapping(id: $id, created: $created, updated: $updated, app: $app, version: $version, constraint: $constraint, extra: $extra)';
+    return 'Mapping(id: $id, created: $created, updated: $updated, app: $app, version: $version, constraint: $constraint, entries: $entries, extra: $extra)';
   }
 
   @override
@@ -279,13 +307,22 @@ class _$_Mapping implements _Mapping {
             (identical(other.version, version) || other.version == version) &&
             (identical(other.constraint, constraint) ||
                 other.constraint == constraint) &&
+            const DeepCollectionEquality().equals(other._entries, _entries) &&
             const DeepCollectionEquality().equals(other._extra, _extra));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, created, updated, app,
-      version, constraint, const DeepCollectionEquality().hash(_extra));
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      created,
+      updated,
+      app,
+      version,
+      constraint,
+      const DeepCollectionEquality().hash(_entries),
+      const DeepCollectionEquality().hash(_extra));
 
   @JsonKey(ignore: true)
   @override
@@ -309,6 +346,7 @@ abstract class _Mapping implements Mapping {
       required final App app,
       @JsonVersion() required final Version version,
       @JsonVersionConstraint() required final VersionConstraint constraint,
+      required final List<MappingEntry> entries,
       @JsonExtra() final Map<String, dynamic> extra}) = _$_Mapping;
 
   factory _Mapping.fromJson(Map<String, dynamic> json) = _$_Mapping.fromJson;
@@ -343,6 +381,10 @@ abstract class _Mapping implements Mapping {
   /// [VersionConstraint.compatibleWith] is used to define the minimum version.
   @JsonVersionConstraint()
   VersionConstraint get constraint;
+  @override
+
+  /// [entries] is a list of [MappingEntry]s.
+  List<MappingEntry> get entries;
   @override
 
   /// [extra] is a map of additional properties.

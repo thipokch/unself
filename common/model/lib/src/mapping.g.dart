@@ -14,6 +14,9 @@ _$_Mapping _$$_MappingFromJson(Map<String, dynamic> json) => _$_Mapping(
       version: const JsonVersion().fromJson(json['version'] as String),
       constraint:
           const JsonVersionConstraint().fromJson(json['constraint'] as String),
+      entries: (json['entries'] as List<dynamic>)
+          .map((e) => MappingEntry.fromJson(e as Map<String, dynamic>))
+          .toList(),
       extra: json['extra'] == null
           ? const {}
           : const JsonExtra().fromJson(json['extra'] as Map?),
@@ -27,6 +30,7 @@ Map<String, dynamic> _$$_MappingToJson(_$_Mapping instance) {
     'app': instance.app.toJson(),
     'version': const JsonVersion().toJson(instance.version),
     'constraint': const JsonVersionConstraint().toJson(instance.constraint),
+    'entries': instance.entries.map((e) => e.toJson()).toList(),
   };
 
   void writeNotNull(String key, dynamic value) {

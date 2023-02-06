@@ -7,6 +7,7 @@ export 'src/base.dart';
 export 'src/collection.dart';
 export 'src/document.dart';
 export 'src/field.dart';
+export 'src/mapping_entry.dart';
 export 'src/mapping.dart';
 export 'src/user.dart';
 
