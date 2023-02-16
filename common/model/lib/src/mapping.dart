@@ -33,6 +33,9 @@ class Mapping with _$Mapping implements Base {
     /// [VersionConstraint.compatibleWith] is used to define the minimum version.
     @JsonVersionConstraint() required VersionConstraint constraint,
 
+    /// [format] is the format of the [Mapping].
+    required MappingFormat format,
+
     /// [entries] is a list of [MappingEntry]s.
     required List<MappingEntry> entries,
 
@@ -43,4 +46,16 @@ class Mapping with _$Mapping implements Base {
   /// Creates a [Mapping] from Json map
   factory Mapping.fromJson(Map<String, dynamic> data) =>
       _$MappingFromJson(data);
+}
+
+@JsonEnum()
+enum MappingFormat {
+  /// [MappingFormat.zipJson] is a zip file containing a json file.
+  zipJson,
+
+  /// [MappingFormat.json] is a single json file.
+  json,
+
+  /// [MappingFormat.html] is a single html file.
+  html,
 }

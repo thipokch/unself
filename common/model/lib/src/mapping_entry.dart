@@ -11,10 +11,10 @@ part 'mapping_entry.g.dart';
 class MappingEntry with _$MappingEntry {
   /// {@macro mapping_entry}
   const factory MappingEntry({
-    /// [from] is the RFC 6901 JSON Pointer to the property to map from.
+    /// [from] is the JSONpath to the property to map from.
     required String from,
 
-    /// [to] is the RFC 6901 JSON Pointer to the property to map to.
+    /// [to] is the JSONpath to the property to map to.
     required String to,
 
     // /// [transform] is a function that transforms the value from the [from] property to the [to] property.

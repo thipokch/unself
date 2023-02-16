@@ -20,10 +20,10 @@ MappingEntry _$MappingEntryFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$MappingEntry {
-  /// [from] is the RFC 6901 JSON Pointer to the property to map from.
+  /// [from] is the JSONpath to the property to map from.
   String get from => throw _privateConstructorUsedError;
 
-  /// [to] is the RFC 6901 JSON Pointer to the property to map to.
+  /// [to] is the JSONpath to the property to map to.
   String get to =>
       throw _privateConstructorUsedError; // /// [transform] is a function that transforms the value from the [from] property to the [to] property.
 // String transform,
@@ -135,11 +135,11 @@ class _$_MappingEntry implements _MappingEntry {
   factory _$_MappingEntry.fromJson(Map<String, dynamic> json) =>
       _$$_MappingEntryFromJson(json);
 
-  /// [from] is the RFC 6901 JSON Pointer to the property to map from.
+  /// [from] is the JSONpath to the property to map from.
   @override
   final String from;
 
-  /// [to] is the RFC 6901 JSON Pointer to the property to map to.
+  /// [to] is the JSONpath to the property to map to.
   @override
   final String to;
 // /// [transform] is a function that transforms the value from the [from] property to the [to] property.
@@ -203,11 +203,11 @@ abstract class _MappingEntry implements MappingEntry {
 
   @override
 
-  /// [from] is the RFC 6901 JSON Pointer to the property to map from.
+  /// [from] is the JSONpath to the property to map from.
   String get from;
   @override
 
-  /// [to] is the RFC 6901 JSON Pointer to the property to map to.
+  /// [to] is the JSONpath to the property to map to.
   String get to;
   @override // /// [transform] is a function that transforms the value from the [from] property to the [to] property.
 // String transform,

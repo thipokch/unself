@@ -60,10 +60,6 @@ class UnpackAssistantBloc
   Future<void> _onSelectArchive(
       _SelectArchive event, Emitter<UnpackAssistantState> emit) async {
     // final
-    final archiveCollector =
-        ArchiveCollector(archive: await XZipDecoder.decodeXFile(event.xFile));
-
-    archiveCollector.collect();
     // _unpackService.
 
     emit(const _Data(data: []));

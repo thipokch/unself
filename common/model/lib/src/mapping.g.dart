@@ -14,6 +14,7 @@ _$_Mapping _$$_MappingFromJson(Map<String, dynamic> json) => _$_Mapping(
       version: const JsonVersion().fromJson(json['version'] as String),
       constraint:
           const JsonVersionConstraint().fromJson(json['constraint'] as String),
+      format: $enumDecode(_$MappingFormatEnumMap, json['format']),
       entries: (json['entries'] as List<dynamic>)
           .map((e) => MappingEntry.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -30,6 +31,7 @@ Map<String, dynamic> _$$_MappingToJson(_$_Mapping instance) {
     'app': instance.app.toJson(),
     'version': const JsonVersion().toJson(instance.version),
     'constraint': const JsonVersionConstraint().toJson(instance.constraint),
+    'format': _$MappingFormatEnumMap[instance.format]!,
     'entries': instance.entries.map((e) => e.toJson()).toList(),
   };
 
@@ -42,3 +44,9 @@ Map<String, dynamic> _$$_MappingToJson(_$_Mapping instance) {
   writeNotNull('extra', const JsonExtra().toJson(instance.extra));
   return val;
 }
+
+const _$MappingFormatEnumMap = {
+  MappingFormat.zipJson: 'zipJson',
+  MappingFormat.json: 'json',
+  MappingFormat.html: 'html',
+};

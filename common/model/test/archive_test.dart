@@ -56,6 +56,7 @@ void main() {
       app: aApp,
       version: Version(0, 0, 1),
       constraint: VersionConstraint.compatibleWith(Version(0, 0, 1)),
+      format: MappingFormat.zipJson,
       entries: [],
     );
 
@@ -67,6 +68,7 @@ void main() {
       extra: extra,
       version: Version(0, 0, 2),
       constraint: VersionConstraint.compatibleWith(Version(0, 0, 2)),
+      format: MappingFormat.zipJson,
       entries: [],
     );
 
@@ -119,6 +121,7 @@ void main() {
         },
         'version': '0.0.1',
         'constraint': '^0.0.1',
+        'format': 'zipJson',
         'entries': [],
       },
     });
@@ -156,6 +159,7 @@ void main() {
         },
         'version': '0.0.2',
         'constraint': '^0.0.2',
+        'format': 'zipJson',
         'entries': [],
         'extra': extra,
       },
