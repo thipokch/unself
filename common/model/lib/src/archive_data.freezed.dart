@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'archive.dart';
+part of 'archive_data.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,29 +14,27 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-Archive _$ArchiveFromJson(Map<String, dynamic> json) {
+ArchiveData _$ArchiveDataFromJson(Map<String, dynamic> json) {
   return _Archive.fromJson(json);
 }
 
 /// @nodoc
-mixin _$Archive {
+mixin _$ArchiveData {
   /// [id] is unself unique identifier for the [Archive].
   String get id => throw _privateConstructorUsedError;
 
   /// [created] is the date and time when the [Archive] was created inside unself app.
+  @JsonDateTime()
   DateTime get created => throw _privateConstructorUsedError;
 
   /// [updated] is the date and time when the [Archive] was last updated inside unself app.
+  @JsonDateTime()
   DateTime get updated => throw _privateConstructorUsedError;
-
-  /// [name] is the name of the [Archive].
-  String get name => throw _privateConstructorUsedError;
-
-  /// [account] is the owner of the [Archive] imported.
-  Account get account => throw _privateConstructorUsedError;
-
-  /// [mapping] is the [Mapping] used to import the data.
-  ArchiveFormat get format => throw _privateConstructorUsedError;
+  List<Account> get accounts => throw _privateConstructorUsedError;
+  List<App> get apps => throw _privateConstructorUsedError;
+  List<User> get users => throw _privateConstructorUsedError;
+  List<Topic> get topics => throw _privateConstructorUsedError;
+  List<Activity> get activities => throw _privateConstructorUsedError;
 
   /// [extra] is a map of additional properties.
   @JsonExtra()
@@ -44,31 +42,32 @@ mixin _$Archive {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $ArchiveCopyWith<Archive> get copyWith => throw _privateConstructorUsedError;
+  $ArchiveDataCopyWith<ArchiveData> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ArchiveCopyWith<$Res> {
-  factory $ArchiveCopyWith(Archive value, $Res Function(Archive) then) =
-      _$ArchiveCopyWithImpl<$Res, Archive>;
+abstract class $ArchiveDataCopyWith<$Res> {
+  factory $ArchiveDataCopyWith(
+          ArchiveData value, $Res Function(ArchiveData) then) =
+      _$ArchiveDataCopyWithImpl<$Res, ArchiveData>;
   @useResult
   $Res call(
       {String id,
-      DateTime created,
-      DateTime updated,
-      String name,
-      Account account,
-      ArchiveFormat format,
+      @JsonDateTime() DateTime created,
+      @JsonDateTime() DateTime updated,
+      List<Account> accounts,
+      List<App> apps,
+      List<User> users,
+      List<Topic> topics,
+      List<Activity> activities,
       @JsonExtra() Map<String, dynamic> extra});
-
-  $AccountCopyWith<$Res> get account;
-  $ArchiveFormatCopyWith<$Res> get format;
 }
 
 /// @nodoc
-class _$ArchiveCopyWithImpl<$Res, $Val extends Archive>
-    implements $ArchiveCopyWith<$Res> {
-  _$ArchiveCopyWithImpl(this._value, this._then);
+class _$ArchiveDataCopyWithImpl<$Res, $Val extends ArchiveData>
+    implements $ArchiveDataCopyWith<$Res> {
+  _$ArchiveDataCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -81,9 +80,11 @@ class _$ArchiveCopyWithImpl<$Res, $Val extends Archive>
     Object? id = null,
     Object? created = null,
     Object? updated = null,
-    Object? name = null,
-    Object? account = null,
-    Object? format = null,
+    Object? accounts = null,
+    Object? apps = null,
+    Object? users = null,
+    Object? topics = null,
+    Object? activities = null,
     Object? extra = null,
   }) {
     return _then(_value.copyWith(
@@ -99,44 +100,36 @@ class _$ArchiveCopyWithImpl<$Res, $Val extends Archive>
           ? _value.updated
           : updated // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      account: null == account
-          ? _value.account
-          : account // ignore: cast_nullable_to_non_nullable
-              as Account,
-      format: null == format
-          ? _value.format
-          : format // ignore: cast_nullable_to_non_nullable
-              as ArchiveFormat,
+      accounts: null == accounts
+          ? _value.accounts
+          : accounts // ignore: cast_nullable_to_non_nullable
+              as List<Account>,
+      apps: null == apps
+          ? _value.apps
+          : apps // ignore: cast_nullable_to_non_nullable
+              as List<App>,
+      users: null == users
+          ? _value.users
+          : users // ignore: cast_nullable_to_non_nullable
+              as List<User>,
+      topics: null == topics
+          ? _value.topics
+          : topics // ignore: cast_nullable_to_non_nullable
+              as List<Topic>,
+      activities: null == activities
+          ? _value.activities
+          : activities // ignore: cast_nullable_to_non_nullable
+              as List<Activity>,
       extra: null == extra
           ? _value.extra
           : extra // ignore: cast_nullable_to_non_nullable
               as Map<String, dynamic>,
     ) as $Val);
   }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $AccountCopyWith<$Res> get account {
-    return $AccountCopyWith<$Res>(_value.account, (value) {
-      return _then(_value.copyWith(account: value) as $Val);
-    });
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $ArchiveFormatCopyWith<$Res> get format {
-    return $ArchiveFormatCopyWith<$Res>(_value.format, (value) {
-      return _then(_value.copyWith(format: value) as $Val);
-    });
-  }
 }
 
 /// @nodoc
-abstract class _$$_ArchiveCopyWith<$Res> implements $ArchiveCopyWith<$Res> {
+abstract class _$$_ArchiveCopyWith<$Res> implements $ArchiveDataCopyWith<$Res> {
   factory _$$_ArchiveCopyWith(
           _$_Archive value, $Res Function(_$_Archive) then) =
       __$$_ArchiveCopyWithImpl<$Res>;
@@ -144,22 +137,19 @@ abstract class _$$_ArchiveCopyWith<$Res> implements $ArchiveCopyWith<$Res> {
   @useResult
   $Res call(
       {String id,
-      DateTime created,
-      DateTime updated,
-      String name,
-      Account account,
-      ArchiveFormat format,
+      @JsonDateTime() DateTime created,
+      @JsonDateTime() DateTime updated,
+      List<Account> accounts,
+      List<App> apps,
+      List<User> users,
+      List<Topic> topics,
+      List<Activity> activities,
       @JsonExtra() Map<String, dynamic> extra});
-
-  @override
-  $AccountCopyWith<$Res> get account;
-  @override
-  $ArchiveFormatCopyWith<$Res> get format;
 }
 
 /// @nodoc
 class __$$_ArchiveCopyWithImpl<$Res>
-    extends _$ArchiveCopyWithImpl<$Res, _$_Archive>
+    extends _$ArchiveDataCopyWithImpl<$Res, _$_Archive>
     implements _$$_ArchiveCopyWith<$Res> {
   __$$_ArchiveCopyWithImpl(_$_Archive _value, $Res Function(_$_Archive) _then)
       : super(_value, _then);
@@ -170,9 +160,11 @@ class __$$_ArchiveCopyWithImpl<$Res>
     Object? id = null,
     Object? created = null,
     Object? updated = null,
-    Object? name = null,
-    Object? account = null,
-    Object? format = null,
+    Object? accounts = null,
+    Object? apps = null,
+    Object? users = null,
+    Object? topics = null,
+    Object? activities = null,
     Object? extra = null,
   }) {
     return _then(_$_Archive(
@@ -188,18 +180,26 @@ class __$$_ArchiveCopyWithImpl<$Res>
           ? _value.updated
           : updated // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      account: null == account
-          ? _value.account
-          : account // ignore: cast_nullable_to_non_nullable
-              as Account,
-      format: null == format
-          ? _value.format
-          : format // ignore: cast_nullable_to_non_nullable
-              as ArchiveFormat,
+      accounts: null == accounts
+          ? _value._accounts
+          : accounts // ignore: cast_nullable_to_non_nullable
+              as List<Account>,
+      apps: null == apps
+          ? _value._apps
+          : apps // ignore: cast_nullable_to_non_nullable
+              as List<App>,
+      users: null == users
+          ? _value._users
+          : users // ignore: cast_nullable_to_non_nullable
+              as List<User>,
+      topics: null == topics
+          ? _value._topics
+          : topics // ignore: cast_nullable_to_non_nullable
+              as List<Topic>,
+      activities: null == activities
+          ? _value._activities
+          : activities // ignore: cast_nullable_to_non_nullable
+              as List<Activity>,
       extra: null == extra
           ? _value._extra
           : extra // ignore: cast_nullable_to_non_nullable
@@ -209,17 +209,25 @@ class __$$_ArchiveCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(createFieldMap: true)
 class _$_Archive implements _Archive {
   const _$_Archive(
       {required this.id,
-      required this.created,
-      required this.updated,
-      required this.name,
-      required this.account,
-      required this.format,
+      @JsonDateTime() required this.created,
+      @JsonDateTime() required this.updated,
+      final List<Account> accounts = const [],
+      final List<App> apps = const [],
+      final List<User> users = const [],
+      final List<Topic> topics = const [],
+      final List<Activity> activities = const [],
       @JsonExtra() final Map<String, dynamic> extra = const {}})
-      : _extra = extra;
+      : _accounts = accounts,
+        _apps = apps,
+        _users = users,
+        _topics = topics,
+        _activities = activities,
+        _extra = extra;
 
   factory _$_Archive.fromJson(Map<String, dynamic> json) =>
       _$$_ArchiveFromJson(json);
@@ -230,23 +238,57 @@ class _$_Archive implements _Archive {
 
   /// [created] is the date and time when the [Archive] was created inside unself app.
   @override
+  @JsonDateTime()
   final DateTime created;
 
   /// [updated] is the date and time when the [Archive] was last updated inside unself app.
   @override
+  @JsonDateTime()
   final DateTime updated;
-
-  /// [name] is the name of the [Archive].
+  final List<Account> _accounts;
   @override
-  final String name;
+  @JsonKey()
+  List<Account> get accounts {
+    if (_accounts is EqualUnmodifiableListView) return _accounts;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_accounts);
+  }
 
-  /// [account] is the owner of the [Archive] imported.
+  final List<App> _apps;
   @override
-  final Account account;
+  @JsonKey()
+  List<App> get apps {
+    if (_apps is EqualUnmodifiableListView) return _apps;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_apps);
+  }
 
-  /// [mapping] is the [Mapping] used to import the data.
+  final List<User> _users;
   @override
-  final ArchiveFormat format;
+  @JsonKey()
+  List<User> get users {
+    if (_users is EqualUnmodifiableListView) return _users;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_users);
+  }
+
+  final List<Topic> _topics;
+  @override
+  @JsonKey()
+  List<Topic> get topics {
+    if (_topics is EqualUnmodifiableListView) return _topics;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_topics);
+  }
+
+  final List<Activity> _activities;
+  @override
+  @JsonKey()
+  List<Activity> get activities {
+    if (_activities is EqualUnmodifiableListView) return _activities;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_activities);
+  }
 
   /// [extra] is a map of additional properties.
   final Map<String, dynamic> _extra;
@@ -263,7 +305,7 @@ class _$_Archive implements _Archive {
 
   @override
   String toString() {
-    return 'Archive(id: $id, created: $created, updated: $updated, name: $name, account: $account, format: $format, extra: $extra)';
+    return 'ArchiveData(id: $id, created: $created, updated: $updated, accounts: $accounts, apps: $apps, users: $users, topics: $topics, activities: $activities, extra: $extra)';
   }
 
   @override
@@ -274,16 +316,28 @@ class _$_Archive implements _Archive {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.created, created) || other.created == created) &&
             (identical(other.updated, updated) || other.updated == updated) &&
-            (identical(other.name, name) || other.name == name) &&
-            (identical(other.account, account) || other.account == account) &&
-            (identical(other.format, format) || other.format == format) &&
+            const DeepCollectionEquality().equals(other._accounts, _accounts) &&
+            const DeepCollectionEquality().equals(other._apps, _apps) &&
+            const DeepCollectionEquality().equals(other._users, _users) &&
+            const DeepCollectionEquality().equals(other._topics, _topics) &&
+            const DeepCollectionEquality()
+                .equals(other._activities, _activities) &&
             const DeepCollectionEquality().equals(other._extra, _extra));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, created, updated, name,
-      account, format, const DeepCollectionEquality().hash(_extra));
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      created,
+      updated,
+      const DeepCollectionEquality().hash(_accounts),
+      const DeepCollectionEquality().hash(_apps),
+      const DeepCollectionEquality().hash(_users),
+      const DeepCollectionEquality().hash(_topics),
+      const DeepCollectionEquality().hash(_activities),
+      const DeepCollectionEquality().hash(_extra));
 
   @JsonKey(ignore: true)
   @override
@@ -299,14 +353,16 @@ class _$_Archive implements _Archive {
   }
 }
 
-abstract class _Archive implements Archive {
+abstract class _Archive implements ArchiveData {
   const factory _Archive(
       {required final String id,
-      required final DateTime created,
-      required final DateTime updated,
-      required final String name,
-      required final Account account,
-      required final ArchiveFormat format,
+      @JsonDateTime() required final DateTime created,
+      @JsonDateTime() required final DateTime updated,
+      final List<Account> accounts,
+      final List<App> apps,
+      final List<User> users,
+      final List<Topic> topics,
+      final List<Activity> activities,
       @JsonExtra() final Map<String, dynamic> extra}) = _$_Archive;
 
   factory _Archive.fromJson(Map<String, dynamic> json) = _$_Archive.fromJson;
@@ -318,23 +374,23 @@ abstract class _Archive implements Archive {
   @override
 
   /// [created] is the date and time when the [Archive] was created inside unself app.
+  @JsonDateTime()
   DateTime get created;
   @override
 
   /// [updated] is the date and time when the [Archive] was last updated inside unself app.
+  @JsonDateTime()
   DateTime get updated;
   @override
-
-  /// [name] is the name of the [Archive].
-  String get name;
+  List<Account> get accounts;
   @override
-
-  /// [account] is the owner of the [Archive] imported.
-  Account get account;
+  List<App> get apps;
   @override
-
-  /// [mapping] is the [Mapping] used to import the data.
-  ArchiveFormat get format;
+  List<User> get users;
+  @override
+  List<Topic> get topics;
+  @override
+  List<Activity> get activities;
   @override
 
   /// [extra] is a map of additional properties.

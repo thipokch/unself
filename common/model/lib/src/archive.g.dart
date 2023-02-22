@@ -12,7 +12,7 @@ _$_Archive _$$_ArchiveFromJson(Map<String, dynamic> json) => _$_Archive(
       updated: DateTime.parse(json['updated'] as String),
       name: json['name'] as String,
       account: Account.fromJson(json['account'] as Map<String, dynamic>),
-      mapping: Mapping.fromJson(json['mapping'] as Map<String, dynamic>),
+      format: ArchiveFormat.fromJson(json['format'] as Map<String, dynamic>),
       extra: json['extra'] == null
           ? const {}
           : const JsonExtra().fromJson(json['extra'] as Map?),
@@ -25,7 +25,7 @@ Map<String, dynamic> _$$_ArchiveToJson(_$_Archive instance) {
     'updated': instance.updated.toIso8601String(),
     'name': instance.name,
     'account': instance.account.toJson(),
-    'mapping': instance.mapping.toJson(),
+    'format': instance.format.toJson(),
   };
 
   void writeNotNull(String key, dynamic value) {

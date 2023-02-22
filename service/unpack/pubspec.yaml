@@ -19,6 +19,9 @@ dependencies:
   archive: ^3.3.0
   collection: ^1.17.0
   json_path: ^0.4.2
+  slugify: ^2.0.0
+
+  clock:
   
 dev_dependencies:
   # Code Quality

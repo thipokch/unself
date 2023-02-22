@@ -49,18 +49,18 @@ void main() {
       extra: extra,
     );
 
-    final aMapping = Mapping(
+    final aMapping = ArchiveFormat(
       id: 'aMapping',
       created: now,
       updated: now,
       app: aApp,
       version: Version(0, 0, 1),
       constraint: VersionConstraint.compatibleWith(Version(0, 0, 1)),
-      format: MappingFormat.zipJson,
-      entries: [],
+      format: ArchiveFileFormat.zipJson,
+      mappings: [],
     );
 
-    final bMapping = Mapping(
+    final bMapping = ArchiveFormat(
       id: 'bMapping',
       created: now,
       updated: now,
@@ -68,8 +68,8 @@ void main() {
       extra: extra,
       version: Version(0, 0, 2),
       constraint: VersionConstraint.compatibleWith(Version(0, 0, 2)),
-      format: MappingFormat.zipJson,
-      entries: [],
+      format: ArchiveFileFormat.zipJson,
+      mappings: [],
     );
 
     final aArchive = Archive(
@@ -78,7 +78,7 @@ void main() {
       updated: now,
       name: 'name',
       account: aAccount,
-      mapping: aMapping,
+      format: aMapping,
     );
 
     final bArchive = Archive(
@@ -87,7 +87,7 @@ void main() {
       updated: now,
       name: 'name',
       account: bAccount,
-      mapping: bMapping,
+      format: bMapping,
       extra: extra,
     );
 
@@ -109,7 +109,7 @@ void main() {
           'name': 'name',
         }
       },
-      'mapping': {
+      'format': {
         'id': 'aMapping',
         'created': nowString,
         'updated': nowString,
@@ -122,7 +122,7 @@ void main() {
         'version': '0.0.1',
         'constraint': '^0.0.1',
         'format': 'zipJson',
-        'entries': [],
+        'mappings': [],
       },
     });
 
@@ -146,7 +146,7 @@ void main() {
         },
         'extra': extra,
       },
-      'mapping': {
+      'format': {
         'id': 'bMapping',
         'created': nowString,
         'updated': nowString,
@@ -160,7 +160,7 @@ void main() {
         'version': '0.0.2',
         'constraint': '^0.0.2',
         'format': 'zipJson',
-        'entries': [],
+        'mappings': [],
         'extra': extra,
       },
       'extra': extra,

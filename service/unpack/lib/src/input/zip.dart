@@ -4,16 +4,18 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:archive/archive.dart';
+import 'package:clock/clock.dart';
 import 'package:collection/collection.dart';
+import 'package:slugify/slugify.dart';
 import 'package:unself_file/unself_file.dart';
-import 'package:unself_model/unself_model.dart' show MappingEntry;
+import 'package:unself_model/unself_model.dart' show Mapping;
 import 'package:unself_unpack/src/util/json_normalize.dart';
 import 'package:unself_unpack/unself_unpack.dart';
 
 /// {@template zip_input}
 /// [ZipInput] unpacks archive files and collect metadata.
 /// {@endtemplate}
-class ZipInput implements Input<XFile> {
+class ZipInput implements Input<XFile, List<Mapping>> {
   /// {@macro zip_input}
   ZipInput();
 
@@ -39,9 +41,10 @@ class ZipInput implements Input<XFile> {
   /// [unpack] unpacks the opened [XFile] object the given [mappings] and
   /// returns a [FutureOr] of [Map<String, Object?>].
   @override
-  FutureOr<Map<String, Object?>> unpack(List<MappingEntry> mappings) {
+  FutureOr<Map<String, Object?>> unpack(List<Mapping>? options) {
+    assert(options != null);
     // 1. Group mappings by file to read from.
-    final fromGroup = mappings.groupListsBy((_) => _.from.split('/').first);
+    final fromGroup = options!.groupListsBy((_) => _.from.split('/').first);
 
     // 2. Read file and decode JSON into group key.
     final jsonFiles = <String, Map<String, dynamic>>{
@@ -50,25 +53,49 @@ class ZipInput implements Input<XFile> {
     };
 
     // 3. Group mappings by key to write to.
-    final toGroup = mappings.groupListsBy((_) => _.to.split('/').first);
+    final toGroup = options.groupListsBy((_) => _.to.split('/').first);
 
     // 4. Create result map with keys from toGroup to write to.
     final result = {
+      'id': '',
+      'created': clock.now(),
+      'updated': clock.now(),
       for (final String key in toGroup.keys) key: <Map<String, Object?>>[]
     };
 
-    for (final mapping in mappings) {
+    for (final mapping in options) {
+      // Assert that mapping can only be a single level deep.
+      assert(mapping.fields.every((e) => e.fields.isEmpty && e.extra.isEmpty));
+
       if (mapping.to.startsWith("\$") || mapping.from.startsWith("\$")) {
         throw ArgumentError('Mapping cannot be a JSON Pointer');
       }
 
-      final fileKey = mapping.from.split('/').first;
+      final fromKey = mapping.from.split('/').first;
+      final toKey = mapping.to.split('/').first;
       final entryPath = mapping.from.split('/').sublist(1).join('/');
 
       final norm = normalize(
-        jsonFiles[fileKey],
+        jsonFiles[fromKey],
         entryPath: entryPath,
-      );
+        includePath: mapping.options['includePath'] ?? const [],
+      ) as List<Map<String, Object?>>;
+
+      final mapped = norm
+          .map((e) => {
+                for (final entry in mapping.fields) entry.to: e[entry.from],
+                ...mapping.extra,
+              })
+          .toList();
+
+      if (mapping.options.containsKey('idFrom')) {
+        for (var element in mapped) {
+          element.putIfAbsent(
+              'id', () => slugify(element[mapping.options['idFrom']!]));
+        }
+      }
+
+      result[toKey] = mapped;
 
       // final from = JsonPath(
       //   "\$['${mapping.from.split('/').join("']['")}']",
@@ -112,7 +139,7 @@ class ZipInput implements Input<XFile> {
     //     )
 
     // return collectionJson;
-    return {};
+    return result;
   }
 
   static String _dotPath(String name) {

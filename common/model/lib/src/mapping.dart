@@ -6,38 +6,23 @@ part 'mapping.g.dart';
 
 /// {@template mapping}
 /// Mapping description
-/// {@endtemplate}
+/// {@endtemplate}@freezed
 @freezed
-class Mapping with _$Mapping implements Base {
+class Mapping with _$Mapping {
   /// {@macro mapping}
   const factory Mapping({
-    /// [id] is unself unique identifier for the Mapping.
-    required String id,
+    /// [from] is the JSONpath to the property to map from.
+    required String from,
 
-    /// [created] is the date and time when the [Mapping] was created inside unself app.
-    required DateTime created,
+    /// [to] is the JSONpath to the property to map to.
+    required String to,
 
-    /// [updated] is the date and time when the [Mapping] was last updated inside unself app.
-    required DateTime updated,
+    // /// [transform] is a function that transforms the value from the [from] property to the [to] property.
+    // String transform,
 
-    /// [app] is the [App] the [Mapping] is for.
-    required App app,
-
-    /// [version] is the revision version of the [Mapping].
-    /// See [Version] from pub_semver for more information.
-    @JsonVersion() required Version version,
-
-    /// [constraint] is the constraint version of the [App].
-    /// See [VersionConstraint] from pub_semver for more information.
-    ///
-    /// [VersionConstraint.compatibleWith] is used to define the minimum version.
-    @JsonVersionConstraint() required VersionConstraint constraint,
-
-    /// [format] is the format of the [Mapping].
-    required MappingFormat format,
-
-    /// [entries] is a list of [MappingEntry]s.
-    required List<MappingEntry> entries,
+    /// [entries] is a list of [Mapping]s.
+    @Default([]) List<Mapping> fields,
+    @JsonExtra() @Default({}) Map<String, dynamic> options,
 
     /// [extra] is a map of additional properties.
     @JsonExtra() @Default({}) Map<String, dynamic> extra,
@@ -46,16 +31,4 @@ class Mapping with _$Mapping implements Base {
   /// Creates a [Mapping] from Json map
   factory Mapping.fromJson(Map<String, dynamic> data) =>
       _$MappingFromJson(data);
-}
-
-@JsonEnum()
-enum MappingFormat {
-  /// [MappingFormat.zipJson] is a zip file containing a json file.
-  zipJson,
-
-  /// [MappingFormat.json] is a single json file.
-  json,
-
-  /// [MappingFormat.html] is a single html file.
-  html,
 }

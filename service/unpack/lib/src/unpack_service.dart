@@ -26,25 +26,25 @@ class UnpackService implements IUnpackService {
   Input? _input;
 
   @override
-  FutureOr<Mapping> load(App app) {
+  FutureOr<ArchiveFormat> load(App app) {
     _app = app;
-    return _mappings.firstWhere((e) => e.app == app);
+    return _formats.firstWhere((e) => e.app == app);
   }
 
   @override
-  FutureOr<List<MappingEntry>> open(XFile file) async {
+  FutureOr<List<Mapping>> open(XFile file) async {
     final zip = await ZipInput().open(file);
     throw UnimplementedError();
   }
 
   @override
-  Stream<int> start(List<MappingEntry> mappings) {
+  Stream<int> start(List<Mapping> mappings) {
     throw UnimplementedError();
   }
 
-  static final List<App> supportedApps = _mappings.map((e) => e.app).toList();
+  static final List<App> supportedApps = _formats.map((e) => e.app).toList();
 
-  static final List<Mapping> _mappings = [
+  static final List<ArchiveFormat> _formats = [
     // facebook,
   ];
 

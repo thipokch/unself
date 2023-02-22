@@ -1,6 +1,6 @@
 import 'package:unself_model/unself_model.dart';
 
-final facebookMapping = Mapping(
+final facebookMapping = ArchiveFormat(
   id: 'facebook@0.0.1',
   created: DateTime(0),
   updated: DateTime(0),
@@ -12,15 +12,42 @@ final facebookMapping = Mapping(
   ),
   version: Version(0, 0, 1),
   constraint: VersionConstraint.compatibleWith(Version(0, 0, 1)),
-  format: MappingFormat.zipJson,
-  entries: const [
-    MappingEntry(
+  format: ArchiveFileFormat.zipJson,
+  mappings: const [
+    Mapping(
       from: 'other_logged_information.ads_interests/topics_v2',
-      to: 'topic',
+      to: 'topics',
+      fields: [
+        Mapping(
+          from: 'string',
+          to: 'name',
+        ),
+      ],
+      extra: {
+        'source': 'other_logged_information.ads_interests/topics_v2',
+      },
+      options: {
+        'idFrom': 'name',
+      },
     ),
-    MappingEntry(
-      from: 'other_logged_information.ads_interests/topics_v2',
-      to: 'ads_interest',
+    Mapping(
+      from:
+          'apps_and_websites_off_of_facebook.your_off-facebook_activity/off_facebook_activity_v2/*/events',
+      to: 'activities',
+      fields: [
+        Mapping(from: 'id', to: 'id'),
+        Mapping(from: 'name', to: 'name'),
+        Mapping(from: 'type', to: 'type'),
+        Mapping(from: 'timestamp', to: 'timestamp'),
+      ],
+      extra: {
+        'source':
+            'apps_and_websites_off_of_facebook.your_off-facebook_activity/off_facebook_activity_v2/*/events',
+      },
+      options: {
+        'includePath': ['off_facebook_activity_v2/*/name'],
+        'idFrom': 'name',
+      },
     ),
   ],
 );

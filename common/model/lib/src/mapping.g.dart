@@ -7,17 +7,15 @@ part of 'mapping.dart';
 // **************************************************************************
 
 _$_Mapping _$$_MappingFromJson(Map<String, dynamic> json) => _$_Mapping(
-      id: json['id'] as String,
-      created: DateTime.parse(json['created'] as String),
-      updated: DateTime.parse(json['updated'] as String),
-      app: App.fromJson(json['app'] as Map<String, dynamic>),
-      version: const JsonVersion().fromJson(json['version'] as String),
-      constraint:
-          const JsonVersionConstraint().fromJson(json['constraint'] as String),
-      format: $enumDecode(_$MappingFormatEnumMap, json['format']),
-      entries: (json['entries'] as List<dynamic>)
-          .map((e) => MappingEntry.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      from: json['from'] as String,
+      to: json['to'] as String,
+      fields: (json['fields'] as List<dynamic>?)
+              ?.map((e) => Mapping.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const [],
+      options: json['options'] == null
+          ? const {}
+          : const JsonExtra().fromJson(json['options'] as Map?),
       extra: json['extra'] == null
           ? const {}
           : const JsonExtra().fromJson(json['extra'] as Map?),
@@ -25,14 +23,9 @@ _$_Mapping _$$_MappingFromJson(Map<String, dynamic> json) => _$_Mapping(
 
 Map<String, dynamic> _$$_MappingToJson(_$_Mapping instance) {
   final val = <String, dynamic>{
-    'id': instance.id,
-    'created': instance.created.toIso8601String(),
-    'updated': instance.updated.toIso8601String(),
-    'app': instance.app.toJson(),
-    'version': const JsonVersion().toJson(instance.version),
-    'constraint': const JsonVersionConstraint().toJson(instance.constraint),
-    'format': _$MappingFormatEnumMap[instance.format]!,
-    'entries': instance.entries.map((e) => e.toJson()).toList(),
+    'from': instance.from,
+    'to': instance.to,
+    'fields': instance.fields.map((e) => e.toJson()).toList(),
   };
 
   void writeNotNull(String key, dynamic value) {
@@ -41,12 +34,7 @@ Map<String, dynamic> _$$_MappingToJson(_$_Mapping instance) {
     }
   }
 
+  writeNotNull('options', const JsonExtra().toJson(instance.options));
   writeNotNull('extra', const JsonExtra().toJson(instance.extra));
   return val;
 }
-
-const _$MappingFormatEnumMap = {
-  MappingFormat.zipJson: 'zipJson',
-  MappingFormat.json: 'json',
-  MappingFormat.html: 'html',
-};

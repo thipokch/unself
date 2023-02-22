@@ -29,7 +29,7 @@ class Archive with _$Archive implements Base {
     required Account account,
 
     /// [mapping] is the [Mapping] used to import the data.
-    required Mapping mapping,
+    required ArchiveFormat format,
 
     /// [extra] is a map of additional properties.
     @JsonExtra() @Default({}) Map<String, dynamic> extra,

@@ -20,35 +20,17 @@ Mapping _$MappingFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Mapping {
-  /// [id] is unself unique identifier for the Mapping.
-  String get id => throw _privateConstructorUsedError;
+  /// [from] is the JSONpath to the property to map from.
+  String get from => throw _privateConstructorUsedError;
 
-  /// [created] is the date and time when the [Mapping] was created inside unself app.
-  DateTime get created => throw _privateConstructorUsedError;
-
-  /// [updated] is the date and time when the [Mapping] was last updated inside unself app.
-  DateTime get updated => throw _privateConstructorUsedError;
-
-  /// [app] is the [App] the [Mapping] is for.
-  App get app => throw _privateConstructorUsedError;
-
-  /// [version] is the revision version of the [Mapping].
-  /// See [Version] from pub_semver for more information.
-  @JsonVersion()
-  Version get version => throw _privateConstructorUsedError;
-
-  /// [constraint] is the constraint version of the [App].
-  /// See [VersionConstraint] from pub_semver for more information.
-  ///
-  /// [VersionConstraint.compatibleWith] is used to define the minimum version.
-  @JsonVersionConstraint()
-  VersionConstraint get constraint => throw _privateConstructorUsedError;
-
-  /// [format] is the format of the [Mapping].
-  MappingFormat get format => throw _privateConstructorUsedError;
-
-  /// [entries] is a list of [MappingEntry]s.
-  List<MappingEntry> get entries => throw _privateConstructorUsedError;
+  /// [to] is the JSONpath to the property to map to.
+  String get to =>
+      throw _privateConstructorUsedError; // /// [transform] is a function that transforms the value from the [from] property to the [to] property.
+// String transform,
+  /// [entries] is a list of [Mapping]s.
+  List<Mapping> get fields => throw _privateConstructorUsedError;
+  @JsonExtra()
+  Map<String, dynamic> get options => throw _privateConstructorUsedError;
 
   /// [extra] is a map of additional properties.
   @JsonExtra()
@@ -65,17 +47,11 @@ abstract class $MappingCopyWith<$Res> {
       _$MappingCopyWithImpl<$Res, Mapping>;
   @useResult
   $Res call(
-      {String id,
-      DateTime created,
-      DateTime updated,
-      App app,
-      @JsonVersion() Version version,
-      @JsonVersionConstraint() VersionConstraint constraint,
-      MappingFormat format,
-      List<MappingEntry> entries,
+      {String from,
+      String to,
+      List<Mapping> fields,
+      @JsonExtra() Map<String, dynamic> options,
       @JsonExtra() Map<String, dynamic> extra});
-
-  $AppCopyWith<$Res> get app;
 }
 
 /// @nodoc
@@ -91,62 +67,34 @@ class _$MappingCopyWithImpl<$Res, $Val extends Mapping>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
-    Object? created = null,
-    Object? updated = null,
-    Object? app = null,
-    Object? version = null,
-    Object? constraint = null,
-    Object? format = null,
-    Object? entries = null,
+    Object? from = null,
+    Object? to = null,
+    Object? fields = null,
+    Object? options = null,
     Object? extra = null,
   }) {
     return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
+      from: null == from
+          ? _value.from
+          : from // ignore: cast_nullable_to_non_nullable
               as String,
-      created: null == created
-          ? _value.created
-          : created // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      updated: null == updated
-          ? _value.updated
-          : updated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      app: null == app
-          ? _value.app
-          : app // ignore: cast_nullable_to_non_nullable
-              as App,
-      version: null == version
-          ? _value.version
-          : version // ignore: cast_nullable_to_non_nullable
-              as Version,
-      constraint: null == constraint
-          ? _value.constraint
-          : constraint // ignore: cast_nullable_to_non_nullable
-              as VersionConstraint,
-      format: null == format
-          ? _value.format
-          : format // ignore: cast_nullable_to_non_nullable
-              as MappingFormat,
-      entries: null == entries
-          ? _value.entries
-          : entries // ignore: cast_nullable_to_non_nullable
-              as List<MappingEntry>,
+      to: null == to
+          ? _value.to
+          : to // ignore: cast_nullable_to_non_nullable
+              as String,
+      fields: null == fields
+          ? _value.fields
+          : fields // ignore: cast_nullable_to_non_nullable
+              as List<Mapping>,
+      options: null == options
+          ? _value.options
+          : options // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>,
       extra: null == extra
           ? _value.extra
           : extra // ignore: cast_nullable_to_non_nullable
               as Map<String, dynamic>,
     ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $AppCopyWith<$Res> get app {
-    return $AppCopyWith<$Res>(_value.app, (value) {
-      return _then(_value.copyWith(app: value) as $Val);
-    });
   }
 }
 
@@ -158,18 +106,11 @@ abstract class _$$_MappingCopyWith<$Res> implements $MappingCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {String id,
-      DateTime created,
-      DateTime updated,
-      App app,
-      @JsonVersion() Version version,
-      @JsonVersionConstraint() VersionConstraint constraint,
-      MappingFormat format,
-      List<MappingEntry> entries,
+      {String from,
+      String to,
+      List<Mapping> fields,
+      @JsonExtra() Map<String, dynamic> options,
       @JsonExtra() Map<String, dynamic> extra});
-
-  @override
-  $AppCopyWith<$Res> get app;
 }
 
 /// @nodoc
@@ -182,49 +123,29 @@ class __$$_MappingCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
-    Object? created = null,
-    Object? updated = null,
-    Object? app = null,
-    Object? version = null,
-    Object? constraint = null,
-    Object? format = null,
-    Object? entries = null,
+    Object? from = null,
+    Object? to = null,
+    Object? fields = null,
+    Object? options = null,
     Object? extra = null,
   }) {
     return _then(_$_Mapping(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
+      from: null == from
+          ? _value.from
+          : from // ignore: cast_nullable_to_non_nullable
               as String,
-      created: null == created
-          ? _value.created
-          : created // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      updated: null == updated
-          ? _value.updated
-          : updated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      app: null == app
-          ? _value.app
-          : app // ignore: cast_nullable_to_non_nullable
-              as App,
-      version: null == version
-          ? _value.version
-          : version // ignore: cast_nullable_to_non_nullable
-              as Version,
-      constraint: null == constraint
-          ? _value.constraint
-          : constraint // ignore: cast_nullable_to_non_nullable
-              as VersionConstraint,
-      format: null == format
-          ? _value.format
-          : format // ignore: cast_nullable_to_non_nullable
-              as MappingFormat,
-      entries: null == entries
-          ? _value._entries
-          : entries // ignore: cast_nullable_to_non_nullable
-              as List<MappingEntry>,
+      to: null == to
+          ? _value.to
+          : to // ignore: cast_nullable_to_non_nullable
+              as String,
+      fields: null == fields
+          ? _value._fields
+          : fields // ignore: cast_nullable_to_non_nullable
+              as List<Mapping>,
+      options: null == options
+          ? _value._options
+          : options // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>,
       extra: null == extra
           ? _value._extra
           : extra // ignore: cast_nullable_to_non_nullable
@@ -237,64 +158,48 @@ class __$$_MappingCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_Mapping implements _Mapping {
   const _$_Mapping(
-      {required this.id,
-      required this.created,
-      required this.updated,
-      required this.app,
-      @JsonVersion() required this.version,
-      @JsonVersionConstraint() required this.constraint,
-      required this.format,
-      required final List<MappingEntry> entries,
+      {required this.from,
+      required this.to,
+      final List<Mapping> fields = const [],
+      @JsonExtra() final Map<String, dynamic> options = const {},
       @JsonExtra() final Map<String, dynamic> extra = const {}})
-      : _entries = entries,
+      : _fields = fields,
+        _options = options,
         _extra = extra;
 
   factory _$_Mapping.fromJson(Map<String, dynamic> json) =>
       _$$_MappingFromJson(json);
 
-  /// [id] is unself unique identifier for the Mapping.
+  /// [from] is the JSONpath to the property to map from.
   @override
-  final String id;
+  final String from;
 
-  /// [created] is the date and time when the [Mapping] was created inside unself app.
+  /// [to] is the JSONpath to the property to map to.
   @override
-  final DateTime created;
-
-  /// [updated] is the date and time when the [Mapping] was last updated inside unself app.
+  final String to;
+// /// [transform] is a function that transforms the value from the [from] property to the [to] property.
+// String transform,
+  /// [entries] is a list of [Mapping]s.
+  final List<Mapping> _fields;
+// /// [transform] is a function that transforms the value from the [from] property to the [to] property.
+// String transform,
+  /// [entries] is a list of [Mapping]s.
   @override
-  final DateTime updated;
-
-  /// [app] is the [App] the [Mapping] is for.
-  @override
-  final App app;
-
-  /// [version] is the revision version of the [Mapping].
-  /// See [Version] from pub_semver for more information.
-  @override
-  @JsonVersion()
-  final Version version;
-
-  /// [constraint] is the constraint version of the [App].
-  /// See [VersionConstraint] from pub_semver for more information.
-  ///
-  /// [VersionConstraint.compatibleWith] is used to define the minimum version.
-  @override
-  @JsonVersionConstraint()
-  final VersionConstraint constraint;
-
-  /// [format] is the format of the [Mapping].
-  @override
-  final MappingFormat format;
-
-  /// [entries] is a list of [MappingEntry]s.
-  final List<MappingEntry> _entries;
-
-  /// [entries] is a list of [MappingEntry]s.
-  @override
-  List<MappingEntry> get entries {
-    if (_entries is EqualUnmodifiableListView) return _entries;
+  @JsonKey()
+  List<Mapping> get fields {
+    if (_fields is EqualUnmodifiableListView) return _fields;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_entries);
+    return EqualUnmodifiableListView(_fields);
+  }
+
+  final Map<String, dynamic> _options;
+  @override
+  @JsonKey()
+  @JsonExtra()
+  Map<String, dynamic> get options {
+    if (_options is EqualUnmodifiableMapView) return _options;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_options);
   }
 
   /// [extra] is a map of additional properties.
@@ -312,7 +217,7 @@ class _$_Mapping implements _Mapping {
 
   @override
   String toString() {
-    return 'Mapping(id: $id, created: $created, updated: $updated, app: $app, version: $version, constraint: $constraint, format: $format, entries: $entries, extra: $extra)';
+    return 'Mapping(from: $from, to: $to, fields: $fields, options: $options, extra: $extra)';
   }
 
   @override
@@ -320,15 +225,10 @@ class _$_Mapping implements _Mapping {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Mapping &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.created, created) || other.created == created) &&
-            (identical(other.updated, updated) || other.updated == updated) &&
-            (identical(other.app, app) || other.app == app) &&
-            (identical(other.version, version) || other.version == version) &&
-            (identical(other.constraint, constraint) ||
-                other.constraint == constraint) &&
-            (identical(other.format, format) || other.format == format) &&
-            const DeepCollectionEquality().equals(other._entries, _entries) &&
+            (identical(other.from, from) || other.from == from) &&
+            (identical(other.to, to) || other.to == to) &&
+            const DeepCollectionEquality().equals(other._fields, _fields) &&
+            const DeepCollectionEquality().equals(other._options, _options) &&
             const DeepCollectionEquality().equals(other._extra, _extra));
   }
 
@@ -336,14 +236,10 @@ class _$_Mapping implements _Mapping {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      id,
-      created,
-      updated,
-      app,
-      version,
-      constraint,
-      format,
-      const DeepCollectionEquality().hash(_entries),
+      from,
+      to,
+      const DeepCollectionEquality().hash(_fields),
+      const DeepCollectionEquality().hash(_options),
       const DeepCollectionEquality().hash(_extra));
 
   @JsonKey(ignore: true)
@@ -362,56 +258,29 @@ class _$_Mapping implements _Mapping {
 
 abstract class _Mapping implements Mapping {
   const factory _Mapping(
-      {required final String id,
-      required final DateTime created,
-      required final DateTime updated,
-      required final App app,
-      @JsonVersion() required final Version version,
-      @JsonVersionConstraint() required final VersionConstraint constraint,
-      required final MappingFormat format,
-      required final List<MappingEntry> entries,
+      {required final String from,
+      required final String to,
+      final List<Mapping> fields,
+      @JsonExtra() final Map<String, dynamic> options,
       @JsonExtra() final Map<String, dynamic> extra}) = _$_Mapping;
 
   factory _Mapping.fromJson(Map<String, dynamic> json) = _$_Mapping.fromJson;
 
   @override
 
-  /// [id] is unself unique identifier for the Mapping.
-  String get id;
+  /// [from] is the JSONpath to the property to map from.
+  String get from;
   @override
 
-  /// [created] is the date and time when the [Mapping] was created inside unself app.
-  DateTime get created;
+  /// [to] is the JSONpath to the property to map to.
+  String get to;
+  @override // /// [transform] is a function that transforms the value from the [from] property to the [to] property.
+// String transform,
+  /// [entries] is a list of [Mapping]s.
+  List<Mapping> get fields;
   @override
-
-  /// [updated] is the date and time when the [Mapping] was last updated inside unself app.
-  DateTime get updated;
-  @override
-
-  /// [app] is the [App] the [Mapping] is for.
-  App get app;
-  @override
-
-  /// [version] is the revision version of the [Mapping].
-  /// See [Version] from pub_semver for more information.
-  @JsonVersion()
-  Version get version;
-  @override
-
-  /// [constraint] is the constraint version of the [App].
-  /// See [VersionConstraint] from pub_semver for more information.
-  ///
-  /// [VersionConstraint.compatibleWith] is used to define the minimum version.
-  @JsonVersionConstraint()
-  VersionConstraint get constraint;
-  @override
-
-  /// [format] is the format of the [Mapping].
-  MappingFormat get format;
-  @override
-
-  /// [entries] is a list of [MappingEntry]s.
-  List<MappingEntry> get entries;
+  @JsonExtra()
+  Map<String, dynamic> get options;
   @override
 
   /// [extra] is a map of additional properties.
