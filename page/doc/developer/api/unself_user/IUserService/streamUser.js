@@ -12,7 +12,7 @@ export default function RawHtml() {
     <section class="multi-line-signature">
       
 
-<span class="returntype"><a href="https://api.flutter.dev/flutter/dart-async/Stream-class.html">Stream</a><span class="signature">&lt;<wbr><span class="type-parameter">User</span>&gt;</span></span>
+<span class="returntype"><a href="https://api.flutter.dev/flutter/dart-async/Stream-class.html">Stream</a><span class="signature">&lt;<wbr><span class="type-parameter">Settings</span>&gt;</span></span>
 <span class="name ">streamUser</span>(<wbr>)
 
       
@@ -27,7 +27,7 @@ export default function RawHtml() {
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">Stream&lt;User&gt; streamUser();</code></pre>
+  <pre class="language-dart"><code class="language-dart">Stream&lt;Settings&gt; streamUser();</code></pre>
 </section>
 
 

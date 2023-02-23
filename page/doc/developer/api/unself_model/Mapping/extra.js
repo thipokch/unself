@@ -69,16 +69,14 @@ Map&lt;String, dynamic&gt; get extra =&gt; throw _privateConstructorUsedError;</
         <li class="section-title inherited">
           <a href="../../unself_model/Mapping#instance-properties">Properties</a>
         </li>
-          <li class="inherited"><a href="../../unself_model/Mapping/app">app</a></li>
-          <li class="inherited"><a href="../../unself_model/Mapping/constraint">constraint</a></li>
           <li class="inherited"><a href="../../unself_model/Mapping/copyWith">copyWith</a></li>
-          <li class="inherited"><a href="../../unself_model/Mapping/created">created</a></li>
           <li class="inherited"><a href="../../unself_model/Mapping/extra">extra</a></li>
+          <li class="inherited"><a href="../../unself_model/Mapping/fields">fields</a></li>
+          <li class="inherited"><a href="../../unself_model/Mapping/from">from</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/hashCode.html">hashCode</a></li>
-          <li class="inherited"><a href="../../unself_model/Mapping/id">id</a></li>
+          <li class="inherited"><a href="../../unself_model/Mapping/options">options</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></li>
-          <li class="inherited"><a href="../../unself_model/Mapping/updated">updated</a></li>
-          <li class="inherited"><a href="../../unself_model/Mapping/version">version</a></li>
+          <li class="inherited"><a href="../../unself_model/Mapping/to">to</a></li>
 
         <li class="section-title inherited"><a href="../../unself_model/Mapping#instance-methods">Methods</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>

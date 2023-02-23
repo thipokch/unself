@@ -82,28 +82,16 @@ export default function RawHtml() {
   <section class="summary offset-anchor" id="instance-methods">
     <h2>Methods</h2>
     <dl class="callables">
-        <dt id="collect" class="callable">
-  <span class="name"><a href="../unself_unpack/IUnpackService/collect">collect</a></span><span class="signature">(<wbr>)
-    <span class="returntype parameter">→ <a href="https://api.flutter.dev/flutter/dart-async/FutureOr-class.html">FutureOr</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a></span>&gt;</span></span>
+        <dt id="load" class="callable">
+  <span class="name"><a href="../unself_unpack/IUnpackService/load">load</a></span><span class="signature">(<wbr><span class="parameter" id="load-param-app"><span class="type-annotation">App</span> <span class="parameter-name">app</span></span>)
+    <span class="returntype parameter">→ <a href="https://api.flutter.dev/flutter/dart-async/FutureOr-class.html">FutureOr</a><span class="signature">&lt;<wbr><span class="type-parameter">ArchiveFormat</span>&gt;</span></span>
   </span>
   
 
 </dt>
 <dd>
-  Returns a list of supported <code>Collection</code> that can be imported from given collector.
-  
-
-</dd>
-
-        <dt id="getDocuments" class="callable">
-  <span class="name"><a href="../unself_unpack/IUnpackService/getDocuments">getDocuments</a></span><span class="signature">(<wbr><span class="parameter" id="getDocuments-param-collection">{<span>required</span> <span class="type-annotation">Collection</span> <span class="parameter-name">collection</span>}</span>)
-    <span class="returntype parameter">→ <a href="https://api.flutter.dev/flutter/dart-async/FutureOr-class.html">FutureOr</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter">Document</span>&gt;</span></span>&gt;</span></span>
-  </span>
-  
-
-</dt>
-<dd>
-  Get <code>Document</code> from local <code>Collection</code> database.
+  <a href="../unself_unpack/IUnpackService/load">load</a> returns the <code>Mapping</code> with file format requirements for the
+given app.
   
 
 </dd>
@@ -121,16 +109,30 @@ export default function RawHtml() {
 
 </dd>
 
-        <dt id="process" class="callable">
-  <span class="name"><a href="../unself_unpack/IUnpackService/process">process</a></span><span class="signature">(<wbr><span class="parameter" id="process-param-collection">{<span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">collection</span>}</span>)
-    <span class="returntype parameter">→ <a href="https://api.flutter.dev/flutter/dart-async/FutureOr-class.html">FutureOr</a><span class="signature">&lt;<wbr><span class="type-parameter">void</span>&gt;</span></span>
+        <dt id="open" class="callable">
+  <span class="name"><a href="../unself_unpack/IUnpackService/open">open</a></span><span class="signature">(<wbr><span class="parameter" id="open-param-file"><span class="type-annotation"><a href="https://pub.dev/documentation/cross_file/0.3.3+4/cross_file/XFile-class.html">XFile</a></span> <span class="parameter-name">file</span></span>)
+    <span class="returntype parameter">→ <a href="https://api.flutter.dev/flutter/dart-async/FutureOr-class.html">FutureOr</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter">Mapping</span>&gt;</span></span>&gt;</span></span>
   </span>
   
 
 </dt>
 <dd>
-  Given selection of <code>Collection</code> to be imported from previously selected archive.
-Begins importing data, format and store it as <code>Collection</code>.
+  <a href="../unself_unpack/IUnpackService/open">open</a> returns the supported list of <code>Mapping</code> for the
+given <a href="https://pub.dev/documentation/cross_file/0.3.3+4/cross_file/XFile-class.html">XFile</a> file.
+  
+
+</dd>
+
+        <dt id="start" class="callable">
+  <span class="name"><a href="../unself_unpack/IUnpackService/start">start</a></span><span class="signature">(<wbr><span class="parameter" id="start-param-mappings"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter">Mapping</span>&gt;</span></span> <span class="parameter-name">mappings</span></span>)
+    <span class="returntype parameter">→ <a href="https://api.flutter.dev/flutter/dart-async/Stream-class.html">Stream</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  <a href="../unself_unpack/IUnpackService/start">start</a> let the service begins unpacking with the given <code>Mapping</code>
+, and returns a progress stream.
   
 
 </dd>
@@ -193,15 +195,18 @@ Begins importing data, format and store it as <code>Collection</code>.
     <h5>unself_unpack library</h5>
     <ol>
       <li class="section-title"><a href="../unself_unpack/unself_unpack#classes">Classes</a></li>
-        <li><a href="../unself_unpack/ArchiveCollector">ArchiveCollector</a></li>
+        <li><a href="../unself_unpack/ArchiveExport">ArchiveExport</a></li>
+        <li><a href="../unself_unpack/Export">Export</a></li>
+        <li><a href="../unself_unpack/Import">Import</a></li>
         <li><a href="../unself_unpack/IUnpackService">IUnpackService</a></li>
         <li><a href="../unself_unpack/UnpackService">UnpackService</a></li>
+        <li><a href="../unself_unpack/ZipImport">ZipImport</a></li>
 
 
 
 
       <li class="section-title"><a href="../unself_unpack/unself_unpack#properties">Properties</a></li>
-        <li><a href="../unself_unpack/facebookKeys">facebookKeys</a></li>
+        <li><a href="../unself_unpack/facebookMapping">facebookMapping</a></li>
 
 
 
@@ -224,10 +229,10 @@ Begins importing data, format and store it as <code>Collection</code>.
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></li>
 
         <li class="section-title"><a href="../unself_unpack/IUnpackService#instance-methods">Methods</a></li>
-          <li><a href="../unself_unpack/IUnpackService/collect">collect</a></li>
-          <li><a href="../unself_unpack/IUnpackService/getDocuments">getDocuments</a></li>
+          <li><a href="../unself_unpack/IUnpackService/load">load</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>
-          <li><a href="../unself_unpack/IUnpackService/process">process</a></li>
+          <li><a href="../unself_unpack/IUnpackService/open">open</a></li>
+          <li><a href="../unself_unpack/IUnpackService/start">start</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/toString.html">toString</a></li>
 
         <li class="section-title inherited"><a href="../unself_unpack/IUnpackService#operators">Operators</a></li>

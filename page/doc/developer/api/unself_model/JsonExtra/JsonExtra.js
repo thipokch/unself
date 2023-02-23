@@ -180,17 +180,24 @@ export default function RawHtml() {
     <ol>
       <li class="section-title"><a href="../unself_model/unself_model#classes">Classes</a></li>
         <li><a href="../unself_model/Account">Account</a></li>
+        <li><a href="../unself_model/Activity">Activity</a></li>
         <li><a href="../unself_model/App">App</a></li>
         <li><a href="../unself_model/Archive">Archive</a></li>
+        <li><a href="../unself_model/ArchiveData">ArchiveData</a></li>
+        <li><a href="../unself_model/ArchiveFormat">ArchiveFormat</a></li>
         <li><a href="../unself_model/Base">Base</a></li>
         <li><a href="../unself_model/Collection">Collection</a></li>
-        <li><a href="../unself_model/Document">Document</a></li>
+        <li><a href="../unself_model/Edge">Edge</a></li>
         <li><a href="../unself_model/Field">Field</a></li>
+        <li><a href="../unself_model/JsonDateTime">JsonDateTime</a></li>
         <li><a href="../unself_model/JsonExtra">JsonExtra</a></li>
+        <li><a href="../unself_model/JsonString">JsonString</a></li>
         <li><a href="../unself_model/JsonVersion">JsonVersion</a></li>
         <li><a href="../unself_model/JsonVersionConstraint">JsonVersionConstraint</a></li>
         <li><a href="../unself_model/Mapping">Mapping</a></li>
-        <li><a href="../unself_model/User">User</a></li>
+        <li><a href="../unself_model/Node">Node</a></li>
+        <li><a href="../unself_model/Settings">Settings</a></li>
+        <li><a href="../unself_model/Topic">Topic</a></li>
         <li><a href="https://pub.dev/documentation/pub_semver/2.1.3/pub_semver/Version-class.html">Version</a></li>
         <li><a href="https://pub.dev/documentation/pub_semver/2.1.3/pub_semver/VersionConstraint-class.html">VersionConstraint</a></li>
         <li><a href="https://pub.dev/documentation/pub_semver/2.1.3/pub_semver/VersionRange-class.html">VersionRange</a></li>
@@ -202,6 +209,7 @@ export default function RawHtml() {
 
 
       <li class="section-title"><a href="../unself_model/unself_model#enums">Enums</a></li>
+        <li><a href="../unself_model/ArchiveFileFormat">ArchiveFileFormat</a></li>
         <li><a href="../unself_model/CollectionType">CollectionType</a></li>
         <li><a href="../unself_model/FieldType">FieldType</a></li>
 

@@ -15,6 +15,11 @@ export default function RawHtml() {
 
 <section class="multi-line-signature">
   
+  <div>
+    <ol class="annotation-list">
+        <li>@<a href="../../unself_model/JsonDateTime">JsonDateTime</a>()</li>
+    </ol>
+  </div>
   <span class="returntype"><a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span>
   <span class="name ">updated</span>
   <div class="features"><span class="feature">inherited</span></div>
@@ -22,14 +27,12 @@ export default function RawHtml() {
 </section>
 
 
-<section class="desc markdown">
-  <p><a href="../../unself_model/App/updated">updated</a> is the date and time when the <a href="../../unself_model/App">App</a> was last updated inside unself app.</p>
-</section>
 
 
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">DateTime get updated =&gt; throw _privateConstructorUsedError;</code></pre>
+  <pre class="language-dart"><code class="language-dart">@JsonDateTime()
+DateTime get updated =&gt; throw _privateConstructorUsedError;</code></pre>
 </section>
 
 </section>

@@ -16,7 +16,7 @@ export default function RawHtml() {
 <li><span class="parameter" id="-param-updated"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span> <span class="parameter-name">updated</span>, </span></li>
 <li><span class="parameter" id="-param-name"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">name</span>, </span></li>
 <li><span class="parameter" id="-param-account"><span>required</span> <span class="type-annotation"><a href="../../unself_model/Account">Account</a></span> <span class="parameter-name">account</span>, </span></li>
-<li><span class="parameter" id="-param-mapping"><span>required</span> <span class="type-annotation"><a href="../../unself_model/Mapping">Mapping</a></span> <span class="parameter-name">mapping</span>, </span></li>
+<li><span class="parameter" id="-param-formatId"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">formatId</span>, </span></li>
 <li><span class="parameter" id="-param-extra"><span>@<a href="../../unself_model/JsonExtra">JsonExtra</a>()</span> <span>@<a href="https://pub.dev/documentation/freezed_annotation/2.2.0/freezed_annotation/Default-class.html">Default</a>({})</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>, <span class="type-parameter">dynamic</span>&gt;</span></span> <span class="parameter-name">extra</span>}</span></li>
 </ol>)
     </section>
@@ -45,9 +45,7 @@ export default function RawHtml() {
 
   /// [account] is the owner of the [Archive] imported.
   required Account account,
-
-  /// [mapping] is the [Mapping] used to import the data.
-  required Mapping mapping,
+  required String formatId,
 
   /// [extra] is a map of additional properties.
   @JsonExtra() @Default({}) Map&lt;String, dynamic&gt; extra,
@@ -87,9 +85,9 @@ export default function RawHtml() {
           <li class="inherited"><a href="../../unself_model/Archive/copyWith">copyWith</a></li>
           <li class="inherited"><a href="../../unself_model/Archive/created">created</a></li>
           <li class="inherited"><a href="../../unself_model/Archive/extra">extra</a></li>
+          <li class="inherited"><a href="../../unself_model/Archive/formatId">formatId</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/hashCode.html">hashCode</a></li>
           <li class="inherited"><a href="../../unself_model/Archive/id">id</a></li>
-          <li class="inherited"><a href="../../unself_model/Archive/mapping">mapping</a></li>
           <li class="inherited"><a href="../../unself_model/Archive/name">name</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></li>
           <li class="inherited"><a href="../../unself_model/Archive/updated">updated</a></li>

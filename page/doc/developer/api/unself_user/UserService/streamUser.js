@@ -17,7 +17,7 @@ export default function RawHtml() {
     </ol>
   </div>
 
-<span class="returntype"><a href="https://api.flutter.dev/flutter/dart-async/Stream-class.html">Stream</a><span class="signature">&lt;<wbr><span class="type-parameter">User</span>&gt;</span></span>
+<span class="returntype"><a href="https://api.flutter.dev/flutter/dart-async/Stream-class.html">Stream</a><span class="signature">&lt;<wbr><span class="type-parameter">Settings</span>&gt;</span></span>
 <span class="name ">streamUser</span>(<wbr>)
 
       <div class="features"><span class="feature">override</span></div>
@@ -33,7 +33,7 @@ export default function RawHtml() {
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">@override
-Stream&lt;User&gt; streamUser() =&gt; _controller.stream;</code></pre>
+Stream&lt;Settings&gt; streamUser() =&gt; _controller.stream;</code></pre>
 </section>
 
 

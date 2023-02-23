@@ -15,6 +15,11 @@ export default function RawHtml() {
 
 <section class="multi-line-signature">
   
+  <div>
+    <ol class="annotation-list">
+        <li>@<a href="../../unself_model/JsonString">JsonString</a>()</li>
+    </ol>
+  </div>
   <span class="returntype"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
   <span class="name ">id</span>
   <div class="features"><span class="feature">inherited</span></div>
@@ -22,14 +27,12 @@ export default function RawHtml() {
 </section>
 
 
-<section class="desc markdown">
-  <p><a href="../../unself_model/App/id">id</a> is unself unique identifier for the <a href="../../unself_model/App">App</a>.</p>
-</section>
 
 
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">String get id =&gt; throw _privateConstructorUsedError;</code></pre>
+  <pre class="language-dart"><code class="language-dart">@JsonString()
+String get id =&gt; throw _privateConstructorUsedError;</code></pre>
 </section>
 
 </section>

@@ -126,7 +126,7 @@ export default function RawHtml() {
 
         <dt id="streamUser" class="callable">
   <span class="name"><a href="../unself_user/UserService/streamUser">streamUser</a></span><span class="signature">(<wbr>)
-    <span class="returntype parameter">→ <a href="https://api.flutter.dev/flutter/dart-async/Stream-class.html">Stream</a><span class="signature">&lt;<wbr><span class="type-parameter">User</span>&gt;</span></span>
+    <span class="returntype parameter">→ <a href="https://api.flutter.dev/flutter/dart-async/Stream-class.html">Stream</a><span class="signature">&lt;<wbr><span class="type-parameter">Settings</span>&gt;</span></span>
   </span>
   
 

@@ -27,6 +27,14 @@ export default function RawHtml() {
 Each person can have multiple <a href="unself_model/Account">Account</a>s and on multiple <a href="unself_model/App">App</a>s.
 </dd>
 
+        <dt id="Activity">
+  <span class="name "><a href="unself_model/Activity">Activity</a></span> 
+
+</dt>
+<dd>
+  
+</dd>
+
         <dt id="App">
   <span class="name "><a href="unself_model/App">App</a></span> 
 
@@ -41,6 +49,22 @@ Each person can have multiple <a href="unself_model/Account">Account</a>s and on
 </dt>
 <dd>
   <a href="unself_model/Archive">Archive</a> is a set of data user imported from other apps.
+</dd>
+
+        <dt id="ArchiveData">
+  <span class="name "><a href="unself_model/ArchiveData">ArchiveData</a></span> 
+
+</dt>
+<dd>
+  <a href="unself_model/ArchiveData">ArchiveData</a> is used to
+</dd>
+
+        <dt id="ArchiveFormat">
+  <span class="name "><a href="unself_model/ArchiveFormat">ArchiveFormat</a></span> 
+
+</dt>
+<dd>
+  ArchiveFormat description
 </dd>
 
         <dt id="Base">
@@ -60,12 +84,12 @@ Each person can have multiple <a href="unself_model/Account">Account</a>s and on
 It is used to store a generalized data structure of user's <a href="unself_model/Archive">Archive</a>s.
 </dd>
 
-        <dt id="Document">
-  <span class="name "><a href="unself_model/Document">Document</a></span> 
+        <dt id="Edge">
+  <span class="name "><a href="unself_model/Edge">Edge</a></span> 
 
 </dt>
 <dd>
-  <a href="unself_model/Document">Document</a> is a record inside of a <a href="unself_model/Collection">Collection</a>.
+  <a href="unself_model/Base">Base</a> is a base class for all unself models.
 </dd>
 
         <dt id="Field">
@@ -77,8 +101,24 @@ It is used to store a generalized data structure of user's <a href="unself_model
 <a href="unself_model/Field">Field</a> is a field inside of a <a href="unself_model/Collection">Collection</a>'s schema.
 </dd>
 
+        <dt id="JsonDateTime">
+  <span class="name "><a href="unself_model/JsonDateTime">JsonDateTime</a></span> 
+
+</dt>
+<dd>
+  
+</dd>
+
         <dt id="JsonExtra">
   <span class="name "><a href="unself_model/JsonExtra">JsonExtra</a></span> 
+
+</dt>
+<dd>
+  
+</dd>
+
+        <dt id="JsonString">
+  <span class="name "><a href="unself_model/JsonString">JsonString</a></span> 
 
 </dt>
 <dd>
@@ -106,15 +146,31 @@ It is used to store a generalized data structure of user's <a href="unself_model
 
 </dt>
 <dd>
-  Mapping description
+  Mapping description@freezed
 </dd>
 
-        <dt id="User">
-  <span class="name "><a href="unself_model/User">User</a></span> 
+        <dt id="Node">
+  <span class="name "><a href="unself_model/Node">Node</a></span> 
 
 </dt>
 <dd>
-  User description
+  <a href="unself_model/Base">Base</a> is a base class for all unself models.
+</dd>
+
+        <dt id="Settings">
+  <span class="name "><a href="unself_model/Settings">Settings</a></span> 
+
+</dt>
+<dd>
+  Settings description
+</dd>
+
+        <dt id="Topic">
+  <span class="name "><a href="unself_model/Topic">Topic</a></span> 
+
+</dt>
+<dd>
+  
 </dd>
 
         <dt id="Version">
@@ -163,6 +219,14 @@ ranges.
       <h2>Enums</h2>
 
       <dl>
+        <dt id="ArchiveFileFormat">
+  <span class="name "><a href="unself_model/ArchiveFileFormat">ArchiveFileFormat</a></span> 
+
+</dt>
+<dd>
+  
+</dd>
+
         <dt id="CollectionType">
   <span class="name "><a href="unself_model/CollectionType">CollectionType</a></span> 
 
@@ -212,17 +276,24 @@ ranges.
     <ol>
       <li class="section-title"><a href="unself_model/unself_model#classes">Classes</a></li>
         <li><a href="unself_model/Account">Account</a></li>
+        <li><a href="unself_model/Activity">Activity</a></li>
         <li><a href="unself_model/App">App</a></li>
         <li><a href="unself_model/Archive">Archive</a></li>
+        <li><a href="unself_model/ArchiveData">ArchiveData</a></li>
+        <li><a href="unself_model/ArchiveFormat">ArchiveFormat</a></li>
         <li><a href="unself_model/Base">Base</a></li>
         <li><a href="unself_model/Collection">Collection</a></li>
-        <li><a href="unself_model/Document">Document</a></li>
+        <li><a href="unself_model/Edge">Edge</a></li>
         <li><a href="unself_model/Field">Field</a></li>
+        <li><a href="unself_model/JsonDateTime">JsonDateTime</a></li>
         <li><a href="unself_model/JsonExtra">JsonExtra</a></li>
+        <li><a href="unself_model/JsonString">JsonString</a></li>
         <li><a href="unself_model/JsonVersion">JsonVersion</a></li>
         <li><a href="unself_model/JsonVersionConstraint">JsonVersionConstraint</a></li>
         <li><a href="unself_model/Mapping">Mapping</a></li>
-        <li><a href="unself_model/User">User</a></li>
+        <li><a href="unself_model/Node">Node</a></li>
+        <li><a href="unself_model/Settings">Settings</a></li>
+        <li><a href="unself_model/Topic">Topic</a></li>
         <li><a href="https://pub.dev/documentation/pub_semver/2.1.3/pub_semver/Version-class.html">Version</a></li>
         <li><a href="https://pub.dev/documentation/pub_semver/2.1.3/pub_semver/VersionConstraint-class.html">VersionConstraint</a></li>
         <li><a href="https://pub.dev/documentation/pub_semver/2.1.3/pub_semver/VersionRange-class.html">VersionRange</a></li>
@@ -234,6 +305,7 @@ ranges.
 
 
       <li class="section-title"><a href="unself_model/unself_model#enums">Enums</a></li>
+        <li><a href="unself_model/ArchiveFileFormat">ArchiveFileFormat</a></li>
         <li><a href="unself_model/CollectionType">CollectionType</a></li>
         <li><a href="unself_model/FieldType">FieldType</a></li>
 

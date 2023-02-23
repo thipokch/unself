@@ -251,7 +251,7 @@ A great spot to add logging/analytics at the individual <a href="https://pub.dev
 </dd>
 
         <dt id="onSubscriptionData" class="callable">
-  <span class="name"><a href="../settings_appearance/SettingsAppearanceBloc/onSubscriptionData">onSubscriptionData</a></span><span class="signature">(<wbr><span class="parameter" id="onSubscriptionData-param-user"><span class="type-annotation">User</span> <span class="parameter-name">user</span></span>)
+  <span class="name"><a href="../settings_appearance/SettingsAppearanceBloc/onSubscriptionData">onSubscriptionData</a></span><span class="signature">(<wbr><span class="parameter" id="onSubscriptionData-param-user"><span class="type-annotation">Settings</span> <span class="parameter-name">user</span></span>)
     <span class="returntype parameter">→ void</span>
   </span>
   

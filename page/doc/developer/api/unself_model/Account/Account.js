@@ -25,7 +25,7 @@ Each person can have multiple <a href="../unself_model/Account">Account</a>s and
   <dt>Implemented types</dt>
   <dd>
     <ul class="comma-separated clazz-relationships">
-        <li><a href="../unself_model/Base">Base</a></li>
+        <li><a href="../unself_model/Node">Node</a></li>
     </ul>
   </dd>
         
@@ -50,7 +50,7 @@ Each person can have multiple <a href="../unself_model/Account">Account</a>s and
 
     <dl class="constructor-summary-list">
         <dt id="Account" class="callable">
-          <span class="name"><a href="../unself_model/Account/Account.constructor">Account</a></span><span class="signature">(<span class="parameter" id="-param-id">{<span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">id</span>, </span><span class="parameter" id="-param-created"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span> <span class="parameter-name">created</span>, </span><span class="parameter" id="-param-updated"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span> <span class="parameter-name">updated</span>, </span><span class="parameter" id="-param-name"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">name</span>, </span><span class="parameter" id="-param-email"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">email</span>, </span><span class="parameter" id="-param-app"><span>required</span> <span class="type-annotation"><a href="../unself_model/App">App</a></span> <span class="parameter-name">app</span>, </span><span class="parameter" id="-param-extra"><span>@<a href="../unself_model/JsonExtra">JsonExtra</a>()</span> <span>@<a href="https://pub.dev/documentation/freezed_annotation/2.2.0/freezed_annotation/Default-class.html">Default</a>({})</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>, <span class="type-parameter">dynamic</span>&gt;</span></span> <span class="parameter-name">extra</span>}</span>)</span>
+          <span class="name"><a href="../unself_model/Account/Account.constructor">Account</a></span><span class="signature">(<span class="parameter" id="-param-id">{<span>@<a href="../unself_model/JsonString">JsonString</a>()</span> <span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">id</span>, </span><span class="parameter" id="-param-created"><span>@<a href="../unself_model/JsonDateTime">JsonDateTime</a>()</span> <span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span> <span class="parameter-name">created</span>, </span><span class="parameter" id="-param-updated"><span>@<a href="../unself_model/JsonDateTime">JsonDateTime</a>()</span> <span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span> <span class="parameter-name">updated</span>, </span><span class="parameter" id="-param-archiveId"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">archiveId</span>, </span><span class="parameter" id="-param-name"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">name</span>, </span><span class="parameter" id="-param-email"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">email</span>, </span><span class="parameter" id="-param-app"><span>required</span> <span class="type-annotation"><a href="../unself_model/App">App</a></span> <span class="parameter-name">app</span>, </span><span class="parameter" id="-param-extra"><span>@<a href="../unself_model/JsonExtra">JsonExtra</a>()</span> <span>@<a href="https://pub.dev/documentation/freezed_annotation/2.2.0/freezed_annotation/Default-class.html">Default</a>({})</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>, <span class="type-parameter">dynamic</span>&gt;</span></span> <span class="parameter-name">extra</span>}</span>)</span>
         </dt>
         <dd>
           <a href="../unself_model/Account">Account</a> is a user's and their acquaintances' identity on a <a href="../unself_model/App">App</a>.
@@ -68,7 +68,7 @@ Each person can have multiple <a href="../unself_model/Account">Account</a>s and
     </dl>
   </section>
 
-    <section class="summary offset-anchor inherited" id="instance-properties">
+    <section class="summary offset-anchor" id="instance-properties">
       <h2>Properties</h2>
 
       <dl class="properties">
@@ -79,6 +79,17 @@ Each person can have multiple <a href="../unself_model/Account">Account</a>s and
 </dt>
 <dd class="inherited">
   <a href="../unself_model/Account/app">app</a> is the <a href="../unself_model/App">App</a> where the <a href="../unself_model/Account">Account</a> is registered.
+  <div class="features"><span class="feature">read-only</span><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="archiveId" class="property inherited">
+  <span class="name"><a href="../unself_model/Account/archiveId">archiveId</a></span>
+  <span class="signature">→ <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> 
+
+</dt>
+<dd class="inherited">
+  
   <div class="features"><span class="feature">read-only</span><span class="feature">inherited</span></div>
 
 </dd>
@@ -100,7 +111,7 @@ Each person can have multiple <a href="../unself_model/Account">Account</a>s and
 
 </dt>
 <dd class="inherited">
-  <a href="../unself_model/Account/created">created</a> is the date and time when the <a href="../unself_model/Account">Account</a> was created inside unself app.
+  
   <div class="features"><span class="feature">read-only</span><span class="feature">inherited</span></div>
 
 </dd>
@@ -144,8 +155,19 @@ Each person can have multiple <a href="../unself_model/Account">Account</a>s and
 
 </dt>
 <dd class="inherited">
-  <a href="../unself_model/Account/id">id</a> is unself unique identifier for the <a href="../unself_model/Account">Account</a>.
+  
   <div class="features"><span class="feature">read-only</span><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="labels" class="property">
+  <span class="name"><a href="../unself_model/Account/labels">labels</a></span>
+  <span class="signature">→ <a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>&gt;</span></span> 
+
+</dt>
+<dd>
+  <a href="../unself_model/Account/labels">labels</a> is a list of labels assigned to the model.
+  <div class="features"><span class="feature">final</span></div>
 
 </dd>
 
@@ -177,7 +199,7 @@ Each person can have multiple <a href="../unself_model/Account">Account</a>s and
 
 </dt>
 <dd class="inherited">
-  <a href="../unself_model/Account/updated">updated</a> is the date and time when the <a href="../unself_model/Account">Account</a> was last updated inside unself app.
+  
   <div class="features"><span class="feature">read-only</span><span class="feature">inherited</span></div>
 
 </dd>
@@ -274,17 +296,24 @@ Each person can have multiple <a href="../unself_model/Account">Account</a>s and
     <ol>
       <li class="section-title"><a href="../unself_model/unself_model#classes">Classes</a></li>
         <li><a href="../unself_model/Account">Account</a></li>
+        <li><a href="../unself_model/Activity">Activity</a></li>
         <li><a href="../unself_model/App">App</a></li>
         <li><a href="../unself_model/Archive">Archive</a></li>
+        <li><a href="../unself_model/ArchiveData">ArchiveData</a></li>
+        <li><a href="../unself_model/ArchiveFormat">ArchiveFormat</a></li>
         <li><a href="../unself_model/Base">Base</a></li>
         <li><a href="../unself_model/Collection">Collection</a></li>
-        <li><a href="../unself_model/Document">Document</a></li>
+        <li><a href="../unself_model/Edge">Edge</a></li>
         <li><a href="../unself_model/Field">Field</a></li>
+        <li><a href="../unself_model/JsonDateTime">JsonDateTime</a></li>
         <li><a href="../unself_model/JsonExtra">JsonExtra</a></li>
+        <li><a href="../unself_model/JsonString">JsonString</a></li>
         <li><a href="../unself_model/JsonVersion">JsonVersion</a></li>
         <li><a href="../unself_model/JsonVersionConstraint">JsonVersionConstraint</a></li>
         <li><a href="../unself_model/Mapping">Mapping</a></li>
-        <li><a href="../unself_model/User">User</a></li>
+        <li><a href="../unself_model/Node">Node</a></li>
+        <li><a href="../unself_model/Settings">Settings</a></li>
+        <li><a href="../unself_model/Topic">Topic</a></li>
         <li><a href="https://pub.dev/documentation/pub_semver/2.1.3/pub_semver/Version-class.html">Version</a></li>
         <li><a href="https://pub.dev/documentation/pub_semver/2.1.3/pub_semver/VersionConstraint-class.html">VersionConstraint</a></li>
         <li><a href="https://pub.dev/documentation/pub_semver/2.1.3/pub_semver/VersionRange-class.html">VersionRange</a></li>
@@ -296,6 +325,7 @@ Each person can have multiple <a href="../unself_model/Account">Account</a>s and
 
 
       <li class="section-title"><a href="../unself_model/unself_model#enums">Enums</a></li>
+        <li><a href="../unself_model/ArchiveFileFormat">ArchiveFileFormat</a></li>
         <li><a href="../unself_model/CollectionType">CollectionType</a></li>
         <li><a href="../unself_model/FieldType">FieldType</a></li>
 
@@ -312,16 +342,18 @@ Each person can have multiple <a href="../unself_model/Account">Account</a>s and
           <li><a href="../unself_model/Account/Account.fromJson">fromJson</a></li>
 
 
-        <li class="section-title inherited">
+        <li class="section-title">
           <a href="../unself_model/Account#instance-properties">Properties</a>
         </li>
           <li class="inherited"><a href="../unself_model/Account/app">app</a></li>
+          <li class="inherited"><a href="../unself_model/Account/archiveId">archiveId</a></li>
           <li class="inherited"><a href="../unself_model/Account/copyWith">copyWith</a></li>
           <li class="inherited"><a href="../unself_model/Account/created">created</a></li>
           <li class="inherited"><a href="../unself_model/Account/email">email</a></li>
           <li class="inherited"><a href="../unself_model/Account/extra">extra</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/hashCode.html">hashCode</a></li>
           <li class="inherited"><a href="../unself_model/Account/id">id</a></li>
+          <li><a href="../unself_model/Account/labels">labels</a></li>
           <li class="inherited"><a href="../unself_model/Account/name">name</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></li>
           <li class="inherited"><a href="../unself_model/Account/updated">updated</a></li>

@@ -15,6 +15,11 @@ export default function RawHtml() {
 
 <section class="multi-line-signature">
   
+  <div>
+    <ol class="annotation-list">
+        <li>@<a href="../../unself_model/JsonDateTime">JsonDateTime</a>()</li>
+    </ol>
+  </div>
   <span class="returntype"><a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span>
   <span class="name ">created</span>
   <div class="features"><span class="feature">inherited</span></div>
@@ -22,14 +27,12 @@ export default function RawHtml() {
 </section>
 
 
-<section class="desc markdown">
-  <p><a href="../../unself_model/Account/created">created</a> is the date and time when the <a href="../../unself_model/Account">Account</a> was created inside unself app.</p>
-</section>
 
 
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">DateTime get created =&gt; throw _privateConstructorUsedError;</code></pre>
+  <pre class="language-dart"><code class="language-dart">@JsonDateTime()
+DateTime get created =&gt; throw _privateConstructorUsedError;</code></pre>
 </section>
 
 </section>
@@ -60,16 +63,18 @@ export default function RawHtml() {
           <li><a href="../../unself_model/Account/Account.fromJson">fromJson</a></li>
 
 
-        <li class="section-title inherited">
+        <li class="section-title">
           <a href="../../unself_model/Account#instance-properties">Properties</a>
         </li>
           <li class="inherited"><a href="../../unself_model/Account/app">app</a></li>
+          <li class="inherited"><a href="../../unself_model/Account/archiveId">archiveId</a></li>
           <li class="inherited"><a href="../../unself_model/Account/copyWith">copyWith</a></li>
           <li class="inherited"><a href="../../unself_model/Account/created">created</a></li>
           <li class="inherited"><a href="../../unself_model/Account/email">email</a></li>
           <li class="inherited"><a href="../../unself_model/Account/extra">extra</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/hashCode.html">hashCode</a></li>
           <li class="inherited"><a href="../../unself_model/Account/id">id</a></li>
+          <li><a href="../../unself_model/Account/labels">labels</a></li>
           <li class="inherited"><a href="../../unself_model/Account/name">name</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></li>
           <li class="inherited"><a href="../../unself_model/Account/updated">updated</a></li>

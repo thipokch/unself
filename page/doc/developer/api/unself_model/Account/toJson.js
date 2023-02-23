@@ -53,16 +53,18 @@ export default function RawHtml() {
           <li><a href="../../unself_model/Account/Account.fromJson">fromJson</a></li>
 
 
-        <li class="section-title inherited">
+        <li class="section-title">
           <a href="../../unself_model/Account#instance-properties">Properties</a>
         </li>
           <li class="inherited"><a href="../../unself_model/Account/app">app</a></li>
+          <li class="inherited"><a href="../../unself_model/Account/archiveId">archiveId</a></li>
           <li class="inherited"><a href="../../unself_model/Account/copyWith">copyWith</a></li>
           <li class="inherited"><a href="../../unself_model/Account/created">created</a></li>
           <li class="inherited"><a href="../../unself_model/Account/email">email</a></li>
           <li class="inherited"><a href="../../unself_model/Account/extra">extra</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/hashCode.html">hashCode</a></li>
           <li class="inherited"><a href="../../unself_model/Account/id">id</a></li>
+          <li><a href="../../unself_model/Account/labels">labels</a></li>
           <li class="inherited"><a href="../../unself_model/Account/name">name</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></li>
           <li class="inherited"><a href="../../unself_model/Account/updated">updated</a></li>

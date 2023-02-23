@@ -18,12 +18,28 @@ export default function RawHtml() {
       <h2>Classes</h2>
 
       <dl>
-        <dt id="ArchiveCollector">
-  <span class="name "><a href="unself_unpack/ArchiveCollector">ArchiveCollector</a></span> 
+        <dt id="ArchiveExport">
+  <span class="name "><a href="unself_unpack/ArchiveExport">ArchiveExport</a></span> 
 
 </dt>
 <dd>
-  <a href="unself_unpack/ArchiveCollector">ArchiveCollector</a> unpacks archive files and collect metadata.
+  <a href="unself_unpack/ArchiveExport">ArchiveExport</a> unpacks archive files and collect metadata.
+</dd>
+
+        <dt id="Export">
+  <span class="name "><a href="unself_unpack/Export">Export</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>, <span class="type-parameter">O</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  An interface for <a href="unself_unpack/Export">Export</a>
+</dd>
+
+        <dt id="Import">
+  <span class="name "><a href="unself_unpack/Import">Import</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>, <span class="type-parameter">O</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  An interface for Input
 </dd>
 
         <dt id="IUnpackService">
@@ -39,7 +55,15 @@ export default function RawHtml() {
 
 </dt>
 <dd>
-  <a href="unself_unpack/UnpackService">UnpackService</a> description
+  <a href="unself_unpack/UnpackService">UnpackService</a> is a service that unpacks data from a file.
+</dd>
+
+        <dt id="ZipImport">
+  <span class="name "><a href="unself_unpack/ZipImport">ZipImport</a></span> 
+
+</dt>
+<dd>
+  <a href="unself_unpack/ZipImport">ZipImport</a> unpacks archive files and collect metadata.
 </dd>
 
       </dl>
@@ -52,9 +76,9 @@ export default function RawHtml() {
       <h2>Properties</h2>
 
       <dl class="properties">
-        <dt id="facebookKeys" class="property">
-  <span class="name"><a href="unself_unpack/facebookKeys">facebookKeys</a></span>
-  <span class="signature">→ <a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/Pattern-class.html">Pattern</a></span>&gt;</span></span> 
+        <dt id="facebookMapping" class="property">
+  <span class="name"><a href="unself_unpack/facebookMapping">facebookMapping</a></span>
+  <span class="signature">→ ArchiveFormat</span> 
 
 </dt>
 <dd>
@@ -97,15 +121,18 @@ export default function RawHtml() {
     <h5>unself_unpack library</h5>
     <ol>
       <li class="section-title"><a href="unself_unpack/unself_unpack#classes">Classes</a></li>
-        <li><a href="unself_unpack/ArchiveCollector">ArchiveCollector</a></li>
+        <li><a href="unself_unpack/ArchiveExport">ArchiveExport</a></li>
+        <li><a href="unself_unpack/Export">Export</a></li>
+        <li><a href="unself_unpack/Import">Import</a></li>
         <li><a href="unself_unpack/IUnpackService">IUnpackService</a></li>
         <li><a href="unself_unpack/UnpackService">UnpackService</a></li>
+        <li><a href="unself_unpack/ZipImport">ZipImport</a></li>
 
 
 
 
       <li class="section-title"><a href="unself_unpack/unself_unpack#properties">Properties</a></li>
-        <li><a href="unself_unpack/facebookKeys">facebookKeys</a></li>
+        <li><a href="unself_unpack/facebookMapping">facebookMapping</a></li>
 
 
 

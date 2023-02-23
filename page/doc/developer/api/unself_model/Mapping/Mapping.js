@@ -12,7 +12,7 @@ export default function RawHtml() {
 
     
 <section class="desc markdown">
-  <p>Mapping description</p>
+  <p>Mapping description@freezed</p>
 </section>
 
 
@@ -21,12 +21,6 @@ export default function RawHtml() {
         
 
         
-  <dt>Implemented types</dt>
-  <dd>
-    <ul class="comma-separated clazz-relationships">
-        <li><a href="../unself_model/Base">Base</a></li>
-    </ul>
-  </dd>
         
 
 
@@ -49,7 +43,7 @@ export default function RawHtml() {
 
     <dl class="constructor-summary-list">
         <dt id="Mapping" class="callable">
-          <span class="name"><a href="../unself_model/Mapping/Mapping.constructor">Mapping</a></span><span class="signature">(<span class="parameter" id="-param-id">{<span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">id</span>, </span><span class="parameter" id="-param-created"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span> <span class="parameter-name">created</span>, </span><span class="parameter" id="-param-updated"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span> <span class="parameter-name">updated</span>, </span><span class="parameter" id="-param-app"><span>required</span> <span class="type-annotation"><a href="../unself_model/App">App</a></span> <span class="parameter-name">app</span>, </span><span class="parameter" id="-param-version"><span>@<a href="../unself_model/JsonVersion">JsonVersion</a>()</span> <span>required</span> <span class="type-annotation"><a href="https://pub.dev/documentation/pub_semver/2.1.3/pub_semver/Version-class.html">Version</a></span> <span class="parameter-name">version</span>, </span><span class="parameter" id="-param-constraint"><span>@<a href="../unself_model/JsonVersionConstraint">JsonVersionConstraint</a>()</span> <span>required</span> <span class="type-annotation"><a href="https://pub.dev/documentation/pub_semver/2.1.3/pub_semver/VersionConstraint-class.html">VersionConstraint</a></span> <span class="parameter-name">constraint</span>, </span><span class="parameter" id="-param-extra"><span>@<a href="../unself_model/JsonExtra">JsonExtra</a>()</span> <span>@<a href="https://pub.dev/documentation/freezed_annotation/2.2.0/freezed_annotation/Default-class.html">Default</a>({})</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>, <span class="type-parameter">dynamic</span>&gt;</span></span> <span class="parameter-name">extra</span>}</span>)</span>
+          <span class="name"><a href="../unself_model/Mapping/Mapping.constructor">Mapping</a></span><span class="signature">(<span class="parameter" id="-param-from">{<span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">from</span>, </span><span class="parameter" id="-param-to"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">to</span>, </span><span class="parameter" id="-param-fields"><span>@<a href="https://pub.dev/documentation/freezed_annotation/2.2.0/freezed_annotation/Default-class.html">Default</a>([])</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../unself_model/Mapping">Mapping</a></span>&gt;</span></span> <span class="parameter-name">fields</span>, </span><span class="parameter" id="-param-options"><span>@<a href="../unself_model/JsonExtra">JsonExtra</a>()</span> <span>@<a href="https://pub.dev/documentation/freezed_annotation/2.2.0/freezed_annotation/Default-class.html">Default</a>({})</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>, <span class="type-parameter">dynamic</span>&gt;</span></span> <span class="parameter-name">options</span>, </span><span class="parameter" id="-param-extra"><span>@<a href="../unself_model/JsonExtra">JsonExtra</a>()</span> <span>@<a href="https://pub.dev/documentation/freezed_annotation/2.2.0/freezed_annotation/Default-class.html">Default</a>({})</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>, <span class="type-parameter">dynamic</span>&gt;</span></span> <span class="parameter-name">extra</span>}</span>)</span>
         </dt>
         <dd>
           Mapping description
@@ -70,29 +64,6 @@ export default function RawHtml() {
       <h2>Properties</h2>
 
       <dl class="properties">
-        <dt id="app" class="property inherited">
-  <span class="name"><a href="../unself_model/Mapping/app">app</a></span>
-  <span class="signature">→ <a href="../unself_model/App">App</a></span> 
-
-</dt>
-<dd class="inherited">
-  <a href="../unself_model/Mapping/app">app</a> is the <a href="../unself_model/App">App</a> the <a href="../unself_model/Mapping">Mapping</a> is for.
-  <div class="features"><span class="feature">read-only</span><span class="feature">inherited</span></div>
-
-</dd>
-
-        <dt id="constraint" class="property inherited">
-  <span class="name"><a href="../unself_model/Mapping/constraint">constraint</a></span>
-  <span class="signature">→ <a href="https://pub.dev/documentation/pub_semver/2.1.3/pub_semver/VersionConstraint-class.html">VersionConstraint</a></span> 
-
-</dt>
-<dd class="inherited">
-  <a href="../unself_model/Mapping/constraint">constraint</a> is the constraint version of the <a href="../unself_model/App">App</a>.
-See <a href="https://pub.dev/documentation/pub_semver/2.1.3/pub_semver/VersionConstraint-class.html">VersionConstraint</a> from pub_semver for more information.
-  <div class="features"><span class="feature">read-only</span><span class="feature">inherited</span></div>
-
-</dd>
-
         <dt id="copyWith" class="property inherited">
   <span class="name"><a href="../unself_model/Mapping/copyWith">copyWith</a></span>
   <span class="signature">→ \$MappingCopyWith<span class="signature">&lt;<wbr><span class="type-parameter"><a href="../unself_model/Mapping">Mapping</a></span>&gt;</span></span> 
@@ -100,17 +71,6 @@ See <a href="https://pub.dev/documentation/pub_semver/2.1.3/pub_semver/VersionCo
 </dt>
 <dd class="inherited">
   
-  <div class="features"><span class="feature">read-only</span><span class="feature">inherited</span></div>
-
-</dd>
-
-        <dt id="created" class="property inherited">
-  <span class="name"><a href="../unself_model/Mapping/created">created</a></span>
-  <span class="signature">→ <a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span> 
-
-</dt>
-<dd class="inherited">
-  <a href="../unself_model/Mapping/created">created</a> is the date and time when the <a href="../unself_model/Mapping">Mapping</a> was created inside unself app.
   <div class="features"><span class="feature">read-only</span><span class="feature">inherited</span></div>
 
 </dd>
@@ -126,6 +86,28 @@ See <a href="https://pub.dev/documentation/pub_semver/2.1.3/pub_semver/VersionCo
 
 </dd>
 
+        <dt id="fields" class="property inherited">
+  <span class="name"><a href="../unself_model/Mapping/fields">fields</a></span>
+  <span class="signature">→ <a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../unself_model/Mapping">Mapping</a></span>&gt;</span></span> 
+
+</dt>
+<dd class="inherited">
+  <code>entries</code> is a list of <code>Mapping</code>s.
+  <div class="features"><span class="feature">read-only</span><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="from" class="property inherited">
+  <span class="name"><a href="../unself_model/Mapping/from">from</a></span>
+  <span class="signature">→ <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> 
+
+</dt>
+<dd class="inherited">
+  <a href="../unself_model/Mapping/from">from</a> is the JSONpath to the property to map from.
+  <div class="features"><span class="feature">read-only</span><span class="feature">inherited</span></div>
+
+</dd>
+
         <dt id="hashCode" class="property inherited">
   <span class="name"><a href="https://api.flutter.dev/flutter/dart-core/Object/hashCode.html">hashCode</a></span>
   <span class="signature">→ <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> 
@@ -137,13 +119,13 @@ See <a href="https://pub.dev/documentation/pub_semver/2.1.3/pub_semver/VersionCo
 
 </dd>
 
-        <dt id="id" class="property inherited">
-  <span class="name"><a href="../unself_model/Mapping/id">id</a></span>
-  <span class="signature">→ <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> 
+        <dt id="options" class="property inherited">
+  <span class="name"><a href="../unself_model/Mapping/options">options</a></span>
+  <span class="signature">→ <a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>, <span class="type-parameter">dynamic</span>&gt;</span></span> 
 
 </dt>
 <dd class="inherited">
-  <a href="../unself_model/Mapping/id">id</a> is unself unique identifier for the Mapping.
+  
   <div class="features"><span class="feature">read-only</span><span class="feature">inherited</span></div>
 
 </dd>
@@ -159,25 +141,13 @@ See <a href="https://pub.dev/documentation/pub_semver/2.1.3/pub_semver/VersionCo
 
 </dd>
 
-        <dt id="updated" class="property inherited">
-  <span class="name"><a href="../unself_model/Mapping/updated">updated</a></span>
-  <span class="signature">→ <a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span> 
+        <dt id="to" class="property inherited">
+  <span class="name"><a href="../unself_model/Mapping/to">to</a></span>
+  <span class="signature">→ <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> 
 
 </dt>
 <dd class="inherited">
-  <a href="../unself_model/Mapping/updated">updated</a> is the date and time when the <a href="../unself_model/Mapping">Mapping</a> was last updated inside unself app.
-  <div class="features"><span class="feature">read-only</span><span class="feature">inherited</span></div>
-
-</dd>
-
-        <dt id="version" class="property inherited">
-  <span class="name"><a href="../unself_model/Mapping/version">version</a></span>
-  <span class="signature">→ <a href="https://pub.dev/documentation/pub_semver/2.1.3/pub_semver/Version-class.html">Version</a></span> 
-
-</dt>
-<dd class="inherited">
-  <a href="../unself_model/Mapping/version">version</a> is the revision version of the <a href="../unself_model/Mapping">Mapping</a>.
-See <a href="https://pub.dev/documentation/pub_semver/2.1.3/pub_semver/Version-class.html">Version</a> from pub_semver for more information.
+  <a href="../unself_model/Mapping/to">to</a> is the JSONpath to the property to map to.
   <div class="features"><span class="feature">read-only</span><span class="feature">inherited</span></div>
 
 </dd>
@@ -274,17 +244,24 @@ See <a href="https://pub.dev/documentation/pub_semver/2.1.3/pub_semver/Version-c
     <ol>
       <li class="section-title"><a href="../unself_model/unself_model#classes">Classes</a></li>
         <li><a href="../unself_model/Account">Account</a></li>
+        <li><a href="../unself_model/Activity">Activity</a></li>
         <li><a href="../unself_model/App">App</a></li>
         <li><a href="../unself_model/Archive">Archive</a></li>
+        <li><a href="../unself_model/ArchiveData">ArchiveData</a></li>
+        <li><a href="../unself_model/ArchiveFormat">ArchiveFormat</a></li>
         <li><a href="../unself_model/Base">Base</a></li>
         <li><a href="../unself_model/Collection">Collection</a></li>
-        <li><a href="../unself_model/Document">Document</a></li>
+        <li><a href="../unself_model/Edge">Edge</a></li>
         <li><a href="../unself_model/Field">Field</a></li>
+        <li><a href="../unself_model/JsonDateTime">JsonDateTime</a></li>
         <li><a href="../unself_model/JsonExtra">JsonExtra</a></li>
+        <li><a href="../unself_model/JsonString">JsonString</a></li>
         <li><a href="../unself_model/JsonVersion">JsonVersion</a></li>
         <li><a href="../unself_model/JsonVersionConstraint">JsonVersionConstraint</a></li>
         <li><a href="../unself_model/Mapping">Mapping</a></li>
-        <li><a href="../unself_model/User">User</a></li>
+        <li><a href="../unself_model/Node">Node</a></li>
+        <li><a href="../unself_model/Settings">Settings</a></li>
+        <li><a href="../unself_model/Topic">Topic</a></li>
         <li><a href="https://pub.dev/documentation/pub_semver/2.1.3/pub_semver/Version-class.html">Version</a></li>
         <li><a href="https://pub.dev/documentation/pub_semver/2.1.3/pub_semver/VersionConstraint-class.html">VersionConstraint</a></li>
         <li><a href="https://pub.dev/documentation/pub_semver/2.1.3/pub_semver/VersionRange-class.html">VersionRange</a></li>
@@ -296,6 +273,7 @@ See <a href="https://pub.dev/documentation/pub_semver/2.1.3/pub_semver/Version-c
 
 
       <li class="section-title"><a href="../unself_model/unself_model#enums">Enums</a></li>
+        <li><a href="../unself_model/ArchiveFileFormat">ArchiveFileFormat</a></li>
         <li><a href="../unself_model/CollectionType">CollectionType</a></li>
         <li><a href="../unself_model/FieldType">FieldType</a></li>
 
@@ -315,16 +293,14 @@ See <a href="https://pub.dev/documentation/pub_semver/2.1.3/pub_semver/Version-c
         <li class="section-title inherited">
           <a href="../unself_model/Mapping#instance-properties">Properties</a>
         </li>
-          <li class="inherited"><a href="../unself_model/Mapping/app">app</a></li>
-          <li class="inherited"><a href="../unself_model/Mapping/constraint">constraint</a></li>
           <li class="inherited"><a href="../unself_model/Mapping/copyWith">copyWith</a></li>
-          <li class="inherited"><a href="../unself_model/Mapping/created">created</a></li>
           <li class="inherited"><a href="../unself_model/Mapping/extra">extra</a></li>
+          <li class="inherited"><a href="../unself_model/Mapping/fields">fields</a></li>
+          <li class="inherited"><a href="../unself_model/Mapping/from">from</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/hashCode.html">hashCode</a></li>
-          <li class="inherited"><a href="../unself_model/Mapping/id">id</a></li>
+          <li class="inherited"><a href="../unself_model/Mapping/options">options</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></li>
-          <li class="inherited"><a href="../unself_model/Mapping/updated">updated</a></li>
-          <li class="inherited"><a href="../unself_model/Mapping/version">version</a></li>
+          <li class="inherited"><a href="../unself_model/Mapping/to">to</a></li>
 
         <li class="section-title inherited"><a href="../unself_model/Mapping#instance-methods">Methods</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>

@@ -13,7 +13,7 @@ export default function RawHtml() {
       
 
 <span class="returntype">void</span>
-<span class="name ">onSubscriptionData</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="onSubscriptionData-param-user"><span class="type-annotation">User</span> <span class="parameter-name">user</span></span></li>
+<span class="name ">onSubscriptionData</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="onSubscriptionData-param-user"><span class="type-annotation">Settings</span> <span class="parameter-name">user</span></span></li>
 </ol>)
 
       
@@ -25,7 +25,7 @@ export default function RawHtml() {
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">void onSubscriptionData(User user) =&gt;
+  <pre class="language-dart"><code class="language-dart">void onSubscriptionData(Settings user) =&gt;
     // TODO: Reimplement logic
     // ignore: invalid_use_of_visible_for_testing_member
     emit(SettingsAppearanceState(themeMode: user.themeMode));</code></pre>
