@@ -34,6 +34,7 @@ void main() {
       id: 'aAccount',
       created: now,
       updated: now,
+      archiveId: '',
       name: 'name',
       email: 'email',
       app: aApp,
@@ -43,6 +44,7 @@ void main() {
       id: 'bAccount',
       created: now,
       updated: now,
+      archiveId: '',
       name: 'name',
       email: 'email',
       app: bApp,
@@ -78,7 +80,7 @@ void main() {
       updated: now,
       name: 'name',
       account: aAccount,
-      format: aMapping,
+      formatId: '',
     );
 
     final bArchive = Archive(
@@ -87,7 +89,7 @@ void main() {
       updated: now,
       name: 'name',
       account: bAccount,
-      format: bMapping,
+      formatId: '',
       extra: extra,
     );
 
@@ -100,6 +102,7 @@ void main() {
         'id': 'aAccount',
         'created': nowString,
         'updated': nowString,
+        'archiveId': '',
         'name': 'name',
         'email': 'email',
         'app': {
@@ -109,21 +112,7 @@ void main() {
           'name': 'name',
         }
       },
-      'format': {
-        'id': 'aMapping',
-        'created': nowString,
-        'updated': nowString,
-        'app': {
-          'id': 'aApp',
-          'created': nowString,
-          'updated': nowString,
-          'name': 'name',
-        },
-        'version': '0.0.1',
-        'constraint': '^0.0.1',
-        'format': 'zipJson',
-        'mappings': [],
-      },
+      'formatId': '',
     });
 
     final bObject = Map<String, dynamic>.unmodifiable({
@@ -135,6 +124,7 @@ void main() {
         'id': 'bAccount',
         'created': nowString,
         'updated': nowString,
+        'archiveId': '',
         'name': 'name',
         'email': 'email',
         'app': {
@@ -146,23 +136,7 @@ void main() {
         },
         'extra': extra,
       },
-      'format': {
-        'id': 'bMapping',
-        'created': nowString,
-        'updated': nowString,
-        'app': {
-          'id': 'bApp',
-          'created': nowString,
-          'updated': nowString,
-          'name': 'name',
-          'extra': extra,
-        },
-        'version': '0.0.2',
-        'constraint': '^0.0.2',
-        'format': 'zipJson',
-        'mappings': [],
-        'extra': extra,
-      },
+      'formatId': '',
       'extra': extra,
     });
 

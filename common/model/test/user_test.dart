@@ -16,11 +16,11 @@ void main() {
     final later = now.add(const Duration(minutes: 1));
     final laterString = later.toIso8601String();
 
-    const aUser = User(
+    const aUser = Settings(
       themeMode: ThemeMode.light,
     );
 
-    final bUser = User(
+    final bUser = Settings(
       themeMode: ThemeMode.dark,
       extra: extra,
     );
@@ -34,17 +34,17 @@ void main() {
     };
 
     test('hashCode', () {
-      expect(bUser.hashCode, User.fromJson(bObject).hashCode);
+      expect(bUser.hashCode, Settings.fromJson(bObject).hashCode);
       expect(bUser.hashCode, isNot(aUser.hashCode));
-      expect(User.fromJson(bObject).hashCode,
-          isNot(User.fromJson(aObject).hashCode));
+      expect(Settings.fromJson(bObject).hashCode,
+          isNot(Settings.fromJson(aObject).hashCode));
     });
 
     test('equals', () {
-      expect(aUser, User.fromJson(aObject));
-      expect(bUser, User.fromJson(bObject));
+      expect(aUser, Settings.fromJson(aObject));
+      expect(bUser, Settings.fromJson(bObject));
       expect(bUser, isNot(aUser));
-      expect(User.fromJson(bObject), isNot(User.fromJson(aObject)));
+      expect(Settings.fromJson(bObject), isNot(Settings.fromJson(aObject)));
     });
 
     test('copyWith', () {
@@ -90,15 +90,15 @@ void main() {
     });
 
     test('fromJson', () {
-      expect(User.fromJson(aObject), aUser);
-      expect(User.fromJson(bObject), bUser);
+      expect(Settings.fromJson(aObject), aUser);
+      expect(Settings.fromJson(bObject), bUser);
     });
 
     test('fromJson - extra', () {
-      expect(User.fromJson(bObject), bUser);
+      expect(Settings.fromJson(bObject), bUser);
 
       expect(
-        User.fromJson(Map.from(bObject)..['extra'] = {}),
+        Settings.fromJson(Map.from(bObject)..['extra'] = {}),
         bUser.copyWith(extra: {}),
       );
     });

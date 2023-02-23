@@ -2,6 +2,7 @@
 
 import 'dart:io';
 
+import 'package:slugid/slugid.dart';
 import 'package:unself_file/unself_file.dart';
 import 'package:unself_model/unself_model.dart';
 import 'package:unself_unpack/unself_unpack.dart';
@@ -9,15 +10,15 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   group('ArchiveCollector', () {
-    late ZipInput zipInput;
+    late ZipImport zipImport;
 
     setUp(() {
       print(Directory.current);
-      zipInput = ZipInput();
+      zipImport = ZipImport();
     });
 
     test('open zip file and return list of paths', () async {
-      final paths = await zipInput.open(
+      final paths = await zipImport.open(
         XFile(
           '../../resource/archive/assets/facebook_hestia.zip',
         ),
@@ -33,15 +34,21 @@ void main() {
       ]);
     });
 
-    test('can unpack zip file with MappingEntry', () async {
-      await zipInput.open(
+    test('can unpack zip file with MappingEntry and serialize to ArchiveData',
+        () async {
+      await zipImport.open(
         XFile(
           '../../resource/archive/assets/facebook_hestia.zip',
         ),
       );
 
-      final unpacked = await zipInput.unpack(facebookMapping.mappings);
-      ArchiveData.fromJson(unpacked);
+      final unpacked = await zipImport.unpack(facebookMapping.mappings);
+      ArchiveData.fromJson(unpacked
+        ..addAll(<String, String>{
+          'id': Slugid.nice().toString(),
+          'archiveId': '',
+          'formatId': '',
+        }));
     });
   });
 }

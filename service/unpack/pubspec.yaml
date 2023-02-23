@@ -17,12 +17,12 @@ dependencies:
   unself_file:
 
   archive: ^3.3.0
+  clock:
   collection: ^1.17.0
   json_path: ^0.4.2
   slugify: ^2.0.0
+  slugid: ^1.1.1
 
-  clock:
-  
 dev_dependencies:
   # Code Quality
 

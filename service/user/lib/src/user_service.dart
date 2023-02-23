@@ -11,13 +11,13 @@ class UserService implements IUserService {
   /// {@macro user_service}
   const UserService();
 
-  static final _controller = StreamController<User>.broadcast()
+  static final _controller = StreamController<Settings>.broadcast()
     ..stream.listen((value) => _currentUser = value);
 
-  static User _currentUser = const User(themeMode: ThemeMode.system);
+  static Settings _currentUser = const Settings(themeMode: ThemeMode.system);
 
   @override
-  Stream<User> streamUser() => _controller.stream;
+  Stream<Settings> streamUser() => _controller.stream;
 
   @override
   void setThemeMode(ThemeMode themeMode) =>

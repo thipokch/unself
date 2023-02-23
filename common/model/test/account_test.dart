@@ -34,6 +34,7 @@ void main() {
       id: 'aAccount',
       created: now,
       updated: now,
+      archiveId: '',
       name: 'name',
       email: 'email',
       app: aApp,
@@ -43,6 +44,7 @@ void main() {
       id: 'bAccount',
       created: now,
       updated: now,
+      archiveId: '',
       name: 'name',
       email: 'email',
       app: bApp,
@@ -50,46 +52,48 @@ void main() {
     );
 
     final aObject = Map<String, dynamic>.unmodifiable({
-      "id": "aAccount",
-      "created": nowString,
-      "updated": nowString,
-      "name": "name",
-      "email": "email",
-      "app": {
-        "id": "aApp",
-        "created": nowString,
-        "updated": nowString,
-        "name": "name",
+      'id': 'aAccount',
+      'created': nowString,
+      'updated': nowString,
+      'archiveId': '',
+      'name': 'name',
+      'email': 'email',
+      'app': {
+        'id': 'aApp',
+        'created': nowString,
+        'updated': nowString,
+        'name': 'name',
       },
     });
 
     final bObject = Map<String, dynamic>.unmodifiable({
-      "id": "bAccount",
-      "created": nowString,
-      "updated": nowString,
-      "name": "name",
-      "email": "email",
-      "app": {
-        "id": "bApp",
-        "created": nowString,
-        "updated": nowString,
-        "name": "name",
-        "extra": {
-          "string": "string",
-          "int": 1,
-          "double": 1.0,
-          "bool": true,
-          "list": [1, 2, 3],
-          "map": {"a": 1, "b": 2, "c": 3}
+      'id': 'bAccount',
+      'created': nowString,
+      'updated': nowString,
+      'archiveId': '',
+      'name': 'name',
+      'email': 'email',
+      'app': {
+        'id': 'bApp',
+        'created': nowString,
+        'updated': nowString,
+        'name': 'name',
+        'extra': {
+          'string': 'string',
+          'int': 1,
+          'double': 1.0,
+          'bool': true,
+          'list': [1, 2, 3],
+          'map': {'a': 1, 'b': 2, 'c': 3}
         }
       },
-      "extra": {
-        "string": "string",
-        "int": 1,
-        "double": 1.0,
-        "bool": true,
-        "list": [1, 2, 3],
-        "map": {"a": 1, "b": 2, "c": 3}
+      'extra': {
+        'string': 'string',
+        'int': 1,
+        'double': 1.0,
+        'bool': true,
+        'list': [1, 2, 3],
+        'map': {'a': 1, 'b': 2, 'c': 3}
       }
     });
 

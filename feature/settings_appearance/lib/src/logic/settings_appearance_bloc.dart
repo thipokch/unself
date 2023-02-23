@@ -39,9 +39,9 @@ class SettingsAppearanceBloc
   final AnalyticService? _analyticService;
 
   final UserService _userRepository;
-  late final StreamSubscription<User> _subscription;
+  late final StreamSubscription<Settings> _subscription;
 
-  void onSubscriptionData(User user) =>
+  void onSubscriptionData(Settings user) =>
       // TODO: Reimplement logic
       // ignore: invalid_use_of_visible_for_testing_member
       emit(SettingsAppearanceState(themeMode: user.themeMode));

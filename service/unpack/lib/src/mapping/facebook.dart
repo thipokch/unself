@@ -41,6 +41,8 @@ final facebookMapping = ArchiveFormat(
         Mapping(from: 'timestamp', to: 'timestamp'),
       ],
       extra: {
+        'accountId': '',
+        'appId': '',
         'source':
             'apps_and_websites_off_of_facebook.your_off-facebook_activity/off_facebook_activity_v2/*/events',
       },

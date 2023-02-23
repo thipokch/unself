@@ -31,18 +31,18 @@ void main() {
     );
 
     final aObject = Map<String, dynamic>.unmodifiable({
-      "id": "aApp",
-      "created": nowString,
-      "updated": nowString,
-      "name": "name",
+      'id': 'aApp',
+      'created': nowString,
+      'updated': nowString,
+      'name': 'name',
     });
 
     final bObject = Map<String, dynamic>.unmodifiable({
-      "id": "bApp",
-      "created": nowString,
-      "updated": nowString,
-      "name": "name",
-      "extra": extra,
+      'id': 'bApp',
+      'created': nowString,
+      'updated': nowString,
+      'name': 'name',
+      'extra': extra,
     });
 
     test('hashCode', () {

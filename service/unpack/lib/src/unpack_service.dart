@@ -23,7 +23,7 @@ class UnpackService implements IUnpackService {
   final LocalDatabase _localDb;
 
   App? _app;
-  Input? _input;
+  Import? _input;
 
   @override
   FutureOr<ArchiveFormat> load(App app) {
@@ -33,7 +33,7 @@ class UnpackService implements IUnpackService {
 
   @override
   FutureOr<List<Mapping>> open(XFile file) async {
-    final zip = await ZipInput().open(file);
+    final zip = await ZipImport().open(file);
     throw UnimplementedError();
   }
 

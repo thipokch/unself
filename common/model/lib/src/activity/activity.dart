@@ -9,28 +9,33 @@ part 'activity.g.dart';
 /// {@template activity}
 /// {@endtemplate}
 @freezed
-class Activity with _$Activity {
+class Activity with _$Activity implements Edge {
   const Activity._();
 
   /// {@macro activity}
   const factory Activity({
-    /// [id] is unself unique identifier for the [Activity].
-    @JsonString() String? id,
+    @JsonString() required String id,
+    @JsonDateTime() required DateTime created,
+    @JsonDateTime() required DateTime updated,
+    required String archiveId,
 
-    /// [created] is the date and time when the [Activity] was created inside unself app.
-    DateTime? created,
+    /// [accountId] is the source node.
+    required String accountId,
 
-    /// [created] is the date and time when the [Activity] was created inside unself app.
-    @JsonDateTime() DateTime? timestamp,
+    /// [appId] is the source node.
+    required String appId,
+
+    /// [timestamp] is the date and time of the [Activity] by the [App].
+    @JsonDateTime() required DateTime timestamp,
 
     /// [name] is the name used by the [Activity] on the [App].
-    String? name,
+    required String name,
 
     /// [type] is the type of the [Activity] on the [App].
-    String? type,
+    required String type,
 
     /// [email] is the email used by the [Activity] on the [App].
-    String? source,
+    required String source,
 
     /// [extra] is a map of additional properties.
     @JsonExtra() @Default({}) Map<String, dynamic> extra,
@@ -39,4 +44,13 @@ class Activity with _$Activity {
   /// Creates a [Activity] from Json map
   factory Activity.fromJson(Map<String, dynamic> data) =>
       _$ActivityFromJson(data);
+
+  @override
+  final labels = const ['activity'];
+
+  @override
+  String get sourceId => accountId;
+
+  @override
+  String get targetId => appId;
 }

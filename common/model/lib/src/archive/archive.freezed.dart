@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'topic.dart';
+part of 'archive.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,25 +14,27 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-Topic _$TopicFromJson(Map<String, dynamic> json) {
-  return _Topic.fromJson(json);
+Archive _$ArchiveFromJson(Map<String, dynamic> json) {
+  return _Archive.fromJson(json);
 }
 
 /// @nodoc
-mixin _$Topic {
-  @JsonString()
+mixin _$Archive {
+  /// [id] is unself unique identifier for the [Archive].
   String get id => throw _privateConstructorUsedError;
-  @JsonDateTime()
-  DateTime get created => throw _privateConstructorUsedError;
-  @JsonDateTime()
-  DateTime get updated => throw _privateConstructorUsedError;
-  String get archiveId => throw _privateConstructorUsedError;
 
-  /// [name] is the name used by the [Topic] on the [App].
+  /// [created] is the date and time when the [Archive] was created inside unself app.
+  DateTime get created => throw _privateConstructorUsedError;
+
+  /// [updated] is the date and time when the [Archive] was last updated inside unself app.
+  DateTime get updated => throw _privateConstructorUsedError;
+
+  /// [name] is the name of the [Archive].
   String get name => throw _privateConstructorUsedError;
 
-  /// [email] is the email used by the [Topic] on the [App].
-  String get source => throw _privateConstructorUsedError;
+  /// [account] is the owner of the [Archive] imported.
+  Account get account => throw _privateConstructorUsedError;
+  String get formatId => throw _privateConstructorUsedError;
 
   /// [extra] is a map of additional properties.
   @JsonExtra()
@@ -40,28 +42,30 @@ mixin _$Topic {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $TopicCopyWith<Topic> get copyWith => throw _privateConstructorUsedError;
+  $ArchiveCopyWith<Archive> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $TopicCopyWith<$Res> {
-  factory $TopicCopyWith(Topic value, $Res Function(Topic) then) =
-      _$TopicCopyWithImpl<$Res, Topic>;
+abstract class $ArchiveCopyWith<$Res> {
+  factory $ArchiveCopyWith(Archive value, $Res Function(Archive) then) =
+      _$ArchiveCopyWithImpl<$Res, Archive>;
   @useResult
   $Res call(
-      {@JsonString() String id,
-      @JsonDateTime() DateTime created,
-      @JsonDateTime() DateTime updated,
-      String archiveId,
+      {String id,
+      DateTime created,
+      DateTime updated,
       String name,
-      String source,
+      Account account,
+      String formatId,
       @JsonExtra() Map<String, dynamic> extra});
+
+  $AccountCopyWith<$Res> get account;
 }
 
 /// @nodoc
-class _$TopicCopyWithImpl<$Res, $Val extends Topic>
-    implements $TopicCopyWith<$Res> {
-  _$TopicCopyWithImpl(this._value, this._then);
+class _$ArchiveCopyWithImpl<$Res, $Val extends Archive>
+    implements $ArchiveCopyWith<$Res> {
+  _$ArchiveCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -74,9 +78,9 @@ class _$TopicCopyWithImpl<$Res, $Val extends Topic>
     Object? id = null,
     Object? created = null,
     Object? updated = null,
-    Object? archiveId = null,
     Object? name = null,
-    Object? source = null,
+    Object? account = null,
+    Object? formatId = null,
     Object? extra = null,
   }) {
     return _then(_value.copyWith(
@@ -92,17 +96,17 @@ class _$TopicCopyWithImpl<$Res, $Val extends Topic>
           ? _value.updated
           : updated // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      archiveId: null == archiveId
-          ? _value.archiveId
-          : archiveId // ignore: cast_nullable_to_non_nullable
-              as String,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      source: null == source
-          ? _value.source
-          : source // ignore: cast_nullable_to_non_nullable
+      account: null == account
+          ? _value.account
+          : account // ignore: cast_nullable_to_non_nullable
+              as Account,
+      formatId: null == formatId
+          ? _value.formatId
+          : formatId // ignore: cast_nullable_to_non_nullable
               as String,
       extra: null == extra
           ? _value.extra
@@ -110,28 +114,41 @@ class _$TopicCopyWithImpl<$Res, $Val extends Topic>
               as Map<String, dynamic>,
     ) as $Val);
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $AccountCopyWith<$Res> get account {
+    return $AccountCopyWith<$Res>(_value.account, (value) {
+      return _then(_value.copyWith(account: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
-abstract class _$$_TopicCopyWith<$Res> implements $TopicCopyWith<$Res> {
-  factory _$$_TopicCopyWith(_$_Topic value, $Res Function(_$_Topic) then) =
-      __$$_TopicCopyWithImpl<$Res>;
+abstract class _$$_ArchiveCopyWith<$Res> implements $ArchiveCopyWith<$Res> {
+  factory _$$_ArchiveCopyWith(
+          _$_Archive value, $Res Function(_$_Archive) then) =
+      __$$_ArchiveCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {@JsonString() String id,
-      @JsonDateTime() DateTime created,
-      @JsonDateTime() DateTime updated,
-      String archiveId,
+      {String id,
+      DateTime created,
+      DateTime updated,
       String name,
-      String source,
+      Account account,
+      String formatId,
       @JsonExtra() Map<String, dynamic> extra});
+
+  @override
+  $AccountCopyWith<$Res> get account;
 }
 
 /// @nodoc
-class __$$_TopicCopyWithImpl<$Res> extends _$TopicCopyWithImpl<$Res, _$_Topic>
-    implements _$$_TopicCopyWith<$Res> {
-  __$$_TopicCopyWithImpl(_$_Topic _value, $Res Function(_$_Topic) _then)
+class __$$_ArchiveCopyWithImpl<$Res>
+    extends _$ArchiveCopyWithImpl<$Res, _$_Archive>
+    implements _$$_ArchiveCopyWith<$Res> {
+  __$$_ArchiveCopyWithImpl(_$_Archive _value, $Res Function(_$_Archive) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -140,12 +157,12 @@ class __$$_TopicCopyWithImpl<$Res> extends _$TopicCopyWithImpl<$Res, _$_Topic>
     Object? id = null,
     Object? created = null,
     Object? updated = null,
-    Object? archiveId = null,
     Object? name = null,
-    Object? source = null,
+    Object? account = null,
+    Object? formatId = null,
     Object? extra = null,
   }) {
-    return _then(_$_Topic(
+    return _then(_$_Archive(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -158,17 +175,17 @@ class __$$_TopicCopyWithImpl<$Res> extends _$TopicCopyWithImpl<$Res, _$_Topic>
           ? _value.updated
           : updated // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      archiveId: null == archiveId
-          ? _value.archiveId
-          : archiveId // ignore: cast_nullable_to_non_nullable
-              as String,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      source: null == source
-          ? _value.source
-          : source // ignore: cast_nullable_to_non_nullable
+      account: null == account
+          ? _value.account
+          : account // ignore: cast_nullable_to_non_nullable
+              as Account,
+      formatId: null == formatId
+          ? _value.formatId
+          : formatId // ignore: cast_nullable_to_non_nullable
               as String,
       extra: null == extra
           ? _value._extra
@@ -180,40 +197,41 @@ class __$$_TopicCopyWithImpl<$Res> extends _$TopicCopyWithImpl<$Res, _$_Topic>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Topic extends _Topic {
-  const _$_Topic(
-      {@JsonString() required this.id,
-      @JsonDateTime() required this.created,
-      @JsonDateTime() required this.updated,
-      required this.archiveId,
+class _$_Archive implements _Archive {
+  const _$_Archive(
+      {required this.id,
+      required this.created,
+      required this.updated,
       required this.name,
-      required this.source,
+      required this.account,
+      required this.formatId,
       @JsonExtra() final Map<String, dynamic> extra = const {}})
-      : _extra = extra,
-        super._();
+      : _extra = extra;
 
-  factory _$_Topic.fromJson(Map<String, dynamic> json) =>
-      _$$_TopicFromJson(json);
+  factory _$_Archive.fromJson(Map<String, dynamic> json) =>
+      _$$_ArchiveFromJson(json);
 
+  /// [id] is unself unique identifier for the [Archive].
   @override
-  @JsonString()
   final String id;
-  @override
-  @JsonDateTime()
-  final DateTime created;
-  @override
-  @JsonDateTime()
-  final DateTime updated;
-  @override
-  final String archiveId;
 
-  /// [name] is the name used by the [Topic] on the [App].
+  /// [created] is the date and time when the [Archive] was created inside unself app.
+  @override
+  final DateTime created;
+
+  /// [updated] is the date and time when the [Archive] was last updated inside unself app.
+  @override
+  final DateTime updated;
+
+  /// [name] is the name of the [Archive].
   @override
   final String name;
 
-  /// [email] is the email used by the [Topic] on the [App].
+  /// [account] is the owner of the [Archive] imported.
   @override
-  final String source;
+  final Account account;
+  @override
+  final String formatId;
 
   /// [extra] is a map of additional properties.
   final Map<String, dynamic> _extra;
@@ -230,75 +248,77 @@ class _$_Topic extends _Topic {
 
   @override
   String toString() {
-    return 'Topic(id: $id, created: $created, updated: $updated, archiveId: $archiveId, name: $name, source: $source, extra: $extra)';
+    return 'Archive(id: $id, created: $created, updated: $updated, name: $name, account: $account, formatId: $formatId, extra: $extra)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Topic &&
+            other is _$_Archive &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.created, created) || other.created == created) &&
             (identical(other.updated, updated) || other.updated == updated) &&
-            (identical(other.archiveId, archiveId) ||
-                other.archiveId == archiveId) &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.source, source) || other.source == source) &&
+            (identical(other.account, account) || other.account == account) &&
+            (identical(other.formatId, formatId) ||
+                other.formatId == formatId) &&
             const DeepCollectionEquality().equals(other._extra, _extra));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, created, updated, archiveId,
-      name, source, const DeepCollectionEquality().hash(_extra));
+  int get hashCode => Object.hash(runtimeType, id, created, updated, name,
+      account, formatId, const DeepCollectionEquality().hash(_extra));
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_TopicCopyWith<_$_Topic> get copyWith =>
-      __$$_TopicCopyWithImpl<_$_Topic>(this, _$identity);
+  _$$_ArchiveCopyWith<_$_Archive> get copyWith =>
+      __$$_ArchiveCopyWithImpl<_$_Archive>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_TopicToJson(
+    return _$$_ArchiveToJson(
       this,
     );
   }
 }
 
-abstract class _Topic extends Topic {
-  const factory _Topic(
-      {@JsonString() required final String id,
-      @JsonDateTime() required final DateTime created,
-      @JsonDateTime() required final DateTime updated,
-      required final String archiveId,
+abstract class _Archive implements Archive {
+  const factory _Archive(
+      {required final String id,
+      required final DateTime created,
+      required final DateTime updated,
       required final String name,
-      required final String source,
-      @JsonExtra() final Map<String, dynamic> extra}) = _$_Topic;
-  const _Topic._() : super._();
+      required final Account account,
+      required final String formatId,
+      @JsonExtra() final Map<String, dynamic> extra}) = _$_Archive;
 
-  factory _Topic.fromJson(Map<String, dynamic> json) = _$_Topic.fromJson;
+  factory _Archive.fromJson(Map<String, dynamic> json) = _$_Archive.fromJson;
 
   @override
-  @JsonString()
+
+  /// [id] is unself unique identifier for the [Archive].
   String get id;
   @override
-  @JsonDateTime()
+
+  /// [created] is the date and time when the [Archive] was created inside unself app.
   DateTime get created;
   @override
-  @JsonDateTime()
+
+  /// [updated] is the date and time when the [Archive] was last updated inside unself app.
   DateTime get updated;
   @override
-  String get archiveId;
-  @override
 
-  /// [name] is the name used by the [Topic] on the [App].
+  /// [name] is the name of the [Archive].
   String get name;
   @override
 
-  /// [email] is the email used by the [Topic] on the [App].
-  String get source;
+  /// [account] is the owner of the [Archive] imported.
+  Account get account;
+  @override
+  String get formatId;
   @override
 
   /// [extra] is a map of additional properties.
@@ -306,6 +326,6 @@ abstract class _Topic extends Topic {
   Map<String, dynamic> get extra;
   @override
   @JsonKey(ignore: true)
-  _$$_TopicCopyWith<_$_Topic> get copyWith =>
+  _$$_ArchiveCopyWith<_$_Archive> get copyWith =>
       throw _privateConstructorUsedError;
 }
