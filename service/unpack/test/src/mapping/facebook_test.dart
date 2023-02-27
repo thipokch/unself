@@ -36,13 +36,15 @@ void main() {
 
     test('can unpack zip file with MappingEntry and serialize to ArchiveData',
         () async {
-      await zipImport.open(
+      final paths = await zipImport.open(
         XFile(
-          '../../resource/archive/assets/facebook_hestia.zip',
+          '../../resource/archive/assets/facebook_2301.zip',
         ),
       );
+      print(paths);
 
       final unpacked = await zipImport.unpack(facebookMapping.mappings);
+      print(unpacked['accounts']);
       ArchiveData.fromJson(unpacked
         ..addAll(<String, String>{
           'id': Slugid.nice().toString(),

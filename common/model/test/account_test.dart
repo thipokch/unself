@@ -36,8 +36,9 @@ void main() {
       updated: now,
       archiveId: '',
       name: 'name',
-      email: 'email',
-      app: aApp,
+      emails: [],
+      appId: 'aApp',
+      isOwner: true,
     );
 
     final bAccount = Account(
@@ -46,8 +47,9 @@ void main() {
       updated: now,
       archiveId: '',
       name: 'name',
-      email: 'email',
-      app: bApp,
+      emails: [],
+      appId: 'bApp',
+      isOwner: false,
       extra: extra,
     );
 
@@ -57,13 +59,9 @@ void main() {
       'updated': nowString,
       'archiveId': '',
       'name': 'name',
-      'email': 'email',
-      'app': {
-        'id': 'aApp',
-        'created': nowString,
-        'updated': nowString,
-        'name': 'name',
-      },
+      'appId': 'aApp',
+      'isOwner': true,
+      'emails': [],
     });
 
     final bObject = Map<String, dynamic>.unmodifiable({
@@ -72,21 +70,9 @@ void main() {
       'updated': nowString,
       'archiveId': '',
       'name': 'name',
-      'email': 'email',
-      'app': {
-        'id': 'bApp',
-        'created': nowString,
-        'updated': nowString,
-        'name': 'name',
-        'extra': {
-          'string': 'string',
-          'int': 1,
-          'double': 1.0,
-          'bool': true,
-          'list': [1, 2, 3],
-          'map': {'a': 1, 'b': 2, 'c': 3}
-        }
-      },
+      'appId': 'bApp',
+      'isOwner': false,
+      'emails': [],
       'extra': {
         'string': 'string',
         'int': 1,
@@ -136,11 +122,11 @@ void main() {
       );
     });
 
-    test('copyWith - deep equality', () {
-      expect(aAccount.copyWith(app: App.fromJson(aObject['app'])), aAccount);
-      expect(aAccount.copyWith.app(id: 'aApp'), aAccount);
-      expect(aAccount.copyWith.app(id: 'AApp'), isNot(aAccount));
-    });
+    // test('copyWith - deep equality', () {
+    //   expect(aAccount.copyWith(appId: App.fromJson(aObject['app'])), aAccount);
+    //   expect(aAccount.copyWith.app(id: 'aApp'), aAccount);
+    //   expect(aAccount.copyWith.app(id: 'AApp'), isNot(aAccount));
+    // });
 
     test('toJson', () {
       expect(jsonEncode(aAccount), jsonEncode(aObject));

@@ -91,7 +91,7 @@ void main() {
           {'archiveId': archiveId, 'created': instant, 'updated': instant},
           {'archiveId': archiveId, 'created': instant, 'updated': instant},
           {'archiveId': archiveId, 'created': instant, 'updated': instant},
-        ] // Since Field Mapping is not provided
+        ], // Since Field Mapping is not provided,
       });
     });
 
@@ -200,8 +200,50 @@ void main() {
             'id': 'apicerie',
             'archiveId': archiveId,
           }
-        ] // Since Field Mapping is not provided
+        ], // Since Field Mapping is not provided
       });
+    });
+
+    test('can unpack file with a single map', () async {
+      await zipImport.open(
+        XFile(
+          '../../resource/archive/assets/facebook_2301.zip',
+        ),
+      );
+
+      final instant = clock.now();
+
+      final actual = await withClock(
+        Clock.fixed(instant),
+        () => zipImport.unpack(const [
+          Mapping(
+            from: 'profile_information.profile_information',
+            to: 'account',
+          ),
+        ]),
+      );
+
+      print(actual);
+
+      // final archiveId = actual['archiveId'];
+      // final id = actual['id'];
+
+      // expect(actual, {
+      //   'id': id,
+      //   'created': instant,
+      //   'updated': instant,
+      //   'archiveId': archiveId,
+      //   'topics': [
+      //     {'archiveId': archiveId, 'created': instant, 'updated': instant},
+      //     {'archiveId': archiveId, 'created': instant, 'updated': instant},
+      //     {'archiveId': archiveId, 'created': instant, 'updated': instant},
+      //     {'archiveId': archiveId, 'created': instant, 'updated': instant},
+      //     {'archiveId': archiveId, 'created': instant, 'updated': instant},
+      //     {'archiveId': archiveId, 'created': instant, 'updated': instant},
+      //     {'archiveId': archiveId, 'created': instant, 'updated': instant},
+      //     {'archiveId': archiveId, 'created': instant, 'updated': instant},
+      //   ] // Since Field Mapping is not provided
+      // });
     });
   });
 }

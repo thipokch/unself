@@ -20,8 +20,8 @@ class ArchiveFormat with _$ArchiveFormat implements Base {
     /// [updated] is the date and time when the [ArchiveFormat] was last updated inside unself app.
     required DateTime updated,
 
-    /// [app] is the [App] the [ArchiveFormat] is for.
-    required App app,
+    /// [appId] is the id of the [App] the [ArchiveFormat] is for.
+    required String appId,
 
     /// [version] is the revision version of the [ArchiveFormat].
     /// See [Version] from pub_semver for more information.

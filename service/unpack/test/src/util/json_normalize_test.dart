@@ -222,5 +222,27 @@ void main() {
         ],
       );
     });
+
+    test('5. ', () {
+      expect(
+        normalize(
+          {
+            "profile_v2": {
+              "first": "Coleen",
+              "last": "Volk",
+              "a": {"b": "c"}
+            },
+          },
+          includePath: ['profile_v2'],
+        ),
+        <Map<String, dynamic>>[
+          {
+            "profile_v2/first": "Coleen",
+            "profile_v2/last": "Volk",
+            "profile_v2/a/b": "c",
+          },
+        ],
+      );
+    });
   });
 }

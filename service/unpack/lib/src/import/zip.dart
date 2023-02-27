@@ -79,11 +79,12 @@ class ZipImport implements Import<XFile, List<Mapping>> {
       final toKey = mapping.to.split('/').first;
       final entryPath = mapping.from.split('/').sublist(1).join('/');
 
+      // ignore: unnecessary_cast
       final norm = normalize(
         jsonFiles[fromKey],
         entryPath: entryPath,
         includePath: mapping.options['includePath'] ?? const [],
-      ) as List<Map<String, Object?>>;
+      );
 
       final mapped = norm
           .map((e) => {

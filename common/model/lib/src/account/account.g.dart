@@ -12,8 +12,12 @@ _$_Account _$$_AccountFromJson(Map<String, dynamic> json) => _$_Account(
       updated: const JsonDateTime().fromJson(json['updated']),
       archiveId: json['archiveId'] as String,
       name: json['name'] as String,
-      email: json['email'] as String,
-      app: App.fromJson(json['app'] as Map<String, dynamic>),
+      appId: json['appId'] as String,
+      isOwner: json['isOwner'] as bool,
+      emails: (json['emails'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          const [],
       extra: json['extra'] == null
           ? const {}
           : const JsonExtra().fromJson(json['extra'] as Map?),
@@ -33,8 +37,9 @@ Map<String, dynamic> _$$_AccountToJson(_$_Account instance) {
   writeNotNull('updated', const JsonDateTime().toJson(instance.updated));
   val['archiveId'] = instance.archiveId;
   val['name'] = instance.name;
-  val['email'] = instance.email;
-  val['app'] = instance.app.toJson();
+  val['appId'] = instance.appId;
+  val['isOwner'] = instance.isOwner;
+  val['emails'] = instance.emails;
   writeNotNull('extra', const JsonExtra().toJson(instance.extra));
   return val;
 }

@@ -95,7 +95,7 @@ import 'package:collection/collection.dart';
 ///   },
 /// ]
 /// ```
-Object? normalize(
+List<Map<String, Object?>> normalize(
   /// Json to normalize
   dynamic json, {
   /// Separator used to join the path of the nested keys
@@ -110,15 +110,20 @@ Object? normalize(
 
   /// Level of nesting to flatten
   int maxLevel = -1,
-}) =>
-    _normalize(
-      json,
-      seenPath: const [],
-      pathSeparator: joinSeparator,
-      includePath: includePath.map((e) => e.split(joinSeparator)).toList(),
-      entryPath: entryPath.split(joinSeparator),
-      maxLevel: maxLevel,
-    );
+}) {
+  final n = _normalize(
+    json,
+    seenPath: const [],
+    pathSeparator: joinSeparator,
+    includePath: includePath.map((e) => e.split(joinSeparator)).toList(),
+    entryPath: entryPath.split(joinSeparator),
+    maxLevel: maxLevel,
+  );
+
+  return n is List
+      ? n.cast<Map<String, Object?>>()
+      : [n as Map<String, Object?>];
+}
 
 Object? _normalize(
   dynamic json, {
@@ -238,9 +243,8 @@ Object? _normalize(
           : const {};
 
       final getKey = entryPath.firstOrNull;
+
       final MapEntry<String, Object?> entryMap = children.singleWhere((e) {
-        // print('$entryKey == ${e.key} * ${entryPath.first}');
-        // return e is MapEntry && e.key == entryKey;
         return e is MapEntry && e.key == getKey;
       });
 

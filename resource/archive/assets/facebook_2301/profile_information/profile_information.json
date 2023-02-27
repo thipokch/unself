@@ -1,0 +1,47 @@
+{
+    "profile_v2": {
+        "name": {
+            "full_name": "Full Name",
+            "first_name": "First Name",
+            "middle_name": "Middle Name",
+            "last_name": "Last Name"
+        },
+        "emails": {
+            "emails": [
+                "do-not-reply@unself.app"
+            ],
+            "previous_emails": [],
+            "pending_emails": [],
+            "ad_account_emails": []
+        },
+        "birthday": {
+            "year": 2023,
+            "month": 1,
+            "day": 11
+        },
+        "gender": {
+            "custom_genders": [
+                "Not specified"
+            ],
+            "pronoun": "THEY"
+        },
+        "previous_names": [],
+        "other_names": [],
+        "education_experiences": [],
+        "work_experiences": [],
+        "blood_info": {
+            "blood_donor_status": "unregistered"
+        },
+        "websites": [],
+        "phone_numbers": [
+            {
+                "phone_type": "Mobile",
+                "phone_number": "+11234567890",
+                "verified": true
+            }
+        ],
+        "username": "unself.app",
+        "registration_timestamp": 1573000000,
+        "profile_uri": "https://www.facebook.com/unself.app"
+    }
+}

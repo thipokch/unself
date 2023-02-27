@@ -38,8 +38,9 @@ void main() {
       updated: now,
       archiveId: '',
       name: 'name',
-      email: 'email',
-      app: aApp,
+      emails: [],
+      appId: 'aApp',
+      isOwner: true,
     );
 
     final bAccount = Account(
@@ -48,8 +49,9 @@ void main() {
       updated: now,
       archiveId: '',
       name: 'name',
-      email: 'email',
-      app: bApp,
+      emails: [],
+      appId: 'bApp',
+      isOwner: false,
       extra: extra,
     );
 
@@ -57,7 +59,7 @@ void main() {
       id: 'aMapping',
       created: now,
       updated: now,
-      app: aApp,
+      appId: aApp.id,
       version: Version(0, 0, 1),
       constraint: VersionConstraint.compatibleWith(Version(0, 0, 1)),
       format: ArchiveFileFormat.zipJson,
@@ -68,7 +70,7 @@ void main() {
       id: 'bMapping',
       created: now,
       updated: now,
-      app: bApp,
+      appId: bApp.id,
       version: Version(0, 0, 2),
       constraint: VersionConstraint.compatibleWith(Version(0, 0, 2)),
       format: ArchiveFileFormat.zipJson,
@@ -80,12 +82,7 @@ void main() {
       'id': 'aMapping',
       'created': nowString,
       'updated': nowString,
-      'app': {
-        'id': 'aApp',
-        'created': nowString,
-        'updated': nowString,
-        'name': 'name',
-      },
+      'appId': 'aApp',
       'version': '0.0.1',
       'constraint': '^0.0.1',
       'format': 'zipJson',
@@ -96,13 +93,7 @@ void main() {
       'id': 'bMapping',
       'created': nowString,
       'updated': nowString,
-      'app': {
-        'id': 'bApp',
-        'created': nowString,
-        'updated': nowString,
-        'name': 'name',
-        'extra': extra,
-      },
+      'appId': 'bApp',
       'version': '0.0.2',
       'constraint': '^0.0.2',
       'format': 'zipJson',
@@ -152,12 +143,12 @@ void main() {
       );
     });
 
-    test('copyWith - deep equality', () {
-      expect(aArchiveFormat.copyWith(app: App.fromJson(aObject['app'])),
-          aArchiveFormat);
-      expect(aArchiveFormat.copyWith.app(id: 'aApp'), aArchiveFormat);
-      expect(aArchiveFormat.copyWith.app(id: 'AApp'), isNot(aArchiveFormat));
-    });
+    // test('copyWith - deep equality', () {
+    //   expect(aArchiveFormat.copyWith(app: App.fromJson(aObject['app'])),
+    //       aArchiveFormat);
+    //   expect(aArchiveFormat.copyWith.app(id: 'aApp'), aArchiveFormat);
+    //   expect(aArchiveFormat.copyWith.app(id: 'AApp'), isNot(aArchiveFormat));
+    // });
 
     test('toJson', () {
       expect(jsonEncode(aArchiveFormat), jsonEncode(aObject));

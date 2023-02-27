@@ -29,8 +29,8 @@ mixin _$ArchiveFormat {
   /// [updated] is the date and time when the [ArchiveFormat] was last updated inside unself app.
   DateTime get updated => throw _privateConstructorUsedError;
 
-  /// [app] is the [App] the [ArchiveFormat] is for.
-  App get app => throw _privateConstructorUsedError;
+  /// [appId] is the id of the [App] the [ArchiveFormat] is for.
+  String get appId => throw _privateConstructorUsedError;
 
   /// [version] is the revision version of the [ArchiveFormat].
   /// See [Version] from pub_semver for more information.
@@ -70,14 +70,12 @@ abstract class $ArchiveFormatCopyWith<$Res> {
       {String id,
       DateTime created,
       DateTime updated,
-      App app,
+      String appId,
       @JsonVersion() Version version,
       @JsonVersionConstraint() VersionConstraint constraint,
       ArchiveFileFormat format,
       List<Mapping> mappings,
       @JsonExtra() Map<String, dynamic> extra});
-
-  $AppCopyWith<$Res> get app;
 }
 
 /// @nodoc
@@ -96,7 +94,7 @@ class _$ArchiveFormatCopyWithImpl<$Res, $Val extends ArchiveFormat>
     Object? id = null,
     Object? created = null,
     Object? updated = null,
-    Object? app = null,
+    Object? appId = null,
     Object? version = null,
     Object? constraint = null,
     Object? format = null,
@@ -116,10 +114,10 @@ class _$ArchiveFormatCopyWithImpl<$Res, $Val extends ArchiveFormat>
           ? _value.updated
           : updated // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      app: null == app
-          ? _value.app
-          : app // ignore: cast_nullable_to_non_nullable
-              as App,
+      appId: null == appId
+          ? _value.appId
+          : appId // ignore: cast_nullable_to_non_nullable
+              as String,
       version: null == version
           ? _value.version
           : version // ignore: cast_nullable_to_non_nullable
@@ -142,14 +140,6 @@ class _$ArchiveFormatCopyWithImpl<$Res, $Val extends ArchiveFormat>
               as Map<String, dynamic>,
     ) as $Val);
   }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $AppCopyWith<$Res> get app {
-    return $AppCopyWith<$Res>(_value.app, (value) {
-      return _then(_value.copyWith(app: value) as $Val);
-    });
-  }
 }
 
 /// @nodoc
@@ -164,15 +154,12 @@ abstract class _$$_ArchiveFormatCopyWith<$Res>
       {String id,
       DateTime created,
       DateTime updated,
-      App app,
+      String appId,
       @JsonVersion() Version version,
       @JsonVersionConstraint() VersionConstraint constraint,
       ArchiveFileFormat format,
       List<Mapping> mappings,
       @JsonExtra() Map<String, dynamic> extra});
-
-  @override
-  $AppCopyWith<$Res> get app;
 }
 
 /// @nodoc
@@ -189,7 +176,7 @@ class __$$_ArchiveFormatCopyWithImpl<$Res>
     Object? id = null,
     Object? created = null,
     Object? updated = null,
-    Object? app = null,
+    Object? appId = null,
     Object? version = null,
     Object? constraint = null,
     Object? format = null,
@@ -209,10 +196,10 @@ class __$$_ArchiveFormatCopyWithImpl<$Res>
           ? _value.updated
           : updated // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      app: null == app
-          ? _value.app
-          : app // ignore: cast_nullable_to_non_nullable
-              as App,
+      appId: null == appId
+          ? _value.appId
+          : appId // ignore: cast_nullable_to_non_nullable
+              as String,
       version: null == version
           ? _value.version
           : version // ignore: cast_nullable_to_non_nullable
@@ -244,7 +231,7 @@ class _$_ArchiveFormat implements _ArchiveFormat {
       {required this.id,
       required this.created,
       required this.updated,
-      required this.app,
+      required this.appId,
       @JsonVersion() required this.version,
       @JsonVersionConstraint() required this.constraint,
       required this.format,
@@ -268,9 +255,9 @@ class _$_ArchiveFormat implements _ArchiveFormat {
   @override
   final DateTime updated;
 
-  /// [app] is the [App] the [ArchiveFormat] is for.
+  /// [appId] is the id of the [App] the [ArchiveFormat] is for.
   @override
-  final App app;
+  final String appId;
 
   /// [version] is the revision version of the [ArchiveFormat].
   /// See [Version] from pub_semver for more information.
@@ -316,7 +303,7 @@ class _$_ArchiveFormat implements _ArchiveFormat {
 
   @override
   String toString() {
-    return 'ArchiveFormat(id: $id, created: $created, updated: $updated, app: $app, version: $version, constraint: $constraint, format: $format, mappings: $mappings, extra: $extra)';
+    return 'ArchiveFormat(id: $id, created: $created, updated: $updated, appId: $appId, version: $version, constraint: $constraint, format: $format, mappings: $mappings, extra: $extra)';
   }
 
   @override
@@ -327,7 +314,7 @@ class _$_ArchiveFormat implements _ArchiveFormat {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.created, created) || other.created == created) &&
             (identical(other.updated, updated) || other.updated == updated) &&
-            (identical(other.app, app) || other.app == app) &&
+            (identical(other.appId, appId) || other.appId == appId) &&
             (identical(other.version, version) || other.version == version) &&
             (identical(other.constraint, constraint) ||
                 other.constraint == constraint) &&
@@ -343,7 +330,7 @@ class _$_ArchiveFormat implements _ArchiveFormat {
       id,
       created,
       updated,
-      app,
+      appId,
       version,
       constraint,
       format,
@@ -369,7 +356,7 @@ abstract class _ArchiveFormat implements ArchiveFormat {
       {required final String id,
       required final DateTime created,
       required final DateTime updated,
-      required final App app,
+      required final String appId,
       @JsonVersion() required final Version version,
       @JsonVersionConstraint() required final VersionConstraint constraint,
       required final ArchiveFileFormat format,
@@ -393,8 +380,8 @@ abstract class _ArchiveFormat implements ArchiveFormat {
   DateTime get updated;
   @override
 
-  /// [app] is the [App] the [ArchiveFormat] is for.
-  App get app;
+  /// [appId] is the id of the [App] the [ArchiveFormat] is for.
+  String get appId;
   @override
 
   /// [version] is the revision version of the [ArchiveFormat].

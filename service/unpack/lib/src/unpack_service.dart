@@ -28,7 +28,7 @@ class UnpackService implements IUnpackService {
   @override
   FutureOr<ArchiveFormat> load(App app) {
     _app = app;
-    return _formats.firstWhere((e) => e.app == app);
+    return _formats.firstWhere((e) => e.appId == app.id);
   }
 
   @override
@@ -42,7 +42,7 @@ class UnpackService implements IUnpackService {
     throw UnimplementedError();
   }
 
-  static final List<App> supportedApps = _formats.map((e) => e.app).toList();
+  // static final List<App> supportedApps = _formats.map((e) => e.app).toList();
 
   static final List<ArchiveFormat> _formats = [
     // facebook,

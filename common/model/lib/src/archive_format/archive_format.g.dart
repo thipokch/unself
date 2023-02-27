@@ -11,7 +11,7 @@ _$_ArchiveFormat _$$_ArchiveFormatFromJson(Map<String, dynamic> json) =>
       id: json['id'] as String,
       created: DateTime.parse(json['created'] as String),
       updated: DateTime.parse(json['updated'] as String),
-      app: App.fromJson(json['app'] as Map<String, dynamic>),
+      appId: json['appId'] as String,
       version: const JsonVersion().fromJson(json['version'] as String),
       constraint:
           const JsonVersionConstraint().fromJson(json['constraint'] as String),
@@ -29,7 +29,7 @@ Map<String, dynamic> _$$_ArchiveFormatToJson(_$_ArchiveFormat instance) {
     'id': instance.id,
     'created': instance.created.toIso8601String(),
     'updated': instance.updated.toIso8601String(),
-    'app': instance.app.toJson(),
+    'appId': instance.appId,
     'version': const JsonVersion().toJson(instance.version),
     'constraint': const JsonVersionConstraint().toJson(instance.constraint),
     'format': _$ArchiveFileFormatEnumMap[instance.format]!,

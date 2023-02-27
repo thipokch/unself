@@ -31,11 +31,14 @@ mixin _$Account {
   /// [name] is the name used by the [Account] on the [App].
   String get name => throw _privateConstructorUsedError;
 
-  /// [email] is the email used by the [Account] on the [App].
-  String get email => throw _privateConstructorUsedError;
-
   /// [app] is the [App] where the [Account] is registered.
-  App get app => throw _privateConstructorUsedError;
+  String get appId => throw _privateConstructorUsedError;
+
+  /// [isOwner] is true if the [Account] is the owner of the [Archive].
+  bool get isOwner => throw _privateConstructorUsedError;
+
+  /// [emails] is the email used by the [Account] on the [App].
+  List<String> get emails => throw _privateConstructorUsedError;
 
   /// [extra] is a map of additional properties.
   @JsonExtra()
@@ -57,11 +60,10 @@ abstract class $AccountCopyWith<$Res> {
       @JsonDateTime() DateTime updated,
       String archiveId,
       String name,
-      String email,
-      App app,
+      String appId,
+      bool isOwner,
+      List<String> emails,
       @JsonExtra() Map<String, dynamic> extra});
-
-  $AppCopyWith<$Res> get app;
 }
 
 /// @nodoc
@@ -82,8 +84,9 @@ class _$AccountCopyWithImpl<$Res, $Val extends Account>
     Object? updated = null,
     Object? archiveId = null,
     Object? name = null,
-    Object? email = null,
-    Object? app = null,
+    Object? appId = null,
+    Object? isOwner = null,
+    Object? emails = null,
     Object? extra = null,
   }) {
     return _then(_value.copyWith(
@@ -107,27 +110,23 @@ class _$AccountCopyWithImpl<$Res, $Val extends Account>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      email: null == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
+      appId: null == appId
+          ? _value.appId
+          : appId // ignore: cast_nullable_to_non_nullable
               as String,
-      app: null == app
-          ? _value.app
-          : app // ignore: cast_nullable_to_non_nullable
-              as App,
+      isOwner: null == isOwner
+          ? _value.isOwner
+          : isOwner // ignore: cast_nullable_to_non_nullable
+              as bool,
+      emails: null == emails
+          ? _value.emails
+          : emails // ignore: cast_nullable_to_non_nullable
+              as List<String>,
       extra: null == extra
           ? _value.extra
           : extra // ignore: cast_nullable_to_non_nullable
               as Map<String, dynamic>,
     ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $AppCopyWith<$Res> get app {
-    return $AppCopyWith<$Res>(_value.app, (value) {
-      return _then(_value.copyWith(app: value) as $Val);
-    });
   }
 }
 
@@ -144,12 +143,10 @@ abstract class _$$_AccountCopyWith<$Res> implements $AccountCopyWith<$Res> {
       @JsonDateTime() DateTime updated,
       String archiveId,
       String name,
-      String email,
-      App app,
+      String appId,
+      bool isOwner,
+      List<String> emails,
       @JsonExtra() Map<String, dynamic> extra});
-
-  @override
-  $AppCopyWith<$Res> get app;
 }
 
 /// @nodoc
@@ -167,8 +164,9 @@ class __$$_AccountCopyWithImpl<$Res>
     Object? updated = null,
     Object? archiveId = null,
     Object? name = null,
-    Object? email = null,
-    Object? app = null,
+    Object? appId = null,
+    Object? isOwner = null,
+    Object? emails = null,
     Object? extra = null,
   }) {
     return _then(_$_Account(
@@ -192,14 +190,18 @@ class __$$_AccountCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      email: null == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
+      appId: null == appId
+          ? _value.appId
+          : appId // ignore: cast_nullable_to_non_nullable
               as String,
-      app: null == app
-          ? _value.app
-          : app // ignore: cast_nullable_to_non_nullable
-              as App,
+      isOwner: null == isOwner
+          ? _value.isOwner
+          : isOwner // ignore: cast_nullable_to_non_nullable
+              as bool,
+      emails: null == emails
+          ? _value._emails
+          : emails // ignore: cast_nullable_to_non_nullable
+              as List<String>,
       extra: null == extra
           ? _value._extra
           : extra // ignore: cast_nullable_to_non_nullable
@@ -217,10 +219,12 @@ class _$_Account extends _Account {
       @JsonDateTime() required this.updated,
       required this.archiveId,
       required this.name,
-      required this.email,
-      required this.app,
+      required this.appId,
+      required this.isOwner,
+      final List<String> emails = const [],
       @JsonExtra() final Map<String, dynamic> extra = const {}})
-      : _extra = extra,
+      : _emails = emails,
+        _extra = extra,
         super._();
 
   factory _$_Account.fromJson(Map<String, dynamic> json) =>
@@ -242,13 +246,25 @@ class _$_Account extends _Account {
   @override
   final String name;
 
-  /// [email] is the email used by the [Account] on the [App].
-  @override
-  final String email;
-
   /// [app] is the [App] where the [Account] is registered.
   @override
-  final App app;
+  final String appId;
+
+  /// [isOwner] is true if the [Account] is the owner of the [Archive].
+  @override
+  final bool isOwner;
+
+  /// [emails] is the email used by the [Account] on the [App].
+  final List<String> _emails;
+
+  /// [emails] is the email used by the [Account] on the [App].
+  @override
+  @JsonKey()
+  List<String> get emails {
+    if (_emails is EqualUnmodifiableListView) return _emails;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_emails);
+  }
 
   /// [extra] is a map of additional properties.
   final Map<String, dynamic> _extra;
@@ -265,7 +281,7 @@ class _$_Account extends _Account {
 
   @override
   String toString() {
-    return 'Account(id: $id, created: $created, updated: $updated, archiveId: $archiveId, name: $name, email: $email, app: $app, extra: $extra)';
+    return 'Account(id: $id, created: $created, updated: $updated, archiveId: $archiveId, name: $name, appId: $appId, isOwner: $isOwner, emails: $emails, extra: $extra)';
   }
 
   @override
@@ -279,15 +295,25 @@ class _$_Account extends _Account {
             (identical(other.archiveId, archiveId) ||
                 other.archiveId == archiveId) &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.email, email) || other.email == email) &&
-            (identical(other.app, app) || other.app == app) &&
+            (identical(other.appId, appId) || other.appId == appId) &&
+            (identical(other.isOwner, isOwner) || other.isOwner == isOwner) &&
+            const DeepCollectionEquality().equals(other._emails, _emails) &&
             const DeepCollectionEquality().equals(other._extra, _extra));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, created, updated, archiveId,
-      name, email, app, const DeepCollectionEquality().hash(_extra));
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      created,
+      updated,
+      archiveId,
+      name,
+      appId,
+      isOwner,
+      const DeepCollectionEquality().hash(_emails),
+      const DeepCollectionEquality().hash(_extra));
 
   @JsonKey(ignore: true)
   @override
@@ -310,8 +336,9 @@ abstract class _Account extends Account {
       @JsonDateTime() required final DateTime updated,
       required final String archiveId,
       required final String name,
-      required final String email,
-      required final App app,
+      required final String appId,
+      required final bool isOwner,
+      final List<String> emails,
       @JsonExtra() final Map<String, dynamic> extra}) = _$_Account;
   const _Account._() : super._();
 
@@ -334,12 +361,16 @@ abstract class _Account extends Account {
   String get name;
   @override
 
-  /// [email] is the email used by the [Account] on the [App].
-  String get email;
+  /// [app] is the [App] where the [Account] is registered.
+  String get appId;
   @override
 
-  /// [app] is the [App] where the [Account] is registered.
-  App get app;
+  /// [isOwner] is true if the [Account] is the owner of the [Archive].
+  bool get isOwner;
+  @override
+
+  /// [emails] is the email used by the [Account] on the [App].
+  List<String> get emails;
   @override
 
   /// [extra] is a map of additional properties.

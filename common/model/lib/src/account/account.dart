@@ -24,11 +24,14 @@ class Account with _$Account implements Node {
     /// [name] is the name used by the [Account] on the [App].
     required String name,
 
-    /// [email] is the email used by the [Account] on the [App].
-    required String email,
-
     /// [app] is the [App] where the [Account] is registered.
-    required App app,
+    required String appId,
+
+    /// [isOwner] is true if the [Account] is the owner of the [Archive].
+    required bool isOwner,
+
+    /// [emails] is the email used by the [Account] on the [App].
+    @Default([]) List<String> emails,
 
     /// [extra] is a map of additional properties.
     @JsonExtra() @Default({}) Map<String, dynamic> extra,

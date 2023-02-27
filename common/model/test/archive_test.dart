@@ -36,8 +36,9 @@ void main() {
       updated: now,
       archiveId: '',
       name: 'name',
-      email: 'email',
-      app: aApp,
+      emails: [],
+      appId: 'aApp',
+      isOwner: true,
     );
 
     final bAccount = Account(
@@ -46,8 +47,9 @@ void main() {
       updated: now,
       archiveId: '',
       name: 'name',
-      email: 'email',
-      app: bApp,
+      emails: [],
+      appId: 'bApp',
+      isOwner: false,
       extra: extra,
     );
 
@@ -55,7 +57,7 @@ void main() {
       id: 'aMapping',
       created: now,
       updated: now,
-      app: aApp,
+      appId: aApp.id,
       version: Version(0, 0, 1),
       constraint: VersionConstraint.compatibleWith(Version(0, 0, 1)),
       format: ArchiveFileFormat.zipJson,
@@ -66,7 +68,7 @@ void main() {
       id: 'bMapping',
       created: now,
       updated: now,
-      app: bApp,
+      appId: bApp.id,
       extra: extra,
       version: Version(0, 0, 2),
       constraint: VersionConstraint.compatibleWith(Version(0, 0, 2)),
@@ -104,13 +106,9 @@ void main() {
         'updated': nowString,
         'archiveId': '',
         'name': 'name',
-        'email': 'email',
-        'app': {
-          'id': 'aApp',
-          'created': nowString,
-          'updated': nowString,
-          'name': 'name',
-        }
+        'appId': 'aApp',
+        'isOwner': true,
+        'emails': [],
       },
       'formatId': '',
     });
@@ -126,14 +124,9 @@ void main() {
         'updated': nowString,
         'archiveId': '',
         'name': 'name',
-        'email': 'email',
-        'app': {
-          'id': 'bApp',
-          'created': nowString,
-          'updated': nowString,
-          'name': 'name',
-          'extra': extra,
-        },
+        'appId': 'bApp',
+        'isOwner': false,
+        'emails': [],
         'extra': extra,
       },
       'formatId': '',
@@ -183,7 +176,7 @@ void main() {
       expect(
         aArchive.copyWith(
           account: aArchive.account.copyWith(
-            app: aArchive.account.app.copyWith(),
+            appId: 'aApp',
           ),
         ),
         aArchive,
@@ -192,17 +185,10 @@ void main() {
       expect(
         aArchive.copyWith(
           account: aArchive.account.copyWith(
-            app: aArchive.account.app.copyWith(name: 'new'),
+            appId: 'new',
           ),
         ),
         isNot(aArchive),
-      );
-
-      expect(
-        aArchive.copyWith.account.app(
-          name: aObject['account']['app']['name'],
-        ),
-        aArchive,
       );
     });
 
