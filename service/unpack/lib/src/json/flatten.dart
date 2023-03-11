@@ -1,7 +1,6 @@
 // ignore_for_file: constant_identifier_names
 
 import 'package:collection/collection.dart';
-import 'package:flutter/foundation.dart';
 
 List<Map<String, dynamic>> flatten(
   dynamic json, {
@@ -26,8 +25,8 @@ List<Map<String, dynamic>> flatten(
           .toSet())
       : const <String>{};
 
-  print(includeKeys);
-  print(commonPath);
+  // if (kDebugMode) print(includeKeys);
+  // if (kDebugMode) print(commonPath);
 
   _flatten(
     json,
@@ -41,7 +40,7 @@ List<Map<String, dynamic>> flatten(
     includeAccumulator(includeResult, includeKeys),
   );
 
-  print(includeResult);
+  // if (kDebugMode) print(includeResult);
 
   if (seenKeys != null) {
     for (final e in result) {
@@ -77,24 +76,24 @@ void _flatten(
   late final childCommonPath =
       cp ? commonPath.where((e) => e != seenKey).toSet() : commonPath;
 
-  void logInput(bool accumulateHere) {
-    if (kDebugMode) {
-      final a = accumulateHere ? '✨' : '🔺';
-      final i = cp ? '⭐️' : '';
-      print('${rp.name} :: $a$i $seenKey :: $json');
-    }
-  }
+  // void logInput(bool accumulateHere) {
+  //   if (kDebugMode) {
+  //     final a = accumulateHere ? '✨' : '🔺';
+  //     final i = cp ? '⭐️' : '';
+  //     print('${rp.name} :: $a$i $seenKey :: $json');
+  //   }
+  // }
 
-  void logOutput(String loc, dynamic out) {
-    final i = cp ? '⭐️' : '';
-    if (kDebugMode) print(':: $loc :: $i $seenKey :: $out');
-  }
+  // void logOutput(String loc, dynamic out) {
+  //   final i = cp ? '⭐️' : '';
+  //   if (kDebugMode) print(':: $loc :: $i $seenKey :: $out');
+  // }
 
   if (json is Map && rp.isBefore && cp) {
     late final result = <String, dynamic>{};
     late final resultList = <Map<String, dynamic>>[];
 
-    logInput(true);
+    // logInput(true);
 
     late final isRecordList = recordPath.last == '*';
 
@@ -128,13 +127,13 @@ void _flatten(
       accumulateUp(key, result);
     }
 
-    logOutput('CRESULT', result);
-    logOutput('CRESULTL', resultList);
+    // logOutput('CRESULT', result);
+    // logOutput('CRESULTL', resultList);
   } else if (json is Map) {
     late final result = <String, dynamic>{};
 
     final accumulateHere = rp.isUndefined || rp.isAfter || rp.isAt;
-    if (kDebugMode) logInput(accumulateHere);
+    // if (kDebugMode) logInput(accumulateHere);
 
     json.forEach((k, v) => _flatten(
           v,
@@ -148,13 +147,13 @@ void _flatten(
           accumulateInclude,
         ));
 
-    if (accumulateHere) logOutput('RESULT', result);
+    // if (accumulateHere) logOutput('RESULT', result);
     if (accumulateHere) accumulateUp(key, result);
   } else if (json is List) {
     late final result = <Map<String, dynamic>>[];
 
     final accumulateHere = rp.isAfter; //  || rp.isAt;
-    if (kDebugMode) logInput(accumulateHere);
+    // if (kDebugMode) logInput(accumulateHere);
 
     json.forEachIndexed((i, e) => _flatten(
           e,
@@ -168,16 +167,16 @@ void _flatten(
           accumulateInclude,
         ));
 
-    if (accumulateHere) logOutput('RESULT', result);
+    // if (accumulateHere) logOutput('RESULT', result);
     if (accumulateHere) accumulateUp(key, result);
   } else if (rp.isUndefined || rp.isAfter || rp.isAt) {
-    logOutput('LEAF', json);
+    // logOutput('LEAF', json);
     accumulateUp(key, json);
   } else if (rp.isBefore || rp.isNot) {
     if (includeKeys.contains(seenKey) ||
         includeKeys.any((_) => seenKey.startsWith(_))) {
       final relKey = seenPath.tailDiff(recordPath).join(separator);
-      logOutput('NLEAF : $relKey', json);
+      // logOutput('NLEAF : $relKey', json);
 
       accumulateInclude(relKey, json);
     }
@@ -194,7 +193,7 @@ Accumulator mapAccumulator(
   Map<String, dynamic> result,
 ) =>
     (k, v) {
-      print('mapAccumulator :: $k :: $v');
+      // if (kDebugMode) print('mapAccumulator :: $k :: $v');
       v is Map<String, dynamic> ? result.addAll(v) : result[k] = v;
     };
 
@@ -203,7 +202,7 @@ Accumulator listAccumulator<T>(
   Set<String>? seenKeys,
 ]) =>
     (k, v) {
-      print('listAccumulator :: $k :: $v');
+      // if (kDebugMode) print('listAccumulator :: $k :: $v');
       if (v is T) {
         result.add(v);
       } else if (result is List<Map<String, dynamic>>) {
