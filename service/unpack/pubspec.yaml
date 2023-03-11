@@ -23,6 +23,8 @@ dependencies:
   slugify: ^2.0.0
   slugid: ^1.1.1
 
+  normalizr: ^0.1.1
+
 dev_dependencies:
   # Code Quality
 

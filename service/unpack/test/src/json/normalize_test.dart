@@ -1,7 +1,7 @@
 // ignore_for_file: avoid_print
 
-import 'package:unself_unpack/src/util/json_normalize.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:unself_unpack/src/json/normalize.dart';
 
 void main() {
   group('ArchiveCollector', () {

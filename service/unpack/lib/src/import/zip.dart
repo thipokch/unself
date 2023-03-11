@@ -10,7 +10,6 @@ import 'package:slugid/slugid.dart';
 import 'package:slugify/slugify.dart';
 import 'package:unself_file/unself_file.dart';
 import 'package:unself_model/unself_model.dart' show Mapping;
-import 'package:unself_unpack/src/util/json_normalize.dart';
 import 'package:unself_unpack/unself_unpack.dart';
 
 /// {@template zip_input}

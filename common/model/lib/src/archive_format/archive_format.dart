@@ -9,6 +9,8 @@ part 'archive_format.g.dart';
 /// {@endtemplate}
 @freezed
 class ArchiveFormat with _$ArchiveFormat implements Base {
+  const ArchiveFormat._();
+
   /// {@macro archive_format}
   const factory ArchiveFormat({
     /// [id] is unself unique identifier for the ArchiveFormat.
@@ -42,6 +44,10 @@ class ArchiveFormat with _$ArchiveFormat implements Base {
     /// [extra] is a map of additional properties.
     @JsonExtra() @Default({}) Map<String, dynamic> extra,
   }) = _ArchiveFormat;
+
+  ArchiveData read(Map<String, dynamic> json) {
+    throw UnimplementedError();
+  }
 
   /// Creates a [ArchiveFormat] from Json map
   factory ArchiveFormat.fromJson(Map<String, dynamic> data) =>

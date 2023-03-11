@@ -226,7 +226,7 @@ class __$$_ArchiveFormatCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ArchiveFormat implements _ArchiveFormat {
+class _$_ArchiveFormat extends _ArchiveFormat {
   const _$_ArchiveFormat(
       {required this.id,
       required this.created,
@@ -238,7 +238,8 @@ class _$_ArchiveFormat implements _ArchiveFormat {
       required final List<Mapping> mappings,
       @JsonExtra() final Map<String, dynamic> extra = const {}})
       : _mappings = mappings,
-        _extra = extra;
+        _extra = extra,
+        super._();
 
   factory _$_ArchiveFormat.fromJson(Map<String, dynamic> json) =>
       _$$_ArchiveFormatFromJson(json);
@@ -351,7 +352,7 @@ class _$_ArchiveFormat implements _ArchiveFormat {
   }
 }
 
-abstract class _ArchiveFormat implements ArchiveFormat {
+abstract class _ArchiveFormat extends ArchiveFormat {
   const factory _ArchiveFormat(
       {required final String id,
       required final DateTime created,
@@ -362,6 +363,7 @@ abstract class _ArchiveFormat implements ArchiveFormat {
       required final ArchiveFileFormat format,
       required final List<Mapping> mappings,
       @JsonExtra() final Map<String, dynamic> extra}) = _$_ArchiveFormat;
+  const _ArchiveFormat._() : super._();
 
   factory _ArchiveFormat.fromJson(Map<String, dynamic> json) =
       _$_ArchiveFormat.fromJson;
