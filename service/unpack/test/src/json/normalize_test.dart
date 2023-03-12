@@ -1,248 +1,187 @@
-// ignore_for_file: avoid_print
-
 import 'package:flutter_test/flutter_test.dart';
-import 'package:unself_unpack/src/json/normalize.dart';
+import 'package:unself_model/unself_model.dart';
+import 'package:unself_unpack/unself_unpack.dart';
 
 void main() {
-  group('ArchiveCollector', () {
-    setUp(() {});
-
-    test('1. null for undefined value', () {
-      expect(
-        normalize(
-          <Map<String, dynamic>>[
-            {
-              "id": 1,
-              "name": {"first": "Coleen", "last": "Volk"}
-            },
-            {
-              "name": {"given": "Mark", "family": "Regner"}
-            },
-            {
-              "id": 2,
-              "name": "Faye Raker",
-            },
-          ],
-          joinSeparator: '.',
-        ),
-        <Map<String, dynamic>>[
-          {
-            "id": 1,
-            "name": null,
-            "name.first": "Coleen",
-            "name.last": "Volk",
-            "name.given": null,
-            "name.family": null,
-          },
-          {
-            "id": null,
-            "name": null,
-            "name.first": null,
-            "name.last": null,
-            "name.given": "Mark",
-            "name.family": "Regner",
-          },
-          {
-            "id": 2,
-            "name": "Faye Raker",
-            "name.first": null,
-            "name.last": null,
-            "name.given": null,
-            "name.family": null,
-          },
-        ],
-      );
+  group('normalize', () {
+    late Normalize s;
+    setUp(() {
+      s = Normalize();
     });
 
-    test('2.', () {
-      expect(
-        normalize(
-          <Map<String, dynamic>>[
-            {
-              "state": "Florida",
-              "shortname": "FL",
-              "info": {"governor": "Rick Scott"},
-              "counties": [
-                {"name": "Dade", "population": 12345},
-                {"name": "Broward", "population": 40000},
-                {"name": "Palm Beach", "population": 60000},
-              ],
-            },
-            {
-              "state": "Ohio",
-              "shortname": "OH",
-              "info": {"governor": "John Kasich"},
-              "counties": [
-                {"name": "Summit", "population": 1234},
-                {"name": "Cuyahoga", "population": 1337},
-              ],
-              "extra": "diva",
-            },
-          ],
-          entryPath: "*/counties",
-          includePath: [
-            "*/shortname",
-            "*/info/governor",
-            "*/extra",
-          ],
-          joinSeparator: '/',
-        ),
-        <Map<String, dynamic>>[
+    test('example', () {
+      const user = Entity('users', {});
+
+      const comment = Entity('comments', {
+        'commenter': Ref('users'),
+      });
+
+      const article = Entity('articles', {
+        'author': Ref('users'),
+        'comments': RefList('comments'),
+      });
+
+      s.addAll([user, comment, article]);
+
+      final input = {
+        "id": "123",
+        "author": {"id": "1", "name": "Paul"},
+        "title": "My awesome blog post",
+        "comments": [
           {
-            "shortname": "FL",
-            "info/governor": "Rick Scott",
-            "name": "Dade",
-            "population": 12345,
-            "extra": null,
-          },
-          {
-            "shortname": "FL",
-            "info/governor": "Rick Scott",
-            "name": "Broward",
-            "population": 40000,
-            "extra": null,
-          },
-          {
-            "shortname": "FL",
-            "info/governor": "Rick Scott",
-            "name": "Palm Beach",
-            "population": 60000,
-            "extra": null,
-          },
-          {
-            "shortname": "OH",
-            "info/governor": "John Kasich",
-            "name": "Summit",
-            "population": 1234,
-            "extra": "diva",
-          },
-          {
-            "shortname": "OH",
-            "info/governor": "John Kasich",
-            "name": "Cuyahoga",
-            "population": 1337,
-            "extra": "diva",
-          },
+            "id": "324",
+            "commenter": {"id": "2", "name": "Nicole"}
+          }
+        ]
+      };
+
+      expect(s.normalize(input, article), {
+        "users": [
+          {"id": "1", "name": "Paul"},
+          {"id": "2", "name": "Nicole"}
         ],
-      );
+        "comments": [
+          {"id": "324", "commenter": "2"}
+        ],
+        "articles": [
+          {
+            "id": "123",
+            "author": "1",
+            "title": "My awesome blog post",
+            "comments": ["324"]
+          }
+        ],
+      });
     });
 
-    test('3. ', () {
-      expect(
-        normalize(
-          <String, dynamic>{
-            "counties": [
-              {"name": "Dade", "population": 12345},
-              {"name": "Broward", "population": 40000},
-              {"name": "Palm Beach", "population": 60000},
-            ],
+    test('circular references', () {
+      const user = Entity('users', {
+        'friends': RefList('users'),
+      });
+
+      s.add(user);
+
+      final input = {
+        'id': 123,
+        'nick': 'first',
+        'friends': [
+          {'id': 124, 'nick': 'second'},
+        ]
+      };
+
+      expect(s.normalize(input, user), {
+        'users': [
+          {
+            'id': 124,
+            'nick': 'second',
           },
-          entryPath: "counties",
-          joinSeparator: '/',
-        ),
-        <Map<String, dynamic>>[
-          {"name": "Dade", "population": 12345},
-          {"name": "Broward", "population": 40000},
-          {"name": "Palm Beach", "population": 60000},
+          {
+            'id': 123,
+            'nick': 'first',
+            'friends': [124],
+          },
         ],
-      );
+      });
     });
 
-    test('4. ', () {
-      expect(
-        normalize(
-          <String, dynamic>{
-            "nested": [
-              {
-                "state": "Florida",
-                "shortname": "FL",
-                "info": {"governor": "Rick Scott"},
-                "counties": [
-                  {"name": "Dade", "population": 12345},
-                  {"name": "Broward", "population": 40000},
-                  {"name": "Palm Beach", "population": 60000},
-                ],
-              },
-              {
-                "state": "Ohio",
-                "shortname": "OH",
-                "info": {"governor": "John Kasich"},
-                "counties": [
-                  {"name": "Summit", "population": 1234},
-                  {"name": "Cuyahoga", "population": 1337},
-                ],
-                "extra": "diva",
-              },
-            ],
-          },
-          entryPath: "nested/*/counties",
-          includePath: [
-            "nested/*/shortname",
-            "nested/*/info/governor",
-            "nested/*/extra",
-          ],
-          joinSeparator: '/',
-        ),
-        <Map<String, dynamic>>[
-          {
-            "shortname": "FL",
-            "info/governor": "Rick Scott",
-            "name": "Dade",
-            "population": 12345,
-            "extra": null,
-          },
-          {
-            "shortname": "FL",
-            "info/governor": "Rick Scott",
-            "name": "Broward",
-            "population": 40000,
-            "extra": null,
-          },
-          {
-            "shortname": "FL",
-            "info/governor": "Rick Scott",
-            "name": "Palm Beach",
-            "population": 60000,
-            "extra": null,
-          },
-          {
-            "shortname": "OH",
-            "info/governor": "John Kasich",
-            "name": "Summit",
-            "population": 1234,
-            "extra": "diva",
-          },
-          {
-            "shortname": "OH",
-            "info/governor": "John Kasich",
-            "name": "Cuyahoga",
-            "population": 1337,
-            "extra": "diva",
-          },
-        ],
-      );
-    });
+    test('union', () {
+      const dataList = Entity('data-list', {
+        'data': UnionList(['post', 'question']),
+      });
 
-    test('5. ', () {
-      expect(
-        normalize(
+      const question = Entity('question', {});
+      const post = Entity('post', {});
+
+      s.addAll([question, post]);
+
+      final input = {
+        'data': [
+          {'id': '1-1', 'type': 'post', 'post-data': 'data post'},
+          {'id': '2-1', 'type': 'question', 'question-data': 'data question'},
+        ]
+      };
+
+      expect(s.normalize(input, dataList), {
+        'post': [
+          {'id': '1-1', 'type': 'post', 'post-data': 'data post'}
+        ],
+        'question': [
+          {'id': '2-1', 'type': 'question', 'question-data': 'data question'}
+        ],
+        'data-list': [
           {
-            "profile_v2": {
-              "first": "Coleen",
-              "last": "Volk",
-              "a": {"b": "c"}
-            },
+            'data': [
+              {'id': '1-1', 'type': 'post'},
+              {'id': '2-1', 'type': 'question'}
+            ]
+          }
+        ]
+      });
+    });
+    // test('traverse', () {
+    //   const dataList = ...({
+    //     'data': UnionList(['post', 'question']),
+    //   });
+
+    //   s.addAll(const [
+    //     Entity('question', {}),
+    //     Entity('post', {}),
+    //   ]);
+
+    //   final input = {
+    //     'data': [
+    //       {'id': '1-1', 'type': 'post', 'post-data': 'data post'},
+    //       {'id': '2-1', 'type': 'question', 'question-data': 'data question'},
+    //     ]
+    //   };
+
+    //   expect(s.normalize(input, dataList), {
+    //     'post': [
+    //       {'id': '1-1', 'type': 'post', 'post-data': 'data post'}
+    //     ],
+    //     'question': [
+    //       {'id': '2-1', 'type': 'question', 'question-data': 'data question'}
+    //     ],
+    //   });
+
+    //   expect(s.normalize(input, dataList), {
+    //     'post': [
+    //       {'id': '1-1', 'type': 'post', 'post-data': 'data post'}
+    //     ],
+    //     'question': [
+    //       {'id': '2-1', 'type': 'question', 'question-data': 'data question'}
+    //     ],
+    //   });
+    // });
+
+    test('traverse circular references', () {
+      const user = Entity('users', {
+        'friends': RefList('users'),
+      });
+
+      s.add(user);
+
+      final input = {
+        'id': 123,
+        'nick': 'first',
+        'friends': [
+          {'id': 124, 'nick': 'second'},
+        ]
+      };
+
+      expect(s.normalize(input, user), {
+        'users': [
+          {
+            'id': 124,
+            'nick': 'second',
           },
-          includePath: ['profile_v2'],
-        ),
-        <Map<String, dynamic>>[
           {
-            "profile_v2/first": "Coleen",
-            "profile_v2/last": "Volk",
-            "profile_v2/a/b": "c",
+            'id': 123,
+            'nick': 'first',
+            'friends': [124],
           },
         ],
-      );
+      });
     });
-  });
+  }, skip: true);
 }

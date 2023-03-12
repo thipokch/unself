@@ -112,7 +112,7 @@ void main() {
               to: 'topics/interests',
               fields: const [
                 Mapping(
-                  from: 'string',
+                  from: 'value',
                   to: 'name',
                 ),
               ],

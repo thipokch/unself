@@ -40,15 +40,17 @@ void main() {
     test(
         'Map / * Map * / Map  =>  List / Map',
         () => expect(
-              flatten(<String, dynamic>{
-                'name': 'name',
-                'value': {
-                  'a': {'1': '1', '2': '2'},
-                  'b': {'3': '3', '4': '4'},
+              flatten(
+                <String, dynamic>{
+                  'name': 'name',
+                  'value': {
+                    'a': {'1': '1', '2': '2'},
+                    'b': {'3': '3', '4': '4'},
+                  },
                 },
-              }, recordPath: [
-                'value'
-              ], addMissingKeys: false),
+                recordPath: ['value'],
+                addMissingKeys: false,
+              ),
               <Map<String, dynamic>>[
                 {
                   'a.1': '1',
@@ -273,5 +275,146 @@ void main() {
                 },
               ],
             ));
+
+    test('addMissingKeys: true', () {
+      expect(
+        flatten(
+          <Map<String, dynamic>>[
+            {
+              'id': 1,
+              'name': {'first': 'Coleen', 'last': 'Volk'}
+            },
+            {
+              'name': {'given': 'Mark', 'family': 'Regner'}
+            },
+            {
+              'id': 2,
+              'name': 'Faye Raker',
+            },
+          ],
+          separator: '.',
+        ),
+        <Map<String, dynamic>>[
+          {
+            'id': 1,
+            'name': null,
+            'name.first': 'Coleen',
+            'name.last': 'Volk',
+            'name.given': null,
+            'name.family': null,
+          },
+          {
+            'id': null,
+            'name': null,
+            'name.first': null,
+            'name.last': null,
+            'name.given': 'Mark',
+            'name.family': 'Regner',
+          },
+          {
+            'id': 2,
+            'name': 'Faye Raker',
+            'name.first': null,
+            'name.last': null,
+            'name.given': null,
+            'name.family': null,
+          },
+        ],
+      );
+    });
+
+    test('includePath: multiple', () {
+      expect(
+        flatten(
+          <Map<String, dynamic>>[
+            {
+              'state': 'Florida',
+              'shortname': 'FL',
+              'info': {'governor': 'Rick Scott'},
+              'counties': [
+                {'name': 'Dade', 'population': 12345},
+                {'name': 'Broward', 'population': 40000},
+                {'name': 'Palm Beach', 'population': 60000},
+              ],
+            },
+            {
+              'state': 'Ohio',
+              'shortname': 'OH',
+              'info': {'governor': 'John Kasich'},
+              'counties': [
+                {'name': 'Summit', 'population': 1234},
+                {'name': 'Cuyahoga', 'population': 1337},
+              ],
+              'extra': 'diva',
+            },
+          ],
+          recordPath: ['*', 'counties', '*'],
+          includePath: [
+            ['*', 'shortname'],
+            ['*', 'info', 'governor'],
+            ['*', 'extra'],
+          ],
+          separator: '/',
+        ),
+        <Map<String, dynamic>>[
+          {
+            'shortname': 'FL',
+            'info/governor': 'Rick Scott',
+            'name': 'Dade',
+            'population': 12345,
+            'extra': null,
+          },
+          {
+            'shortname': 'FL',
+            'info/governor': 'Rick Scott',
+            'name': 'Broward',
+            'population': 40000,
+            'extra': null,
+          },
+          {
+            'shortname': 'FL',
+            'info/governor': 'Rick Scott',
+            'name': 'Palm Beach',
+            'population': 60000,
+            'extra': null,
+          },
+          {
+            'shortname': 'OH',
+            'info/governor': 'John Kasich',
+            'name': 'Summit',
+            'population': 1234,
+            'extra': 'diva',
+          },
+          {
+            'shortname': 'OH',
+            'info/governor': 'John Kasich',
+            'name': 'Cuyahoga',
+            'population': 1337,
+            'extra': 'diva',
+          },
+        ],
+      );
+    });
+
+    test('separator: backslash ', () {
+      expect(
+        flatten(
+          <String, dynamic>{
+            'counties': [
+              {'name': 'Dade', 'population': 12345},
+              {'name': 'Broward', 'population': 40000},
+              {'name': 'Palm Beach', 'population': 60000},
+            ],
+          },
+          recordPath: ['counties'],
+          separator: '/',
+        ),
+        <Map<String, dynamic>>[
+          {'name': 'Dade', 'population': 12345},
+          {'name': 'Broward', 'population': 40000},
+          {'name': 'Palm Beach', 'population': 60000},
+        ],
+      );
+    });
   });
 }

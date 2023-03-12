@@ -2,12 +2,119 @@
 
 import 'package:collection/collection.dart';
 
+/// [flatten] is similar to pandas' json_normalize function, this function
+/// recursively flattens the nested JSON objects into a flat tabular list.
+/// It returns [List<Map<String, dynamic>>] of the flattened records.
+///
+/// Simple example:
+/// ```json
+/// [
+///   {"id": 1, "name": {"first": "Coleen", "last": "Volk"}},
+///   {"name": {"given": "Mark", "family": "Regner"}},
+///   {"id": 2, "name": "Faye Raker"},
+/// ]
+/// ```
+///
+/// ```dart
+/// flatten(input);
+/// ```
+///
+/// Results in:
+/// ```json
+/// [
+///   {"id": 1, "name.first": "Coleen", "name.last": "Volk", "name.given": null, "name.family": null},
+///   {"id": null, "name.first": null, "name.last": null, "name.given": "Mark", "name.family": "Regner"},
+///   {"id": 2, "name": "Faye Raker", "name.first": null, "name.last": null, "name.given": null, "name.family": null},
+/// ]
+/// ```
+///
+/// Advanced example:
+/// ```json
+/// [
+///    {
+///        "state": "Florida",
+///        "shortname": "FL",
+///        "info": {"governor": "Rick Scott"},
+///        "counties": [
+///            {"name": "Dade", "population": 12345},
+///            {"name": "Broward", "population": 40000},
+///            {"name": "Palm Beach", "population": 60000},
+///        ],
+///    },
+///    {
+///        "state": "Ohio",
+///        "shortname": "OH",
+///        "info": {"governor": "John Kasich"},
+///        "counties": [
+///            {"name": "Summit", "population": 1234},
+///            {"name": "Cuyahoga", "population": 1337},
+///        ],
+///    },
+/// ]
+/// ```
+///
+/// ```dart
+/// flatten(input, recordPath: ["counties"], includePath: [["state"], ["shortname"], ["info", "governor"]]);
+/// ```
+///
+/// Results in:
+/// ```json
+/// [
+///   {
+///     "state": "Florida",
+///     "shortname": "FL",
+///     "info.governor": "Rick Scott",
+///     "name": "Dade",
+///     "population": 12345
+///   },
+///   {
+///     "state": "Florida",
+///     "shortname": "FL",
+///     "info.governor": "Rick Scott",
+///     "name": "Broward",
+///     "population": 40000
+///   },
+///   {
+///     "state": "Florida",
+///     "shortname": "FL",
+///     "info.governor": "Rick Scott",
+///     "name": "Palm Beach",
+///     "population": 60000
+///   },
+///   {
+///     "state": "Ohio",
+///     "shortname": "OH",
+///     "info.governor": "John Kasich",
+///     "name": "Summit",
+///     "population": 1234
+///   },
+///   {
+///     "state": "Ohio",
+///     "shortname": "OH",
+///     "info.governor": "John Kasich",
+///     "name": "Cuyahoga",
+///     "population": 1337
+///   },
+/// ]
+/// ```
 List<Map<String, dynamic>> flatten(
+  /// Json to flatten
   dynamic json, {
+  /// Separator used to join the path of the nested keys
   String separator = '.',
+
+  /// Json path of records in the given json. This will be the entry point for the flattening.
   List<String> recordPath = const [],
+
+  /// Json path from the root of data to extract from the nested records.
+  /// Each path will become a column in the resulting table.
   List<List<String>> includePath = const [],
+
+  /// Add missing fields or column to the records.
   bool addMissingKeys = true,
+
+  // TODO: Implement maxLevel
+  /// Level of nesting to flatten
   int maxLevel = -1,
 }) {
   final result = <Map<String, dynamic>>[];
@@ -247,11 +354,11 @@ Position _pathPosition(
 
   if (recordPath.length == seenPath.length) {
     return Position.AT;
-  } else if (recordPath.length < seenPath.length) {
-    return Position.AFTER;
-  } else {
-    return Position.BEFORE;
   }
+  if (recordPath.length < seenPath.length) {
+    return Position.AFTER;
+  }
+  return Position.BEFORE;
 }
 
 //

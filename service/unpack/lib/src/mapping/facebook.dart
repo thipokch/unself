@@ -14,7 +14,7 @@ final facebookMapping = ArchiveFormat(
       to: 'topics',
       fields: [
         Mapping(
-          from: 'string',
+          from: 'value',
           to: 'name',
         ),
       ],
@@ -42,7 +42,9 @@ final facebookMapping = ArchiveFormat(
             'apps_and_websites_off_of_facebook.your_off-facebook_activity/off_facebook_activity_v2/*/events',
       },
       options: {
-        'includePath': ['off_facebook_activity_v2/*/name'],
+        'includePath': [
+          ['off_facebook_activity_v2', '*', 'name']
+        ],
         'idFrom': 'name',
       },
     ),
@@ -145,7 +147,9 @@ final facebookMapping = ArchiveFormat(
         'source': 'profile_information.profile_information/profile_v2',
       },
       options: {
-        'includePath': ['profile_v2'],
+        'includePath': [
+          ['profile_v2']
+        ],
         'idFrom': 'name',
       },
     ),
