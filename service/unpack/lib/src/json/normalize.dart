@@ -1,4 +1,6 @@
+import 'package:collection/collection.dart';
 import 'package:unself_model/unself_model.dart';
+import 'package:unself_unpack/unself_unpack.dart';
 
 /// {@template normalize}
 /// Normalize is a class that can be used to normalize a json object
@@ -6,103 +8,150 @@ import 'package:unself_model/unself_model.dart';
 /// {@endtemplate}
 class Normalize {
   /// {@macro normalize}
-  Normalize([List<Entity> entities = const []]) {
-    entities.forEach(add);
+  Normalize([List<JsonSchema> schema = const []]) {
+    addAll(schema);
   }
 
-  final _entities = <String, Entity>{};
+  final _schema = <String, JsonSchema>{};
 
   /// Adds an entity schema to the `Normalize` instance.
-  void add(Entity entity) => _entities[entity.name] = entity;
+  void add(JsonSchema schema) => _schema[schema.name] = schema;
 
   /// Adds all the entities schema in the iterable to the `Normalize` instance.
-  void addAll(Iterable<Entity> entities) => entities.forEach(add);
+  void addAll(Iterable<JsonSchema> entities) => entities.forEach(add);
 
   /// Removes all the entities schema from the `Normalize` instance.
-  void clear() => _entities.clear();
+  void clear() => _schema.clear();
 
   /// Finds an entity schema with the given name in the `Normalize` instance.
   ///
   /// Throws an [UnsupportedError] if no entity is found.
-  Entity _find(String name) {
-    final entity = _entities[name];
+  JsonSchema _find(String name) {
+    final entity = _schema[name];
     if (entity == null) {
       throw UnsupportedError('entity with name:$name not found');
     }
     return entity;
   }
 
-  /// Normalizes the given JSON object using the specified schema.
+  /// Normalizes the given JSON object using the specified schema name.
   ///
   /// Returns a map of normalized JSON objects, where each key corresponds to
   /// the name of an entity and the value is a list of normalized JSON objects
   /// for that entity.
-  Map<String, List> normalize(dynamic json, Entity entity) {
+  Map<String, List> normalize(String schema, Map<String, dynamic> json) =>
+      normalizeWith(_find(schema), json);
+
+  /// Normalizes the given JSON object using the specified schema object.
+  ///
+  /// Returns a map of normalized JSON objects, where each key corresponds to
+  /// the name of an entity and the value is a list of normalized JSON objects
+  /// for that entity.
+  Map<String, List> normalizeWith(
+      JsonSchema schema, Map<String, dynamic> json) {
     final result = <String, List>{};
     void accumulator(String name, dynamic key, dynamic entity) {
       result[name] ??= [];
       result[name]!.add(entity);
     }
 
-    // ignore: unused_local_variable
-    final id = _normalize(json, entity, accumulator, _find);
+    _normalize(json, schema, accumulator, _find);
 
     return result;
   }
 }
 
-// This function normalizes a given JSON object according to the given
-// entity's definition. The result is collected in the accumulator callback
-// and the function returns the entity's id as String.
-String _normalize(
+dynamic /* String / Int */ _normalize(
   Map<String, dynamic> json,
-  Entity entity,
+  JsonSchema schema,
   AccumulatorCallback accumulator,
-  SchemeFinder find,
+  SchemaFinder find,
 ) {
-  final result = <String, dynamic>{};
-  final definition = entity.definition;
+  late final definition = schema.definition;
 
-  // Iterate over each key-value pair in the input JSON object and process it
-  // based on whether it is defined in the entity's definition.
-  for (final entry in json.entries) {
-    final key = entry.key;
-    final value = entry.value;
+  // print('$definition :: $json');
 
-    final define = definition[key]!;
+  return schema.map(
+    entity: (schema) {
+      final result = <String, dynamic>{};
 
-    if (define is ArchiveSchemaList) {
-      // If it is an ArchiveSchemaList, apply the list-specific standardization
-      // logic by recursively standardizing each element in the list and collecting
-      // the resulting ids.
-      final ids = define.doCallback(
-        value,
-        (json, nextScheme) {
-          final entity = nextScheme.getEntity(json, find);
-          return nextScheme.useId(
-            _normalize(json, entity, accumulator, find),
-            entity,
+      json.forEach((key, value) {
+        final define = definition[key];
+
+        if (define is IJsonSchemaRef) {
+          result[key] = _normalizeRef(define, value, find, accumulator);
+        } else {
+          result[key] = value;
+        }
+      });
+
+      accumulator(schema.name, json[schema.key].toString(), result);
+      return json[schema.key];
+    },
+    struct: (schema) {
+      json.forEach((key, value) {
+        final define = definition[key];
+
+        if (define is IJsonSchemaRef) {
+          _normalizeRef(define, value, find, accumulator);
+        } else if (define is Map) {
+          _normalize(
+            value,
+            schema.copyWith(definition: define),
+            accumulator,
+            find,
           );
-        },
-      );
-      result[key] = ids;
-    } else if (define is ArchiveSchema) {
-      // If it is an ArchiveSchema, apply the schema-specific standardization
-      // logic by recursively standardizing the value and collecting the resulting
-      // id.
-      final nextScheme = define.getEntity(value, find);
-      final id = _normalize(value, nextScheme, accumulator, find);
-      result[key] = define.useId(id, nextScheme);
-    } else {
-      // If it is not defined in the entity's definition, simply copy the value to
-      // the result.
-      result[key] = value;
-    }
+        } else if (define is List) {
+          for (final value in (value as List)) {
+            _normalize(
+              value,
+              schema.copyWith(definition: define.first),
+              accumulator,
+              find,
+            );
+          }
+        }
+      });
+
+      return schema.name;
+    },
+    flat: (schema) {
+      final flattened = flatten(json,
+          recordPath: schema.entityPath,
+          includePath: schema.includePath,
+          addMissingKeys: schema.addMissingKeys);
+
+      flattened.forEachIndexed((key, value) {
+        _normalize(
+          value,
+          Entity(schema.name, schema.definition),
+          accumulator,
+          find,
+        );
+      });
+      return schema.name;
+    },
+  );
+}
+
+dynamic /* List<String> / String */ _normalizeRef(IJsonSchema? define,
+    dynamic value, SchemaFinder find, AccumulatorCallback accumulator) {
+  if (define is JsonRefList) {
+    final ids = define.doCallback(
+      value,
+      (json, nextScheme) {
+        final entity = nextScheme.getScheme(json, find);
+        return nextScheme.useId(
+          _normalize(json, entity, accumulator, find),
+          entity,
+        );
+      },
+    );
+    return ids;
+  } else if (define is JsonRef) {
+    final nextScheme = define.getScheme(value, find);
+    final id = _normalize(value, nextScheme, accumulator, find);
+
+    return define.useId(id, nextScheme);
   }
-
-  // Call the accumulator with the entity name, key, and the resulting map.
-  accumulator(entity.name, json[entity.key], result);
-
-  // Return the entity's id.
-  return json[entity.key];
 }

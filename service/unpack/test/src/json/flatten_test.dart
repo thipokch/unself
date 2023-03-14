@@ -4,7 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:unself_unpack/src/json/flatten.dart';
 
 void main() {
-  group('flatten', () {
+  group('Json Flatten', () {
     setUp(() {});
 
     test(

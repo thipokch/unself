@@ -26,11 +26,11 @@ void main() {
       zipImport = ZipImport();
     });
 
-    test('can be instantiated', () {
+    test('Instantiate ZipImport', () {
       expect(zipImport, isNotNull);
     });
 
-    test('can open zip file', () async {
+    test('Open Zip File', () async {
       await zipImport.open(
         XFile(
           '../../resource/archive/assets/facebook_hestia.zip',
@@ -38,7 +38,7 @@ void main() {
       );
     });
 
-    test('open zip file and return list of paths', () async {
+    test('List of Paths from Zip File', () async {
       final paths = await zipImport.open(
         XFile(
           '../../resource/archive/assets/facebook_hestia.zip',
