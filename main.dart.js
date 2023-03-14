@@ -81020,7 +81020,8 @@ A.fE.prototype={
 J(){return"Level."+this.b}}
 A.ack.prototype={
 jS(a,b,c,d){if(!this.d)throw A.c(A.b4("Logger has already been closed.",null))
-else if(a===B.oP)throw A.c(A.b4("Log events cannot have Level.nothing",null))}}
+else if(a===B.oP)throw A.c(A.b4("Log events cannot have Level.nothing",null))
+Date.now()}}
 A.a2P.prototype={}
 A.aeT.prototype={
 a_E(a,b,c,d,e,f,g,h,i){var s,r,q,p,o,n,m=this
