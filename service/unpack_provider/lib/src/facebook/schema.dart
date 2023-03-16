@@ -48,6 +48,7 @@ const _advertiserDataUse = ZipJsonPart(
     }),
     Entity('activities', definition: {
       'advertiser_name': Ref('advertisers'),
+      'advertiserId': SlugFrom('advertiser_name'),
     }),
     Entity('advertisers', definition: {
       'id': SlugFrom('@value'),
@@ -103,7 +104,10 @@ const _externalActivities = ZipJsonPart(
     ], definition: {
       'name': Ref('apps')
     }),
-    Entity('apps'),
+    Entity('apps', definition: {
+      'id': SlugFrom('@value'),
+      'name': ValueFrom('@value'),
+    }),
   ],
 );
 
@@ -117,7 +121,10 @@ const _externalInstalls = ZipJsonPart(
     Entity('activities', definition: {
       'name': Ref('apps'),
     }),
-    Entity('apps'),
+    Entity('apps', definition: {
+      'id': SlugFrom('@value'),
+      'name': ValueFrom('@value'),
+    }),
   ],
 );
 

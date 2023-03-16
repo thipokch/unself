@@ -1,6 +1,5 @@
 // ignore_for_file: avoid_print
 
-import 'dart:convert';
 import 'dart:io';
 
 import 'package:unself_unpack/unself_unpack.dart';
@@ -34,25 +33,68 @@ void main() {
       ]);
     });
 
-    test('can unpack zip file with MappingEntry and serialize to ArchiveData',
+    test('can unpack zip file with MappingEntry to a normalized json format',
         () async {
       final paths = await zipImport.open(facebookSampleData);
       print(paths);
 
       final unpacked = await zipImport.unpack(facebookSchema.part);
 
-      print(jsonEncode(
-        unpacked,
-        toEncodable: (Object? value) => value is DateTime
-            ? value.toIso8601String()
-            : throw UnsupportedError('Cannot convert to JSON: $value'),
-      ));
-      // ArchiveData.fromJson(unpacked
-      //   ..addAll(<String, String>{
-      //     'id': Slugid.nice().toString(),
-      //     'archiveId': '',
-      //     'formatId': '',
-      //   }));
+      // print(jsonEncode(
+      //   unpacked,
+      //   toEncodable: (Object? value) => value is DateTime
+      //       ? value.toIso8601String()
+      //       : throw UnsupportedError('Cannot convert to JSON: $value'),
+      // ));
+
+      final archiveId = unpacked['archiveId'] as String;
+
+      expect((unpacked['topics'] as List).first, {
+        'archiveId': archiveId,
+        'id': 'chateau',
+        'name': 'ChÃ¢teau',
+      });
+
+      expect((unpacked['advertisers'] as List).first, {
+        'archiveId': archiveId,
+        'id': 'francis-tran-and-hebert',
+        'name': 'Francis, Tran and Hebert'
+      });
+
+      expect((unpacked['activities'] as List).first, {
+        'archiveId': archiveId,
+        'advertiser_name': null, // TODO: Remove this
+        'advertiserId': 'francis-tran-and-hebert',
+        'has_data_file_custom_audience': true,
+        'has_remarketing_custom_audience': false,
+        'has_in_person_store_visit': true
+      });
+
+      expect((unpacked['apps'] as List).first, {
+        'archiveId': archiveId,
+        'id': 'activision-publishing',
+        'name': 'Activision Publishing'
+      });
+
+      expect((unpacked['accounts'] as List).first, {
+        'archiveId': archiveId,
+        'name.full_name': 'Full Name',
+        'name.first_name': 'First Name',
+        'name.middle_name': 'Middle Name',
+        'name.last_name': 'Last Name',
+        '': 'Not specified', // TODO: Remove this
+        'birthday.year': 2023,
+        'birthday.month': 1,
+        'birthday.day': 11,
+        'gender.pronoun': 'THEY',
+        'blood_info.blood_donor_status': 'unregistered',
+        'phone_type': 'Mobile',
+        'phone_number': '+11234567890',
+        'verified': true,
+        'username': 'unself.app',
+        'registration_timestamp': 1573000000,
+        'profile_uri': 'https://www.facebook.com/unself.app'
+      });
     });
   });
 }
