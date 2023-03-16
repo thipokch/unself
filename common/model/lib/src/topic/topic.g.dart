@@ -12,7 +12,6 @@ _$_Topic _$$_TopicFromJson(Map<String, dynamic> json) => _$_Topic(
       updated: const JsonDateTime().fromJson(json['updated']),
       archiveId: json['archiveId'] as String,
       name: json['name'] as String,
-      source: json['source'] as String,
       extra: json['extra'] == null
           ? const {}
           : const JsonExtra().fromJson(json['extra'] as Map?),
@@ -32,7 +31,6 @@ Map<String, dynamic> _$$_TopicToJson(_$_Topic instance) {
   writeNotNull('updated', const JsonDateTime().toJson(instance.updated));
   val['archiveId'] = instance.archiveId;
   val['name'] = instance.name;
-  val['source'] = instance.source;
   writeNotNull('extra', const JsonExtra().toJson(instance.extra));
   return val;
 }

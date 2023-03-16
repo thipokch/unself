@@ -1,10 +1,9 @@
 // ignore_for_file: avoid_print
 
+import 'dart:convert';
 import 'dart:io';
 
-import 'package:slugid/slugid.dart';
 import 'package:unself_file/unself_file.dart';
-import 'package:unself_model/unself_model.dart';
 import 'package:unself_unpack/unself_unpack.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -43,14 +42,20 @@ void main() {
       );
       print(paths);
 
-      final unpacked = await zipImport.unpack(facebookMapping.mappings);
-      print(unpacked['accounts']);
-      ArchiveData.fromJson(unpacked
-        ..addAll(<String, String>{
-          'id': Slugid.nice().toString(),
-          'archiveId': '',
-          'formatId': '',
-        }));
-    }, skip: true);
+      final unpacked = await zipImport.unpack(facebookSchema.part);
+
+      print(jsonEncode(
+        unpacked,
+        toEncodable: (Object? value) => value is DateTime
+            ? value.toIso8601String()
+            : throw UnsupportedError('Cannot convert to JSON: $value'),
+      ));
+      // ArchiveData.fromJson(unpacked
+      //   ..addAll(<String, String>{
+      //     'id': Slugid.nice().toString(),
+      //     'archiveId': '',
+      //     'formatId': '',
+      //   }));
+    });
   });
 }

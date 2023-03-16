@@ -12,6 +12,8 @@ abstract class IJsonSchema {
         return JsonRef.fromJson(json);
       case 'JsonRefList':
         return JsonRefList.fromJson(json);
+      case 'JsonRefValue':
+        return JsonRefValue.fromJson(json);
 
       default:
         throw CheckedFromJsonException(json, 'runtimeType', 'ISchema',
@@ -31,6 +33,8 @@ abstract class IJsonSchemaRef extends IJsonSchema {
         return JsonRef.fromJson(json);
       case 'JsonRefList':
         return JsonRefList.fromJson(json);
+      case 'JsonRefValue':
+        return JsonRefValue.fromJson(json);
 
       default:
         throw CheckedFromJsonException(json, 'runtimeType', 'ISchema',

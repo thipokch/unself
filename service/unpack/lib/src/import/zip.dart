@@ -7,15 +7,14 @@ import 'package:archive/archive.dart';
 import 'package:clock/clock.dart';
 import 'package:collection/collection.dart';
 import 'package:slugid/slugid.dart';
-import 'package:slugify/slugify.dart';
 import 'package:unself_file/unself_file.dart';
-import 'package:unself_model/unself_model.dart' show Mapping;
+import 'package:unself_model/unself_model.dart' show ArchiveSchemaPart;
 import 'package:unself_unpack/unself_unpack.dart';
 
 /// {@template zip_input}
 /// [ZipImport] unpacks archive files and collect metadata.
 /// {@endtemplate}
-class ZipImport implements Import<XFile, List<Mapping>> {
+class ZipImport implements Import<XFile, List<ArchiveSchemaPart>> {
   /// {@macro zip_input}
   ZipImport();
 
@@ -41,70 +40,49 @@ class ZipImport implements Import<XFile, List<Mapping>> {
   /// [unpack] unpacks the opened [XFile] object the given [mappings] and
   /// returns a [FutureOr] of [Map<String, Object?>].
   @override
-  FutureOr<Map<String, Object?>> unpack(List<Mapping>? options) {
-    assert(options != null);
-    // 1. Group mappings by file to read from.
-    final fromGroup = options!.groupListsBy((_) => _.from.split('/').first);
-
-    // 2. Read file and decode JSON into group key.
-    final jsonFiles = <String, Map<String, dynamic>>{
-      for (final key in fromGroup.keys)
+  FutureOr<Map<String, Object?>> unpack(List<ArchiveSchemaPart>? options) {
+    final partGroupByFile = options!.groupListsBy((_) => _.part);
+    final jsonGroupByFile = <String, Map<String, dynamic>>{
+      for (final key in partGroupByFile.keys)
         key: jsonDecode(String.fromCharCodes(_dotDirectory![key]!.content))
     };
 
-    // 3. Group mappings by key to write to.
-    final toGroup = options.groupListsBy((_) => _.to.split('/').first);
-
-    // 4. Create result map with keys from toGroup to write to.
     final instant = clock.now();
     final archiveId = Slugid.nice().toString();
-    final result = {
-      'id': Slugid.nice().toString(),
-      'created': instant,
-      'updated': instant,
+    final meta = {
       'archiveId': archiveId,
-      for (final String key in toGroup.keys) key: <Map<String, Object?>>[]
     };
 
-    for (final mapping in options) {
-      // Assert that mapping can only be a single level deep.
-      assert(mapping.fields.every((e) => e.fields.isEmpty && e.extra.isEmpty));
+    final result = <String, List>{};
 
-      if (mapping.to.startsWith("\$") || mapping.from.startsWith("\$")) {
-        throw ArgumentError('Mapping cannot be a JSON Pointer');
-      }
+    jsonGroupByFile.forEach((key, value) {
+      partGroupByFile[key]
+          ?.forEach((element) => Normalize(element.schema).accumulate(
+                element.id,
+                value,
+                (String name, dynamic key, dynamic entity) {
+                  result[name] ??= [];
+                  result[name]!.add(entity);
+                },
+              ));
+    });
 
-      final fromKey = mapping.from.split('/').first;
-      final toKey = mapping.to.split('/').first;
-      final entryPath = mapping.from.split('/').sublist(1);
-
-      // ignore: unnecessary_cast
-      final norm = flatten(
-        jsonFiles[fromKey],
-        recordPath: entryPath,
-        includePath: mapping.options['includePath'] ?? const [],
-      );
-
-      final mapped = norm
-          .map((e) => {
-                'created': instant,
-                'updated': instant,
-                'archiveId': archiveId,
-                for (final entry in mapping.fields) entry.to: e[entry.from],
-                ...mapping.extra,
-              })
-          .toList();
-
-      if (mapping.options.containsKey('idFrom')) {
-        for (var element in mapped) {
-          element.putIfAbsent(
-              'id', () => slugify(element[mapping.options['idFrom']!]));
-        }
-      }
-
-      result[toKey] = mapped;
-    }
-    return result;
+    return {
+      'id': archiveId,
+      'created': instant,
+      'updated': instant,
+      ...meta,
+      ...{
+        for (final r in result.entries)
+          r.key: [
+            for (final s in r.value.cast<Map<String, dynamic>>())
+              {
+                ...meta,
+                ...s,
+              },
+          ],
+      },
+    };
   }
 
   static String _dotPath(String name) {

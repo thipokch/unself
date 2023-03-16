@@ -23,7 +23,7 @@ class Topic with _$Topic implements Node {
     required String name,
 
     /// [email] is the email used by the [Topic] on the [App].
-    required String source,
+    // required String source,
 
     /// [extra] is a map of additional properties.
     @JsonExtra() @Default({}) Map<String, dynamic> extra,

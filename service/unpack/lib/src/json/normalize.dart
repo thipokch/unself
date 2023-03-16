@@ -1,6 +1,9 @@
 import 'package:collection/collection.dart';
+import 'package:slugify/slugify.dart';
 import 'package:unself_model/unself_model.dart';
 import 'package:unself_unpack/unself_unpack.dart';
+
+part 'normalize_ref.dart';
 
 /// {@template normalize}
 /// Normalize is a class that can be used to normalize a json object
@@ -48,7 +51,9 @@ class Normalize {
   /// the name of an entity and the value is a list of normalized JSON objects
   /// for that entity.
   Map<String, List> normalizeWith(
-      JsonSchema schema, Map<String, dynamic> json) {
+    JsonSchema schema,
+    Map<String, dynamic> json,
+  ) {
     final result = <String, List>{};
     void accumulator(String name, dynamic key, dynamic entity) {
       result[name] ??= [];
@@ -59,6 +64,13 @@ class Normalize {
 
     return result;
   }
+
+  void accumulate(
+    String schema,
+    Map<String, dynamic> json,
+    AccumulatorCallback accumulator,
+  ) =>
+      _normalize(json, _find(schema), accumulator, _find);
 }
 
 dynamic /* String / Int */ _normalize(
@@ -67,21 +79,40 @@ dynamic /* String / Int */ _normalize(
   AccumulatorCallback accumulator,
   SchemaFinder find,
 ) {
-  late final definition = schema.definition;
-
-  // print('$definition :: $json');
-
   return schema.map(
     entity: (schema) {
       final result = <String, dynamic>{};
 
-      json.forEach((key, value) {
-        final define = definition[key];
+      final resultSchema = schema.definition.entries
+          .groupListsBy(
+            (e) => e.value is JsonRefValue
+                ? (e.value as JsonRefValue).name
+                : e.key,
+          )
+          .map((key, value) => MapEntry(key, {
+                for (var d in value) d.key: d.value,
+              }));
 
-        if (define is IJsonSchemaRef) {
-          result[key] = _normalizeRef(define, value, find, accumulator);
+      json.forEach((k, v) {
+        final define = resultSchema[k];
+
+        if (define != null && define.isNotEmpty) {
+          define.forEach((target, schema) {
+            if (schema is ValueFrom) {
+              result[target] = v;
+            } else if (schema is SlugFrom) {
+              result[target] = slugify(v);
+            } else if (schema is IJsonSchemaRef) {
+              result[target] = _normalizeRef(
+                v,
+                schema,
+                find,
+                accumulator,
+              );
+            }
+          });
         } else {
-          result[key] = value;
+          result[k] = v;
         }
       });
 
@@ -90,19 +121,24 @@ dynamic /* String / Int */ _normalize(
     },
     struct: (schema) {
       json.forEach((key, value) {
-        final define = definition[key];
+        final define = schema.definition[key];
 
         if (define is IJsonSchemaRef) {
-          _normalizeRef(define, value, find, accumulator);
-        } else if (define is Map) {
+          _normalizeRef(
+            value,
+            define,
+            find,
+            accumulator,
+          );
+        } else if (define is Map && value is Map<String, dynamic>) {
           _normalize(
             value,
             schema.copyWith(definition: define),
             accumulator,
             find,
           );
-        } else if (define is List) {
-          for (final value in (value as List)) {
+        } else if (define is List && value is List) {
+          for (final value in value) {
             _normalize(
               value,
               schema.copyWith(definition: define.first),
@@ -124,7 +160,7 @@ dynamic /* String / Int */ _normalize(
       flattened.forEachIndexed((key, value) {
         _normalize(
           value,
-          Entity(schema.name, schema.definition),
+          Entity(schema.name, definition: schema.definition),
           accumulator,
           find,
         );
@@ -132,26 +168,4 @@ dynamic /* String / Int */ _normalize(
       return schema.name;
     },
   );
-}
-
-dynamic /* List<String> / String */ _normalizeRef(IJsonSchema? define,
-    dynamic value, SchemaFinder find, AccumulatorCallback accumulator) {
-  if (define is JsonRefList) {
-    final ids = define.doCallback(
-      value,
-      (json, nextScheme) {
-        final entity = nextScheme.getScheme(json, find);
-        return nextScheme.useId(
-          _normalize(json, entity, accumulator, find),
-          entity,
-        );
-      },
-    );
-    return ids;
-  } else if (define is JsonRef) {
-    final nextScheme = define.getScheme(value, find);
-    final id = _normalize(value, nextScheme, accumulator, find);
-
-    return define.useId(id, nextScheme);
-  }
 }

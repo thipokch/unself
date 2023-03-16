@@ -26,7 +26,7 @@ class UnpackService implements IUnpackService {
   Import? _input;
 
   @override
-  FutureOr<ArchiveFormat> load(App app) {
+  FutureOr<ArchiveSchema> load(App app) {
     _app = app;
     return _formats.firstWhere((e) => e.appId == app.id);
   }
@@ -44,7 +44,7 @@ class UnpackService implements IUnpackService {
 
   // static final List<App> supportedApps = _formats.map((e) => e.app).toList();
 
-  static final List<ArchiveFormat> _formats = [
+  static final List<ArchiveSchema> _formats = [
     // facebook,
   ];
 

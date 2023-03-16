@@ -27,7 +27,8 @@ mixin _$ArchiveData {
   String get archiveId => throw _privateConstructorUsedError;
 
   /// [formatId] is the id for the related [ArchiveFormat].
-  String get formatId => throw _privateConstructorUsedError; // Models
+// required String formatId,
+// Models
   List<Account> get accounts => throw _privateConstructorUsedError;
   List<App> get apps => throw _privateConstructorUsedError;
   List<Topic> get topics => throw _privateConstructorUsedError;
@@ -52,7 +53,6 @@ abstract class $ArchiveDataCopyWith<$Res> {
   $Res call(
       {String id,
       String archiveId,
-      String formatId,
       List<Account> accounts,
       List<App> apps,
       List<Topic> topics,
@@ -75,7 +75,6 @@ class _$ArchiveDataCopyWithImpl<$Res, $Val extends ArchiveData>
   $Res call({
     Object? id = null,
     Object? archiveId = null,
-    Object? formatId = null,
     Object? accounts = null,
     Object? apps = null,
     Object? topics = null,
@@ -90,10 +89,6 @@ class _$ArchiveDataCopyWithImpl<$Res, $Val extends ArchiveData>
       archiveId: null == archiveId
           ? _value.archiveId
           : archiveId // ignore: cast_nullable_to_non_nullable
-              as String,
-      formatId: null == formatId
-          ? _value.formatId
-          : formatId // ignore: cast_nullable_to_non_nullable
               as String,
       accounts: null == accounts
           ? _value.accounts
@@ -129,7 +124,6 @@ abstract class _$$_ArchiveCopyWith<$Res> implements $ArchiveDataCopyWith<$Res> {
   $Res call(
       {String id,
       String archiveId,
-      String formatId,
       List<Account> accounts,
       List<App> apps,
       List<Topic> topics,
@@ -149,7 +143,6 @@ class __$$_ArchiveCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? archiveId = null,
-    Object? formatId = null,
     Object? accounts = null,
     Object? apps = null,
     Object? topics = null,
@@ -164,10 +157,6 @@ class __$$_ArchiveCopyWithImpl<$Res>
       archiveId: null == archiveId
           ? _value.archiveId
           : archiveId // ignore: cast_nullable_to_non_nullable
-              as String,
-      formatId: null == formatId
-          ? _value.formatId
-          : formatId // ignore: cast_nullable_to_non_nullable
               as String,
       accounts: null == accounts
           ? _value._accounts
@@ -200,7 +189,6 @@ class _$_Archive implements _Archive {
   const _$_Archive(
       {required this.id,
       required this.archiveId,
-      required this.formatId,
       final List<Account> accounts = const [],
       final List<App> apps = const [],
       final List<Topic> topics = const [],
@@ -224,10 +212,12 @@ class _$_Archive implements _Archive {
   final String archiveId;
 
   /// [formatId] is the id for the related [ArchiveFormat].
-  @override
-  final String formatId;
+// required String formatId,
 // Models
   final List<Account> _accounts;
+
+  /// [formatId] is the id for the related [ArchiveFormat].
+// required String formatId,
 // Models
   @override
   @JsonKey()
@@ -279,7 +269,7 @@ class _$_Archive implements _Archive {
 
   @override
   String toString() {
-    return 'ArchiveData(id: $id, archiveId: $archiveId, formatId: $formatId, accounts: $accounts, apps: $apps, topics: $topics, activities: $activities, extra: $extra)';
+    return 'ArchiveData(id: $id, archiveId: $archiveId, accounts: $accounts, apps: $apps, topics: $topics, activities: $activities, extra: $extra)';
   }
 
   @override
@@ -290,8 +280,6 @@ class _$_Archive implements _Archive {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.archiveId, archiveId) ||
                 other.archiveId == archiveId) &&
-            (identical(other.formatId, formatId) ||
-                other.formatId == formatId) &&
             const DeepCollectionEquality().equals(other._accounts, _accounts) &&
             const DeepCollectionEquality().equals(other._apps, _apps) &&
             const DeepCollectionEquality().equals(other._topics, _topics) &&
@@ -306,7 +294,6 @@ class _$_Archive implements _Archive {
       runtimeType,
       id,
       archiveId,
-      formatId,
       const DeepCollectionEquality().hash(_accounts),
       const DeepCollectionEquality().hash(_apps),
       const DeepCollectionEquality().hash(_topics),
@@ -331,7 +318,6 @@ abstract class _Archive implements ArchiveData {
   const factory _Archive(
       {required final String id,
       required final String archiveId,
-      required final String formatId,
       final List<Account> accounts,
       final List<App> apps,
       final List<Topic> topics,
@@ -351,8 +337,8 @@ abstract class _Archive implements ArchiveData {
   @override
 
   /// [formatId] is the id for the related [ArchiveFormat].
-  String get formatId;
-  @override // Models
+// required String formatId,
+// Models
   List<Account> get accounts;
   @override
   List<App> get apps;

@@ -4,7 +4,7 @@ part of 'unpack_service.dart';
 abstract class IUnpackService {
   /// [load] returns the [Mapping] with file format requirements for the
   /// given app.
-  FutureOr<ArchiveFormat> load(App app);
+  FutureOr<ArchiveSchema> load(App app);
 
   /// [open] returns the supported list of [Mapping] for the
   /// given [XFile] file.

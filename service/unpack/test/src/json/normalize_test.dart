@@ -10,14 +10,20 @@ void main() {
         'Ref / RefList',
         () => expectNormalize(
               schema: const [
-                Entity('users', {}),
-                Entity('comments', {
-                  'commenter': Ref('users'),
-                }),
-                Entity('articles', {
-                  'author': Ref('users'),
-                  'comments': RefList('comments'),
-                }),
+                Entity('users'),
+                Entity(
+                  'comments',
+                  definition: {
+                    'commenter': Ref('users'),
+                  },
+                ),
+                Entity(
+                  'articles',
+                  definition: {
+                    'author': Ref('users'),
+                    'comments': RefList('comments'),
+                  },
+                ),
               ],
               name: 'articles',
               input: {
@@ -53,10 +59,13 @@ void main() {
         'Ref / RefList :: Circular Ref',
         () => expectNormalize(
               schema: const [
-                Entity('users', {
-                  'friends': RefList('users'),
-                  'marriedTo': Ref('users'),
-                }),
+                Entity(
+                  'users',
+                  definition: {
+                    'friends': RefList('users'),
+                    'marriedTo': Ref('users'),
+                  },
+                ),
               ],
               name: 'users',
               input: {
@@ -84,11 +93,11 @@ void main() {
         'UnionList',
         () => expectNormalize(
               schema: const [
-                Entity('data-list', {
+                Entity('data-list', definition: {
                   'data': UnionList(['post', 'question']),
                 }),
-                Entity('question', {}),
-                Entity('post', {}),
+                Entity('question'),
+                Entity('post'),
               ],
               name: 'data-list',
               input: {
@@ -140,10 +149,7 @@ void main() {
                     'entrypoint': {'entries': RefList('entries')},
                   },
                 ),
-                Entity(
-                  'entries',
-                  {},
-                ),
+                Entity('entries'),
               ],
               name: 'root',
               input: {
@@ -182,10 +188,7 @@ void main() {
                     ],
                   },
                 ),
-                Entity(
-                  'entries',
-                  {},
-                ),
+                Entity('entries'),
               ],
               name: 'root',
               input: {
@@ -223,7 +226,6 @@ void main() {
                 }),
                 Flat(
                   'flat',
-                  {},
                   entityPath: ['entries', '*'],
                   includePath: [
                     ['include'],

@@ -53,18 +53,18 @@ void main() {
       extra: extra,
     );
 
-    final aMapping = ArchiveFormat(
+    final aMapping = ArchiveSchema(
       id: 'aMapping',
       created: now,
       updated: now,
       appId: aApp.id,
       version: Version(0, 0, 1),
       constraint: VersionConstraint.compatibleWith(Version(0, 0, 1)),
-      format: ArchiveFileFormat.zipJson,
-      mappings: [],
+      // format: ArchiveFileFormat.zipJson,
+      part: [],
     );
 
-    final bMapping = ArchiveFormat(
+    final bMapping = ArchiveSchema(
       id: 'bMapping',
       created: now,
       updated: now,
@@ -72,8 +72,8 @@ void main() {
       extra: extra,
       version: Version(0, 0, 2),
       constraint: VersionConstraint.compatibleWith(Version(0, 0, 2)),
-      format: ArchiveFileFormat.zipJson,
-      mappings: [],
+      // format: ArchiveFileFormat.zipJson,
+      part: [],
     );
 
     final aArchive = Archive(

@@ -1,13 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'archive_format.dart';
+part of 'archive_schema.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_ArchiveFormat _$$_ArchiveFormatFromJson(Map<String, dynamic> json) =>
-    _$_ArchiveFormat(
+_$_ArchiveSchema _$$_ArchiveSchemaFromJson(Map<String, dynamic> json) =>
+    _$_ArchiveSchema(
       id: json['id'] as String,
       created: DateTime.parse(json['created'] as String),
       updated: DateTime.parse(json['updated'] as String),
@@ -15,16 +15,15 @@ _$_ArchiveFormat _$$_ArchiveFormatFromJson(Map<String, dynamic> json) =>
       version: const JsonVersion().fromJson(json['version'] as String),
       constraint:
           const JsonVersionConstraint().fromJson(json['constraint'] as String),
-      format: $enumDecode(_$ArchiveFileFormatEnumMap, json['format']),
-      mappings: (json['mappings'] as List<dynamic>)
-          .map((e) => Mapping.fromJson(e as Map<String, dynamic>))
+      part: (json['part'] as List<dynamic>)
+          .map((e) => ArchiveSchemaPart.fromJson(e as Map<String, dynamic>))
           .toList(),
       extra: json['extra'] == null
           ? const {}
           : const JsonExtra().fromJson(json['extra'] as Map?),
     );
 
-Map<String, dynamic> _$$_ArchiveFormatToJson(_$_ArchiveFormat instance) {
+Map<String, dynamic> _$$_ArchiveSchemaToJson(_$_ArchiveSchema instance) {
   final val = <String, dynamic>{
     'id': instance.id,
     'created': instance.created.toIso8601String(),
@@ -32,8 +31,7 @@ Map<String, dynamic> _$$_ArchiveFormatToJson(_$_ArchiveFormat instance) {
     'appId': instance.appId,
     'version': const JsonVersion().toJson(instance.version),
     'constraint': const JsonVersionConstraint().toJson(instance.constraint),
-    'format': _$ArchiveFileFormatEnumMap[instance.format]!,
-    'mappings': instance.mappings.map((e) => e.toJson()).toList(),
+    'part': instance.part.map((e) => e.toJson()).toList(),
   };
 
   void writeNotNull(String key, dynamic value) {
@@ -45,9 +43,3 @@ Map<String, dynamic> _$$_ArchiveFormatToJson(_$_ArchiveFormat instance) {
   writeNotNull('extra', const JsonExtra().toJson(instance.extra));
   return val;
 }
-
-const _$ArchiveFileFormatEnumMap = {
-  ArchiveFileFormat.zipJson: 'zipJson',
-  ArchiveFileFormat.json: 'json',
-  ArchiveFileFormat.html: 'html',
-};

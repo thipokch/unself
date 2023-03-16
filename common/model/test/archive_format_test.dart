@@ -55,26 +55,26 @@ void main() {
       extra: extra,
     );
 
-    final aArchiveFormat = ArchiveFormat(
+    final aArchiveSchema = ArchiveSchema(
       id: 'aMapping',
       created: now,
       updated: now,
       appId: aApp.id,
       version: Version(0, 0, 1),
       constraint: VersionConstraint.compatibleWith(Version(0, 0, 1)),
-      format: ArchiveFileFormat.zipJson,
-      mappings: [],
+      // format: ArchiveFileFormat.zipJson,
+      part: [],
     );
 
-    final bArchiveFormat = ArchiveFormat(
+    final bArchiveSchema = ArchiveSchema(
       id: 'bMapping',
       created: now,
       updated: now,
       appId: bApp.id,
       version: Version(0, 0, 2),
       constraint: VersionConstraint.compatibleWith(Version(0, 0, 2)),
-      format: ArchiveFileFormat.zipJson,
-      mappings: [],
+      // format: ArchiveFileFormat.zipJson,
+      part: [],
       extra: extra,
     );
 
@@ -85,8 +85,7 @@ void main() {
       'appId': 'aApp',
       'version': '0.0.1',
       'constraint': '^0.0.1',
-      'format': 'zipJson',
-      'mappings': [],
+      'part': [],
     });
 
     final bObject = Map<String, dynamic>.unmodifiable({
@@ -96,88 +95,87 @@ void main() {
       'appId': 'bApp',
       'version': '0.0.2',
       'constraint': '^0.0.2',
-      'format': 'zipJson',
-      'mappings': [],
+      'part': [],
       'extra': extra,
     });
 
     test('hashCode', () {
-      expect(aArchiveFormat.hashCode, ArchiveFormat.fromJson(aObject).hashCode);
-      expect(bArchiveFormat.hashCode, ArchiveFormat.fromJson(bObject).hashCode);
+      expect(aArchiveSchema.hashCode, ArchiveSchema.fromJson(aObject).hashCode);
+      expect(bArchiveSchema.hashCode, ArchiveSchema.fromJson(bObject).hashCode);
 
-      expect(bArchiveFormat.hashCode, isNot(aArchiveFormat.hashCode));
-      expect(ArchiveFormat.fromJson(bObject).hashCode,
-          isNot(ArchiveFormat.fromJson(aObject).hashCode));
+      expect(bArchiveSchema.hashCode, isNot(aArchiveSchema.hashCode));
+      expect(ArchiveSchema.fromJson(bObject).hashCode,
+          isNot(ArchiveSchema.fromJson(aObject).hashCode));
     });
 
     test('equals', () {
-      expect(aArchiveFormat, ArchiveFormat.fromJson(aObject));
-      expect(bArchiveFormat, ArchiveFormat.fromJson(bObject));
-      expect(bArchiveFormat, isNot(aArchiveFormat));
-      expect(ArchiveFormat.fromJson(bObject),
-          isNot(ArchiveFormat.fromJson(aObject)));
+      expect(aArchiveSchema, ArchiveSchema.fromJson(aObject));
+      expect(bArchiveSchema, ArchiveSchema.fromJson(bObject));
+      expect(bArchiveSchema, isNot(aArchiveSchema));
+      expect(ArchiveSchema.fromJson(bObject),
+          isNot(ArchiveSchema.fromJson(aObject)));
     });
 
     test('copyWith', () {
-      expect(aArchiveFormat, aArchiveFormat.copyWith());
-      expect(bArchiveFormat, bArchiveFormat.copyWith());
+      expect(aArchiveSchema, aArchiveSchema.copyWith());
+      expect(bArchiveSchema, bArchiveSchema.copyWith());
 
-      expect(aArchiveFormat.copyWith(id: 'aMapping'), aArchiveFormat);
-      expect(aArchiveFormat.copyWith(id: 'AMapping'), isNot(aArchiveFormat));
+      expect(aArchiveSchema.copyWith(id: 'aMapping'), aArchiveSchema);
+      expect(aArchiveSchema.copyWith(id: 'AMapping'), isNot(aArchiveSchema));
     });
 
     test('copyWith - extra', () {
       expect(
-        ArchiveFormat.fromJson(Map.from(bObject)..['extra'] = {}),
-        isNot(bArchiveFormat),
+        ArchiveSchema.fromJson(Map.from(bObject)..['extra'] = {}),
+        isNot(bArchiveSchema),
       );
 
       expect(
-        bArchiveFormat.copyWith(
-          extra: bArchiveFormat.extra
+        bArchiveSchema.copyWith(
+          extra: bArchiveSchema.extra
               .build()
               .rebuild((_) => _['me'] = 'who')
               .asMap(),
         ),
-        isNot(bArchiveFormat),
+        isNot(bArchiveSchema),
       );
     });
 
     // test('copyWith - deep equality', () {
-    //   expect(aArchiveFormat.copyWith(app: App.fromJson(aObject['app'])),
-    //       aArchiveFormat);
-    //   expect(aArchiveFormat.copyWith.app(id: 'aApp'), aArchiveFormat);
-    //   expect(aArchiveFormat.copyWith.app(id: 'AApp'), isNot(aArchiveFormat));
+    //   expect(aArchiveSchema.copyWith(app: App.fromJson(aObject['app'])),
+    //       aArchiveSchema);
+    //   expect(aArchiveSchema.copyWith.app(id: 'aApp'), aArchiveSchema);
+    //   expect(aArchiveSchema.copyWith.app(id: 'AApp'), isNot(aArchiveSchema));
     // });
 
     test('toJson', () {
-      expect(jsonEncode(aArchiveFormat), jsonEncode(aObject));
+      expect(jsonEncode(aArchiveSchema), jsonEncode(aObject));
     });
 
     test('toJson - extra ', () {
-      expect(jsonEncode(bArchiveFormat), jsonEncode(bObject));
+      expect(jsonEncode(bArchiveSchema), jsonEncode(bObject));
 
       expect(
-        bArchiveFormat.copyWith(extra: {}).toJson(),
+        bArchiveSchema.copyWith(extra: {}).toJson(),
         Map.from(bObject)..remove('extra'),
       );
 
       expect(
-        jsonEncode(bArchiveFormat.copyWith(extra: {})),
+        jsonEncode(bArchiveSchema.copyWith(extra: {})),
         jsonEncode(Map.from(bObject)..remove('extra')),
       );
     });
 
     test('fromJson', () {
-      expect(ArchiveFormat.fromJson(aObject), aArchiveFormat);
+      expect(ArchiveSchema.fromJson(aObject), aArchiveSchema);
     });
 
     test('fromJson - extra', () {
-      expect(ArchiveFormat.fromJson(bObject), bArchiveFormat);
+      expect(ArchiveSchema.fromJson(bObject), bArchiveSchema);
 
       expect(
-        ArchiveFormat.fromJson(Map.from(bObject)..['extra'] = {}),
-        bArchiveFormat.copyWith(extra: {}),
+        ArchiveSchema.fromJson(Map.from(bObject)..['extra'] = {}),
+        bArchiveSchema.copyWith(extra: {}),
       );
     });
   });

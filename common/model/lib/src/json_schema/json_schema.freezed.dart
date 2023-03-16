@@ -18,10 +18,10 @@ JsonSchema _$JsonSchemaFromJson(Map<String, dynamic> json) {
   switch (json['runtimeType']) {
     case 'JsonSchema.entity':
       return Entity.fromJson(json);
-    case 'JsonSchema.struct':
-      return Struct.fromJson(json);
     case 'JsonSchema.flat':
       return Flat.fromJson(json);
+    case 'JsonSchema.struct':
+      return Struct.fromJson(json);
 
     default:
       throw CheckedFromJsonException(json, 'runtimeType', 'JsonSchema',
@@ -33,74 +33,102 @@ JsonSchema _$JsonSchemaFromJson(Map<String, dynamic> json) {
 mixin _$JsonSchema {
   String get name => throw _privateConstructorUsedError;
   dynamic get definition => throw _privateConstructorUsedError;
+
+  /// [extra] is a map of additional properties.
+  @JsonExtra()
+  Map<String, dynamic> get extra => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            String name, Map<String, IJsonSchema> definition, String key)
+            String name,
+            Map<String, IJsonSchema> definition,
+            String key,
+            Map<String, String> fieldMap,
+            @JsonExtra() Map<String, dynamic> extra)
         entity,
-    required TResult Function(String name, dynamic definition) struct,
     required TResult Function(
             String name,
             Map<String, IJsonSchema> definition,
             String key,
             List<String> entityPath,
             List<List<String>> includePath,
-            bool addMissingKeys)
+            bool addMissingKeys,
+            Map<String, String> fieldMap,
+            @JsonExtra() Map<String, dynamic> extra)
         flat,
+    required TResult Function(String name, dynamic definition,
+            @JsonExtra() Map<String, dynamic> extra)
+        struct,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
-            String name, Map<String, IJsonSchema> definition, String key)?
+            String name,
+            Map<String, IJsonSchema> definition,
+            String key,
+            Map<String, String> fieldMap,
+            @JsonExtra() Map<String, dynamic> extra)?
         entity,
-    TResult? Function(String name, dynamic definition)? struct,
     TResult? Function(
             String name,
             Map<String, IJsonSchema> definition,
             String key,
             List<String> entityPath,
             List<List<String>> includePath,
-            bool addMissingKeys)?
+            bool addMissingKeys,
+            Map<String, String> fieldMap,
+            @JsonExtra() Map<String, dynamic> extra)?
         flat,
+    TResult? Function(String name, dynamic definition,
+            @JsonExtra() Map<String, dynamic> extra)?
+        struct,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
-            String name, Map<String, IJsonSchema> definition, String key)?
+            String name,
+            Map<String, IJsonSchema> definition,
+            String key,
+            Map<String, String> fieldMap,
+            @JsonExtra() Map<String, dynamic> extra)?
         entity,
-    TResult Function(String name, dynamic definition)? struct,
     TResult Function(
             String name,
             Map<String, IJsonSchema> definition,
             String key,
             List<String> entityPath,
             List<List<String>> includePath,
-            bool addMissingKeys)?
+            bool addMissingKeys,
+            Map<String, String> fieldMap,
+            @JsonExtra() Map<String, dynamic> extra)?
         flat,
+    TResult Function(String name, dynamic definition,
+            @JsonExtra() Map<String, dynamic> extra)?
+        struct,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(Entity value) entity,
-    required TResult Function(Struct value) struct,
     required TResult Function(Flat value) flat,
+    required TResult Function(Struct value) struct,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(Entity value)? entity,
-    TResult? Function(Struct value)? struct,
     TResult? Function(Flat value)? flat,
+    TResult? Function(Struct value)? struct,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Entity value)? entity,
-    TResult Function(Struct value)? struct,
     TResult Function(Flat value)? flat,
+    TResult Function(Struct value)? struct,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -116,7 +144,7 @@ abstract class $JsonSchemaCopyWith<$Res> {
           JsonSchema value, $Res Function(JsonSchema) then) =
       _$JsonSchemaCopyWithImpl<$Res, JsonSchema>;
   @useResult
-  $Res call({String name});
+  $Res call({String name, @JsonExtra() Map<String, dynamic> extra});
 }
 
 /// @nodoc
@@ -133,12 +161,17 @@ class _$JsonSchemaCopyWithImpl<$Res, $Val extends JsonSchema>
   @override
   $Res call({
     Object? name = null,
+    Object? extra = null,
   }) {
     return _then(_value.copyWith(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
+      extra: null == extra
+          ? _value.extra
+          : extra // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>,
     ) as $Val);
   }
 }
@@ -149,7 +182,12 @@ abstract class _$$EntityCopyWith<$Res> implements $JsonSchemaCopyWith<$Res> {
       __$$EntityCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String name, Map<String, IJsonSchema> definition, String key});
+  $Res call(
+      {String name,
+      Map<String, IJsonSchema> definition,
+      String key,
+      Map<String, String> fieldMap,
+      @JsonExtra() Map<String, dynamic> extra});
 }
 
 /// @nodoc
@@ -165,13 +203,15 @@ class __$$EntityCopyWithImpl<$Res>
     Object? name = null,
     Object? definition = null,
     Object? key = null,
+    Object? fieldMap = null,
+    Object? extra = null,
   }) {
     return _then(_$Entity(
       null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      null == definition
+      definition: null == definition
           ? _value._definition
           : definition // ignore: cast_nullable_to_non_nullable
               as Map<String, IJsonSchema>,
@@ -179,6 +219,14 @@ class __$$EntityCopyWithImpl<$Res>
           ? _value.key
           : key // ignore: cast_nullable_to_non_nullable
               as String,
+      fieldMap: null == fieldMap
+          ? _value._fieldMap
+          : fieldMap // ignore: cast_nullable_to_non_nullable
+              as Map<String, String>,
+      extra: null == extra
+          ? _value._extra
+          : extra // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>,
     ));
   }
 }
@@ -186,9 +234,15 @@ class __$$EntityCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$Entity extends Entity {
-  const _$Entity(this.name, final Map<String, IJsonSchema> definition,
-      {this.key = 'id', final String? $type})
+  const _$Entity(this.name,
+      {final Map<String, IJsonSchema> definition = const {},
+      this.key = 'id',
+      final Map<String, String> fieldMap = const {},
+      @JsonExtra() final Map<String, dynamic> extra = const {},
+      final String? $type})
       : _definition = definition,
+        _fieldMap = fieldMap,
+        _extra = extra,
         $type = $type ?? 'JsonSchema.entity',
         super._();
 
@@ -199,6 +253,7 @@ class _$Entity extends Entity {
   final String name;
   final Map<String, IJsonSchema> _definition;
   @override
+  @JsonKey()
   Map<String, IJsonSchema> get definition {
     if (_definition is EqualUnmodifiableMapView) return _definition;
     // ignore: implicit_dynamic_type
@@ -208,13 +263,34 @@ class _$Entity extends Entity {
   @override
   @JsonKey()
   final String key;
+  final Map<String, String> _fieldMap;
+  @override
+  @JsonKey()
+  Map<String, String> get fieldMap {
+    if (_fieldMap is EqualUnmodifiableMapView) return _fieldMap;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_fieldMap);
+  }
+
+  /// [extra] is a map of additional properties.
+  final Map<String, dynamic> _extra;
+
+  /// [extra] is a map of additional properties.
+  @override
+  @JsonKey()
+  @JsonExtra()
+  Map<String, dynamic> get extra {
+    if (_extra is EqualUnmodifiableMapView) return _extra;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_extra);
+  }
 
   @JsonKey(name: 'runtimeType')
   final String $type;
 
   @override
   String toString() {
-    return 'JsonSchema.entity(name: $name, definition: $definition, key: $key)';
+    return 'JsonSchema.entity(name: $name, definition: $definition, key: $key, fieldMap: $fieldMap, extra: $extra)';
   }
 
   @override
@@ -225,13 +301,20 @@ class _$Entity extends Entity {
             (identical(other.name, name) || other.name == name) &&
             const DeepCollectionEquality()
                 .equals(other._definition, _definition) &&
-            (identical(other.key, key) || other.key == key));
+            (identical(other.key, key) || other.key == key) &&
+            const DeepCollectionEquality().equals(other._fieldMap, _fieldMap) &&
+            const DeepCollectionEquality().equals(other._extra, _extra));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType, name, const DeepCollectionEquality().hash(_definition), key);
+      runtimeType,
+      name,
+      const DeepCollectionEquality().hash(_definition),
+      key,
+      const DeepCollectionEquality().hash(_fieldMap),
+      const DeepCollectionEquality().hash(_extra));
 
   @JsonKey(ignore: true)
   @override
@@ -243,59 +326,83 @@ class _$Entity extends Entity {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            String name, Map<String, IJsonSchema> definition, String key)
+            String name,
+            Map<String, IJsonSchema> definition,
+            String key,
+            Map<String, String> fieldMap,
+            @JsonExtra() Map<String, dynamic> extra)
         entity,
-    required TResult Function(String name, dynamic definition) struct,
     required TResult Function(
             String name,
             Map<String, IJsonSchema> definition,
             String key,
             List<String> entityPath,
             List<List<String>> includePath,
-            bool addMissingKeys)
+            bool addMissingKeys,
+            Map<String, String> fieldMap,
+            @JsonExtra() Map<String, dynamic> extra)
         flat,
+    required TResult Function(String name, dynamic definition,
+            @JsonExtra() Map<String, dynamic> extra)
+        struct,
   }) {
-    return entity(name, definition, key);
+    return entity(name, definition, key, fieldMap, extra);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
-            String name, Map<String, IJsonSchema> definition, String key)?
+            String name,
+            Map<String, IJsonSchema> definition,
+            String key,
+            Map<String, String> fieldMap,
+            @JsonExtra() Map<String, dynamic> extra)?
         entity,
-    TResult? Function(String name, dynamic definition)? struct,
     TResult? Function(
             String name,
             Map<String, IJsonSchema> definition,
             String key,
             List<String> entityPath,
             List<List<String>> includePath,
-            bool addMissingKeys)?
+            bool addMissingKeys,
+            Map<String, String> fieldMap,
+            @JsonExtra() Map<String, dynamic> extra)?
         flat,
+    TResult? Function(String name, dynamic definition,
+            @JsonExtra() Map<String, dynamic> extra)?
+        struct,
   }) {
-    return entity?.call(name, definition, key);
+    return entity?.call(name, definition, key, fieldMap, extra);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
-            String name, Map<String, IJsonSchema> definition, String key)?
+            String name,
+            Map<String, IJsonSchema> definition,
+            String key,
+            Map<String, String> fieldMap,
+            @JsonExtra() Map<String, dynamic> extra)?
         entity,
-    TResult Function(String name, dynamic definition)? struct,
     TResult Function(
             String name,
             Map<String, IJsonSchema> definition,
             String key,
             List<String> entityPath,
             List<List<String>> includePath,
-            bool addMissingKeys)?
+            bool addMissingKeys,
+            Map<String, String> fieldMap,
+            @JsonExtra() Map<String, dynamic> extra)?
         flat,
+    TResult Function(String name, dynamic definition,
+            @JsonExtra() Map<String, dynamic> extra)?
+        struct,
     required TResult orElse(),
   }) {
     if (entity != null) {
-      return entity(name, definition, key);
+      return entity(name, definition, key, fieldMap, extra);
     }
     return orElse();
   }
@@ -304,8 +411,8 @@ class _$Entity extends Entity {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(Entity value) entity,
-    required TResult Function(Struct value) struct,
     required TResult Function(Flat value) flat,
+    required TResult Function(Struct value) struct,
   }) {
     return entity(this);
   }
@@ -314,8 +421,8 @@ class _$Entity extends Entity {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(Entity value)? entity,
-    TResult? Function(Struct value)? struct,
     TResult? Function(Flat value)? flat,
+    TResult? Function(Struct value)? struct,
   }) {
     return entity?.call(this);
   }
@@ -324,8 +431,8 @@ class _$Entity extends Entity {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Entity value)? entity,
-    TResult Function(Struct value)? struct,
     TResult Function(Flat value)? flat,
+    TResult Function(Struct value)? struct,
     required TResult orElse(),
   }) {
     if (entity != null) {
@@ -343,9 +450,11 @@ class _$Entity extends Entity {
 }
 
 abstract class Entity extends JsonSchema {
-  const factory Entity(
-      final String name, final Map<String, IJsonSchema> definition,
-      {final String key}) = _$Entity;
+  const factory Entity(final String name,
+      {final Map<String, IJsonSchema> definition,
+      final String key,
+      final Map<String, String> fieldMap,
+      @JsonExtra() final Map<String, dynamic> extra}) = _$Entity;
   const Entity._() : super._();
 
   factory Entity.fromJson(Map<String, dynamic> json) = _$Entity.fromJson;
@@ -355,207 +464,15 @@ abstract class Entity extends JsonSchema {
   @override
   Map<String, IJsonSchema> get definition;
   String get key;
+  Map<String, String> get fieldMap;
+  @override
+
+  /// [extra] is a map of additional properties.
+  @JsonExtra()
+  Map<String, dynamic> get extra;
   @override
   @JsonKey(ignore: true)
   _$$EntityCopyWith<_$Entity> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$StructCopyWith<$Res> implements $JsonSchemaCopyWith<$Res> {
-  factory _$$StructCopyWith(_$Struct value, $Res Function(_$Struct) then) =
-      __$$StructCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String name, dynamic definition});
-}
-
-/// @nodoc
-class __$$StructCopyWithImpl<$Res>
-    extends _$JsonSchemaCopyWithImpl<$Res, _$Struct>
-    implements _$$StructCopyWith<$Res> {
-  __$$StructCopyWithImpl(_$Struct _value, $Res Function(_$Struct) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? name = null,
-    Object? definition = freezed,
-  }) {
-    return _then(_$Struct(
-      null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      freezed == definition
-          ? _value.definition
-          : definition // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$Struct extends Struct {
-  const _$Struct(this.name, this.definition, {final String? $type})
-      : $type = $type ?? 'JsonSchema.struct',
-        super._();
-
-  factory _$Struct.fromJson(Map<String, dynamic> json) =>
-      _$$StructFromJson(json);
-
-  @override
-  final String name;
-  @override
-  final dynamic definition;
-
-  @JsonKey(name: 'runtimeType')
-  final String $type;
-
-  @override
-  String toString() {
-    return 'JsonSchema.struct(name: $name, definition: $definition)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$Struct &&
-            (identical(other.name, name) || other.name == name) &&
-            const DeepCollectionEquality()
-                .equals(other.definition, definition));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType, name, const DeepCollectionEquality().hash(definition));
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$StructCopyWith<_$Struct> get copyWith =>
-      __$$StructCopyWithImpl<_$Struct>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(
-            String name, Map<String, IJsonSchema> definition, String key)
-        entity,
-    required TResult Function(String name, dynamic definition) struct,
-    required TResult Function(
-            String name,
-            Map<String, IJsonSchema> definition,
-            String key,
-            List<String> entityPath,
-            List<List<String>> includePath,
-            bool addMissingKeys)
-        flat,
-  }) {
-    return struct(name, definition);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            String name, Map<String, IJsonSchema> definition, String key)?
-        entity,
-    TResult? Function(String name, dynamic definition)? struct,
-    TResult? Function(
-            String name,
-            Map<String, IJsonSchema> definition,
-            String key,
-            List<String> entityPath,
-            List<List<String>> includePath,
-            bool addMissingKeys)?
-        flat,
-  }) {
-    return struct?.call(name, definition);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            String name, Map<String, IJsonSchema> definition, String key)?
-        entity,
-    TResult Function(String name, dynamic definition)? struct,
-    TResult Function(
-            String name,
-            Map<String, IJsonSchema> definition,
-            String key,
-            List<String> entityPath,
-            List<List<String>> includePath,
-            bool addMissingKeys)?
-        flat,
-    required TResult orElse(),
-  }) {
-    if (struct != null) {
-      return struct(name, definition);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(Entity value) entity,
-    required TResult Function(Struct value) struct,
-    required TResult Function(Flat value) flat,
-  }) {
-    return struct(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(Entity value)? entity,
-    TResult? Function(Struct value)? struct,
-    TResult? Function(Flat value)? flat,
-  }) {
-    return struct?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(Entity value)? entity,
-    TResult Function(Struct value)? struct,
-    TResult Function(Flat value)? flat,
-    required TResult orElse(),
-  }) {
-    if (struct != null) {
-      return struct(this);
-    }
-    return orElse();
-  }
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$StructToJson(
-      this,
-    );
-  }
-}
-
-abstract class Struct extends JsonSchema {
-  const factory Struct(final String name, final dynamic definition) = _$Struct;
-  const Struct._() : super._();
-
-  factory Struct.fromJson(Map<String, dynamic> json) = _$Struct.fromJson;
-
-  @override
-  String get name;
-  @override
-  dynamic get definition;
-  @override
-  @JsonKey(ignore: true)
-  _$$StructCopyWith<_$Struct> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -571,7 +488,9 @@ abstract class _$$FlatCopyWith<$Res> implements $JsonSchemaCopyWith<$Res> {
       String key,
       List<String> entityPath,
       List<List<String>> includePath,
-      bool addMissingKeys});
+      bool addMissingKeys,
+      Map<String, String> fieldMap,
+      @JsonExtra() Map<String, dynamic> extra});
 }
 
 /// @nodoc
@@ -589,13 +508,15 @@ class __$$FlatCopyWithImpl<$Res> extends _$JsonSchemaCopyWithImpl<$Res, _$Flat>
     Object? entityPath = null,
     Object? includePath = null,
     Object? addMissingKeys = null,
+    Object? fieldMap = null,
+    Object? extra = null,
   }) {
     return _then(_$Flat(
       null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      null == definition
+      definition: null == definition
           ? _value._definition
           : definition // ignore: cast_nullable_to_non_nullable
               as Map<String, IJsonSchema>,
@@ -615,6 +536,14 @@ class __$$FlatCopyWithImpl<$Res> extends _$JsonSchemaCopyWithImpl<$Res, _$Flat>
           ? _value.addMissingKeys
           : addMissingKeys // ignore: cast_nullable_to_non_nullable
               as bool,
+      fieldMap: null == fieldMap
+          ? _value._fieldMap
+          : fieldMap // ignore: cast_nullable_to_non_nullable
+              as Map<String, String>,
+      extra: null == extra
+          ? _value._extra
+          : extra // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>,
     ));
   }
 }
@@ -622,15 +551,20 @@ class __$$FlatCopyWithImpl<$Res> extends _$JsonSchemaCopyWithImpl<$Res, _$Flat>
 /// @nodoc
 @JsonSerializable()
 class _$Flat extends Flat {
-  const _$Flat(this.name, final Map<String, IJsonSchema> definition,
-      {this.key = 'id',
+  const _$Flat(this.name,
+      {final Map<String, IJsonSchema> definition = const {},
+      this.key = 'id',
       final List<String> entityPath = const [],
       final List<List<String>> includePath = const [],
       this.addMissingKeys = true,
+      final Map<String, String> fieldMap = const {},
+      @JsonExtra() final Map<String, dynamic> extra = const {},
       final String? $type})
       : _definition = definition,
         _entityPath = entityPath,
         _includePath = includePath,
+        _fieldMap = fieldMap,
+        _extra = extra,
         $type = $type ?? 'JsonSchema.flat',
         super._();
 
@@ -640,6 +574,7 @@ class _$Flat extends Flat {
   final String name;
   final Map<String, IJsonSchema> _definition;
   @override
+  @JsonKey()
   Map<String, IJsonSchema> get definition {
     if (_definition is EqualUnmodifiableMapView) return _definition;
     // ignore: implicit_dynamic_type
@@ -670,13 +605,34 @@ class _$Flat extends Flat {
   @override
   @JsonKey()
   final bool addMissingKeys;
+  final Map<String, String> _fieldMap;
+  @override
+  @JsonKey()
+  Map<String, String> get fieldMap {
+    if (_fieldMap is EqualUnmodifiableMapView) return _fieldMap;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_fieldMap);
+  }
+
+  /// [extra] is a map of additional properties.
+  final Map<String, dynamic> _extra;
+
+  /// [extra] is a map of additional properties.
+  @override
+  @JsonKey()
+  @JsonExtra()
+  Map<String, dynamic> get extra {
+    if (_extra is EqualUnmodifiableMapView) return _extra;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_extra);
+  }
 
   @JsonKey(name: 'runtimeType')
   final String $type;
 
   @override
   String toString() {
-    return 'JsonSchema.flat(name: $name, definition: $definition, key: $key, entityPath: $entityPath, includePath: $includePath, addMissingKeys: $addMissingKeys)';
+    return 'JsonSchema.flat(name: $name, definition: $definition, key: $key, entityPath: $entityPath, includePath: $includePath, addMissingKeys: $addMissingKeys, fieldMap: $fieldMap, extra: $extra)';
   }
 
   @override
@@ -693,7 +649,9 @@ class _$Flat extends Flat {
             const DeepCollectionEquality()
                 .equals(other._includePath, _includePath) &&
             (identical(other.addMissingKeys, addMissingKeys) ||
-                other.addMissingKeys == addMissingKeys));
+                other.addMissingKeys == addMissingKeys) &&
+            const DeepCollectionEquality().equals(other._fieldMap, _fieldMap) &&
+            const DeepCollectionEquality().equals(other._extra, _extra));
   }
 
   @JsonKey(ignore: true)
@@ -705,7 +663,9 @@ class _$Flat extends Flat {
       key,
       const DeepCollectionEquality().hash(_entityPath),
       const DeepCollectionEquality().hash(_includePath),
-      addMissingKeys);
+      addMissingKeys,
+      const DeepCollectionEquality().hash(_fieldMap),
+      const DeepCollectionEquality().hash(_extra));
 
   @JsonKey(ignore: true)
   @override
@@ -717,61 +677,86 @@ class _$Flat extends Flat {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            String name, Map<String, IJsonSchema> definition, String key)
+            String name,
+            Map<String, IJsonSchema> definition,
+            String key,
+            Map<String, String> fieldMap,
+            @JsonExtra() Map<String, dynamic> extra)
         entity,
-    required TResult Function(String name, dynamic definition) struct,
     required TResult Function(
             String name,
             Map<String, IJsonSchema> definition,
             String key,
             List<String> entityPath,
             List<List<String>> includePath,
-            bool addMissingKeys)
+            bool addMissingKeys,
+            Map<String, String> fieldMap,
+            @JsonExtra() Map<String, dynamic> extra)
         flat,
+    required TResult Function(String name, dynamic definition,
+            @JsonExtra() Map<String, dynamic> extra)
+        struct,
   }) {
-    return flat(name, definition, key, entityPath, includePath, addMissingKeys);
+    return flat(name, definition, key, entityPath, includePath, addMissingKeys,
+        fieldMap, extra);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
-            String name, Map<String, IJsonSchema> definition, String key)?
+            String name,
+            Map<String, IJsonSchema> definition,
+            String key,
+            Map<String, String> fieldMap,
+            @JsonExtra() Map<String, dynamic> extra)?
         entity,
-    TResult? Function(String name, dynamic definition)? struct,
     TResult? Function(
             String name,
             Map<String, IJsonSchema> definition,
             String key,
             List<String> entityPath,
             List<List<String>> includePath,
-            bool addMissingKeys)?
+            bool addMissingKeys,
+            Map<String, String> fieldMap,
+            @JsonExtra() Map<String, dynamic> extra)?
         flat,
+    TResult? Function(String name, dynamic definition,
+            @JsonExtra() Map<String, dynamic> extra)?
+        struct,
   }) {
-    return flat?.call(
-        name, definition, key, entityPath, includePath, addMissingKeys);
+    return flat?.call(name, definition, key, entityPath, includePath,
+        addMissingKeys, fieldMap, extra);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
-            String name, Map<String, IJsonSchema> definition, String key)?
+            String name,
+            Map<String, IJsonSchema> definition,
+            String key,
+            Map<String, String> fieldMap,
+            @JsonExtra() Map<String, dynamic> extra)?
         entity,
-    TResult Function(String name, dynamic definition)? struct,
     TResult Function(
             String name,
             Map<String, IJsonSchema> definition,
             String key,
             List<String> entityPath,
             List<List<String>> includePath,
-            bool addMissingKeys)?
+            bool addMissingKeys,
+            Map<String, String> fieldMap,
+            @JsonExtra() Map<String, dynamic> extra)?
         flat,
+    TResult Function(String name, dynamic definition,
+            @JsonExtra() Map<String, dynamic> extra)?
+        struct,
     required TResult orElse(),
   }) {
     if (flat != null) {
-      return flat(
-          name, definition, key, entityPath, includePath, addMissingKeys);
+      return flat(name, definition, key, entityPath, includePath,
+          addMissingKeys, fieldMap, extra);
     }
     return orElse();
   }
@@ -780,8 +765,8 @@ class _$Flat extends Flat {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(Entity value) entity,
-    required TResult Function(Struct value) struct,
     required TResult Function(Flat value) flat,
+    required TResult Function(Struct value) struct,
   }) {
     return flat(this);
   }
@@ -790,8 +775,8 @@ class _$Flat extends Flat {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(Entity value)? entity,
-    TResult? Function(Struct value)? struct,
     TResult? Function(Flat value)? flat,
+    TResult? Function(Struct value)? struct,
   }) {
     return flat?.call(this);
   }
@@ -800,8 +785,8 @@ class _$Flat extends Flat {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Entity value)? entity,
-    TResult Function(Struct value)? struct,
     TResult Function(Flat value)? flat,
+    TResult Function(Struct value)? struct,
     required TResult orElse(),
   }) {
     if (flat != null) {
@@ -819,12 +804,14 @@ class _$Flat extends Flat {
 }
 
 abstract class Flat extends JsonSchema {
-  const factory Flat(
-      final String name, final Map<String, IJsonSchema> definition,
-      {final String key,
+  const factory Flat(final String name,
+      {final Map<String, IJsonSchema> definition,
+      final String key,
       final List<String> entityPath,
       final List<List<String>> includePath,
-      final bool addMissingKeys}) = _$Flat;
+      final bool addMissingKeys,
+      final Map<String, String> fieldMap,
+      @JsonExtra() final Map<String, dynamic> extra}) = _$Flat;
   const Flat._() : super._();
 
   factory Flat.fromJson(Map<String, dynamic> json) = _$Flat.fromJson;
@@ -837,7 +824,269 @@ abstract class Flat extends JsonSchema {
   List<String> get entityPath;
   List<List<String>> get includePath;
   bool get addMissingKeys;
+  Map<String, String> get fieldMap;
+  @override
+
+  /// [extra] is a map of additional properties.
+  @JsonExtra()
+  Map<String, dynamic> get extra;
   @override
   @JsonKey(ignore: true)
   _$$FlatCopyWith<_$Flat> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$StructCopyWith<$Res> implements $JsonSchemaCopyWith<$Res> {
+  factory _$$StructCopyWith(_$Struct value, $Res Function(_$Struct) then) =
+      __$$StructCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {String name,
+      dynamic definition,
+      @JsonExtra() Map<String, dynamic> extra});
+}
+
+/// @nodoc
+class __$$StructCopyWithImpl<$Res>
+    extends _$JsonSchemaCopyWithImpl<$Res, _$Struct>
+    implements _$$StructCopyWith<$Res> {
+  __$$StructCopyWithImpl(_$Struct _value, $Res Function(_$Struct) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? name = null,
+    Object? definition = freezed,
+    Object? extra = null,
+  }) {
+    return _then(_$Struct(
+      null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      freezed == definition
+          ? _value.definition
+          : definition // ignore: cast_nullable_to_non_nullable
+              as dynamic,
+      extra: null == extra
+          ? _value._extra
+          : extra // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$Struct extends Struct {
+  const _$Struct(this.name, this.definition,
+      {@JsonExtra() final Map<String, dynamic> extra = const {},
+      final String? $type})
+      : _extra = extra,
+        $type = $type ?? 'JsonSchema.struct',
+        super._();
+
+  factory _$Struct.fromJson(Map<String, dynamic> json) =>
+      _$$StructFromJson(json);
+
+  @override
+  final String name;
+  @override
+  final dynamic definition;
+
+  /// [extra] is a map of additional properties.
+  final Map<String, dynamic> _extra;
+
+  /// [extra] is a map of additional properties.
+  @override
+  @JsonKey()
+  @JsonExtra()
+  Map<String, dynamic> get extra {
+    if (_extra is EqualUnmodifiableMapView) return _extra;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_extra);
+  }
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'JsonSchema.struct(name: $name, definition: $definition, extra: $extra)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$Struct &&
+            (identical(other.name, name) || other.name == name) &&
+            const DeepCollectionEquality()
+                .equals(other.definition, definition) &&
+            const DeepCollectionEquality().equals(other._extra, _extra));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      name,
+      const DeepCollectionEquality().hash(definition),
+      const DeepCollectionEquality().hash(_extra));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$StructCopyWith<_$Struct> get copyWith =>
+      __$$StructCopyWithImpl<_$Struct>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            String name,
+            Map<String, IJsonSchema> definition,
+            String key,
+            Map<String, String> fieldMap,
+            @JsonExtra() Map<String, dynamic> extra)
+        entity,
+    required TResult Function(
+            String name,
+            Map<String, IJsonSchema> definition,
+            String key,
+            List<String> entityPath,
+            List<List<String>> includePath,
+            bool addMissingKeys,
+            Map<String, String> fieldMap,
+            @JsonExtra() Map<String, dynamic> extra)
+        flat,
+    required TResult Function(String name, dynamic definition,
+            @JsonExtra() Map<String, dynamic> extra)
+        struct,
+  }) {
+    return struct(name, definition, extra);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(
+            String name,
+            Map<String, IJsonSchema> definition,
+            String key,
+            Map<String, String> fieldMap,
+            @JsonExtra() Map<String, dynamic> extra)?
+        entity,
+    TResult? Function(
+            String name,
+            Map<String, IJsonSchema> definition,
+            String key,
+            List<String> entityPath,
+            List<List<String>> includePath,
+            bool addMissingKeys,
+            Map<String, String> fieldMap,
+            @JsonExtra() Map<String, dynamic> extra)?
+        flat,
+    TResult? Function(String name, dynamic definition,
+            @JsonExtra() Map<String, dynamic> extra)?
+        struct,
+  }) {
+    return struct?.call(name, definition, extra);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(
+            String name,
+            Map<String, IJsonSchema> definition,
+            String key,
+            Map<String, String> fieldMap,
+            @JsonExtra() Map<String, dynamic> extra)?
+        entity,
+    TResult Function(
+            String name,
+            Map<String, IJsonSchema> definition,
+            String key,
+            List<String> entityPath,
+            List<List<String>> includePath,
+            bool addMissingKeys,
+            Map<String, String> fieldMap,
+            @JsonExtra() Map<String, dynamic> extra)?
+        flat,
+    TResult Function(String name, dynamic definition,
+            @JsonExtra() Map<String, dynamic> extra)?
+        struct,
+    required TResult orElse(),
+  }) {
+    if (struct != null) {
+      return struct(name, definition, extra);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Entity value) entity,
+    required TResult Function(Flat value) flat,
+    required TResult Function(Struct value) struct,
+  }) {
+    return struct(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Entity value)? entity,
+    TResult? Function(Flat value)? flat,
+    TResult? Function(Struct value)? struct,
+  }) {
+    return struct?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Entity value)? entity,
+    TResult Function(Flat value)? flat,
+    TResult Function(Struct value)? struct,
+    required TResult orElse(),
+  }) {
+    if (struct != null) {
+      return struct(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$StructToJson(
+      this,
+    );
+  }
+}
+
+abstract class Struct extends JsonSchema {
+  const factory Struct(final String name, final dynamic definition,
+      {@JsonExtra() final Map<String, dynamic> extra}) = _$Struct;
+  const Struct._() : super._();
+
+  factory Struct.fromJson(Map<String, dynamic> json) = _$Struct.fromJson;
+
+  @override
+  String get name;
+  @override
+  dynamic get definition;
+  @override
+
+  /// [extra] is a map of additional properties.
+  @JsonExtra()
+  Map<String, dynamic> get extra;
+  @override
+  @JsonKey(ignore: true)
+  _$$StructCopyWith<_$Struct> get copyWith =>
+      throw _privateConstructorUsedError;
 }

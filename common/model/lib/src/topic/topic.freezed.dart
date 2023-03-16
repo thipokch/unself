@@ -32,8 +32,7 @@ mixin _$Topic {
   String get name => throw _privateConstructorUsedError;
 
   /// [email] is the email used by the [Topic] on the [App].
-  String get source => throw _privateConstructorUsedError;
-
+// required String source,
   /// [extra] is a map of additional properties.
   @JsonExtra()
   Map<String, dynamic> get extra => throw _privateConstructorUsedError;
@@ -54,7 +53,6 @@ abstract class $TopicCopyWith<$Res> {
       @JsonDateTime() DateTime updated,
       String archiveId,
       String name,
-      String source,
       @JsonExtra() Map<String, dynamic> extra});
 }
 
@@ -76,7 +74,6 @@ class _$TopicCopyWithImpl<$Res, $Val extends Topic>
     Object? updated = null,
     Object? archiveId = null,
     Object? name = null,
-    Object? source = null,
     Object? extra = null,
   }) {
     return _then(_value.copyWith(
@@ -100,10 +97,6 @@ class _$TopicCopyWithImpl<$Res, $Val extends Topic>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      source: null == source
-          ? _value.source
-          : source // ignore: cast_nullable_to_non_nullable
-              as String,
       extra: null == extra
           ? _value.extra
           : extra // ignore: cast_nullable_to_non_nullable
@@ -124,7 +117,6 @@ abstract class _$$_TopicCopyWith<$Res> implements $TopicCopyWith<$Res> {
       @JsonDateTime() DateTime updated,
       String archiveId,
       String name,
-      String source,
       @JsonExtra() Map<String, dynamic> extra});
 }
 
@@ -142,7 +134,6 @@ class __$$_TopicCopyWithImpl<$Res> extends _$TopicCopyWithImpl<$Res, _$_Topic>
     Object? updated = null,
     Object? archiveId = null,
     Object? name = null,
-    Object? source = null,
     Object? extra = null,
   }) {
     return _then(_$_Topic(
@@ -166,10 +157,6 @@ class __$$_TopicCopyWithImpl<$Res> extends _$TopicCopyWithImpl<$Res, _$_Topic>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      source: null == source
-          ? _value.source
-          : source // ignore: cast_nullable_to_non_nullable
-              as String,
       extra: null == extra
           ? _value._extra
           : extra // ignore: cast_nullable_to_non_nullable
@@ -187,7 +174,6 @@ class _$_Topic extends _Topic {
       @JsonDateTime() required this.updated,
       required this.archiveId,
       required this.name,
-      required this.source,
       @JsonExtra() final Map<String, dynamic> extra = const {}})
       : _extra = extra,
         super._();
@@ -212,12 +198,12 @@ class _$_Topic extends _Topic {
   final String name;
 
   /// [email] is the email used by the [Topic] on the [App].
-  @override
-  final String source;
-
+// required String source,
   /// [extra] is a map of additional properties.
   final Map<String, dynamic> _extra;
 
+  /// [email] is the email used by the [Topic] on the [App].
+// required String source,
   /// [extra] is a map of additional properties.
   @override
   @JsonKey()
@@ -230,7 +216,7 @@ class _$_Topic extends _Topic {
 
   @override
   String toString() {
-    return 'Topic(id: $id, created: $created, updated: $updated, archiveId: $archiveId, name: $name, source: $source, extra: $extra)';
+    return 'Topic(id: $id, created: $created, updated: $updated, archiveId: $archiveId, name: $name, extra: $extra)';
   }
 
   @override
@@ -244,14 +230,13 @@ class _$_Topic extends _Topic {
             (identical(other.archiveId, archiveId) ||
                 other.archiveId == archiveId) &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.source, source) || other.source == source) &&
             const DeepCollectionEquality().equals(other._extra, _extra));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, id, created, updated, archiveId,
-      name, source, const DeepCollectionEquality().hash(_extra));
+      name, const DeepCollectionEquality().hash(_extra));
 
   @JsonKey(ignore: true)
   @override
@@ -274,7 +259,6 @@ abstract class _Topic extends Topic {
       @JsonDateTime() required final DateTime updated,
       required final String archiveId,
       required final String name,
-      required final String source,
       @JsonExtra() final Map<String, dynamic> extra}) = _$_Topic;
   const _Topic._() : super._();
 
@@ -298,9 +282,7 @@ abstract class _Topic extends Topic {
   @override
 
   /// [email] is the email used by the [Topic] on the [App].
-  String get source;
-  @override
-
+// required String source,
   /// [extra] is a map of additional properties.
   @JsonExtra()
   Map<String, dynamic> get extra;

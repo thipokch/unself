@@ -24,7 +24,7 @@ class ArchiveData with _$ArchiveData {
     required String archiveId,
 
     /// [formatId] is the id for the related [ArchiveFormat].
-    required String formatId,
+    // required String formatId,
 
     // Models
     @Default([]) List<Account> accounts,
