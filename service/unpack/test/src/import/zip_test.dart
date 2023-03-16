@@ -2,11 +2,12 @@
 
 import 'dart:io';
 
-import 'package:unself_file/unself_file.dart';
 import 'package:unself_model/unself_model.dart';
 import 'package:unself_unpack/unself_unpack.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:clock/clock.dart';
+
+import '../../sample_data.dart';
 
 void main() {
   group('ZipImport', () {
@@ -31,36 +32,26 @@ void main() {
     });
 
     test('Open Zip File', () async {
-      await zipImport.open(
-        XFile(
-          '../../resource/archive/assets/facebook_hestia.zip',
-        ),
-      );
+      await zipImport.open(facebookSampleData);
     });
 
     test('List of Paths from Zip File', () async {
-      final paths = await zipImport.open(
-        XFile(
-          '../../resource/archive/assets/facebook_hestia.zip',
-        ),
-      );
+      final paths = await zipImport.open(facebookSampleData);
       expect(paths, const [
         'apps_and_websites_off_of_facebook.apps_and_websites',
         'apps_and_websites_off_of_facebook.your_off-facebook_activity',
         'apps_and_websites_off_of_facebook.posts_from_apps_and_websites',
+        'your_topics.your_topics',
         'other_logged_information.ads_interests',
+        'profile_information.profile_information',
         'ads_information.advertisers_you\'ve_interacted_with',
         'ads_information.advertisers_who_uploaded_a_contact_list_with_your_information',
-        'ads_information.advertisers_using_your_activity_or_information',
+        'ads_information.advertisers_using_your_activity_or_information'
       ]);
     });
 
     test('can unpack zip file with MappingEntry', () async {
-      await zipImport.open(
-        XFile(
-          '../../resource/archive/assets/facebook_hestia.zip',
-        ),
-      );
+      await zipImport.open(facebookSampleData);
 
       final instant = clock.now();
 
@@ -148,11 +139,7 @@ void main() {
     });
 
     test('can unpack zip file with MappingEntry and extra metadata', () async {
-      await zipImport.open(
-        XFile(
-          '../../resource/archive/assets/facebook_2301.zip',
-        ),
-      );
+      await zipImport.open(facebookSampleData);
 
       final instant = clock.now();
 
