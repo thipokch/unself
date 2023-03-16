@@ -8,9 +8,9 @@ abstract class IUnpackService {
 
   /// [open] returns the supported list of [Mapping] for the
   /// given [XFile] file.
-  FutureOr<List<Mapping>> open(XFile file);
+  FutureOr<List<ArchiveSchemaPart>> open(XFile file);
 
   /// [start] let the service begins unpacking with the given [Mapping]
   /// , and returns a progress stream.
-  Stream<int> start(List<Mapping> mappings);
+  Stream<int> start(List<ArchiveSchemaPart> parts);
 }

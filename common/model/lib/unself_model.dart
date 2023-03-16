@@ -19,6 +19,5 @@ export 'src/converter/converter.dart';
 
 export 'src/collection.dart';
 export 'src/field.dart';
-export 'src/mapping.dart';
 
 export 'package:pub_semver/pub_semver.dart';

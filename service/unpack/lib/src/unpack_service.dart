@@ -32,13 +32,13 @@ class UnpackService implements IUnpackService {
   }
 
   @override
-  FutureOr<List<Mapping>> open(XFile file) async {
+  FutureOr<List<ArchiveSchemaPart>> open(XFile file) async {
     final zip = await ZipImport().open(file);
     throw UnimplementedError();
   }
 
   @override
-  Stream<int> start(List<Mapping> mappings) {
+  Stream<int> start(List<ArchiveSchemaPart> parts) {
     throw UnimplementedError();
   }
 
