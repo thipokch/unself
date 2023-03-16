@@ -43,7 +43,7 @@ export default function RawHtml() {
 
     <dl class="constructor-summary-list">
         <dt id="ArchiveData" class="callable">
-          <span class="name"><a href="../unself_model/ArchiveData/ArchiveData.constructor">ArchiveData</a></span><span class="signature">(<span class="parameter" id="-param-id">{<span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">id</span>, </span><span class="parameter" id="-param-archiveId"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">archiveId</span>, </span><span class="parameter" id="-param-formatId"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">formatId</span>, </span><span class="parameter" id="-param-accounts"><span>@<a href="https://pub.dev/documentation/freezed_annotation/2.2.0/freezed_annotation/Default-class.html">Default</a>([])</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../unself_model/Account">Account</a></span>&gt;</span></span> <span class="parameter-name">accounts</span>, </span><span class="parameter" id="-param-apps"><span>@<a href="https://pub.dev/documentation/freezed_annotation/2.2.0/freezed_annotation/Default-class.html">Default</a>([])</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../unself_model/App">App</a></span>&gt;</span></span> <span class="parameter-name">apps</span>, </span><span class="parameter" id="-param-topics"><span>@<a href="https://pub.dev/documentation/freezed_annotation/2.2.0/freezed_annotation/Default-class.html">Default</a>([])</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../unself_model/Topic">Topic</a></span>&gt;</span></span> <span class="parameter-name">topics</span>, </span><span class="parameter" id="-param-activities"><span>@<a href="https://pub.dev/documentation/freezed_annotation/2.2.0/freezed_annotation/Default-class.html">Default</a>([])</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../unself_model/Activity">Activity</a></span>&gt;</span></span> <span class="parameter-name">activities</span>, </span><span class="parameter" id="-param-extra"><span>@<a href="../unself_model/JsonExtra">JsonExtra</a>()</span> <span>@<a href="https://pub.dev/documentation/freezed_annotation/2.2.0/freezed_annotation/Default-class.html">Default</a>({})</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>, <span class="type-parameter">dynamic</span>&gt;</span></span> <span class="parameter-name">extra</span>}</span>)</span>
+          <span class="name"><a href="../unself_model/ArchiveData/ArchiveData.constructor">ArchiveData</a></span><span class="signature">(<span class="parameter" id="-param-id">{<span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">id</span>, </span><span class="parameter" id="-param-archiveId"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">archiveId</span>, </span><span class="parameter" id="-param-accounts"><span>@<a href="https://pub.dev/documentation/freezed_annotation/2.2.0/freezed_annotation/Default-class.html">Default</a>([])</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../unself_model/Account">Account</a></span>&gt;</span></span> <span class="parameter-name">accounts</span>, </span><span class="parameter" id="-param-apps"><span>@<a href="https://pub.dev/documentation/freezed_annotation/2.2.0/freezed_annotation/Default-class.html">Default</a>([])</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../unself_model/App">App</a></span>&gt;</span></span> <span class="parameter-name">apps</span>, </span><span class="parameter" id="-param-topics"><span>@<a href="https://pub.dev/documentation/freezed_annotation/2.2.0/freezed_annotation/Default-class.html">Default</a>([])</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../unself_model/Topic">Topic</a></span>&gt;</span></span> <span class="parameter-name">topics</span>, </span><span class="parameter" id="-param-activities"><span>@<a href="https://pub.dev/documentation/freezed_annotation/2.2.0/freezed_annotation/Default-class.html">Default</a>([])</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../unself_model/Activity">Activity</a></span>&gt;</span></span> <span class="parameter-name">activities</span>, </span><span class="parameter" id="-param-extra"><span>@<a href="../unself_model/JsonExtra">JsonExtra</a>()</span> <span>@<a href="https://pub.dev/documentation/freezed_annotation/2.2.0/freezed_annotation/Default-class.html">Default</a>({})</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>, <span class="type-parameter">dynamic</span>&gt;</span></span> <span class="parameter-name">extra</span>}</span>)</span>
         </dt>
         <dd>
           <a href="../unself_model/ArchiveData">ArchiveData</a> is used to
@@ -70,7 +70,7 @@ export default function RawHtml() {
 
 </dt>
 <dd class="inherited">
-  
+  <code>formatId</code> is the id for the related <code>ArchiveFormat</code>.
   <div class="features"><span class="feature">read-only</span><span class="feature">inherited</span></div>
 
 </dd>
@@ -103,7 +103,7 @@ export default function RawHtml() {
 
 </dt>
 <dd class="inherited">
-  <a href="../unself_model/ArchiveData/formatId">formatId</a> is the id for the related <a href="../unself_model/ArchiveFormat">ArchiveFormat</a>.
+  <code>formatId</code> is the id for the related <code>ArchiveFormat</code>.
   <div class="features"><span class="feature">read-only</span><span class="feature">inherited</span></div>
 
 </dd>
@@ -126,17 +126,6 @@ export default function RawHtml() {
 </dt>
 <dd class="inherited">
   <a href="../unself_model/ArchiveData/extra">extra</a> is a map of additional properties.
-  <div class="features"><span class="feature">read-only</span><span class="feature">inherited</span></div>
-
-</dd>
-
-        <dt id="formatId" class="property inherited">
-  <span class="name"><a href="../unself_model/ArchiveData/formatId">formatId</a></span>
-  <span class="signature">→ <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> 
-
-</dt>
-<dd class="inherited">
-  <a href="../unself_model/ArchiveData/formatId">formatId</a> is the id for the related <a href="../unself_model/ArchiveFormat">ArchiveFormat</a>.
   <div class="features"><span class="feature">read-only</span><span class="feature">inherited</span></div>
 
 </dd>
@@ -302,24 +291,42 @@ export default function RawHtml() {
         <li><a href="../unself_model/App">App</a></li>
         <li><a href="../unself_model/Archive">Archive</a></li>
         <li><a href="../unself_model/ArchiveData">ArchiveData</a></li>
-        <li><a href="../unself_model/ArchiveFormat">ArchiveFormat</a></li>
+        <li><a href="../unself_model/ArchiveSchema">ArchiveSchema</a></li>
+        <li><a href="../unself_model/ArchiveSchemaPart">ArchiveSchemaPart</a></li>
         <li><a href="../unself_model/Base">Base</a></li>
         <li><a href="../unself_model/Collection">Collection</a></li>
         <li><a href="../unself_model/Edge">Edge</a></li>
+        <li><a href="../unself_model/Entity">Entity</a></li>
         <li><a href="../unself_model/Field">Field</a></li>
+        <li><a href="../unself_model/Flat">Flat</a></li>
+        <li><a href="../unself_model/IJsonSchema">IJsonSchema</a></li>
+        <li><a href="../unself_model/IJsonSchemaRef">IJsonSchemaRef</a></li>
         <li><a href="../unself_model/JsonDateTime">JsonDateTime</a></li>
         <li><a href="../unself_model/JsonExtra">JsonExtra</a></li>
+        <li><a href="../unself_model/JsonPart">JsonPart</a></li>
+        <li><a href="../unself_model/JsonRef">JsonRef</a></li>
+        <li><a href="../unself_model/JsonRefList">JsonRefList</a></li>
+        <li><a href="../unself_model/JsonRefValue">JsonRefValue</a></li>
+        <li><a href="../unself_model/JsonSchema">JsonSchema</a></li>
         <li><a href="../unself_model/JsonString">JsonString</a></li>
         <li><a href="../unself_model/JsonVersion">JsonVersion</a></li>
         <li><a href="../unself_model/JsonVersionConstraint">JsonVersionConstraint</a></li>
         <li><a href="../unself_model/Mapping">Mapping</a></li>
         <li><a href="../unself_model/Node">Node</a></li>
+        <li><a href="../unself_model/Ref">Ref</a></li>
+        <li><a href="../unself_model/RefList">RefList</a></li>
         <li><a href="../unself_model/Settings">Settings</a></li>
+        <li><a href="../unself_model/SlugFrom">SlugFrom</a></li>
+        <li><a href="../unself_model/Struct">Struct</a></li>
         <li><a href="../unself_model/Topic">Topic</a></li>
+        <li><a href="../unself_model/Union">Union</a></li>
+        <li><a href="../unself_model/UnionList">UnionList</a></li>
+        <li><a href="../unself_model/ValueFrom">ValueFrom</a></li>
         <li><a href="https://pub.dev/documentation/pub_semver/2.1.3/pub_semver/Version-class.html">Version</a></li>
         <li><a href="https://pub.dev/documentation/pub_semver/2.1.3/pub_semver/VersionConstraint-class.html">VersionConstraint</a></li>
         <li><a href="https://pub.dev/documentation/pub_semver/2.1.3/pub_semver/VersionRange-class.html">VersionRange</a></li>
         <li><a href="https://pub.dev/documentation/pub_semver/2.1.3/pub_semver/VersionUnion-class.html">VersionUnion</a></li>
+        <li><a href="../unself_model/ZipJsonPart">ZipJsonPart</a></li>
 
 
 
@@ -327,10 +334,13 @@ export default function RawHtml() {
 
 
       <li class="section-title"><a href="../unself_model/unself_model#enums">Enums</a></li>
-        <li><a href="../unself_model/ArchiveFileFormat">ArchiveFileFormat</a></li>
         <li><a href="../unself_model/CollectionType">CollectionType</a></li>
         <li><a href="../unself_model/FieldType">FieldType</a></li>
 
+      <li class="section-title"><a href="../unself_model/unself_model#typedefs">Typedefs</a></li>
+        <li><a href="../unself_model/AccumulatorCallback">AccumulatorCallback</a></li>
+        <li><a href="../unself_model/DoCallback">DoCallback</a></li>
+        <li><a href="../unself_model/SchemaFinder">SchemaFinder</a></li>
 
 </ol>
 
@@ -353,7 +363,6 @@ export default function RawHtml() {
           <li class="inherited"><a href="../unself_model/ArchiveData/archiveId">archiveId</a></li>
           <li class="inherited"><a href="../unself_model/ArchiveData/copyWith">copyWith</a></li>
           <li class="inherited"><a href="../unself_model/ArchiveData/extra">extra</a></li>
-          <li class="inherited"><a href="../unself_model/ArchiveData/formatId">formatId</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/hashCode.html">hashCode</a></li>
           <li class="inherited"><a href="../unself_model/ArchiveData/id">id</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></li>

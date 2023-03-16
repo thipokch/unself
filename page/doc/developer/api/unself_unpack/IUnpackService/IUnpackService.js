@@ -84,7 +84,7 @@ export default function RawHtml() {
     <dl class="callables">
         <dt id="load" class="callable">
   <span class="name"><a href="../unself_unpack/IUnpackService/load">load</a></span><span class="signature">(<wbr><span class="parameter" id="load-param-app"><span class="type-annotation">App</span> <span class="parameter-name">app</span></span>)
-    <span class="returntype parameter">→ <a href="https://api.flutter.dev/flutter/dart-async/FutureOr-class.html">FutureOr</a><span class="signature">&lt;<wbr><span class="type-parameter">ArchiveFormat</span>&gt;</span></span>
+    <span class="returntype parameter">→ <a href="https://api.flutter.dev/flutter/dart-async/FutureOr-class.html">FutureOr</a><span class="signature">&lt;<wbr><span class="type-parameter">ArchiveSchema</span>&gt;</span></span>
   </span>
   
 
@@ -199,6 +199,7 @@ given <a href="https://pub.dev/documentation/cross_file/0.3.3+4/cross_file/XFile
         <li><a href="../unself_unpack/Export">Export</a></li>
         <li><a href="../unself_unpack/Import">Import</a></li>
         <li><a href="../unself_unpack/IUnpackService">IUnpackService</a></li>
+        <li><a href="../unself_unpack/Normalize">Normalize</a></li>
         <li><a href="../unself_unpack/UnpackService">UnpackService</a></li>
         <li><a href="../unself_unpack/ZipImport">ZipImport</a></li>
 
@@ -206,10 +207,19 @@ given <a href="https://pub.dev/documentation/cross_file/0.3.3+4/cross_file/XFile
 
 
       <li class="section-title"><a href="../unself_unpack/unself_unpack#properties">Properties</a></li>
-        <li><a href="../unself_unpack/facebookMapping">facebookMapping</a></li>
+        <li><a href="../unself_unpack/facebookSchema">facebookSchema</a></li>
 
+      <li class="section-title"><a href="../unself_unpack/unself_unpack#functions">Functions</a></li>
+        <li><a href="../unself_unpack/flatten">flatten</a></li>
+        <li><a href="../unself_unpack/includeAccumulator">includeAccumulator</a></li>
+        <li><a href="../unself_unpack/listAccumulator">listAccumulator</a></li>
+        <li><a href="../unself_unpack/mapAccumulator">mapAccumulator</a></li>
 
+      <li class="section-title"><a href="../unself_unpack/unself_unpack#enums">Enums</a></li>
+        <li><a href="../unself_unpack/Position">Position</a></li>
 
+      <li class="section-title"><a href="../unself_unpack/unself_unpack#typedefs">Typedefs</a></li>
+        <li><a href="../unself_unpack/Accumulator">Accumulator</a></li>
 
 </ol>
 

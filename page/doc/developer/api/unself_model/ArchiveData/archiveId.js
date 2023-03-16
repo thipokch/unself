@@ -23,7 +23,7 @@ export default function RawHtml() {
 
 
 <section class="desc markdown">
-  <p><a href="../../unself_model/ArchiveData/formatId">formatId</a> is the id for the related <a href="../../unself_model/ArchiveFormat">ArchiveFormat</a>.</p>
+  <p><code>formatId</code> is the id for the related <code>ArchiveFormat</code>.</p>
 </section>
 
 
@@ -69,7 +69,6 @@ export default function RawHtml() {
           <li class="inherited"><a href="../../unself_model/ArchiveData/archiveId">archiveId</a></li>
           <li class="inherited"><a href="../../unself_model/ArchiveData/copyWith">copyWith</a></li>
           <li class="inherited"><a href="../../unself_model/ArchiveData/extra">extra</a></li>
-          <li class="inherited"><a href="../../unself_model/ArchiveData/formatId">formatId</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/hashCode.html">hashCode</a></li>
           <li class="inherited"><a href="../../unself_model/ArchiveData/id">id</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></li>

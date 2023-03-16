@@ -28,13 +28,16 @@ export default function RawHtml() {
 
 
 <section class="desc markdown">
-  <p><a href="../../unself_model/Topic/extra">extra</a> is a map of additional properties.</p>
+  <p><code>email</code> is the email used by the <a href="../../unself_model/Topic">Topic</a> on the <a href="../../unself_model/App">App</a>.
+<a href="../../unself_model/Topic/extra">extra</a> is a map of additional properties.</p>
 </section>
 
 
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">@JsonExtra()
+  <pre class="language-dart"><code class="language-dart">// required String source,
+/// [extra] is a map of additional properties.
+@JsonExtra()
 Map&lt;String, dynamic&gt; get extra =&gt; throw _privateConstructorUsedError;</code></pre>
 </section>
 
@@ -78,7 +81,6 @@ Map&lt;String, dynamic&gt; get extra =&gt; throw _privateConstructorUsedError;</
           <li><a href="../../unself_model/Topic/labels">labels</a></li>
           <li class="inherited"><a href="../../unself_model/Topic/name">name</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></li>
-          <li class="inherited"><a href="../../unself_model/Topic/source">source</a></li>
           <li class="inherited"><a href="../../unself_model/Topic/updated">updated</a></li>
 
         <li class="section-title inherited"><a href="../../unself_model/Topic#instance-methods">Methods</a></li>

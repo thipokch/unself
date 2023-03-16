@@ -16,7 +16,6 @@ export default function RawHtml() {
 <li><span class="parameter" id="-param-updated"><span>@<a href="../../unself_model/JsonDateTime">JsonDateTime</a>()</span> <span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/DateTime-class.html">DateTime</a></span> <span class="parameter-name">updated</span>, </span></li>
 <li><span class="parameter" id="-param-archiveId"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">archiveId</span>, </span></li>
 <li><span class="parameter" id="-param-name"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">name</span>, </span></li>
-<li><span class="parameter" id="-param-source"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">source</span>, </span></li>
 <li><span class="parameter" id="-param-extra"><span>@<a href="../../unself_model/JsonExtra">JsonExtra</a>()</span> <span>@<a href="https://pub.dev/documentation/freezed_annotation/2.2.0/freezed_annotation/Default-class.html">Default</a>({})</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>, <span class="type-parameter">dynamic</span>&gt;</span></span> <span class="parameter-name">extra</span>}</span></li>
 </ol>)
     </section>
@@ -37,7 +36,7 @@ export default function RawHtml() {
   required String name,
 
   /// [email] is the email used by the [Topic] on the [App].
-  required String source,
+  // required String source,
 
   /// [extra] is a map of additional properties.
   @JsonExtra() @Default({}) Map&lt;String, dynamic&gt; extra,
@@ -82,7 +81,6 @@ export default function RawHtml() {
           <li><a href="../../unself_model/Topic/labels">labels</a></li>
           <li class="inherited"><a href="../../unself_model/Topic/name">name</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></li>
-          <li class="inherited"><a href="../../unself_model/Topic/source">source</a></li>
           <li class="inherited"><a href="../../unself_model/Topic/updated">updated</a></li>
 
         <li class="section-title inherited"><a href="../../unself_model/Topic#instance-methods">Methods</a></li>

@@ -17,7 +17,7 @@ export default function RawHtml() {
     </ol>
   </div>
 
-<span class="returntype"><a href="https://api.flutter.dev/flutter/dart-async/FutureOr-class.html">FutureOr</a><span class="signature">&lt;<wbr><span class="type-parameter">ArchiveFormat</span>&gt;</span></span>
+<span class="returntype"><a href="https://api.flutter.dev/flutter/dart-async/FutureOr-class.html">FutureOr</a><span class="signature">&lt;<wbr><span class="type-parameter">ArchiveSchema</span>&gt;</span></span>
 <span class="name ">load</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="load-param-app"><span class="type-annotation">App</span> <span class="parameter-name">app</span></span></li>
 </ol>)
 
@@ -35,9 +35,9 @@ given app.</p>
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">@override
-FutureOr&lt;ArchiveFormat&gt; load(App app) {
+FutureOr&lt;ArchiveSchema&gt; load(App app) {
   _app = app;
-  return _formats.firstWhere((e) =&gt; e.app == app);
+  return _formats.firstWhere((e) =&gt; e.appId == app.id);
 }</code></pre>
 </section>
 
@@ -84,8 +84,6 @@ FutureOr&lt;ArchiveFormat&gt; load(App app) {
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/operator_equals.html">operator ==</a></li>
 
 
-        <li class="section-title"><a href="../../unself_unpack/UnpackService#static-properties">Static properties</a></li>
-          <li><a href="../../unself_unpack/UnpackService/supportedApps">supportedApps</a></li>
 
 
 </ol>

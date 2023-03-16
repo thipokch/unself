@@ -185,6 +185,7 @@ returns a <a href="https://api.flutter.dev/flutter/dart-async/FutureOr-class.htm
         <li><a href="../unself_unpack/Export">Export</a></li>
         <li><a href="../unself_unpack/Import">Import</a></li>
         <li><a href="../unself_unpack/IUnpackService">IUnpackService</a></li>
+        <li><a href="../unself_unpack/Normalize">Normalize</a></li>
         <li><a href="../unself_unpack/UnpackService">UnpackService</a></li>
         <li><a href="../unself_unpack/ZipImport">ZipImport</a></li>
 
@@ -192,10 +193,19 @@ returns a <a href="https://api.flutter.dev/flutter/dart-async/FutureOr-class.htm
 
 
       <li class="section-title"><a href="../unself_unpack/unself_unpack#properties">Properties</a></li>
-        <li><a href="../unself_unpack/facebookMapping">facebookMapping</a></li>
+        <li><a href="../unself_unpack/facebookSchema">facebookSchema</a></li>
 
+      <li class="section-title"><a href="../unself_unpack/unself_unpack#functions">Functions</a></li>
+        <li><a href="../unself_unpack/flatten">flatten</a></li>
+        <li><a href="../unself_unpack/includeAccumulator">includeAccumulator</a></li>
+        <li><a href="../unself_unpack/listAccumulator">listAccumulator</a></li>
+        <li><a href="../unself_unpack/mapAccumulator">mapAccumulator</a></li>
 
+      <li class="section-title"><a href="../unself_unpack/unself_unpack#enums">Enums</a></li>
+        <li><a href="../unself_unpack/Position">Position</a></li>
 
+      <li class="section-title"><a href="../unself_unpack/unself_unpack#typedefs">Typedefs</a></li>
+        <li><a href="../unself_unpack/Accumulator">Accumulator</a></li>
 
 </ol>
 

@@ -72,8 +72,6 @@ export default function RawHtml() {
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/operator_equals.html">operator ==</a></li>
 
 
-        <li class="section-title"><a href="../../unself_unpack/UnpackService#static-properties">Static properties</a></li>
-          <li><a href="../../unself_unpack/UnpackService/supportedApps">supportedApps</a></li>
 
 
 </ol>

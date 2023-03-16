@@ -75,7 +75,6 @@ Map&lt;String, dynamic&gt; get extra =&gt; throw _privateConstructorUsedError;</
           <li class="inherited"><a href="../../unself_model/ArchiveData/archiveId">archiveId</a></li>
           <li class="inherited"><a href="../../unself_model/ArchiveData/copyWith">copyWith</a></li>
           <li class="inherited"><a href="../../unself_model/ArchiveData/extra">extra</a></li>
-          <li class="inherited"><a href="../../unself_model/ArchiveData/formatId">formatId</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/hashCode.html">hashCode</a></li>
           <li class="inherited"><a href="../../unself_model/ArchiveData/id">id</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></li>

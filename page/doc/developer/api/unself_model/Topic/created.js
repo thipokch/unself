@@ -75,7 +75,6 @@ DateTime get created =&gt; throw _privateConstructorUsedError;</code></pre>
           <li><a href="../../unself_model/Topic/labels">labels</a></li>
           <li class="inherited"><a href="../../unself_model/Topic/name">name</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></li>
-          <li class="inherited"><a href="../../unself_model/Topic/source">source</a></li>
           <li class="inherited"><a href="../../unself_model/Topic/updated">updated</a></li>
 
         <li class="section-title inherited"><a href="../../unself_model/Topic#instance-methods">Methods</a></li>

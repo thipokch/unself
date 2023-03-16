@@ -24,7 +24,7 @@ export default function RawHtml() {
   <dt>Implemented types</dt>
   <dd>
     <ul class="comma-separated clazz-relationships">
-        <li><a href="../unself_unpack/Import">Import</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://pub.dev/documentation/cross_file/0.3.3+4/cross_file/XFile-class.html">XFile</a></span>, <span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter">Mapping</span>&gt;</span></span>&gt;</span></li>
+        <li><a href="../unself_unpack/Import">Import</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://pub.dev/documentation/cross_file/0.3.3+4/cross_file/XFile-class.html">XFile</a></span>, <span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter">ArchiveSchemaPart</span>&gt;</span></span>&gt;</span></li>
     </ul>
   </dd>
         
@@ -125,7 +125,7 @@ and importable identifier <a href="https://api.flutter.dev/flutter/dart-core/Str
 </dd>
 
         <dt id="unpack" class="callable">
-  <span class="name"><a href="../unself_unpack/ZipImport/unpack">unpack</a></span><span class="signature">(<wbr><span class="parameter" id="unpack-param-options"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter">Mapping</span>&gt;</span>?</span> <span class="parameter-name">options</span></span>)
+  <span class="name"><a href="../unself_unpack/ZipImport/unpack">unpack</a></span><span class="signature">(<wbr><span class="parameter" id="unpack-param-options"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter">ArchiveSchemaPart</span>&gt;</span>?</span> <span class="parameter-name">options</span></span>)
     <span class="returntype parameter">→ <a href="https://api.flutter.dev/flutter/dart-async/FutureOr-class.html">FutureOr</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>, <span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/Object-class.html">Object</a>?</span>&gt;</span></span>&gt;</span></span>
   </span>
   
@@ -187,6 +187,7 @@ returns a <a href="https://api.flutter.dev/flutter/dart-async/FutureOr-class.htm
         <li><a href="../unself_unpack/Export">Export</a></li>
         <li><a href="../unself_unpack/Import">Import</a></li>
         <li><a href="../unself_unpack/IUnpackService">IUnpackService</a></li>
+        <li><a href="../unself_unpack/Normalize">Normalize</a></li>
         <li><a href="../unself_unpack/UnpackService">UnpackService</a></li>
         <li><a href="../unself_unpack/ZipImport">ZipImport</a></li>
 
@@ -194,10 +195,19 @@ returns a <a href="https://api.flutter.dev/flutter/dart-async/FutureOr-class.htm
 
 
       <li class="section-title"><a href="../unself_unpack/unself_unpack#properties">Properties</a></li>
-        <li><a href="../unself_unpack/facebookMapping">facebookMapping</a></li>
+        <li><a href="../unself_unpack/facebookSchema">facebookSchema</a></li>
 
+      <li class="section-title"><a href="../unself_unpack/unself_unpack#functions">Functions</a></li>
+        <li><a href="../unself_unpack/flatten">flatten</a></li>
+        <li><a href="../unself_unpack/includeAccumulator">includeAccumulator</a></li>
+        <li><a href="../unself_unpack/listAccumulator">listAccumulator</a></li>
+        <li><a href="../unself_unpack/mapAccumulator">mapAccumulator</a></li>
 
+      <li class="section-title"><a href="../unself_unpack/unself_unpack#enums">Enums</a></li>
+        <li><a href="../unself_unpack/Position">Position</a></li>
 
+      <li class="section-title"><a href="../unself_unpack/unself_unpack#typedefs">Typedefs</a></li>
+        <li><a href="../unself_unpack/Accumulator">Accumulator</a></li>
 
 </ol>
 

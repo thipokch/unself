@@ -22,11 +22,16 @@ export default function RawHtml() {
 </section>
 
 
+<section class="desc markdown">
+  <p><code>formatId</code> is the id for the related <code>ArchiveFormat</code>.</p>
+</section>
 
 
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">List&lt;Account&gt; get accounts =&gt; throw _privateConstructorUsedError;</code></pre>
+  <pre class="language-dart"><code class="language-dart">// required String formatId,
+// Models
+List&lt;Account&gt; get accounts =&gt; throw _privateConstructorUsedError;</code></pre>
 </section>
 
 </section>
@@ -66,7 +71,6 @@ export default function RawHtml() {
           <li class="inherited"><a href="../../unself_model/ArchiveData/archiveId">archiveId</a></li>
           <li class="inherited"><a href="../../unself_model/ArchiveData/copyWith">copyWith</a></li>
           <li class="inherited"><a href="../../unself_model/ArchiveData/extra">extra</a></li>
-          <li class="inherited"><a href="../../unself_model/ArchiveData/formatId">formatId</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/hashCode.html">hashCode</a></li>
           <li class="inherited"><a href="../../unself_model/ArchiveData/id">id</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></li>
