@@ -6,6 +6,25 @@ part of 'archive_schema_part.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
+_$MetaPart _$$MetaPartFromJson(Map<String, dynamic> json) => _$MetaPart(
+      const JsonExtra().fromJson(json['meta'] as Map?),
+      $type: json['runtimeType'] as String?,
+    );
+
+Map<String, dynamic> _$$MetaPartToJson(_$MetaPart instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('meta', const JsonExtra().toJson(instance.meta));
+  val['runtimeType'] = instance.$type;
+  return val;
+}
+
 _$JsonPart _$$JsonPartFromJson(Map<String, dynamic> json) => _$JsonPart(
       id: json['id'] as String,
       part: json['part'] as String,

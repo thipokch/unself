@@ -18,7 +18,6 @@ class JsonSchema with _$JsonSchema implements IJsonSchema {
     String name, {
     @Default({}) Map<String, IJsonSchema> definition,
     @Default('id') String key,
-    @Default({}) Map<String, String> fieldMap,
 
     /// [extra] is a map of additional properties.
     @JsonExtra() @Default({}) Map<String, dynamic> extra,
@@ -32,7 +31,6 @@ class JsonSchema with _$JsonSchema implements IJsonSchema {
     @Default([]) List<String> entityPath,
     @Default([]) List<List<String>> includePath,
     @Default(true) bool addMissingKeys,
-    @Default({}) Map<String, String> fieldMap,
 
     /// [extra] is a map of additional properties.
     @JsonExtra() @Default({}) Map<String, dynamic> extra,

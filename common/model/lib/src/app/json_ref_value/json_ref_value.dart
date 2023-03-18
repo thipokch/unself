@@ -14,6 +14,9 @@ class JsonRefValue with _$JsonRefValue implements IJsonSchemaRef {
   @FreezedUnionValue('JsonRefValue.slugFrom')
   const factory JsonRefValue.slugFrom(String name) = SlugFrom;
 
+  // @FreezedUnionValue('JsonRefValue.value')
+  // const factory JsonRefValue.value(String name) = Value;
+
   /// Creates a [JsonRefValue] from Json map
   factory JsonRefValue.fromJson(Map<String, dynamic> data) =>
       _$JsonRefValueFromJson(data);

@@ -7,8 +7,8 @@ final facebookSchema = ArchiveSchema(
   appId: 'facebook',
   version: Version(0, 0, 1),
   constraint: VersionConstraint.compatibleWith(Version(0, 0, 1)),
-  // format: ArchiveFileFormat.zipJson,
   part: const [
+    _meta,
     _adsTopics,
     _advertiserDataUse,
     _advertiserContactUpload,
@@ -20,10 +20,14 @@ final facebookSchema = ArchiveSchema(
   ],
 );
 
-// const topic = Entity('topics');
-// const advertisers = Entity('advertisers');
-// const activities = Entity('activities');
-// const accounts = Entity('accounts');
+const _meta = MetaPart({
+  'apps': [
+    {
+      'id': 'facebook',
+      'name': 'Facebook',
+    }
+  ],
+});
 
 const _adsTopics = ZipJsonPart(
   id: 'facebook_ads_topics',
@@ -44,16 +48,15 @@ const _advertiserDataUse = ZipJsonPart(
   part: 'ads_information.advertisers_using_your_activity_or_information',
   schema: [
     Struct('facebook_advertiser_data_use', {
-      'custom_audiences_all_types_v2': RefList('activities'),
+      'custom_audiences_all_types_v2': RefList('advertisers'),
     }),
-    Entity('activities', definition: {
-      'advertiser_name': Ref('advertisers'),
-      'advertiserId': SlugFrom('advertiser_name'),
-    }),
-    Entity('advertisers', definition: {
-      'id': SlugFrom('@value'),
-      'name': ValueFrom('@value'),
-    }),
+    Entity(
+      'advertisers',
+      definition: {
+        'id': SlugFrom('advertiser_name'),
+        'name': ValueFrom('advertiser_name'),
+      },
+    ),
   ],
 );
 
@@ -79,12 +82,13 @@ const _advertiserInteraction = ZipJsonPart(
     Struct('facebook_advertiser_interaction', {
       'history_v2': RefList('activities'),
     }),
+    Entity('activities', definition: {
+      'title': Ref('advertisers'),
+      'advertiserId': SlugFrom('title'),
+    }),
     Entity('advertisers', definition: {
       'id': SlugFrom('@value'),
       'name': ValueFrom('@value'),
-    }),
-    Entity('activities', definition: {
-      'title': Ref('advertisers'),
     }),
   ],
 );
@@ -102,7 +106,8 @@ const _externalActivities = ZipJsonPart(
     ], includePath: [
       ['name'],
     ], definition: {
-      'name': Ref('apps')
+      'name': Ref('apps'),
+      'externalAppId': SlugFrom('name'),
     }),
     Entity('apps', definition: {
       'id': SlugFrom('@value'),
@@ -120,6 +125,7 @@ const _externalInstalls = ZipJsonPart(
     }),
     Entity('activities', definition: {
       'name': Ref('apps'),
+      'appId': SlugFrom('name'),
     }),
     Entity('apps', definition: {
       'id': SlugFrom('@value'),
@@ -146,6 +152,9 @@ const _inferredTopics = ZipJsonPart(
     Struct('facebook_inferred_topics', {
       'inferred_topics_v2': RefList('topics'),
     }),
-    Flat('topics'),
+    Entity('topics', definition: {
+      'id': SlugFrom('@value'),
+      'name': ValueFrom('@value'),
+    }),
   ],
 );

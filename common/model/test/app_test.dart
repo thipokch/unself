@@ -15,32 +15,32 @@ void main() {
     final later = now.add(const Duration(minutes: 1));
     final laterString = later.toIso8601String();
 
-    final aApp = App(
+    const aApp = App(
       id: 'aApp',
-      created: now,
-      updated: now,
+      // created: now,
+      // updated: now,
       name: 'name',
     );
 
     final bApp = App(
       id: 'bApp',
-      created: now,
-      updated: now,
+      // created: now,
+      // updated: now,
       name: 'name',
       extra: extra,
     );
 
     final aObject = Map<String, dynamic>.unmodifiable({
       'id': 'aApp',
-      'created': nowString,
-      'updated': nowString,
+      // 'created': nowString,
+      // 'updated': nowString,
       'name': 'name',
     });
 
     final bObject = Map<String, dynamic>.unmodifiable({
       'id': 'bApp',
-      'created': nowString,
-      'updated': nowString,
+      // 'created': nowString,
+      // 'updated': nowString,
       'name': 'name',
       'extra': extra,
     });

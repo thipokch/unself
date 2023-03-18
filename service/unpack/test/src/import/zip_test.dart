@@ -87,52 +87,44 @@ void main() {
         'archiveId': archiveId,
         'topics': [
           {
-            '@value': 'ChÃ¢teau',
-            // 'created': instant,
-            // 'updated': instant,
             'archiveId': id,
+            'partId': 'facebook_ads_interests',
+            '@value': 'ChÃ¢teau'
           },
           {
-            '@value': 'Konbini',
-            // 'created': instant,
-            // 'updated': instant,
             'archiveId': id,
+            'partId': 'facebook_ads_interests',
+            '@value': 'Konbini'
           },
           {
-            '@value': 'Mont Blanc',
-            // 'created': instant,
-            // 'updated': instant,
             'archiveId': id,
+            'partId': 'facebook_ads_interests',
+            '@value': 'Mont Blanc'
           },
           {
-            '@value': 'Musique de jeu vidÃ©o',
-            // 'created': instant,
-            // 'updated': instant,
             'archiveId': id,
+            'partId': 'facebook_ads_interests',
+            '@value': 'Musique de jeu vidÃ©o'
           },
           {
-            '@value': 'Organisation mondiale de la santÃ©',
-            // 'created': instant,
-            // 'updated': instant,
             'archiveId': id,
+            'partId': 'facebook_ads_interests',
+            '@value': 'Organisation mondiale de la santÃ©'
           },
           {
-            '@value': 'Quiz',
-            // 'created': instant,
-            // 'updated': instant,
             'archiveId': id,
+            'partId': 'facebook_ads_interests',
+            '@value': 'Quiz'
           },
           {
-            '@value': 'Vie',
-            // 'created': instant,
-            // 'updated': instant,
             'archiveId': id,
+            'partId': 'facebook_ads_interests',
+            '@value': 'Vie'
           },
           {
-            '@value': 'Ãpicerie',
-            // 'created': instant,
-            // 'updated': instant,
             'archiveId': id,
+            'partId': 'facebook_ads_interests',
+            '@value': 'Ãpicerie'
           }
         ], // Since Field Mapping is not provided,
       });
@@ -171,60 +163,52 @@ void main() {
         'archiveId': id,
         'topics': [
           {
-            'name': 'ChÃ¢teau',
-            // 'created': instant,
-            // 'updated': instant,
+            'archiveId': id,
+            'partId': 'facebook_ads_interests',
             'id': 'chateau',
-            'archiveId': id,
+            'name': 'ChÃ¢teau'
           },
           {
-            'name': 'Konbini',
-            // 'created': instant,
-            // 'updated': instant,
+            'archiveId': id,
+            'partId': 'facebook_ads_interests',
             'id': 'konbini',
-            'archiveId': id,
+            'name': 'Konbini'
           },
           {
-            'name': 'Mont Blanc',
-            // 'created': instant,
-            // 'updated': instant,
+            'archiveId': id,
+            'partId': 'facebook_ads_interests',
             'id': 'mont-blanc',
-            'archiveId': id,
+            'name': 'Mont Blanc'
           },
           {
-            'name': 'Musique de jeu vidÃ©o',
-            // 'created': instant,
-            // 'updated': instant,
+            'archiveId': id,
+            'partId': 'facebook_ads_interests',
             'id': 'musique-de-jeu-vidaco',
-            'archiveId': id,
+            'name': 'Musique de jeu vidÃ©o'
           },
           {
-            'name': 'Organisation mondiale de la santÃ©',
-            // 'created': instant,
-            // 'updated': instant,
+            'archiveId': id,
+            'partId': 'facebook_ads_interests',
             'id': 'organisation-mondiale-de-la-santac',
-            'archiveId': id,
+            'name': 'Organisation mondiale de la santÃ©'
           },
           {
-            'name': 'Quiz',
-            // 'created': instant,
-            // 'updated': instant,
+            'archiveId': id,
+            'partId': 'facebook_ads_interests',
             'id': 'quiz',
-            'archiveId': id,
+            'name': 'Quiz'
           },
           {
-            'name': 'Vie',
-            // 'created': instant,
-            // 'updated': instant,
+            'archiveId': id,
+            'partId': 'facebook_ads_interests',
             'id': 'vie',
-            'archiveId': id,
+            'name': 'Vie'
           },
           {
-            'name': 'Ãpicerie',
-            // 'created': instant,
-            // 'updated': instant,
-            'id': 'apicerie',
             'archiveId': id,
+            'partId': 'facebook_ads_interests',
+            'id': 'apicerie',
+            'name': 'Ãpicerie'
           }
         ], // Since Field Mapping is not provided
       });

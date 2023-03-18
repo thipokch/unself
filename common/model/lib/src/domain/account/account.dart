@@ -17,8 +17,8 @@ class Account with _$Account implements Node {
   /// {@macro account}
   const factory Account({
     @JsonString() required String id,
-    @JsonDateTime() required DateTime created,
-    @JsonDateTime() required DateTime updated,
+    // @JsonDateTime() required DateTime created,
+    // @JsonDateTime() required DateTime updated,
     required String archiveId,
 
     /// [name] is the name used by the [Account] on the [App].

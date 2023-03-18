@@ -16,8 +16,8 @@ class App with _$App implements Base {
   /// {@macro app}
   const factory App({
     @JsonString() required String id,
-    @JsonDateTime() required DateTime created,
-    @JsonDateTime() required DateTime updated,
+    // @JsonDateTime() required DateTime created,
+    // @JsonDateTime() required DateTime updated,
 
     /// [name] is the name of the [App].
     required String name,

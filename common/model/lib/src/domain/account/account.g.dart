@@ -8,8 +8,6 @@ part of 'account.dart';
 
 _$_Account _$$_AccountFromJson(Map<String, dynamic> json) => _$_Account(
       id: const JsonString().fromJson(json['id']),
-      created: const JsonDateTime().fromJson(json['created']),
-      updated: const JsonDateTime().fromJson(json['updated']),
       archiveId: json['archiveId'] as String,
       name: json['name'] as String,
       appId: json['appId'] as String,
@@ -33,8 +31,6 @@ Map<String, dynamic> _$$_AccountToJson(_$_Account instance) {
   }
 
   writeNotNull('id', const JsonString().toJson(instance.id));
-  writeNotNull('created', const JsonDateTime().toJson(instance.created));
-  writeNotNull('updated', const JsonDateTime().toJson(instance.updated));
   val['archiveId'] = instance.archiveId;
   val['name'] = instance.name;
   val['appId'] = instance.appId;

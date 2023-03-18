@@ -15,8 +15,8 @@ class Activity with _$Activity implements Edge {
   /// {@macro activity}
   const factory Activity({
     @JsonString() required String id,
-    @JsonDateTime() required DateTime created,
-    @JsonDateTime() required DateTime updated,
+    // @JsonDateTime() required DateTime created,
+    // @JsonDateTime() required DateTime updated,
     required String archiveId,
 
     /// [accountId] is the source node.

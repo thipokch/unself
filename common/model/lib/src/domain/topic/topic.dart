@@ -15,8 +15,8 @@ class Topic with _$Topic implements Node {
   /// {@macro topic}
   const factory Topic({
     @JsonString() required String id,
-    @JsonDateTime() required DateTime created,
-    @JsonDateTime() required DateTime updated,
+    // @JsonDateTime() required DateTime created,
+    // @JsonDateTime() required DateTime updated,
     required String archiveId,
 
     /// [name] is the name used by the [Topic] on the [App].

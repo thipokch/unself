@@ -11,15 +11,13 @@ dynamic /* List<String> / String */ _normalizeRef(
       json,
       (nextJson, nextScheme) {
         final entity = nextScheme.getScheme(nextJson, find);
-        return nextScheme.useId(
-          _normalize(
-            nextJson is Map<String, dynamic> ? nextJson : {'@value': nextJson},
-            entity,
-            accumulator,
-            find,
-          ),
+        final id = _normalize(
+          nextJson is Map<String, dynamic> ? nextJson : {'@value': nextJson},
           entity,
+          accumulator,
+          find,
         );
+        return nextScheme.useId(id, entity);
       },
     );
     return ids;
@@ -32,7 +30,7 @@ dynamic /* List<String> / String */ _normalizeRef(
         find);
 
     return define.useId(id, nextScheme);
-  } else if (define is JsonRefValue) {
-    throw UnimplementedError();
   }
+
+  throw UnimplementedError();
 }

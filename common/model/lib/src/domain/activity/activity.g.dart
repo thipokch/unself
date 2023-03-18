@@ -8,8 +8,6 @@ part of 'activity.dart';
 
 _$_Activity _$$_ActivityFromJson(Map<String, dynamic> json) => _$_Activity(
       id: const JsonString().fromJson(json['id']),
-      created: const JsonDateTime().fromJson(json['created']),
-      updated: const JsonDateTime().fromJson(json['updated']),
       archiveId: json['archiveId'] as String,
       accountId: json['accountId'] as String,
       appId: json['appId'] as String,
@@ -32,8 +30,6 @@ Map<String, dynamic> _$$_ActivityToJson(_$_Activity instance) {
   }
 
   writeNotNull('id', const JsonString().toJson(instance.id));
-  writeNotNull('created', const JsonDateTime().toJson(instance.created));
-  writeNotNull('updated', const JsonDateTime().toJson(instance.updated));
   val['archiveId'] = instance.archiveId;
   val['accountId'] = instance.accountId;
   val['appId'] = instance.appId;

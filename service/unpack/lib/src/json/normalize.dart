@@ -82,6 +82,7 @@ dynamic /* String / Int */ _normalize(
   return schema.map(
     entity: (schema) {
       final result = <String, dynamic>{};
+      // final id = json[schema.key];
 
       final resultSchema = schema.definition.entries
           .groupListsBy(
@@ -116,8 +117,12 @@ dynamic /* String / Int */ _normalize(
         }
       });
 
+      if (schema is SlugFrom) {
+        print('schema is SlugFrom :: ${json[schema.key]}');
+      }
+
       accumulator(schema.name, json[schema.key].toString(), result);
-      return json[schema.key];
+      return result[schema.key];
     },
     struct: (schema) {
       json.forEach((key, value) {

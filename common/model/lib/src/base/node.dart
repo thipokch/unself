@@ -9,12 +9,12 @@ abstract class Node implements Base {
   final String id;
 
   /// [created] is the date and time when the inheriting model was created inside unself app.
-  @override
-  final DateTime created;
+  // @override
+  // final DateTime created;
 
   /// [updated] is the date and time when the inheriting model was last updated inside unself app.
-  @override
-  final DateTime updated;
+  // @override
+  // final DateTime updated;
 
   /// [archiveId] is unself unique identifier for the archive the model belongs to.
   final String archiveId;
@@ -29,8 +29,8 @@ abstract class Node implements Base {
   /// {@macro base}
   const Node._({
     required this.id,
-    required this.created,
-    required this.updated,
+    // required this.created,
+    // required this.updated,
     required this.archiveId,
     required this.labels,
     required this.extra,

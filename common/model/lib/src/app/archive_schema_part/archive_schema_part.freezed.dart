@@ -16,6 +16,8 @@ final _privateConstructorUsedError = UnsupportedError(
 
 ArchiveSchemaPart _$ArchiveSchemaPartFromJson(Map<String, dynamic> json) {
   switch (json['runtimeType']) {
+    case 'meta':
+      return MetaPart.fromJson(json);
     case 'json':
       return JsonPart.fromJson(json);
     case 'zipJson':
@@ -29,20 +31,9 @@ ArchiveSchemaPart _$ArchiveSchemaPartFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ArchiveSchemaPart {
-  /// [id] is unself unique identifier for the ArchiveSchemaPart.
-  String get id => throw _privateConstructorUsedError;
-
-  /// [file] is path of the ArchiveSchemaPart.
-  String get part => throw _privateConstructorUsedError;
-
-  /// [schema] is a list of [JsonSchema]s.
-  List<JsonSchema> get schema => throw _privateConstructorUsedError;
-
-  /// [extra] is a map of additional properties.
-  @JsonExtra()
-  Map<String, dynamic> get extra => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(@JsonExtra() Map<String, dynamic> meta) meta,
     required TResult Function(String id, String part, List<JsonSchema> schema,
             @JsonExtra() Map<String, dynamic> extra)
         json,
@@ -53,6 +44,7 @@ mixin _$ArchiveSchemaPart {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(@JsonExtra() Map<String, dynamic> meta)? meta,
     TResult? Function(String id, String part, List<JsonSchema> schema,
             @JsonExtra() Map<String, dynamic> extra)?
         json,
@@ -63,6 +55,7 @@ mixin _$ArchiveSchemaPart {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(@JsonExtra() Map<String, dynamic> meta)? meta,
     TResult Function(String id, String part, List<JsonSchema> schema,
             @JsonExtra() Map<String, dynamic> extra)?
         json,
@@ -74,27 +67,27 @@ mixin _$ArchiveSchemaPart {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(MetaPart value) meta,
     required TResult Function(JsonPart value) json,
     required TResult Function(ZipJsonPart value) zipJson,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(MetaPart value)? meta,
     TResult? Function(JsonPart value)? json,
     TResult? Function(ZipJsonPart value)? zipJson,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(MetaPart value)? meta,
     TResult Function(JsonPart value)? json,
     TResult Function(ZipJsonPart value)? zipJson,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $ArchiveSchemaPartCopyWith<ArchiveSchemaPart> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -102,12 +95,6 @@ abstract class $ArchiveSchemaPartCopyWith<$Res> {
   factory $ArchiveSchemaPartCopyWith(
           ArchiveSchemaPart value, $Res Function(ArchiveSchemaPart) then) =
       _$ArchiveSchemaPartCopyWithImpl<$Res, ArchiveSchemaPart>;
-  @useResult
-  $Res call(
-      {String id,
-      String part,
-      List<JsonSchema> schema,
-      @JsonExtra() Map<String, dynamic> extra});
 }
 
 /// @nodoc
@@ -119,43 +106,197 @@ class _$ArchiveSchemaPartCopyWithImpl<$Res, $Val extends ArchiveSchemaPart>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$MetaPartCopyWith<$Res> {
+  factory _$$MetaPartCopyWith(
+          _$MetaPart value, $Res Function(_$MetaPart) then) =
+      __$$MetaPartCopyWithImpl<$Res>;
+  @useResult
+  $Res call({@JsonExtra() Map<String, dynamic> meta});
+}
+
+/// @nodoc
+class __$$MetaPartCopyWithImpl<$Res>
+    extends _$ArchiveSchemaPartCopyWithImpl<$Res, _$MetaPart>
+    implements _$$MetaPartCopyWith<$Res> {
+  __$$MetaPartCopyWithImpl(_$MetaPart _value, $Res Function(_$MetaPart) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
-    Object? part = null,
-    Object? schema = null,
-    Object? extra = null,
+    Object? meta = null,
   }) {
-    return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      part: null == part
-          ? _value.part
-          : part // ignore: cast_nullable_to_non_nullable
-              as String,
-      schema: null == schema
-          ? _value.schema
-          : schema // ignore: cast_nullable_to_non_nullable
-              as List<JsonSchema>,
-      extra: null == extra
-          ? _value.extra
-          : extra // ignore: cast_nullable_to_non_nullable
+    return _then(_$MetaPart(
+      null == meta
+          ? _value._meta
+          : meta // ignore: cast_nullable_to_non_nullable
               as Map<String, dynamic>,
-    ) as $Val);
+    ));
   }
 }
 
 /// @nodoc
-abstract class _$$JsonPartCopyWith<$Res>
-    implements $ArchiveSchemaPartCopyWith<$Res> {
+@JsonSerializable()
+class _$MetaPart extends MetaPart {
+  const _$MetaPart(@JsonExtra() final Map<String, dynamic> meta,
+      {final String? $type})
+      : _meta = meta,
+        $type = $type ?? 'meta',
+        super._();
+
+  factory _$MetaPart.fromJson(Map<String, dynamic> json) =>
+      _$$MetaPartFromJson(json);
+
+  /// [extra] is a map of additional properties.
+  final Map<String, dynamic> _meta;
+
+  /// [extra] is a map of additional properties.
+  @override
+  @JsonExtra()
+  Map<String, dynamic> get meta {
+    if (_meta is EqualUnmodifiableMapView) return _meta;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_meta);
+  }
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'ArchiveSchemaPart.meta(meta: $meta)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$MetaPart &&
+            const DeepCollectionEquality().equals(other._meta, _meta));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_meta));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$MetaPartCopyWith<_$MetaPart> get copyWith =>
+      __$$MetaPartCopyWithImpl<_$MetaPart>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(@JsonExtra() Map<String, dynamic> meta) meta,
+    required TResult Function(String id, String part, List<JsonSchema> schema,
+            @JsonExtra() Map<String, dynamic> extra)
+        json,
+    required TResult Function(String id, String part, List<JsonSchema> schema,
+            @JsonExtra() Map<String, dynamic> extra)
+        zipJson,
+  }) {
+    return meta(this.meta);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(@JsonExtra() Map<String, dynamic> meta)? meta,
+    TResult? Function(String id, String part, List<JsonSchema> schema,
+            @JsonExtra() Map<String, dynamic> extra)?
+        json,
+    TResult? Function(String id, String part, List<JsonSchema> schema,
+            @JsonExtra() Map<String, dynamic> extra)?
+        zipJson,
+  }) {
+    return meta?.call(this.meta);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(@JsonExtra() Map<String, dynamic> meta)? meta,
+    TResult Function(String id, String part, List<JsonSchema> schema,
+            @JsonExtra() Map<String, dynamic> extra)?
+        json,
+    TResult Function(String id, String part, List<JsonSchema> schema,
+            @JsonExtra() Map<String, dynamic> extra)?
+        zipJson,
+    required TResult orElse(),
+  }) {
+    if (meta != null) {
+      return meta(this.meta);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(MetaPart value) meta,
+    required TResult Function(JsonPart value) json,
+    required TResult Function(ZipJsonPart value) zipJson,
+  }) {
+    return meta(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(MetaPart value)? meta,
+    TResult? Function(JsonPart value)? json,
+    TResult? Function(ZipJsonPart value)? zipJson,
+  }) {
+    return meta?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(MetaPart value)? meta,
+    TResult Function(JsonPart value)? json,
+    TResult Function(ZipJsonPart value)? zipJson,
+    required TResult orElse(),
+  }) {
+    if (meta != null) {
+      return meta(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$MetaPartToJson(
+      this,
+    );
+  }
+}
+
+abstract class MetaPart extends ArchiveSchemaPart {
+  const factory MetaPart(@JsonExtra() final Map<String, dynamic> meta) =
+      _$MetaPart;
+  const MetaPart._() : super._();
+
+  factory MetaPart.fromJson(Map<String, dynamic> json) = _$MetaPart.fromJson;
+
+  /// [extra] is a map of additional properties.
+  @JsonExtra()
+  Map<String, dynamic> get meta;
+  @JsonKey(ignore: true)
+  _$$MetaPartCopyWith<_$MetaPart> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$JsonPartCopyWith<$Res> {
   factory _$$JsonPartCopyWith(
           _$JsonPart value, $Res Function(_$JsonPart) then) =
       __$$JsonPartCopyWithImpl<$Res>;
-  @override
   @useResult
   $Res call(
       {String id,
@@ -286,6 +427,7 @@ class _$JsonPart extends JsonPart {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(@JsonExtra() Map<String, dynamic> meta) meta,
     required TResult Function(String id, String part, List<JsonSchema> schema,
             @JsonExtra() Map<String, dynamic> extra)
         json,
@@ -299,6 +441,7 @@ class _$JsonPart extends JsonPart {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(@JsonExtra() Map<String, dynamic> meta)? meta,
     TResult? Function(String id, String part, List<JsonSchema> schema,
             @JsonExtra() Map<String, dynamic> extra)?
         json,
@@ -312,6 +455,7 @@ class _$JsonPart extends JsonPart {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(@JsonExtra() Map<String, dynamic> meta)? meta,
     TResult Function(String id, String part, List<JsonSchema> schema,
             @JsonExtra() Map<String, dynamic> extra)?
         json,
@@ -329,6 +473,7 @@ class _$JsonPart extends JsonPart {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(MetaPart value) meta,
     required TResult Function(JsonPart value) json,
     required TResult Function(ZipJsonPart value) zipJson,
   }) {
@@ -338,6 +483,7 @@ class _$JsonPart extends JsonPart {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(MetaPart value)? meta,
     TResult? Function(JsonPart value)? json,
     TResult? Function(ZipJsonPart value)? zipJson,
   }) {
@@ -347,6 +493,7 @@ class _$JsonPart extends JsonPart {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(MetaPart value)? meta,
     TResult Function(JsonPart value)? json,
     TResult Function(ZipJsonPart value)? zipJson,
     required TResult orElse(),
@@ -375,36 +522,28 @@ abstract class JsonPart extends ArchiveSchemaPart {
 
   factory JsonPart.fromJson(Map<String, dynamic> json) = _$JsonPart.fromJson;
 
-  @override
-
   /// [id] is unself unique identifier for the ArchiveSchemaPart.
   String get id;
-  @override
 
   /// [file] is path of the ArchiveSchemaPart.
   String get part;
-  @override
 
   /// [schema] is a list of [JsonSchema]s.
   List<JsonSchema> get schema;
-  @override
 
   /// [extra] is a map of additional properties.
   @JsonExtra()
   Map<String, dynamic> get extra;
-  @override
   @JsonKey(ignore: true)
   _$$JsonPartCopyWith<_$JsonPart> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$ZipJsonPartCopyWith<$Res>
-    implements $ArchiveSchemaPartCopyWith<$Res> {
+abstract class _$$ZipJsonPartCopyWith<$Res> {
   factory _$$ZipJsonPartCopyWith(
           _$ZipJsonPart value, $Res Function(_$ZipJsonPart) then) =
       __$$ZipJsonPartCopyWithImpl<$Res>;
-  @override
   @useResult
   $Res call(
       {String id,
@@ -536,6 +675,7 @@ class _$ZipJsonPart extends ZipJsonPart {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(@JsonExtra() Map<String, dynamic> meta) meta,
     required TResult Function(String id, String part, List<JsonSchema> schema,
             @JsonExtra() Map<String, dynamic> extra)
         json,
@@ -549,6 +689,7 @@ class _$ZipJsonPart extends ZipJsonPart {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(@JsonExtra() Map<String, dynamic> meta)? meta,
     TResult? Function(String id, String part, List<JsonSchema> schema,
             @JsonExtra() Map<String, dynamic> extra)?
         json,
@@ -562,6 +703,7 @@ class _$ZipJsonPart extends ZipJsonPart {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(@JsonExtra() Map<String, dynamic> meta)? meta,
     TResult Function(String id, String part, List<JsonSchema> schema,
             @JsonExtra() Map<String, dynamic> extra)?
         json,
@@ -579,6 +721,7 @@ class _$ZipJsonPart extends ZipJsonPart {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(MetaPart value) meta,
     required TResult Function(JsonPart value) json,
     required TResult Function(ZipJsonPart value) zipJson,
   }) {
@@ -588,6 +731,7 @@ class _$ZipJsonPart extends ZipJsonPart {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(MetaPart value)? meta,
     TResult? Function(JsonPart value)? json,
     TResult? Function(ZipJsonPart value)? zipJson,
   }) {
@@ -597,6 +741,7 @@ class _$ZipJsonPart extends ZipJsonPart {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(MetaPart value)? meta,
     TResult Function(JsonPart value)? json,
     TResult Function(ZipJsonPart value)? zipJson,
     required TResult orElse(),
@@ -626,24 +771,18 @@ abstract class ZipJsonPart extends ArchiveSchemaPart {
   factory ZipJsonPart.fromJson(Map<String, dynamic> json) =
       _$ZipJsonPart.fromJson;
 
-  @override
-
   /// [id] is unself unique identifier for the ArchiveSchemaPart.
   String get id;
-  @override
 
   /// [file] is path of the ArchiveSchemaPart.
   String get part;
-  @override
 
   /// [schema] is a list of [JsonSchema]s.
   List<JsonSchema> get schema;
-  @override
 
   /// [extra] is a map of additional properties.
   @JsonExtra()
   Map<String, dynamic> get extra;
-  @override
   @JsonKey(ignore: true)
   _$$ZipJsonPartCopyWith<_$ZipJsonPart> get copyWith =>
       throw _privateConstructorUsedError;

@@ -15,25 +15,25 @@ void main() {
     final later = now.add(const Duration(minutes: 1));
     final laterString = later.toIso8601String();
 
-    final aApp = App(
+    const aApp = App(
       id: 'aApp',
-      created: now,
-      updated: now,
+      // created: now,
+      // updated: now,
       name: 'name',
     );
 
     final bApp = App(
       id: 'bApp',
-      created: now,
-      updated: now,
+      // created: now,
+      // updated: now,
       name: 'name',
       extra: extra,
     );
 
-    final aAccount = Account(
+    const aAccount = Account(
       id: 'aAccount',
-      created: now,
-      updated: now,
+      // created: now,
+      // updated: now,
       archiveId: '',
       name: 'name',
       emails: [],
@@ -43,8 +43,8 @@ void main() {
 
     final bAccount = Account(
       id: 'bAccount',
-      created: now,
-      updated: now,
+      // created: now,
+      // updated: now,
       archiveId: '',
       name: 'name',
       emails: [],
@@ -102,8 +102,8 @@ void main() {
       'name': 'name',
       'account': {
         'id': 'aAccount',
-        'created': nowString,
-        'updated': nowString,
+        // 'created': nowString,
+        // 'updated': nowString,
         'archiveId': '',
         'name': 'name',
         'appId': 'aApp',
@@ -120,8 +120,8 @@ void main() {
       'name': 'name',
       'account': {
         'id': 'bAccount',
-        'created': nowString,
-        'updated': nowString,
+        // 'created': nowString,
+        // 'updated': nowString,
         'archiveId': '',
         'name': 'name',
         'appId': 'bApp',

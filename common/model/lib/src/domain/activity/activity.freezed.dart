@@ -21,11 +21,9 @@ Activity _$ActivityFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Activity {
   @JsonString()
-  String get id => throw _privateConstructorUsedError;
-  @JsonDateTime()
-  DateTime get created => throw _privateConstructorUsedError;
-  @JsonDateTime()
-  DateTime get updated => throw _privateConstructorUsedError;
+  String get id =>
+      throw _privateConstructorUsedError; // @JsonDateTime() required DateTime created,
+// @JsonDateTime() required DateTime updated,
   String get archiveId => throw _privateConstructorUsedError;
 
   /// [accountId] is the source node.
@@ -64,8 +62,6 @@ abstract class $ActivityCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonString() String id,
-      @JsonDateTime() DateTime created,
-      @JsonDateTime() DateTime updated,
       String archiveId,
       String accountId,
       String appId,
@@ -90,8 +86,6 @@ class _$ActivityCopyWithImpl<$Res, $Val extends Activity>
   @override
   $Res call({
     Object? id = null,
-    Object? created = null,
-    Object? updated = null,
     Object? archiveId = null,
     Object? accountId = null,
     Object? appId = null,
@@ -106,14 +100,6 @@ class _$ActivityCopyWithImpl<$Res, $Val extends Activity>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      created: null == created
-          ? _value.created
-          : created // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      updated: null == updated
-          ? _value.updated
-          : updated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
       archiveId: null == archiveId
           ? _value.archiveId
           : archiveId // ignore: cast_nullable_to_non_nullable
@@ -159,8 +145,6 @@ abstract class _$$_ActivityCopyWith<$Res> implements $ActivityCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonString() String id,
-      @JsonDateTime() DateTime created,
-      @JsonDateTime() DateTime updated,
       String archiveId,
       String accountId,
       String appId,
@@ -183,8 +167,6 @@ class __$$_ActivityCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
-    Object? created = null,
-    Object? updated = null,
     Object? archiveId = null,
     Object? accountId = null,
     Object? appId = null,
@@ -199,14 +181,6 @@ class __$$_ActivityCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      created: null == created
-          ? _value.created
-          : created // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      updated: null == updated
-          ? _value.updated
-          : updated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
       archiveId: null == archiveId
           ? _value.archiveId
           : archiveId // ignore: cast_nullable_to_non_nullable
@@ -248,8 +222,6 @@ class __$$_ActivityCopyWithImpl<$Res>
 class _$_Activity extends _Activity {
   const _$_Activity(
       {@JsonString() required this.id,
-      @JsonDateTime() required this.created,
-      @JsonDateTime() required this.updated,
       required this.archiveId,
       required this.accountId,
       required this.appId,
@@ -267,12 +239,8 @@ class _$_Activity extends _Activity {
   @override
   @JsonString()
   final String id;
-  @override
-  @JsonDateTime()
-  final DateTime created;
-  @override
-  @JsonDateTime()
-  final DateTime updated;
+// @JsonDateTime() required DateTime created,
+// @JsonDateTime() required DateTime updated,
   @override
   final String archiveId;
 
@@ -316,7 +284,7 @@ class _$_Activity extends _Activity {
 
   @override
   String toString() {
-    return 'Activity(id: $id, created: $created, updated: $updated, archiveId: $archiveId, accountId: $accountId, appId: $appId, timestamp: $timestamp, name: $name, type: $type, source: $source, extra: $extra)';
+    return 'Activity(id: $id, archiveId: $archiveId, accountId: $accountId, appId: $appId, timestamp: $timestamp, name: $name, type: $type, source: $source, extra: $extra)';
   }
 
   @override
@@ -325,8 +293,6 @@ class _$_Activity extends _Activity {
         (other.runtimeType == runtimeType &&
             other is _$_Activity &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.created, created) || other.created == created) &&
-            (identical(other.updated, updated) || other.updated == updated) &&
             (identical(other.archiveId, archiveId) ||
                 other.archiveId == archiveId) &&
             (identical(other.accountId, accountId) ||
@@ -345,8 +311,6 @@ class _$_Activity extends _Activity {
   int get hashCode => Object.hash(
       runtimeType,
       id,
-      created,
-      updated,
       archiveId,
       accountId,
       appId,
@@ -373,8 +337,6 @@ class _$_Activity extends _Activity {
 abstract class _Activity extends Activity {
   const factory _Activity(
       {@JsonString() required final String id,
-      @JsonDateTime() required final DateTime created,
-      @JsonDateTime() required final DateTime updated,
       required final String archiveId,
       required final String accountId,
       required final String appId,
@@ -390,13 +352,8 @@ abstract class _Activity extends Activity {
   @override
   @JsonString()
   String get id;
-  @override
-  @JsonDateTime()
-  DateTime get created;
-  @override
-  @JsonDateTime()
-  DateTime get updated;
-  @override
+  @override // @JsonDateTime() required DateTime created,
+// @JsonDateTime() required DateTime updated,
   String get archiveId;
   @override
 

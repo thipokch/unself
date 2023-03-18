@@ -12,6 +12,12 @@ class ArchiveSchemaPart with _$ArchiveSchemaPart {
   const ArchiveSchemaPart._();
 
   /// {@macro archive_schema_part}
+  const factory ArchiveSchemaPart.meta(
+    /// [extra] is a map of additional properties.
+    @JsonExtra() Map<String, dynamic> meta,
+  ) = MetaPart;
+
+  /// {@macro archive_schema_part}
   const factory ArchiveSchemaPart.json({
     /// [id] is unself unique identifier for the ArchiveSchemaPart.
     required String id,

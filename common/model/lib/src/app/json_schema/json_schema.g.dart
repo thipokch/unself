@@ -14,10 +14,6 @@ _$Entity _$$EntityFromJson(Map<String, dynamic> json) => _$Entity(
           ) ??
           const {},
       key: json['key'] as String? ?? 'id',
-      fieldMap: (json['fieldMap'] as Map<String, dynamic>?)?.map(
-            (k, e) => MapEntry(k, e as String),
-          ) ??
-          const {},
       extra: json['extra'] == null
           ? const {}
           : const JsonExtra().fromJson(json['extra'] as Map?),
@@ -29,7 +25,6 @@ Map<String, dynamic> _$$EntityToJson(_$Entity instance) {
     'name': instance.name,
     'definition': instance.definition.map((k, e) => MapEntry(k, e.toJson())),
     'key': instance.key,
-    'fieldMap': instance.fieldMap,
   };
 
   void writeNotNull(String key, dynamic value) {
@@ -61,10 +56,6 @@ _$Flat _$$FlatFromJson(Map<String, dynamic> json) => _$Flat(
               .toList() ??
           const [],
       addMissingKeys: json['addMissingKeys'] as bool? ?? true,
-      fieldMap: (json['fieldMap'] as Map<String, dynamic>?)?.map(
-            (k, e) => MapEntry(k, e as String),
-          ) ??
-          const {},
       extra: json['extra'] == null
           ? const {}
           : const JsonExtra().fromJson(json['extra'] as Map?),
@@ -79,7 +70,6 @@ Map<String, dynamic> _$$FlatToJson(_$Flat instance) {
     'entityPath': instance.entityPath,
     'includePath': instance.includePath,
     'addMissingKeys': instance.addMissingKeys,
-    'fieldMap': instance.fieldMap,
   };
 
   void writeNotNull(String key, dynamic value) {

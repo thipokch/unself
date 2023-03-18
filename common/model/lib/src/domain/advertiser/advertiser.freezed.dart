@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'app.dart';
+part of 'advertiser.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,17 +14,19 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-App _$AppFromJson(Map<String, dynamic> json) {
-  return _App.fromJson(json);
+Advertiser _$AdvertiserFromJson(Map<String, dynamic> json) {
+  return _Advertiser.fromJson(json);
 }
 
 /// @nodoc
-mixin _$App {
+mixin _$Advertiser {
   @JsonString()
   String get id =>
       throw _privateConstructorUsedError; // @JsonDateTime() required DateTime created,
 // @JsonDateTime() required DateTime updated,
-  /// [name] is the name of the [App].
+  String get archiveId => throw _privateConstructorUsedError;
+
+  /// [name] is the name used by the [Advertiser] on the [Advertiser].
   String get name => throw _privateConstructorUsedError;
 
   /// [extra] is a map of additional properties.
@@ -33,23 +35,27 @@ mixin _$App {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $AppCopyWith<App> get copyWith => throw _privateConstructorUsedError;
+  $AdvertiserCopyWith<Advertiser> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $AppCopyWith<$Res> {
-  factory $AppCopyWith(App value, $Res Function(App) then) =
-      _$AppCopyWithImpl<$Res, App>;
+abstract class $AdvertiserCopyWith<$Res> {
+  factory $AdvertiserCopyWith(
+          Advertiser value, $Res Function(Advertiser) then) =
+      _$AdvertiserCopyWithImpl<$Res, Advertiser>;
   @useResult
   $Res call(
       {@JsonString() String id,
+      String archiveId,
       String name,
       @JsonExtra() Map<String, dynamic> extra});
 }
 
 /// @nodoc
-class _$AppCopyWithImpl<$Res, $Val extends App> implements $AppCopyWith<$Res> {
-  _$AppCopyWithImpl(this._value, this._then);
+class _$AdvertiserCopyWithImpl<$Res, $Val extends Advertiser>
+    implements $AdvertiserCopyWith<$Res> {
+  _$AdvertiserCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -60,6 +66,7 @@ class _$AppCopyWithImpl<$Res, $Val extends App> implements $AppCopyWith<$Res> {
   @override
   $Res call({
     Object? id = null,
+    Object? archiveId = null,
     Object? name = null,
     Object? extra = null,
   }) {
@@ -67,6 +74,10 @@ class _$AppCopyWithImpl<$Res, $Val extends App> implements $AppCopyWith<$Res> {
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      archiveId: null == archiveId
+          ? _value.archiveId
+          : archiveId // ignore: cast_nullable_to_non_nullable
               as String,
       name: null == name
           ? _value.name
@@ -81,34 +92,44 @@ class _$AppCopyWithImpl<$Res, $Val extends App> implements $AppCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$$_AppCopyWith<$Res> implements $AppCopyWith<$Res> {
-  factory _$$_AppCopyWith(_$_App value, $Res Function(_$_App) then) =
-      __$$_AppCopyWithImpl<$Res>;
+abstract class _$$_AdvertiserCopyWith<$Res>
+    implements $AdvertiserCopyWith<$Res> {
+  factory _$$_AdvertiserCopyWith(
+          _$_Advertiser value, $Res Function(_$_Advertiser) then) =
+      __$$_AdvertiserCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
       {@JsonString() String id,
+      String archiveId,
       String name,
       @JsonExtra() Map<String, dynamic> extra});
 }
 
 /// @nodoc
-class __$$_AppCopyWithImpl<$Res> extends _$AppCopyWithImpl<$Res, _$_App>
-    implements _$$_AppCopyWith<$Res> {
-  __$$_AppCopyWithImpl(_$_App _value, $Res Function(_$_App) _then)
+class __$$_AdvertiserCopyWithImpl<$Res>
+    extends _$AdvertiserCopyWithImpl<$Res, _$_Advertiser>
+    implements _$$_AdvertiserCopyWith<$Res> {
+  __$$_AdvertiserCopyWithImpl(
+      _$_Advertiser _value, $Res Function(_$_Advertiser) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = null,
+    Object? archiveId = null,
     Object? name = null,
     Object? extra = null,
   }) {
-    return _then(_$_App(
+    return _then(_$_Advertiser(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      archiveId: null == archiveId
+          ? _value.archiveId
+          : archiveId // ignore: cast_nullable_to_non_nullable
               as String,
       name: null == name
           ? _value.name
@@ -124,22 +145,27 @@ class __$$_AppCopyWithImpl<$Res> extends _$AppCopyWithImpl<$Res, _$_App>
 
 /// @nodoc
 @JsonSerializable()
-class _$_App extends _App {
-  const _$_App(
+class _$_Advertiser extends _Advertiser {
+  const _$_Advertiser(
       {@JsonString() required this.id,
+      required this.archiveId,
       required this.name,
       @JsonExtra() final Map<String, dynamic> extra = const {}})
       : _extra = extra,
         super._();
 
-  factory _$_App.fromJson(Map<String, dynamic> json) => _$$_AppFromJson(json);
+  factory _$_Advertiser.fromJson(Map<String, dynamic> json) =>
+      _$$_AdvertiserFromJson(json);
 
   @override
   @JsonString()
   final String id;
 // @JsonDateTime() required DateTime created,
 // @JsonDateTime() required DateTime updated,
-  /// [name] is the name of the [App].
+  @override
+  final String archiveId;
+
+  /// [name] is the name used by the [Advertiser] on the [Advertiser].
   @override
   final String name;
 
@@ -158,53 +184,60 @@ class _$_App extends _App {
 
   @override
   String toString() {
-    return 'App(id: $id, name: $name, extra: $extra)';
+    return 'Advertiser(id: $id, archiveId: $archiveId, name: $name, extra: $extra)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_App &&
+            other is _$_Advertiser &&
             (identical(other.id, id) || other.id == id) &&
+            (identical(other.archiveId, archiveId) ||
+                other.archiveId == archiveId) &&
             (identical(other.name, name) || other.name == name) &&
             const DeepCollectionEquality().equals(other._extra, _extra));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, id, name, const DeepCollectionEquality().hash(_extra));
+  int get hashCode => Object.hash(runtimeType, id, archiveId, name,
+      const DeepCollectionEquality().hash(_extra));
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AppCopyWith<_$_App> get copyWith =>
-      __$$_AppCopyWithImpl<_$_App>(this, _$identity);
+  _$$_AdvertiserCopyWith<_$_Advertiser> get copyWith =>
+      __$$_AdvertiserCopyWithImpl<_$_Advertiser>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_AppToJson(
+    return _$$_AdvertiserToJson(
       this,
     );
   }
 }
 
-abstract class _App extends App {
-  const factory _App(
+abstract class _Advertiser extends Advertiser {
+  const factory _Advertiser(
       {@JsonString() required final String id,
+      required final String archiveId,
       required final String name,
-      @JsonExtra() final Map<String, dynamic> extra}) = _$_App;
-  const _App._() : super._();
+      @JsonExtra() final Map<String, dynamic> extra}) = _$_Advertiser;
+  const _Advertiser._() : super._();
 
-  factory _App.fromJson(Map<String, dynamic> json) = _$_App.fromJson;
+  factory _Advertiser.fromJson(Map<String, dynamic> json) =
+      _$_Advertiser.fromJson;
 
   @override
   @JsonString()
   String get id;
   @override // @JsonDateTime() required DateTime created,
 // @JsonDateTime() required DateTime updated,
-  /// [name] is the name of the [App].
+  String get archiveId;
+  @override
+
+  /// [name] is the name used by the [Advertiser] on the [Advertiser].
   String get name;
   @override
 
@@ -213,5 +246,6 @@ abstract class _App extends App {
   Map<String, dynamic> get extra;
   @override
   @JsonKey(ignore: true)
-  _$$_AppCopyWith<_$_App> get copyWith => throw _privateConstructorUsedError;
+  _$$_AdvertiserCopyWith<_$_Advertiser> get copyWith =>
+      throw _privateConstructorUsedError;
 }

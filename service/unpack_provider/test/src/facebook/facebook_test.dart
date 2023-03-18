@@ -1,5 +1,6 @@
 // ignore_for_file: avoid_print
 
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:unself_unpack/unself_unpack.dart';
@@ -51,33 +52,40 @@ void main() {
 
       expect((unpacked['topics'] as List).first, {
         'archiveId': archiveId,
+        'partId': 'facebook_ads_topics',
         'id': 'chateau',
         'name': 'ChÃ¢teau',
       });
 
       expect((unpacked['advertisers'] as List).first, {
         'archiveId': archiveId,
+        'partId': 'facebook_advertiser_data_use',
         'id': 'francis-tran-and-hebert',
-        'name': 'Francis, Tran and Hebert'
+        'name': 'Francis, Tran and Hebert',
+        'has_data_file_custom_audience': true,
+        'has_remarketing_custom_audience': false,
+        'has_in_person_store_visit': true,
       });
 
       expect((unpacked['activities'] as List).first, {
         'archiveId': archiveId,
-        'advertiser_name': null, // TODO: Remove this
-        'advertiserId': 'francis-tran-and-hebert',
-        'has_data_file_custom_audience': true,
-        'has_remarketing_custom_audience': false,
-        'has_in_person_store_visit': true
+        'partId': 'facebook_advertiser_interaction',
+        'title': 'thomas-phillips',
+        'advertiserId': 'thomas-phillips',
+        'action': 'Clic sur publicitÃ©',
+        'timestamp': 1565508906,
       });
 
       expect((unpacked['apps'] as List).first, {
         'archiveId': archiveId,
+        'partId': 'facebook_external_activities',
         'id': 'activision-publishing',
         'name': 'Activision Publishing'
       });
 
       expect((unpacked['accounts'] as List).first, {
         'archiveId': archiveId,
+        'partId': 'facebook_account',
         'name.full_name': 'Full Name',
         'name.first_name': 'First Name',
         'name.middle_name': 'Middle Name',
@@ -93,8 +101,29 @@ void main() {
         'verified': true,
         'username': 'unself.app',
         'registration_timestamp': 1573000000,
-        'profile_uri': 'https://www.facebook.com/unself.app'
+        'profile_uri': 'https://www.facebook.com/unself.app',
       });
     });
+
+    test('can unpack zip file with MappingEntry and serialized by ArchiveData',
+        () async {
+      final paths = await zipImport.open(facebookSampleData);
+      print(paths);
+
+      final unpacked = await zipImport.unpack(facebookSchema.part);
+
+      print(jsonEncode(
+        unpacked,
+        toEncodable: (Object? value) => value is DateTime
+            ? value.toIso8601String()
+            : throw UnsupportedError('Cannot convert to JSON: $value'),
+      ));
+
+      // Activity.fromJson((unpacked['activities'] as List).first);
+      // Account.fromJson((unpacked['account'] as List).first);
+      // Advertiser.fromJson((unpacked['advertisers'] as List).first);
+      // App.fromJson((unpacked['apps'] as List).first);
+      // Topic.fromJson((unpacked['topics'] as List).first);
+    }, skip: true);
   });
 }

@@ -39,12 +39,8 @@ mixin _$JsonSchema {
   Map<String, dynamic> get extra => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            String name,
-            Map<String, IJsonSchema> definition,
-            String key,
-            Map<String, String> fieldMap,
-            @JsonExtra() Map<String, dynamic> extra)
+    required TResult Function(String name, Map<String, IJsonSchema> definition,
+            String key, @JsonExtra() Map<String, dynamic> extra)
         entity,
     required TResult Function(
             String name,
@@ -53,7 +49,6 @@ mixin _$JsonSchema {
             List<String> entityPath,
             List<List<String>> includePath,
             bool addMissingKeys,
-            Map<String, String> fieldMap,
             @JsonExtra() Map<String, dynamic> extra)
         flat,
     required TResult Function(String name, dynamic definition,
@@ -63,12 +58,8 @@ mixin _$JsonSchema {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            String name,
-            Map<String, IJsonSchema> definition,
-            String key,
-            Map<String, String> fieldMap,
-            @JsonExtra() Map<String, dynamic> extra)?
+    TResult? Function(String name, Map<String, IJsonSchema> definition,
+            String key, @JsonExtra() Map<String, dynamic> extra)?
         entity,
     TResult? Function(
             String name,
@@ -77,7 +68,6 @@ mixin _$JsonSchema {
             List<String> entityPath,
             List<List<String>> includePath,
             bool addMissingKeys,
-            Map<String, String> fieldMap,
             @JsonExtra() Map<String, dynamic> extra)?
         flat,
     TResult? Function(String name, dynamic definition,
@@ -87,12 +77,8 @@ mixin _$JsonSchema {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            String name,
-            Map<String, IJsonSchema> definition,
-            String key,
-            Map<String, String> fieldMap,
-            @JsonExtra() Map<String, dynamic> extra)?
+    TResult Function(String name, Map<String, IJsonSchema> definition,
+            String key, @JsonExtra() Map<String, dynamic> extra)?
         entity,
     TResult Function(
             String name,
@@ -101,7 +87,6 @@ mixin _$JsonSchema {
             List<String> entityPath,
             List<List<String>> includePath,
             bool addMissingKeys,
-            Map<String, String> fieldMap,
             @JsonExtra() Map<String, dynamic> extra)?
         flat,
     TResult Function(String name, dynamic definition,
@@ -186,7 +171,6 @@ abstract class _$$EntityCopyWith<$Res> implements $JsonSchemaCopyWith<$Res> {
       {String name,
       Map<String, IJsonSchema> definition,
       String key,
-      Map<String, String> fieldMap,
       @JsonExtra() Map<String, dynamic> extra});
 }
 
@@ -203,7 +187,6 @@ class __$$EntityCopyWithImpl<$Res>
     Object? name = null,
     Object? definition = null,
     Object? key = null,
-    Object? fieldMap = null,
     Object? extra = null,
   }) {
     return _then(_$Entity(
@@ -219,10 +202,6 @@ class __$$EntityCopyWithImpl<$Res>
           ? _value.key
           : key // ignore: cast_nullable_to_non_nullable
               as String,
-      fieldMap: null == fieldMap
-          ? _value._fieldMap
-          : fieldMap // ignore: cast_nullable_to_non_nullable
-              as Map<String, String>,
       extra: null == extra
           ? _value._extra
           : extra // ignore: cast_nullable_to_non_nullable
@@ -237,11 +216,9 @@ class _$Entity extends Entity {
   const _$Entity(this.name,
       {final Map<String, IJsonSchema> definition = const {},
       this.key = 'id',
-      final Map<String, String> fieldMap = const {},
       @JsonExtra() final Map<String, dynamic> extra = const {},
       final String? $type})
       : _definition = definition,
-        _fieldMap = fieldMap,
         _extra = extra,
         $type = $type ?? 'JsonSchema.entity',
         super._();
@@ -263,14 +240,6 @@ class _$Entity extends Entity {
   @override
   @JsonKey()
   final String key;
-  final Map<String, String> _fieldMap;
-  @override
-  @JsonKey()
-  Map<String, String> get fieldMap {
-    if (_fieldMap is EqualUnmodifiableMapView) return _fieldMap;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(_fieldMap);
-  }
 
   /// [extra] is a map of additional properties.
   final Map<String, dynamic> _extra;
@@ -290,7 +259,7 @@ class _$Entity extends Entity {
 
   @override
   String toString() {
-    return 'JsonSchema.entity(name: $name, definition: $definition, key: $key, fieldMap: $fieldMap, extra: $extra)';
+    return 'JsonSchema.entity(name: $name, definition: $definition, key: $key, extra: $extra)';
   }
 
   @override
@@ -302,7 +271,6 @@ class _$Entity extends Entity {
             const DeepCollectionEquality()
                 .equals(other._definition, _definition) &&
             (identical(other.key, key) || other.key == key) &&
-            const DeepCollectionEquality().equals(other._fieldMap, _fieldMap) &&
             const DeepCollectionEquality().equals(other._extra, _extra));
   }
 
@@ -313,7 +281,6 @@ class _$Entity extends Entity {
       name,
       const DeepCollectionEquality().hash(_definition),
       key,
-      const DeepCollectionEquality().hash(_fieldMap),
       const DeepCollectionEquality().hash(_extra));
 
   @JsonKey(ignore: true)
@@ -325,12 +292,8 @@ class _$Entity extends Entity {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            String name,
-            Map<String, IJsonSchema> definition,
-            String key,
-            Map<String, String> fieldMap,
-            @JsonExtra() Map<String, dynamic> extra)
+    required TResult Function(String name, Map<String, IJsonSchema> definition,
+            String key, @JsonExtra() Map<String, dynamic> extra)
         entity,
     required TResult Function(
             String name,
@@ -339,25 +302,20 @@ class _$Entity extends Entity {
             List<String> entityPath,
             List<List<String>> includePath,
             bool addMissingKeys,
-            Map<String, String> fieldMap,
             @JsonExtra() Map<String, dynamic> extra)
         flat,
     required TResult Function(String name, dynamic definition,
             @JsonExtra() Map<String, dynamic> extra)
         struct,
   }) {
-    return entity(name, definition, key, fieldMap, extra);
+    return entity(name, definition, key, extra);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            String name,
-            Map<String, IJsonSchema> definition,
-            String key,
-            Map<String, String> fieldMap,
-            @JsonExtra() Map<String, dynamic> extra)?
+    TResult? Function(String name, Map<String, IJsonSchema> definition,
+            String key, @JsonExtra() Map<String, dynamic> extra)?
         entity,
     TResult? Function(
             String name,
@@ -366,25 +324,20 @@ class _$Entity extends Entity {
             List<String> entityPath,
             List<List<String>> includePath,
             bool addMissingKeys,
-            Map<String, String> fieldMap,
             @JsonExtra() Map<String, dynamic> extra)?
         flat,
     TResult? Function(String name, dynamic definition,
             @JsonExtra() Map<String, dynamic> extra)?
         struct,
   }) {
-    return entity?.call(name, definition, key, fieldMap, extra);
+    return entity?.call(name, definition, key, extra);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            String name,
-            Map<String, IJsonSchema> definition,
-            String key,
-            Map<String, String> fieldMap,
-            @JsonExtra() Map<String, dynamic> extra)?
+    TResult Function(String name, Map<String, IJsonSchema> definition,
+            String key, @JsonExtra() Map<String, dynamic> extra)?
         entity,
     TResult Function(
             String name,
@@ -393,7 +346,6 @@ class _$Entity extends Entity {
             List<String> entityPath,
             List<List<String>> includePath,
             bool addMissingKeys,
-            Map<String, String> fieldMap,
             @JsonExtra() Map<String, dynamic> extra)?
         flat,
     TResult Function(String name, dynamic definition,
@@ -402,7 +354,7 @@ class _$Entity extends Entity {
     required TResult orElse(),
   }) {
     if (entity != null) {
-      return entity(name, definition, key, fieldMap, extra);
+      return entity(name, definition, key, extra);
     }
     return orElse();
   }
@@ -453,7 +405,6 @@ abstract class Entity extends JsonSchema {
   const factory Entity(final String name,
       {final Map<String, IJsonSchema> definition,
       final String key,
-      final Map<String, String> fieldMap,
       @JsonExtra() final Map<String, dynamic> extra}) = _$Entity;
   const Entity._() : super._();
 
@@ -464,7 +415,6 @@ abstract class Entity extends JsonSchema {
   @override
   Map<String, IJsonSchema> get definition;
   String get key;
-  Map<String, String> get fieldMap;
   @override
 
   /// [extra] is a map of additional properties.
@@ -489,7 +439,6 @@ abstract class _$$FlatCopyWith<$Res> implements $JsonSchemaCopyWith<$Res> {
       List<String> entityPath,
       List<List<String>> includePath,
       bool addMissingKeys,
-      Map<String, String> fieldMap,
       @JsonExtra() Map<String, dynamic> extra});
 }
 
@@ -508,7 +457,6 @@ class __$$FlatCopyWithImpl<$Res> extends _$JsonSchemaCopyWithImpl<$Res, _$Flat>
     Object? entityPath = null,
     Object? includePath = null,
     Object? addMissingKeys = null,
-    Object? fieldMap = null,
     Object? extra = null,
   }) {
     return _then(_$Flat(
@@ -536,10 +484,6 @@ class __$$FlatCopyWithImpl<$Res> extends _$JsonSchemaCopyWithImpl<$Res, _$Flat>
           ? _value.addMissingKeys
           : addMissingKeys // ignore: cast_nullable_to_non_nullable
               as bool,
-      fieldMap: null == fieldMap
-          ? _value._fieldMap
-          : fieldMap // ignore: cast_nullable_to_non_nullable
-              as Map<String, String>,
       extra: null == extra
           ? _value._extra
           : extra // ignore: cast_nullable_to_non_nullable
@@ -557,13 +501,11 @@ class _$Flat extends Flat {
       final List<String> entityPath = const [],
       final List<List<String>> includePath = const [],
       this.addMissingKeys = true,
-      final Map<String, String> fieldMap = const {},
       @JsonExtra() final Map<String, dynamic> extra = const {},
       final String? $type})
       : _definition = definition,
         _entityPath = entityPath,
         _includePath = includePath,
-        _fieldMap = fieldMap,
         _extra = extra,
         $type = $type ?? 'JsonSchema.flat',
         super._();
@@ -605,14 +547,6 @@ class _$Flat extends Flat {
   @override
   @JsonKey()
   final bool addMissingKeys;
-  final Map<String, String> _fieldMap;
-  @override
-  @JsonKey()
-  Map<String, String> get fieldMap {
-    if (_fieldMap is EqualUnmodifiableMapView) return _fieldMap;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(_fieldMap);
-  }
 
   /// [extra] is a map of additional properties.
   final Map<String, dynamic> _extra;
@@ -632,7 +566,7 @@ class _$Flat extends Flat {
 
   @override
   String toString() {
-    return 'JsonSchema.flat(name: $name, definition: $definition, key: $key, entityPath: $entityPath, includePath: $includePath, addMissingKeys: $addMissingKeys, fieldMap: $fieldMap, extra: $extra)';
+    return 'JsonSchema.flat(name: $name, definition: $definition, key: $key, entityPath: $entityPath, includePath: $includePath, addMissingKeys: $addMissingKeys, extra: $extra)';
   }
 
   @override
@@ -650,7 +584,6 @@ class _$Flat extends Flat {
                 .equals(other._includePath, _includePath) &&
             (identical(other.addMissingKeys, addMissingKeys) ||
                 other.addMissingKeys == addMissingKeys) &&
-            const DeepCollectionEquality().equals(other._fieldMap, _fieldMap) &&
             const DeepCollectionEquality().equals(other._extra, _extra));
   }
 
@@ -664,7 +597,6 @@ class _$Flat extends Flat {
       const DeepCollectionEquality().hash(_entityPath),
       const DeepCollectionEquality().hash(_includePath),
       addMissingKeys,
-      const DeepCollectionEquality().hash(_fieldMap),
       const DeepCollectionEquality().hash(_extra));
 
   @JsonKey(ignore: true)
@@ -676,12 +608,8 @@ class _$Flat extends Flat {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            String name,
-            Map<String, IJsonSchema> definition,
-            String key,
-            Map<String, String> fieldMap,
-            @JsonExtra() Map<String, dynamic> extra)
+    required TResult Function(String name, Map<String, IJsonSchema> definition,
+            String key, @JsonExtra() Map<String, dynamic> extra)
         entity,
     required TResult Function(
             String name,
@@ -690,26 +618,21 @@ class _$Flat extends Flat {
             List<String> entityPath,
             List<List<String>> includePath,
             bool addMissingKeys,
-            Map<String, String> fieldMap,
             @JsonExtra() Map<String, dynamic> extra)
         flat,
     required TResult Function(String name, dynamic definition,
             @JsonExtra() Map<String, dynamic> extra)
         struct,
   }) {
-    return flat(name, definition, key, entityPath, includePath, addMissingKeys,
-        fieldMap, extra);
+    return flat(
+        name, definition, key, entityPath, includePath, addMissingKeys, extra);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            String name,
-            Map<String, IJsonSchema> definition,
-            String key,
-            Map<String, String> fieldMap,
-            @JsonExtra() Map<String, dynamic> extra)?
+    TResult? Function(String name, Map<String, IJsonSchema> definition,
+            String key, @JsonExtra() Map<String, dynamic> extra)?
         entity,
     TResult? Function(
             String name,
@@ -718,26 +641,21 @@ class _$Flat extends Flat {
             List<String> entityPath,
             List<List<String>> includePath,
             bool addMissingKeys,
-            Map<String, String> fieldMap,
             @JsonExtra() Map<String, dynamic> extra)?
         flat,
     TResult? Function(String name, dynamic definition,
             @JsonExtra() Map<String, dynamic> extra)?
         struct,
   }) {
-    return flat?.call(name, definition, key, entityPath, includePath,
-        addMissingKeys, fieldMap, extra);
+    return flat?.call(
+        name, definition, key, entityPath, includePath, addMissingKeys, extra);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            String name,
-            Map<String, IJsonSchema> definition,
-            String key,
-            Map<String, String> fieldMap,
-            @JsonExtra() Map<String, dynamic> extra)?
+    TResult Function(String name, Map<String, IJsonSchema> definition,
+            String key, @JsonExtra() Map<String, dynamic> extra)?
         entity,
     TResult Function(
             String name,
@@ -746,7 +664,6 @@ class _$Flat extends Flat {
             List<String> entityPath,
             List<List<String>> includePath,
             bool addMissingKeys,
-            Map<String, String> fieldMap,
             @JsonExtra() Map<String, dynamic> extra)?
         flat,
     TResult Function(String name, dynamic definition,
@@ -756,7 +673,7 @@ class _$Flat extends Flat {
   }) {
     if (flat != null) {
       return flat(name, definition, key, entityPath, includePath,
-          addMissingKeys, fieldMap, extra);
+          addMissingKeys, extra);
     }
     return orElse();
   }
@@ -810,7 +727,6 @@ abstract class Flat extends JsonSchema {
       final List<String> entityPath,
       final List<List<String>> includePath,
       final bool addMissingKeys,
-      final Map<String, String> fieldMap,
       @JsonExtra() final Map<String, dynamic> extra}) = _$Flat;
   const Flat._() : super._();
 
@@ -824,7 +740,6 @@ abstract class Flat extends JsonSchema {
   List<String> get entityPath;
   List<List<String>> get includePath;
   bool get addMissingKeys;
-  Map<String, String> get fieldMap;
   @override
 
   /// [extra] is a map of additional properties.
@@ -945,12 +860,8 @@ class _$Struct extends Struct {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            String name,
-            Map<String, IJsonSchema> definition,
-            String key,
-            Map<String, String> fieldMap,
-            @JsonExtra() Map<String, dynamic> extra)
+    required TResult Function(String name, Map<String, IJsonSchema> definition,
+            String key, @JsonExtra() Map<String, dynamic> extra)
         entity,
     required TResult Function(
             String name,
@@ -959,7 +870,6 @@ class _$Struct extends Struct {
             List<String> entityPath,
             List<List<String>> includePath,
             bool addMissingKeys,
-            Map<String, String> fieldMap,
             @JsonExtra() Map<String, dynamic> extra)
         flat,
     required TResult Function(String name, dynamic definition,
@@ -972,12 +882,8 @@ class _$Struct extends Struct {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            String name,
-            Map<String, IJsonSchema> definition,
-            String key,
-            Map<String, String> fieldMap,
-            @JsonExtra() Map<String, dynamic> extra)?
+    TResult? Function(String name, Map<String, IJsonSchema> definition,
+            String key, @JsonExtra() Map<String, dynamic> extra)?
         entity,
     TResult? Function(
             String name,
@@ -986,7 +892,6 @@ class _$Struct extends Struct {
             List<String> entityPath,
             List<List<String>> includePath,
             bool addMissingKeys,
-            Map<String, String> fieldMap,
             @JsonExtra() Map<String, dynamic> extra)?
         flat,
     TResult? Function(String name, dynamic definition,
@@ -999,12 +904,8 @@ class _$Struct extends Struct {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            String name,
-            Map<String, IJsonSchema> definition,
-            String key,
-            Map<String, String> fieldMap,
-            @JsonExtra() Map<String, dynamic> extra)?
+    TResult Function(String name, Map<String, IJsonSchema> definition,
+            String key, @JsonExtra() Map<String, dynamic> extra)?
         entity,
     TResult Function(
             String name,
@@ -1013,7 +914,6 @@ class _$Struct extends Struct {
             List<String> entityPath,
             List<List<String>> includePath,
             bool addMissingKeys,
-            Map<String, String> fieldMap,
             @JsonExtra() Map<String, dynamic> extra)?
         flat,
     TResult Function(String name, dynamic definition,

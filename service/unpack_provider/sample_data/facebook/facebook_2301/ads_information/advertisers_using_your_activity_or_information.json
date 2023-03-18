@@ -1,1 +1,424 @@
-{"custom_audiences_all_types_v2": [{"advertiser_name": "Francis, Tran and Hebert", "has_data_file_custom_audience": true, "has_remarketing_custom_audience": false, "has_in_person_store_visit": true}, {"advertiser_name": "Hogan Ltd", "has_data_file_custom_audience": true, "has_remarketing_custom_audience": false, "has_in_person_store_visit": true}, {"advertiser_name": "Mcmahon Group", "has_data_file_custom_audience": false, "has_remarketing_custom_audience": true, "has_in_person_store_visit": true}, {"advertiser_name": "Shah-Wang", "has_data_file_custom_audience": true, "has_remarketing_custom_audience": false, "has_in_person_store_visit": true}, {"advertiser_name": "Rowland and Sons", "has_data_file_custom_audience": true, "has_remarketing_custom_audience": false, "has_in_person_store_visit": false}, {"advertiser_name": "Davila-Lewis", "has_data_file_custom_audience": false, "has_remarketing_custom_audience": true, "has_in_person_store_visit": true}, {"advertiser_name": "Mendez and Sons", "has_data_file_custom_audience": false, "has_remarketing_custom_audience": true, "has_in_person_store_visit": true}, {"advertiser_name": "Hernandez Inc", "has_data_file_custom_audience": false, "has_remarketing_custom_audience": true, "has_in_person_store_visit": false}, {"advertiser_name": "Mathews, Torres and Torres", "has_data_file_custom_audience": true, "has_remarketing_custom_audience": true, "has_in_person_store_visit": true}, {"advertiser_name": "Barrett PLC", "has_data_file_custom_audience": false, "has_remarketing_custom_audience": true, "has_in_person_store_visit": false}, {"advertiser_name": "David-Bennett", "has_data_file_custom_audience": true, "has_remarketing_custom_audience": false, "has_in_person_store_visit": false}, {"advertiser_name": "Henson, Vaughn and Huber", "has_data_file_custom_audience": false, "has_remarketing_custom_audience": true, "has_in_person_store_visit": true}, {"advertiser_name": "Clark-White", "has_data_file_custom_audience": true, "has_remarketing_custom_audience": false, "has_in_person_store_visit": true}, {"advertiser_name": "Scott-Lindsey", "has_data_file_custom_audience": false, "has_remarketing_custom_audience": true, "has_in_person_store_visit": true}, {"advertiser_name": "Jones-Allen", "has_data_file_custom_audience": false, "has_remarketing_custom_audience": true, "has_in_person_store_visit": false}, {"advertiser_name": "Keith-Wells", "has_data_file_custom_audience": true, "has_remarketing_custom_audience": false, "has_in_person_store_visit": false}, {"advertiser_name": "Gonzalez PLC", "has_data_file_custom_audience": true, "has_remarketing_custom_audience": true, "has_in_person_store_visit": true}, {"advertiser_name": "Jimenez and Sons", "has_data_file_custom_audience": false, "has_remarketing_custom_audience": false, "has_in_person_store_visit": true}, {"advertiser_name": "Castaneda and Sons", "has_data_file_custom_audience": false, "has_remarketing_custom_audience": true, "has_in_person_store_visit": true}, {"advertiser_name": "Smith-Mills", "has_data_file_custom_audience": false, "has_remarketing_custom_audience": false, "has_in_person_store_visit": false}, {"advertiser_name": "Frost, Nicholson and Thomas", "has_data_file_custom_audience": false, "has_remarketing_custom_audience": false, "has_in_person_store_visit": true}, {"advertiser_name": "Wallace PLC", "has_data_file_custom_audience": false, "has_remarketing_custom_audience": false, "has_in_person_store_visit": false}, {"advertiser_name": "Allen, Brown and Rose", "has_data_file_custom_audience": true, "has_remarketing_custom_audience": false, "has_in_person_store_visit": false}, {"advertiser_name": "Callahan Inc", "has_data_file_custom_audience": true, "has_remarketing_custom_audience": false, "has_in_person_store_visit": false}, {"advertiser_name": "Brady-Chavez", "has_data_file_custom_audience": true, "has_remarketing_custom_audience": true, "has_in_person_store_visit": false}, {"advertiser_name": "Hawkins, Gonzales and Whitaker", "has_data_file_custom_audience": false, "has_remarketing_custom_audience": true, "has_in_person_store_visit": false}, {"advertiser_name": "Petersen-Harris", "has_data_file_custom_audience": false, "has_remarketing_custom_audience": false, "has_in_person_store_visit": false}, {"advertiser_name": "Gonzales Ltd", "has_data_file_custom_audience": false, "has_remarketing_custom_audience": true, "has_in_person_store_visit": false}, {"advertiser_name": "Miller PLC", "has_data_file_custom_audience": true, "has_remarketing_custom_audience": true, "has_in_person_store_visit": true}, {"advertiser_name": "Moss-Soto", "has_data_file_custom_audience": false, "has_remarketing_custom_audience": true, "has_in_person_store_visit": true}, {"advertiser_name": "Thompson-Cochran", "has_data_file_custom_audience": true, "has_remarketing_custom_audience": true, "has_in_person_store_visit": false}, {"advertiser_name": "Cox PLC", "has_data_file_custom_audience": true, "has_remarketing_custom_audience": true, "has_in_person_store_visit": true}, {"advertiser_name": "Archer, Moore and Guerra", "has_data_file_custom_audience": true, "has_remarketing_custom_audience": true, "has_in_person_store_visit": false}, {"advertiser_name": "Willis and Sons", "has_data_file_custom_audience": false, "has_remarketing_custom_audience": true, "has_in_person_store_visit": false}, {"advertiser_name": "Roberts-Kent", "has_data_file_custom_audience": true, "has_remarketing_custom_audience": true, "has_in_person_store_visit": true}, {"advertiser_name": "Black-Austin", "has_data_file_custom_audience": false, "has_remarketing_custom_audience": true, "has_in_person_store_visit": true}, {"advertiser_name": "Wong-Juarez", "has_data_file_custom_audience": false, "has_remarketing_custom_audience": true, "has_in_person_store_visit": true}, {"advertiser_name": "Evans-Garcia", "has_data_file_custom_audience": false, "has_remarketing_custom_audience": false, "has_in_person_store_visit": false}, {"advertiser_name": "Woodard, Holt and Simon", "has_data_file_custom_audience": true, "has_remarketing_custom_audience": true, "has_in_person_store_visit": false}, {"advertiser_name": "Lawson-Jensen", "has_data_file_custom_audience": true, "has_remarketing_custom_audience": false, "has_in_person_store_visit": false}, {"advertiser_name": "Bridges-Hodges", "has_data_file_custom_audience": true, "has_remarketing_custom_audience": false, "has_in_person_store_visit": false}, {"advertiser_name": "Nielsen, Harrison and Garcia", "has_data_file_custom_audience": false, "has_remarketing_custom_audience": true, "has_in_person_store_visit": false}, {"advertiser_name": "Figueroa-Harris", "has_data_file_custom_audience": false, "has_remarketing_custom_audience": false, "has_in_person_store_visit": true}, {"advertiser_name": "Wright and Sons", "has_data_file_custom_audience": false, "has_remarketing_custom_audience": false, "has_in_person_store_visit": true}, {"advertiser_name": "Jordan Inc", "has_data_file_custom_audience": false, "has_remarketing_custom_audience": false, "has_in_person_store_visit": true}, {"advertiser_name": "Carroll LLC", "has_data_file_custom_audience": false, "has_remarketing_custom_audience": false, "has_in_person_store_visit": false}, {"advertiser_name": "Vasquez-Graham", "has_data_file_custom_audience": true, "has_remarketing_custom_audience": true, "has_in_person_store_visit": true}, {"advertiser_name": "Daniel, Vance and Cole", "has_data_file_custom_audience": false, "has_remarketing_custom_audience": false, "has_in_person_store_visit": true}, {"advertiser_name": "Martin LLC", "has_data_file_custom_audience": false, "has_remarketing_custom_audience": true, "has_in_person_store_visit": true}, {"advertiser_name": "Johnson-Sutton", "has_data_file_custom_audience": true, "has_remarketing_custom_audience": true, "has_in_person_store_visit": false}, {"advertiser_name": "Bush-Guzman", "has_data_file_custom_audience": false, "has_remarketing_custom_audience": false, "has_in_person_store_visit": false}, {"advertiser_name": "Walton, Hernandez and Cruz", "has_data_file_custom_audience": true, "has_remarketing_custom_audience": true, "has_in_person_store_visit": false}, {"advertiser_name": "Fleming-Kennedy", "has_data_file_custom_audience": false, "has_remarketing_custom_audience": false, "has_in_person_store_visit": false}, {"advertiser_name": "Alexander Group", "has_data_file_custom_audience": true, "has_remarketing_custom_audience": true, "has_in_person_store_visit": false}, {"advertiser_name": "Howe and Sons", "has_data_file_custom_audience": false, "has_remarketing_custom_audience": false, "has_in_person_store_visit": false}, {"advertiser_name": "Elliott, Chavez and Weaver", "has_data_file_custom_audience": true, "has_remarketing_custom_audience": false, "has_in_person_store_visit": false}, {"advertiser_name": "Wiley Ltd", "has_data_file_custom_audience": true, "has_remarketing_custom_audience": true, "has_in_person_store_visit": false}, {"advertiser_name": "Ingram, Lee and Hughes", "has_data_file_custom_audience": true, "has_remarketing_custom_audience": true, "has_in_person_store_visit": true}, {"advertiser_name": "Brown-Brown", "has_data_file_custom_audience": true, "has_remarketing_custom_audience": false, "has_in_person_store_visit": true}, {"advertiser_name": "Butler PLC", "has_data_file_custom_audience": true, "has_remarketing_custom_audience": true, "has_in_person_store_visit": true}, {"advertiser_name": "Green and Sons", "has_data_file_custom_audience": false, "has_remarketing_custom_audience": false, "has_in_person_store_visit": false}, {"advertiser_name": "Flynn, Terrell and Johnson", "has_data_file_custom_audience": false, "has_remarketing_custom_audience": true, "has_in_person_store_visit": true}, {"advertiser_name": "Edwards-Flores", "has_data_file_custom_audience": false, "has_remarketing_custom_audience": true, "has_in_person_store_visit": true}, {"advertiser_name": "Rogers-Webb", "has_data_file_custom_audience": false, "has_remarketing_custom_audience": false, "has_in_person_store_visit": true}, {"advertiser_name": "Walker, Nguyen and Harris", "has_data_file_custom_audience": false, "has_remarketing_custom_audience": true, "has_in_person_store_visit": false}, {"advertiser_name": "Sullivan-Brady", "has_data_file_custom_audience": false, "has_remarketing_custom_audience": true, "has_in_person_store_visit": false}, {"advertiser_name": "Ford-Morris", "has_data_file_custom_audience": true, "has_remarketing_custom_audience": false, "has_in_person_store_visit": false}, {"advertiser_name": "Gomez-Pena", "has_data_file_custom_audience": false, "has_remarketing_custom_audience": false, "has_in_person_store_visit": false}, {"advertiser_name": "Stein, Jones and Jones", "has_data_file_custom_audience": false, "has_remarketing_custom_audience": true, "has_in_person_store_visit": false}, {"advertiser_name": "Holloway PLC", "has_data_file_custom_audience": true, "has_remarketing_custom_audience": true, "has_in_person_store_visit": false}]}
+{
+    "custom_audiences_all_types_v2": [
+        {
+            "advertiser_name": "Francis, Tran and Hebert",
+            "has_data_file_custom_audience": true,
+            "has_remarketing_custom_audience": false,
+            "has_in_person_store_visit": true
+        },
+        {
+            "advertiser_name": "Hogan Ltd",
+            "has_data_file_custom_audience": true,
+            "has_remarketing_custom_audience": false,
+            "has_in_person_store_visit": true
+        },
+        {
+            "advertiser_name": "Mcmahon Group",
+            "has_data_file_custom_audience": false,
+            "has_remarketing_custom_audience": true,
+            "has_in_person_store_visit": true
+        },
+        {
+            "advertiser_name": "Shah-Wang",
+            "has_data_file_custom_audience": true,
+            "has_remarketing_custom_audience": false,
+            "has_in_person_store_visit": true
+        },
+        {
+            "advertiser_name": "Rowland and Sons",
+            "has_data_file_custom_audience": true,
+            "has_remarketing_custom_audience": false,
+            "has_in_person_store_visit": false
+        },
+        {
+            "advertiser_name": "Davila-Lewis",
+            "has_data_file_custom_audience": false,
+            "has_remarketing_custom_audience": true,
+            "has_in_person_store_visit": true
+        },
+        {
+            "advertiser_name": "Mendez and Sons",
+            "has_data_file_custom_audience": false,
+            "has_remarketing_custom_audience": true,
+            "has_in_person_store_visit": true
+        },
+        {
+            "advertiser_name": "Hernandez Inc",
+            "has_data_file_custom_audience": false,
+            "has_remarketing_custom_audience": true,
+            "has_in_person_store_visit": false
+        },
+        {
+            "advertiser_name": "Mathews, Torres and Torres",
+            "has_data_file_custom_audience": true,
+            "has_remarketing_custom_audience": true,
+            "has_in_person_store_visit": true
+        },
+        {
+            "advertiser_name": "Barrett PLC",
+            "has_data_file_custom_audience": false,
+            "has_remarketing_custom_audience": true,
+            "has_in_person_store_visit": false
+        },
+        {
+            "advertiser_name": "David-Bennett",
+            "has_data_file_custom_audience": true,
+            "has_remarketing_custom_audience": false,
+            "has_in_person_store_visit": false
+        },
+        {
+            "advertiser_name": "Henson, Vaughn and Huber",
+            "has_data_file_custom_audience": false,
+            "has_remarketing_custom_audience": true,
+            "has_in_person_store_visit": true
+        },
+        {
+            "advertiser_name": "Clark-White",
+            "has_data_file_custom_audience": true,
+            "has_remarketing_custom_audience": false,
+            "has_in_person_store_visit": true
+        },
+        {
+            "advertiser_name": "Scott-Lindsey",
+            "has_data_file_custom_audience": false,
+            "has_remarketing_custom_audience": true,
+            "has_in_person_store_visit": true
+        },
+        {
+            "advertiser_name": "Jones-Allen",
+            "has_data_file_custom_audience": false,
+            "has_remarketing_custom_audience": true,
+            "has_in_person_store_visit": false
+        },
+        {
+            "advertiser_name": "Keith-Wells",
+            "has_data_file_custom_audience": true,
+            "has_remarketing_custom_audience": false,
+            "has_in_person_store_visit": false
+        },
+        {
+            "advertiser_name": "Gonzalez PLC",
+            "has_data_file_custom_audience": true,
+            "has_remarketing_custom_audience": true,
+            "has_in_person_store_visit": true
+        },
+        {
+            "advertiser_name": "Jimenez and Sons",
+            "has_data_file_custom_audience": false,
+            "has_remarketing_custom_audience": false,
+            "has_in_person_store_visit": true
+        },
+        {
+            "advertiser_name": "Castaneda and Sons",
+            "has_data_file_custom_audience": false,
+            "has_remarketing_custom_audience": true,
+            "has_in_person_store_visit": true
+        },
+        {
+            "advertiser_name": "Smith-Mills",
+            "has_data_file_custom_audience": false,
+            "has_remarketing_custom_audience": false,
+            "has_in_person_store_visit": false
+        },
+        {
+            "advertiser_name": "Frost, Nicholson and Thomas",
+            "has_data_file_custom_audience": false,
+            "has_remarketing_custom_audience": false,
+            "has_in_person_store_visit": true
+        },
+        {
+            "advertiser_name": "Wallace PLC",
+            "has_data_file_custom_audience": false,
+            "has_remarketing_custom_audience": false,
+            "has_in_person_store_visit": false
+        },
+        {
+            "advertiser_name": "Allen, Brown and Rose",
+            "has_data_file_custom_audience": true,
+            "has_remarketing_custom_audience": false,
+            "has_in_person_store_visit": false
+        },
+        {
+            "advertiser_name": "Callahan Inc",
+            "has_data_file_custom_audience": true,
+            "has_remarketing_custom_audience": false,
+            "has_in_person_store_visit": false
+        },
+        {
+            "advertiser_name": "Brady-Chavez",
+            "has_data_file_custom_audience": true,
+            "has_remarketing_custom_audience": true,
+            "has_in_person_store_visit": false
+        },
+        {
+            "advertiser_name": "Hawkins, Gonzales and Whitaker",
+            "has_data_file_custom_audience": false,
+            "has_remarketing_custom_audience": true,
+            "has_in_person_store_visit": false
+        },
+        {
+            "advertiser_name": "Petersen-Harris",
+            "has_data_file_custom_audience": false,
+            "has_remarketing_custom_audience": false,
+            "has_in_person_store_visit": false
+        },
+        {
+            "advertiser_name": "Gonzales Ltd",
+            "has_data_file_custom_audience": false,
+            "has_remarketing_custom_audience": true,
+            "has_in_person_store_visit": false
+        },
+        {
+            "advertiser_name": "Miller PLC",
+            "has_data_file_custom_audience": true,
+            "has_remarketing_custom_audience": true,
+            "has_in_person_store_visit": true
+        },
+        {
+            "advertiser_name": "Moss-Soto",
+            "has_data_file_custom_audience": false,
+            "has_remarketing_custom_audience": true,
+            "has_in_person_store_visit": true
+        },
+        {
+            "advertiser_name": "Thompson-Cochran",
+            "has_data_file_custom_audience": true,
+            "has_remarketing_custom_audience": true,
+            "has_in_person_store_visit": false
+        },
+        {
+            "advertiser_name": "Cox PLC",
+            "has_data_file_custom_audience": true,
+            "has_remarketing_custom_audience": true,
+            "has_in_person_store_visit": true
+        },
+        {
+            "advertiser_name": "Archer, Moore and Guerra",
+            "has_data_file_custom_audience": true,
+            "has_remarketing_custom_audience": true,
+            "has_in_person_store_visit": false
+        },
+        {
+            "advertiser_name": "Willis and Sons",
+            "has_data_file_custom_audience": false,
+            "has_remarketing_custom_audience": true,
+            "has_in_person_store_visit": false
+        },
+        {
+            "advertiser_name": "Roberts-Kent",
+            "has_data_file_custom_audience": true,
+            "has_remarketing_custom_audience": true,
+            "has_in_person_store_visit": true
+        },
+        {
+            "advertiser_name": "Black-Austin",
+            "has_data_file_custom_audience": false,
+            "has_remarketing_custom_audience": true,
+            "has_in_person_store_visit": true
+        },
+        {
+            "advertiser_name": "Wong-Juarez",
+            "has_data_file_custom_audience": false,
+            "has_remarketing_custom_audience": true,
+            "has_in_person_store_visit": true
+        },
+        {
+            "advertiser_name": "Evans-Garcia",
+            "has_data_file_custom_audience": false,
+            "has_remarketing_custom_audience": false,
+            "has_in_person_store_visit": false
+        },
+        {
+            "advertiser_name": "Woodard, Holt and Simon",
+            "has_data_file_custom_audience": true,
+            "has_remarketing_custom_audience": true,
+            "has_in_person_store_visit": false
+        },
+        {
+            "advertiser_name": "Lawson-Jensen",
+            "has_data_file_custom_audience": true,
+            "has_remarketing_custom_audience": false,
+            "has_in_person_store_visit": false
+        },
+        {
+            "advertiser_name": "Bridges-Hodges",
+            "has_data_file_custom_audience": true,
+            "has_remarketing_custom_audience": false,
+            "has_in_person_store_visit": false
+        },
+        {
+            "advertiser_name": "Nielsen, Harrison and Garcia",
+            "has_data_file_custom_audience": false,
+            "has_remarketing_custom_audience": true,
+            "has_in_person_store_visit": false
+        },
+        {
+            "advertiser_name": "Figueroa-Harris",
+            "has_data_file_custom_audience": false,
+            "has_remarketing_custom_audience": false,
+            "has_in_person_store_visit": true
+        },
+        {
+            "advertiser_name": "Wright and Sons",
+            "has_data_file_custom_audience": false,
+            "has_remarketing_custom_audience": false,
+            "has_in_person_store_visit": true
+        },
+        {
+            "advertiser_name": "Jordan Inc",
+            "has_data_file_custom_audience": false,
+            "has_remarketing_custom_audience": false,
+            "has_in_person_store_visit": true
+        },
+        {
+            "advertiser_name": "Carroll LLC",
+            "has_data_file_custom_audience": false,
+            "has_remarketing_custom_audience": false,
+            "has_in_person_store_visit": false
+        },
+        {
+            "advertiser_name": "Vasquez-Graham",
+            "has_data_file_custom_audience": true,
+            "has_remarketing_custom_audience": true,
+            "has_in_person_store_visit": true
+        },
+        {
+            "advertiser_name": "Daniel, Vance and Cole",
+            "has_data_file_custom_audience": false,
+            "has_remarketing_custom_audience": false,
+            "has_in_person_store_visit": true
+        },
+        {
+            "advertiser_name": "Martin LLC",
+            "has_data_file_custom_audience": false,
+            "has_remarketing_custom_audience": true,
+            "has_in_person_store_visit": true
+        },
+        {
+            "advertiser_name": "Johnson-Sutton",
+            "has_data_file_custom_audience": true,
+            "has_remarketing_custom_audience": true,
+            "has_in_person_store_visit": false
+        },
+        {
+            "advertiser_name": "Bush-Guzman",
+            "has_data_file_custom_audience": false,
+            "has_remarketing_custom_audience": false,
+            "has_in_person_store_visit": false
+        },
+        {
+            "advertiser_name": "Walton, Hernandez and Cruz",
+            "has_data_file_custom_audience": true,
+            "has_remarketing_custom_audience": true,
+            "has_in_person_store_visit": false
+        },
+        {
+            "advertiser_name": "Fleming-Kennedy",
+            "has_data_file_custom_audience": false,
+            "has_remarketing_custom_audience": false,
+            "has_in_person_store_visit": false
+        },
+        {
+            "advertiser_name": "Alexander Group",
+            "has_data_file_custom_audience": true,
+            "has_remarketing_custom_audience": true,
+            "has_in_person_store_visit": false
+        },
+        {
+            "advertiser_name": "Howe and Sons",
+            "has_data_file_custom_audience": false,
+            "has_remarketing_custom_audience": false,
+            "has_in_person_store_visit": false
+        },
+        {
+            "advertiser_name": "Elliott, Chavez and Weaver",
+            "has_data_file_custom_audience": true,
+            "has_remarketing_custom_audience": false,
+            "has_in_person_store_visit": false
+        },
+        {
+            "advertiser_name": "Wiley Ltd",
+            "has_data_file_custom_audience": true,
+            "has_remarketing_custom_audience": true,
+            "has_in_person_store_visit": false
+        },
+        {
+            "advertiser_name": "Ingram, Lee and Hughes",
+            "has_data_file_custom_audience": true,
+            "has_remarketing_custom_audience": true,
+            "has_in_person_store_visit": true
+        },
+        {
+            "advertiser_name": "Brown-Brown",
+            "has_data_file_custom_audience": true,
+            "has_remarketing_custom_audience": false,
+            "has_in_person_store_visit": true
+        },
+        {
+            "advertiser_name": "Butler PLC",
+            "has_data_file_custom_audience": true,
+            "has_remarketing_custom_audience": true,
+            "has_in_person_store_visit": true
+        },
+        {
+            "advertiser_name": "Green and Sons",
+            "has_data_file_custom_audience": false,
+            "has_remarketing_custom_audience": false,
+            "has_in_person_store_visit": false
+        },
+        {
+            "advertiser_name": "Flynn, Terrell and Johnson",
+            "has_data_file_custom_audience": false,
+            "has_remarketing_custom_audience": true,
+            "has_in_person_store_visit": true
+        },
+        {
+            "advertiser_name": "Edwards-Flores",
+            "has_data_file_custom_audience": false,
+            "has_remarketing_custom_audience": true,
+            "has_in_person_store_visit": true
+        },
+        {
+            "advertiser_name": "Rogers-Webb",
+            "has_data_file_custom_audience": false,
+            "has_remarketing_custom_audience": false,
+            "has_in_person_store_visit": true
+        },
+        {
+            "advertiser_name": "Walker, Nguyen and Harris",
+            "has_data_file_custom_audience": false,
+            "has_remarketing_custom_audience": true,
+            "has_in_person_store_visit": false
+        },
+        {
+            "advertiser_name": "Sullivan-Brady",
+            "has_data_file_custom_audience": false,
+            "has_remarketing_custom_audience": true,
+            "has_in_person_store_visit": false
+        },
+        {
+            "advertiser_name": "Ford-Morris",
+            "has_data_file_custom_audience": true,
+            "has_remarketing_custom_audience": false,
+            "has_in_person_store_visit": false
+        },
+        {
+            "advertiser_name": "Gomez-Pena",
+            "has_data_file_custom_audience": false,
+            "has_remarketing_custom_audience": false,
+            "has_in_person_store_visit": false
+        },
+        {
+            "advertiser_name": "Stein, Jones and Jones",
+            "has_data_file_custom_audience": false,
+            "has_remarketing_custom_audience": true,
+            "has_in_person_store_visit": false
+        },
+        {
+            "advertiser_name": "Holloway PLC",
+            "has_data_file_custom_audience": true,
+            "has_remarketing_custom_audience": true,
+            "has_in_person_store_visit": false
+        }
+    ]
+}

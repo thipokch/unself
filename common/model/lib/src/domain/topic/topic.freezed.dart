@@ -21,11 +21,9 @@ Topic _$TopicFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Topic {
   @JsonString()
-  String get id => throw _privateConstructorUsedError;
-  @JsonDateTime()
-  DateTime get created => throw _privateConstructorUsedError;
-  @JsonDateTime()
-  DateTime get updated => throw _privateConstructorUsedError;
+  String get id =>
+      throw _privateConstructorUsedError; // @JsonDateTime() required DateTime created,
+// @JsonDateTime() required DateTime updated,
   String get archiveId => throw _privateConstructorUsedError;
 
   /// [name] is the name used by the [Topic] on the [App].
@@ -49,8 +47,6 @@ abstract class $TopicCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonString() String id,
-      @JsonDateTime() DateTime created,
-      @JsonDateTime() DateTime updated,
       String archiveId,
       String name,
       @JsonExtra() Map<String, dynamic> extra});
@@ -70,8 +66,6 @@ class _$TopicCopyWithImpl<$Res, $Val extends Topic>
   @override
   $Res call({
     Object? id = null,
-    Object? created = null,
-    Object? updated = null,
     Object? archiveId = null,
     Object? name = null,
     Object? extra = null,
@@ -81,14 +75,6 @@ class _$TopicCopyWithImpl<$Res, $Val extends Topic>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      created: null == created
-          ? _value.created
-          : created // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      updated: null == updated
-          ? _value.updated
-          : updated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
       archiveId: null == archiveId
           ? _value.archiveId
           : archiveId // ignore: cast_nullable_to_non_nullable
@@ -113,8 +99,6 @@ abstract class _$$_TopicCopyWith<$Res> implements $TopicCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonString() String id,
-      @JsonDateTime() DateTime created,
-      @JsonDateTime() DateTime updated,
       String archiveId,
       String name,
       @JsonExtra() Map<String, dynamic> extra});
@@ -130,8 +114,6 @@ class __$$_TopicCopyWithImpl<$Res> extends _$TopicCopyWithImpl<$Res, _$_Topic>
   @override
   $Res call({
     Object? id = null,
-    Object? created = null,
-    Object? updated = null,
     Object? archiveId = null,
     Object? name = null,
     Object? extra = null,
@@ -141,14 +123,6 @@ class __$$_TopicCopyWithImpl<$Res> extends _$TopicCopyWithImpl<$Res, _$_Topic>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      created: null == created
-          ? _value.created
-          : created // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      updated: null == updated
-          ? _value.updated
-          : updated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
       archiveId: null == archiveId
           ? _value.archiveId
           : archiveId // ignore: cast_nullable_to_non_nullable
@@ -170,8 +144,6 @@ class __$$_TopicCopyWithImpl<$Res> extends _$TopicCopyWithImpl<$Res, _$_Topic>
 class _$_Topic extends _Topic {
   const _$_Topic(
       {@JsonString() required this.id,
-      @JsonDateTime() required this.created,
-      @JsonDateTime() required this.updated,
       required this.archiveId,
       required this.name,
       @JsonExtra() final Map<String, dynamic> extra = const {}})
@@ -184,12 +156,8 @@ class _$_Topic extends _Topic {
   @override
   @JsonString()
   final String id;
-  @override
-  @JsonDateTime()
-  final DateTime created;
-  @override
-  @JsonDateTime()
-  final DateTime updated;
+// @JsonDateTime() required DateTime created,
+// @JsonDateTime() required DateTime updated,
   @override
   final String archiveId;
 
@@ -216,7 +184,7 @@ class _$_Topic extends _Topic {
 
   @override
   String toString() {
-    return 'Topic(id: $id, created: $created, updated: $updated, archiveId: $archiveId, name: $name, extra: $extra)';
+    return 'Topic(id: $id, archiveId: $archiveId, name: $name, extra: $extra)';
   }
 
   @override
@@ -225,8 +193,6 @@ class _$_Topic extends _Topic {
         (other.runtimeType == runtimeType &&
             other is _$_Topic &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.created, created) || other.created == created) &&
-            (identical(other.updated, updated) || other.updated == updated) &&
             (identical(other.archiveId, archiveId) ||
                 other.archiveId == archiveId) &&
             (identical(other.name, name) || other.name == name) &&
@@ -235,8 +201,8 @@ class _$_Topic extends _Topic {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, created, updated, archiveId,
-      name, const DeepCollectionEquality().hash(_extra));
+  int get hashCode => Object.hash(runtimeType, id, archiveId, name,
+      const DeepCollectionEquality().hash(_extra));
 
   @JsonKey(ignore: true)
   @override
@@ -255,8 +221,6 @@ class _$_Topic extends _Topic {
 abstract class _Topic extends Topic {
   const factory _Topic(
       {@JsonString() required final String id,
-      @JsonDateTime() required final DateTime created,
-      @JsonDateTime() required final DateTime updated,
       required final String archiveId,
       required final String name,
       @JsonExtra() final Map<String, dynamic> extra}) = _$_Topic;
@@ -267,13 +231,8 @@ abstract class _Topic extends Topic {
   @override
   @JsonString()
   String get id;
-  @override
-  @JsonDateTime()
-  DateTime get created;
-  @override
-  @JsonDateTime()
-  DateTime get updated;
-  @override
+  @override // @JsonDateTime() required DateTime created,
+// @JsonDateTime() required DateTime updated,
   String get archiveId;
   @override
 

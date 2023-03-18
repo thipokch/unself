@@ -21,11 +21,9 @@ Account _$AccountFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Account {
   @JsonString()
-  String get id => throw _privateConstructorUsedError;
-  @JsonDateTime()
-  DateTime get created => throw _privateConstructorUsedError;
-  @JsonDateTime()
-  DateTime get updated => throw _privateConstructorUsedError;
+  String get id =>
+      throw _privateConstructorUsedError; // @JsonDateTime() required DateTime created,
+// @JsonDateTime() required DateTime updated,
   String get archiveId => throw _privateConstructorUsedError;
 
   /// [name] is the name used by the [Account] on the [App].
@@ -56,8 +54,6 @@ abstract class $AccountCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonString() String id,
-      @JsonDateTime() DateTime created,
-      @JsonDateTime() DateTime updated,
       String archiveId,
       String name,
       String appId,
@@ -80,8 +76,6 @@ class _$AccountCopyWithImpl<$Res, $Val extends Account>
   @override
   $Res call({
     Object? id = null,
-    Object? created = null,
-    Object? updated = null,
     Object? archiveId = null,
     Object? name = null,
     Object? appId = null,
@@ -94,14 +88,6 @@ class _$AccountCopyWithImpl<$Res, $Val extends Account>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      created: null == created
-          ? _value.created
-          : created // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      updated: null == updated
-          ? _value.updated
-          : updated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
       archiveId: null == archiveId
           ? _value.archiveId
           : archiveId // ignore: cast_nullable_to_non_nullable
@@ -139,8 +125,6 @@ abstract class _$$_AccountCopyWith<$Res> implements $AccountCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonString() String id,
-      @JsonDateTime() DateTime created,
-      @JsonDateTime() DateTime updated,
       String archiveId,
       String name,
       String appId,
@@ -160,8 +144,6 @@ class __$$_AccountCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
-    Object? created = null,
-    Object? updated = null,
     Object? archiveId = null,
     Object? name = null,
     Object? appId = null,
@@ -174,14 +156,6 @@ class __$$_AccountCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      created: null == created
-          ? _value.created
-          : created // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      updated: null == updated
-          ? _value.updated
-          : updated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
       archiveId: null == archiveId
           ? _value.archiveId
           : archiveId // ignore: cast_nullable_to_non_nullable
@@ -215,8 +189,6 @@ class __$$_AccountCopyWithImpl<$Res>
 class _$_Account extends _Account {
   const _$_Account(
       {@JsonString() required this.id,
-      @JsonDateTime() required this.created,
-      @JsonDateTime() required this.updated,
       required this.archiveId,
       required this.name,
       required this.appId,
@@ -233,12 +205,8 @@ class _$_Account extends _Account {
   @override
   @JsonString()
   final String id;
-  @override
-  @JsonDateTime()
-  final DateTime created;
-  @override
-  @JsonDateTime()
-  final DateTime updated;
+// @JsonDateTime() required DateTime created,
+// @JsonDateTime() required DateTime updated,
   @override
   final String archiveId;
 
@@ -281,7 +249,7 @@ class _$_Account extends _Account {
 
   @override
   String toString() {
-    return 'Account(id: $id, created: $created, updated: $updated, archiveId: $archiveId, name: $name, appId: $appId, isOwner: $isOwner, emails: $emails, extra: $extra)';
+    return 'Account(id: $id, archiveId: $archiveId, name: $name, appId: $appId, isOwner: $isOwner, emails: $emails, extra: $extra)';
   }
 
   @override
@@ -290,8 +258,6 @@ class _$_Account extends _Account {
         (other.runtimeType == runtimeType &&
             other is _$_Account &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.created, created) || other.created == created) &&
-            (identical(other.updated, updated) || other.updated == updated) &&
             (identical(other.archiveId, archiveId) ||
                 other.archiveId == archiveId) &&
             (identical(other.name, name) || other.name == name) &&
@@ -306,8 +272,6 @@ class _$_Account extends _Account {
   int get hashCode => Object.hash(
       runtimeType,
       id,
-      created,
-      updated,
       archiveId,
       name,
       appId,
@@ -332,8 +296,6 @@ class _$_Account extends _Account {
 abstract class _Account extends Account {
   const factory _Account(
       {@JsonString() required final String id,
-      @JsonDateTime() required final DateTime created,
-      @JsonDateTime() required final DateTime updated,
       required final String archiveId,
       required final String name,
       required final String appId,
@@ -347,13 +309,8 @@ abstract class _Account extends Account {
   @override
   @JsonString()
   String get id;
-  @override
-  @JsonDateTime()
-  DateTime get created;
-  @override
-  @JsonDateTime()
-  DateTime get updated;
-  @override
+  @override // @JsonDateTime() required DateTime created,
+// @JsonDateTime() required DateTime updated,
   String get archiveId;
   @override
 

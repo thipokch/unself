@@ -8,8 +8,11 @@ import 'package:clock/clock.dart';
 import 'package:collection/collection.dart';
 import 'package:slugid/slugid.dart';
 import 'package:unself_file/unself_file.dart';
-import 'package:unself_model/unself_model.dart' show ArchiveSchemaPart;
+import 'package:unself_model/unself_model.dart'
+    show ArchiveSchemaPart, MetaPart, ZipJsonPart;
 import 'package:unself_unpack/unself_unpack.dart';
+
+import 'package:built_collection/built_collection.dart';
 
 /// {@template zip_input}
 /// [ZipImport] unpacks archive files and collect metadata.
@@ -41,7 +44,8 @@ class ZipImport implements Import<XFile, List<ArchiveSchemaPart>> {
   /// returns a [FutureOr] of [Map<String, Object?>].
   @override
   FutureOr<Map<String, Object?>> unpack(List<ArchiveSchemaPart>? options) {
-    final partGroupByFile = options!.groupListsBy((_) => _.part);
+    final partGroupByFile =
+        options!.whereType<ZipJsonPart>().groupListsBy((_) => _.part);
     final jsonGroupByFile = <String, Map<String, dynamic>>{
       for (final key in partGroupByFile.keys)
         key: jsonDecode(String.fromCharCodes(_dotDirectory![key]!.content))
@@ -49,22 +53,37 @@ class ZipImport implements Import<XFile, List<ArchiveSchemaPart>> {
 
     final instant = clock.now();
     final archiveId = Slugid.nice().toString();
+
     final meta = {
       'archiveId': archiveId,
     };
 
-    final result = <String, List>{};
+    final result = <String, Set<BuiltMap>>{};
 
     jsonGroupByFile.forEach((key, value) {
-      partGroupByFile[key]
-          ?.forEach((element) => Normalize(element.schema).accumulate(
-                element.id,
-                value,
-                (String name, dynamic key, dynamic entity) {
-                  result[name] ??= [];
-                  result[name]!.add(entity);
-                },
-              ));
+      partGroupByFile[key]?.forEach((part) => Normalize(part.schema).accumulate(
+            part.id,
+            value,
+            (String name, dynamic _, dynamic entity) {
+              result[name] ??= {};
+              result[name]!.add(BuiltMap<String, dynamic>({
+                'partId': part.id,
+                ...entity,
+              }));
+            },
+          ));
+    });
+
+    options.whereType<MetaPart>().firstOrNull?.meta.forEach((key, value) {
+      if (value is List) {
+        result[key] ??= {};
+        result[key]!.addAll(value.map((e) => BuiltMap<String, dynamic>({
+              'partId': 'archive-meta',
+              ...e,
+            })));
+      } else {
+        result.putIfAbsent(key, () => value);
+      }
     });
 
     return {
@@ -75,10 +94,10 @@ class ZipImport implements Import<XFile, List<ArchiveSchemaPart>> {
       ...{
         for (final r in result.entries)
           r.key: [
-            for (final s in r.value.cast<Map<String, dynamic>>())
+            for (final s in r.value.cast<BuiltMap<String, dynamic>>())
               {
                 ...meta,
-                ...s,
+                ...s.toMap(),
               },
           ],
       },

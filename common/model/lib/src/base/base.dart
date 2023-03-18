@@ -9,10 +9,10 @@ abstract class Base {
   final String id;
 
   /// [created] is the date and time when the inheriting model was created inside unself app.
-  final DateTime created;
+  // final DateTime created;
 
   /// [updated] is the date and time when the inheriting model was last updated inside unself app.
-  final DateTime updated;
+  // final DateTime updated;
 
   /// [extra] is a map of additional properties.
   final Map<String, dynamic>? extra;
@@ -20,8 +20,8 @@ abstract class Base {
   /// {@macro base}
   const Base._({
     required this.id,
-    required this.created,
-    required this.updated,
+    // required this.created,
+    // required this.updated,
     required this.extra,
   });
 }
