@@ -1,53 +1,10 @@
-// ignore_for_file: unused_field, unused_local_variable
+import 'package:unself_local_database/unself_local_database.dart';
 
-import 'dart:async';
-
-import 'package:unself_file/unself_file.dart';
-import 'package:unself_local_database/unself_local_database.dart'
-    show LocalDatabase;
-import 'package:unself_model/unself_model.dart';
-import 'package:unself_unpack/unself_unpack.dart';
-
-part 'iunpack_service.dart';
-
-/// {@template unpack_service}
-/// [UnpackService] is a service that unpacks data from a file.
-/// {@endtemplate}
-class UnpackService implements IUnpackService {
-  /// {@macro unpack_service}
-  UnpackService({
+class UnpackService {
+  const UnpackService({
     required LocalDatabase localDb,
-  }) : _localDb = localDb;
+  }) : _db = localDb;
 
-  // Delegate
-  final LocalDatabase _localDb;
-
-  App? _app;
-  Import? _input;
-
-  @override
-  FutureOr<ArchiveSchema> load(App app) {
-    _app = app;
-    return _formats.firstWhere((e) => e.appId == app.id);
-  }
-
-  @override
-  FutureOr<List<ArchiveSchemaPart>> open(XFile file) async {
-    final zip = await ZipImport().open(file);
-    throw UnimplementedError();
-  }
-
-  @override
-  Stream<int> start(List<ArchiveSchemaPart> parts) {
-    throw UnimplementedError();
-  }
-
-  // static final List<App> supportedApps = _formats.map((e) => e.app).toList();
-
-  static final List<ArchiveSchema> _formats = [
-    // facebook,
-  ];
-
-  // TODO: implement unpacked
-  Map<String, Object?> get unpacked => throw UnimplementedError();
+  // ignore: unused_field
+  final LocalDatabase _db;
 }

@@ -1,1 +1,1 @@
-export 'schema.dart';
+export 'spec.dart';
