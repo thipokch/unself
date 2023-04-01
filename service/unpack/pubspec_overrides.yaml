@@ -1,4 +1,4 @@
-# melos_managed_dependency_overrides: unself_analysis,unself_file,unself_local_database,unself_model
+# melos_managed_dependency_overrides: unself_analysis,unself_file,unself_local_database,unself_model,unself_unpack_repository
 dependency_overrides:
   unself_analysis:
     path: ../../tool/analysis
@@ -8,3 +8,5 @@ dependency_overrides:
     path: ../local_database
   unself_model:
     path: ../../common/model
+  unself_unpack_repository:
+    path: ../unpack_repository

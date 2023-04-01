@@ -1,6 +1,5 @@
 import 'package:drift/drift.dart';
 import 'package:unself_local_database/unself_local_database.dart';
-import 'package:unself_model/unself_model.dart' show FieldType, CollectionType;
 
 part 'local_database.g.dart';
 
@@ -8,8 +7,14 @@ part 'local_database.g.dart';
 /// [LocalDatabase] description
 /// {@endtemplate}
 @DriftDatabase(
-  tables: [Collection, Field],
-  daos: [CollectionDao, DocumentDao],
+  tables: [
+    UnpackSpec,
+    UnpackState,
+  ],
+  daos: [
+    UnpackStateDao,
+    UnpackSpecDao,
+  ],
 )
 class LocalDatabase extends _$LocalDatabase {
   /// {@macro local_database}

@@ -13,7 +13,7 @@ class UnpackAssistantPage extends StatelessWidget {
   Widget build(BuildContext context) => BlocProvider(
         create: (context) => UnpackAssistantBloc(
           unpackService: UnpackService(
-            localDb: context.read(),
+            repository: context.read(),
           ),
         ),
         child: const Scaffold(

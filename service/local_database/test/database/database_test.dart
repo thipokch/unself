@@ -26,8 +26,8 @@ void main() {
       expect(
           database.allTables,
           containsAll([
-            const TypeMatcher<$CollectionTable>(),
-            const TypeMatcher<$FieldTable>(),
+            const TypeMatcher<$UnpackSpecTable>(),
+            const TypeMatcher<$UnpackStateTable>(),
           ]));
     });
   });

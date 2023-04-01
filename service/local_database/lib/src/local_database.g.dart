@@ -3,171 +3,84 @@
 part of 'local_database.dart';
 
 // ignore_for_file: type=lint
-class $CollectionTable extends Collection
-    with TableInfo<$CollectionTable, CollectionData> {
+class $UnpackSpecTable extends UnpackSpec
+    with TableInfo<$UnpackSpecTable, UnpackSpecData> {
   @override
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
-  $CollectionTable(this.attachedDatabase, [this._alias]);
+  $UnpackSpecTable(this.attachedDatabase, [this._alias]);
   static const VerificationMeta _idMeta = const VerificationMeta('id');
   @override
-  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+  late final GeneratedColumn<int> id = GeneratedColumn<int>(
       'id', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
-  static const VerificationMeta _createdMeta =
-      const VerificationMeta('created');
-  @override
-  late final GeneratedColumn<DateTime> created = GeneratedColumn<DateTime>(
-      'created', aliasedName, false,
-      type: DriftSqlType.dateTime, requiredDuringInsert: true);
-  static const VerificationMeta _updatedMeta =
-      const VerificationMeta('updated');
-  @override
-  late final GeneratedColumn<DateTime> updated = GeneratedColumn<DateTime>(
-      'updated', aliasedName, false,
-      type: DriftSqlType.dateTime, requiredDuringInsert: true);
-  static const VerificationMeta _typeMeta = const VerificationMeta('type');
-  @override
-  late final GeneratedColumnWithTypeConverter<CollectionType, String> type =
-      GeneratedColumn<String>('type', aliasedName, false,
-              type: DriftSqlType.string, requiredDuringInsert: true)
-          .withConverter<CollectionType>($CollectionTable.$convertertype);
+      hasAutoIncrement: true,
+      type: DriftSqlType.int,
+      requiredDuringInsert: false,
+      defaultConstraints:
+          GeneratedColumn.constraintIsAlways('PRIMARY KEY AUTOINCREMENT'));
   static const VerificationMeta _nameMeta = const VerificationMeta('name');
   @override
   late final GeneratedColumn<String> name = GeneratedColumn<String>(
       'name', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  static const VerificationMeta _systemMeta = const VerificationMeta('system');
+  static const VerificationMeta _fileSpecMeta =
+      const VerificationMeta('fileSpec');
   @override
-  late final GeneratedColumn<bool> system =
-      GeneratedColumn<bool>('system', aliasedName, false,
-          type: DriftSqlType.bool,
-          requiredDuringInsert: true,
-          defaultConstraints: GeneratedColumn.constraintsDependsOnDialect({
-            SqlDialect.sqlite: 'CHECK ("system" IN (0, 1))',
-            SqlDialect.mysql: '',
-            SqlDialect.postgres: '',
-          }));
-  static const VerificationMeta _listRuleMeta =
-      const VerificationMeta('listRule');
+  late final GeneratedColumn<String> fileSpec = GeneratedColumn<String>(
+      'file_spec', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _retrieveSpecMeta =
+      const VerificationMeta('retrieveSpec');
   @override
-  late final GeneratedColumn<String> listRule = GeneratedColumn<String>(
-      'list_rule', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
-  static const VerificationMeta _viewRuleMeta =
-      const VerificationMeta('viewRule');
+  late final GeneratedColumn<String> retrieveSpec = GeneratedColumn<String>(
+      'retrieve_spec', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _modulesMeta =
+      const VerificationMeta('modules');
   @override
-  late final GeneratedColumn<String> viewRule = GeneratedColumn<String>(
-      'view_rule', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
-  static const VerificationMeta _createRuleMeta =
-      const VerificationMeta('createRule');
-  @override
-  late final GeneratedColumn<String> createRule = GeneratedColumn<String>(
-      'create_rule', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
-  static const VerificationMeta _updateRuleMeta =
-      const VerificationMeta('updateRule');
-  @override
-  late final GeneratedColumn<String> updateRule = GeneratedColumn<String>(
-      'update_rule', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
-  static const VerificationMeta _deleteRuleMeta =
-      const VerificationMeta('deleteRule');
-  @override
-  late final GeneratedColumn<String> deleteRule = GeneratedColumn<String>(
-      'delete_rule', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
-  static const VerificationMeta _extraMeta = const VerificationMeta('extra');
-  @override
-  late final GeneratedColumn<String> extra = GeneratedColumn<String>(
-      'extra', aliasedName, false,
+  late final GeneratedColumn<String> modules = GeneratedColumn<String>(
+      'modules', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
   @override
-  List<GeneratedColumn> get $columns => [
-        id,
-        created,
-        updated,
-        type,
-        name,
-        system,
-        listRule,
-        viewRule,
-        createRule,
-        updateRule,
-        deleteRule,
-        extra
-      ];
+  List<GeneratedColumn> get $columns =>
+      [id, name, fileSpec, retrieveSpec, modules];
   @override
-  String get aliasedName => _alias ?? 'collection';
+  String get aliasedName => _alias ?? 'unpack_spec';
   @override
-  String get actualTableName => 'collection';
+  String get actualTableName => 'unpack_spec';
   @override
-  VerificationContext validateIntegrity(Insertable<CollectionData> instance,
+  VerificationContext validateIntegrity(Insertable<UnpackSpecData> instance,
       {bool isInserting = false}) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
     if (data.containsKey('id')) {
       context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
-    } else if (isInserting) {
-      context.missing(_idMeta);
     }
-    if (data.containsKey('created')) {
-      context.handle(_createdMeta,
-          created.isAcceptableOrUnknown(data['created']!, _createdMeta));
-    } else if (isInserting) {
-      context.missing(_createdMeta);
-    }
-    if (data.containsKey('updated')) {
-      context.handle(_updatedMeta,
-          updated.isAcceptableOrUnknown(data['updated']!, _updatedMeta));
-    } else if (isInserting) {
-      context.missing(_updatedMeta);
-    }
-    context.handle(_typeMeta, const VerificationResult.success());
     if (data.containsKey('name')) {
       context.handle(
           _nameMeta, name.isAcceptableOrUnknown(data['name']!, _nameMeta));
     } else if (isInserting) {
       context.missing(_nameMeta);
     }
-    if (data.containsKey('system')) {
-      context.handle(_systemMeta,
-          system.isAcceptableOrUnknown(data['system']!, _systemMeta));
+    if (data.containsKey('file_spec')) {
+      context.handle(_fileSpecMeta,
+          fileSpec.isAcceptableOrUnknown(data['file_spec']!, _fileSpecMeta));
     } else if (isInserting) {
-      context.missing(_systemMeta);
+      context.missing(_fileSpecMeta);
     }
-    if (data.containsKey('list_rule')) {
-      context.handle(_listRuleMeta,
-          listRule.isAcceptableOrUnknown(data['list_rule']!, _listRuleMeta));
-    }
-    if (data.containsKey('view_rule')) {
-      context.handle(_viewRuleMeta,
-          viewRule.isAcceptableOrUnknown(data['view_rule']!, _viewRuleMeta));
-    }
-    if (data.containsKey('create_rule')) {
+    if (data.containsKey('retrieve_spec')) {
       context.handle(
-          _createRuleMeta,
-          createRule.isAcceptableOrUnknown(
-              data['create_rule']!, _createRuleMeta));
-    }
-    if (data.containsKey('update_rule')) {
-      context.handle(
-          _updateRuleMeta,
-          updateRule.isAcceptableOrUnknown(
-              data['update_rule']!, _updateRuleMeta));
-    }
-    if (data.containsKey('delete_rule')) {
-      context.handle(
-          _deleteRuleMeta,
-          deleteRule.isAcceptableOrUnknown(
-              data['delete_rule']!, _deleteRuleMeta));
-    }
-    if (data.containsKey('extra')) {
-      context.handle(
-          _extraMeta, extra.isAcceptableOrUnknown(data['extra']!, _extraMeta));
+          _retrieveSpecMeta,
+          retrieveSpec.isAcceptableOrUnknown(
+              data['retrieve_spec']!, _retrieveSpecMeta));
     } else if (isInserting) {
-      context.missing(_extraMeta);
+      context.missing(_retrieveSpecMeta);
+    }
+    if (data.containsKey('modules')) {
+      context.handle(_modulesMeta,
+          modules.isAcceptableOrUnknown(data['modules']!, _modulesMeta));
+    } else if (isInserting) {
+      context.missing(_modulesMeta);
     }
     return context;
   }
@@ -175,338 +88,173 @@ class $CollectionTable extends Collection
   @override
   Set<GeneratedColumn> get $primaryKey => {id};
   @override
-  CollectionData map(Map<String, dynamic> data, {String? tablePrefix}) {
+  UnpackSpecData map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
-    return CollectionData(
+    return UnpackSpecData(
       id: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}id'])!,
-      created: attachedDatabase.typeMapping
-          .read(DriftSqlType.dateTime, data['${effectivePrefix}created'])!,
-      updated: attachedDatabase.typeMapping
-          .read(DriftSqlType.dateTime, data['${effectivePrefix}updated'])!,
-      type: $CollectionTable.$convertertype.fromSql(attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}type'])!),
+          .read(DriftSqlType.int, data['${effectivePrefix}id'])!,
       name: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}name'])!,
-      system: attachedDatabase.typeMapping
-          .read(DriftSqlType.bool, data['${effectivePrefix}system'])!,
-      listRule: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}list_rule']),
-      viewRule: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}view_rule']),
-      createRule: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}create_rule']),
-      updateRule: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}update_rule']),
-      deleteRule: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}delete_rule']),
-      extra: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}extra'])!,
+      fileSpec: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}file_spec'])!,
+      retrieveSpec: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}retrieve_spec'])!,
+      modules: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}modules'])!,
     );
   }
 
   @override
-  $CollectionTable createAlias(String alias) {
-    return $CollectionTable(attachedDatabase, alias);
+  $UnpackSpecTable createAlias(String alias) {
+    return $UnpackSpecTable(attachedDatabase, alias);
   }
-
-  static JsonTypeConverter2<CollectionType, String, String> $convertertype =
-      const EnumNameConverter<CollectionType>(CollectionType.values);
 }
 
-class CollectionData extends DataClass implements Insertable<CollectionData> {
-  final String id;
-  final DateTime created;
-  final DateTime updated;
-  final CollectionType type;
+class UnpackSpecData extends DataClass implements Insertable<UnpackSpecData> {
+  final int id;
   final String name;
-  final bool system;
-  final String? listRule;
-  final String? viewRule;
-  final String? createRule;
-  final String? updateRule;
-  final String? deleteRule;
-  final String extra;
-  const CollectionData(
+  final String fileSpec;
+  final String retrieveSpec;
+  final String modules;
+  const UnpackSpecData(
       {required this.id,
-      required this.created,
-      required this.updated,
-      required this.type,
       required this.name,
-      required this.system,
-      this.listRule,
-      this.viewRule,
-      this.createRule,
-      this.updateRule,
-      this.deleteRule,
-      required this.extra});
+      required this.fileSpec,
+      required this.retrieveSpec,
+      required this.modules});
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
-    map['id'] = Variable<String>(id);
-    map['created'] = Variable<DateTime>(created);
-    map['updated'] = Variable<DateTime>(updated);
-    {
-      final converter = $CollectionTable.$convertertype;
-      map['type'] = Variable<String>(converter.toSql(type));
-    }
+    map['id'] = Variable<int>(id);
     map['name'] = Variable<String>(name);
-    map['system'] = Variable<bool>(system);
-    if (!nullToAbsent || listRule != null) {
-      map['list_rule'] = Variable<String>(listRule);
-    }
-    if (!nullToAbsent || viewRule != null) {
-      map['view_rule'] = Variable<String>(viewRule);
-    }
-    if (!nullToAbsent || createRule != null) {
-      map['create_rule'] = Variable<String>(createRule);
-    }
-    if (!nullToAbsent || updateRule != null) {
-      map['update_rule'] = Variable<String>(updateRule);
-    }
-    if (!nullToAbsent || deleteRule != null) {
-      map['delete_rule'] = Variable<String>(deleteRule);
-    }
-    map['extra'] = Variable<String>(extra);
+    map['file_spec'] = Variable<String>(fileSpec);
+    map['retrieve_spec'] = Variable<String>(retrieveSpec);
+    map['modules'] = Variable<String>(modules);
     return map;
   }
 
-  CollectionCompanion toCompanion(bool nullToAbsent) {
-    return CollectionCompanion(
+  UnpackSpecCompanion toCompanion(bool nullToAbsent) {
+    return UnpackSpecCompanion(
       id: Value(id),
-      created: Value(created),
-      updated: Value(updated),
-      type: Value(type),
       name: Value(name),
-      system: Value(system),
-      listRule: listRule == null && nullToAbsent
-          ? const Value.absent()
-          : Value(listRule),
-      viewRule: viewRule == null && nullToAbsent
-          ? const Value.absent()
-          : Value(viewRule),
-      createRule: createRule == null && nullToAbsent
-          ? const Value.absent()
-          : Value(createRule),
-      updateRule: updateRule == null && nullToAbsent
-          ? const Value.absent()
-          : Value(updateRule),
-      deleteRule: deleteRule == null && nullToAbsent
-          ? const Value.absent()
-          : Value(deleteRule),
-      extra: Value(extra),
+      fileSpec: Value(fileSpec),
+      retrieveSpec: Value(retrieveSpec),
+      modules: Value(modules),
     );
   }
 
-  factory CollectionData.fromJson(Map<String, dynamic> json,
+  factory UnpackSpecData.fromJson(Map<String, dynamic> json,
       {ValueSerializer? serializer}) {
     serializer ??= driftRuntimeOptions.defaultSerializer;
-    return CollectionData(
-      id: serializer.fromJson<String>(json['id']),
-      created: serializer.fromJson<DateTime>(json['created']),
-      updated: serializer.fromJson<DateTime>(json['updated']),
-      type: $CollectionTable.$convertertype
-          .fromJson(serializer.fromJson<String>(json['type'])),
+    return UnpackSpecData(
+      id: serializer.fromJson<int>(json['id']),
       name: serializer.fromJson<String>(json['name']),
-      system: serializer.fromJson<bool>(json['system']),
-      listRule: serializer.fromJson<String?>(json['listRule']),
-      viewRule: serializer.fromJson<String?>(json['viewRule']),
-      createRule: serializer.fromJson<String?>(json['createRule']),
-      updateRule: serializer.fromJson<String?>(json['updateRule']),
-      deleteRule: serializer.fromJson<String?>(json['deleteRule']),
-      extra: serializer.fromJson<String>(json['extra']),
+      fileSpec: serializer.fromJson<String>(json['fileSpec']),
+      retrieveSpec: serializer.fromJson<String>(json['retrieveSpec']),
+      modules: serializer.fromJson<String>(json['modules']),
     );
   }
   @override
   Map<String, dynamic> toJson({ValueSerializer? serializer}) {
     serializer ??= driftRuntimeOptions.defaultSerializer;
     return <String, dynamic>{
-      'id': serializer.toJson<String>(id),
-      'created': serializer.toJson<DateTime>(created),
-      'updated': serializer.toJson<DateTime>(updated),
-      'type': serializer
-          .toJson<String>($CollectionTable.$convertertype.toJson(type)),
+      'id': serializer.toJson<int>(id),
       'name': serializer.toJson<String>(name),
-      'system': serializer.toJson<bool>(system),
-      'listRule': serializer.toJson<String?>(listRule),
-      'viewRule': serializer.toJson<String?>(viewRule),
-      'createRule': serializer.toJson<String?>(createRule),
-      'updateRule': serializer.toJson<String?>(updateRule),
-      'deleteRule': serializer.toJson<String?>(deleteRule),
-      'extra': serializer.toJson<String>(extra),
+      'fileSpec': serializer.toJson<String>(fileSpec),
+      'retrieveSpec': serializer.toJson<String>(retrieveSpec),
+      'modules': serializer.toJson<String>(modules),
     };
   }
 
-  CollectionData copyWith(
-          {String? id,
-          DateTime? created,
-          DateTime? updated,
-          CollectionType? type,
+  UnpackSpecData copyWith(
+          {int? id,
           String? name,
-          bool? system,
-          Value<String?> listRule = const Value.absent(),
-          Value<String?> viewRule = const Value.absent(),
-          Value<String?> createRule = const Value.absent(),
-          Value<String?> updateRule = const Value.absent(),
-          Value<String?> deleteRule = const Value.absent(),
-          String? extra}) =>
-      CollectionData(
+          String? fileSpec,
+          String? retrieveSpec,
+          String? modules}) =>
+      UnpackSpecData(
         id: id ?? this.id,
-        created: created ?? this.created,
-        updated: updated ?? this.updated,
-        type: type ?? this.type,
         name: name ?? this.name,
-        system: system ?? this.system,
-        listRule: listRule.present ? listRule.value : this.listRule,
-        viewRule: viewRule.present ? viewRule.value : this.viewRule,
-        createRule: createRule.present ? createRule.value : this.createRule,
-        updateRule: updateRule.present ? updateRule.value : this.updateRule,
-        deleteRule: deleteRule.present ? deleteRule.value : this.deleteRule,
-        extra: extra ?? this.extra,
+        fileSpec: fileSpec ?? this.fileSpec,
+        retrieveSpec: retrieveSpec ?? this.retrieveSpec,
+        modules: modules ?? this.modules,
       );
   @override
   String toString() {
-    return (StringBuffer('CollectionData(')
+    return (StringBuffer('UnpackSpecData(')
           ..write('id: $id, ')
-          ..write('created: $created, ')
-          ..write('updated: $updated, ')
-          ..write('type: $type, ')
           ..write('name: $name, ')
-          ..write('system: $system, ')
-          ..write('listRule: $listRule, ')
-          ..write('viewRule: $viewRule, ')
-          ..write('createRule: $createRule, ')
-          ..write('updateRule: $updateRule, ')
-          ..write('deleteRule: $deleteRule, ')
-          ..write('extra: $extra')
+          ..write('fileSpec: $fileSpec, ')
+          ..write('retrieveSpec: $retrieveSpec, ')
+          ..write('modules: $modules')
           ..write(')'))
         .toString();
   }
 
   @override
-  int get hashCode => Object.hash(id, created, updated, type, name, system,
-      listRule, viewRule, createRule, updateRule, deleteRule, extra);
+  int get hashCode => Object.hash(id, name, fileSpec, retrieveSpec, modules);
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      (other is CollectionData &&
+      (other is UnpackSpecData &&
           other.id == this.id &&
-          other.created == this.created &&
-          other.updated == this.updated &&
-          other.type == this.type &&
           other.name == this.name &&
-          other.system == this.system &&
-          other.listRule == this.listRule &&
-          other.viewRule == this.viewRule &&
-          other.createRule == this.createRule &&
-          other.updateRule == this.updateRule &&
-          other.deleteRule == this.deleteRule &&
-          other.extra == this.extra);
+          other.fileSpec == this.fileSpec &&
+          other.retrieveSpec == this.retrieveSpec &&
+          other.modules == this.modules);
 }
 
-class CollectionCompanion extends UpdateCompanion<CollectionData> {
-  final Value<String> id;
-  final Value<DateTime> created;
-  final Value<DateTime> updated;
-  final Value<CollectionType> type;
+class UnpackSpecCompanion extends UpdateCompanion<UnpackSpecData> {
+  final Value<int> id;
   final Value<String> name;
-  final Value<bool> system;
-  final Value<String?> listRule;
-  final Value<String?> viewRule;
-  final Value<String?> createRule;
-  final Value<String?> updateRule;
-  final Value<String?> deleteRule;
-  final Value<String> extra;
-  const CollectionCompanion({
+  final Value<String> fileSpec;
+  final Value<String> retrieveSpec;
+  final Value<String> modules;
+  const UnpackSpecCompanion({
     this.id = const Value.absent(),
-    this.created = const Value.absent(),
-    this.updated = const Value.absent(),
-    this.type = const Value.absent(),
     this.name = const Value.absent(),
-    this.system = const Value.absent(),
-    this.listRule = const Value.absent(),
-    this.viewRule = const Value.absent(),
-    this.createRule = const Value.absent(),
-    this.updateRule = const Value.absent(),
-    this.deleteRule = const Value.absent(),
-    this.extra = const Value.absent(),
+    this.fileSpec = const Value.absent(),
+    this.retrieveSpec = const Value.absent(),
+    this.modules = const Value.absent(),
   });
-  CollectionCompanion.insert({
-    required String id,
-    required DateTime created,
-    required DateTime updated,
-    required CollectionType type,
+  UnpackSpecCompanion.insert({
+    this.id = const Value.absent(),
     required String name,
-    required bool system,
-    this.listRule = const Value.absent(),
-    this.viewRule = const Value.absent(),
-    this.createRule = const Value.absent(),
-    this.updateRule = const Value.absent(),
-    this.deleteRule = const Value.absent(),
-    required String extra,
-  })  : id = Value(id),
-        created = Value(created),
-        updated = Value(updated),
-        type = Value(type),
-        name = Value(name),
-        system = Value(system),
-        extra = Value(extra);
-  static Insertable<CollectionData> custom({
-    Expression<String>? id,
-    Expression<DateTime>? created,
-    Expression<DateTime>? updated,
-    Expression<String>? type,
+    required String fileSpec,
+    required String retrieveSpec,
+    required String modules,
+  })  : name = Value(name),
+        fileSpec = Value(fileSpec),
+        retrieveSpec = Value(retrieveSpec),
+        modules = Value(modules);
+  static Insertable<UnpackSpecData> custom({
+    Expression<int>? id,
     Expression<String>? name,
-    Expression<bool>? system,
-    Expression<String>? listRule,
-    Expression<String>? viewRule,
-    Expression<String>? createRule,
-    Expression<String>? updateRule,
-    Expression<String>? deleteRule,
-    Expression<String>? extra,
+    Expression<String>? fileSpec,
+    Expression<String>? retrieveSpec,
+    Expression<String>? modules,
   }) {
     return RawValuesInsertable({
       if (id != null) 'id': id,
-      if (created != null) 'created': created,
-      if (updated != null) 'updated': updated,
-      if (type != null) 'type': type,
       if (name != null) 'name': name,
-      if (system != null) 'system': system,
-      if (listRule != null) 'list_rule': listRule,
-      if (viewRule != null) 'view_rule': viewRule,
-      if (createRule != null) 'create_rule': createRule,
-      if (updateRule != null) 'update_rule': updateRule,
-      if (deleteRule != null) 'delete_rule': deleteRule,
-      if (extra != null) 'extra': extra,
+      if (fileSpec != null) 'file_spec': fileSpec,
+      if (retrieveSpec != null) 'retrieve_spec': retrieveSpec,
+      if (modules != null) 'modules': modules,
     });
   }
 
-  CollectionCompanion copyWith(
-      {Value<String>? id,
-      Value<DateTime>? created,
-      Value<DateTime>? updated,
-      Value<CollectionType>? type,
+  UnpackSpecCompanion copyWith(
+      {Value<int>? id,
       Value<String>? name,
-      Value<bool>? system,
-      Value<String?>? listRule,
-      Value<String?>? viewRule,
-      Value<String?>? createRule,
-      Value<String?>? updateRule,
-      Value<String?>? deleteRule,
-      Value<String>? extra}) {
-    return CollectionCompanion(
+      Value<String>? fileSpec,
+      Value<String>? retrieveSpec,
+      Value<String>? modules}) {
+    return UnpackSpecCompanion(
       id: id ?? this.id,
-      created: created ?? this.created,
-      updated: updated ?? this.updated,
-      type: type ?? this.type,
       name: name ?? this.name,
-      system: system ?? this.system,
-      listRule: listRule ?? this.listRule,
-      viewRule: viewRule ?? this.viewRule,
-      createRule: createRule ?? this.createRule,
-      updateRule: updateRule ?? this.updateRule,
-      deleteRule: deleteRule ?? this.deleteRule,
-      extra: extra ?? this.extra,
+      fileSpec: fileSpec ?? this.fileSpec,
+      retrieveSpec: retrieveSpec ?? this.retrieveSpec,
+      modules: modules ?? this.modules,
     );
   }
 
@@ -514,223 +262,112 @@ class CollectionCompanion extends UpdateCompanion<CollectionData> {
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
     if (id.present) {
-      map['id'] = Variable<String>(id.value);
-    }
-    if (created.present) {
-      map['created'] = Variable<DateTime>(created.value);
-    }
-    if (updated.present) {
-      map['updated'] = Variable<DateTime>(updated.value);
-    }
-    if (type.present) {
-      final converter = $CollectionTable.$convertertype;
-      map['type'] = Variable<String>(converter.toSql(type.value));
+      map['id'] = Variable<int>(id.value);
     }
     if (name.present) {
       map['name'] = Variable<String>(name.value);
     }
-    if (system.present) {
-      map['system'] = Variable<bool>(system.value);
+    if (fileSpec.present) {
+      map['file_spec'] = Variable<String>(fileSpec.value);
     }
-    if (listRule.present) {
-      map['list_rule'] = Variable<String>(listRule.value);
+    if (retrieveSpec.present) {
+      map['retrieve_spec'] = Variable<String>(retrieveSpec.value);
     }
-    if (viewRule.present) {
-      map['view_rule'] = Variable<String>(viewRule.value);
-    }
-    if (createRule.present) {
-      map['create_rule'] = Variable<String>(createRule.value);
-    }
-    if (updateRule.present) {
-      map['update_rule'] = Variable<String>(updateRule.value);
-    }
-    if (deleteRule.present) {
-      map['delete_rule'] = Variable<String>(deleteRule.value);
-    }
-    if (extra.present) {
-      map['extra'] = Variable<String>(extra.value);
+    if (modules.present) {
+      map['modules'] = Variable<String>(modules.value);
     }
     return map;
   }
 
   @override
   String toString() {
-    return (StringBuffer('CollectionCompanion(')
+    return (StringBuffer('UnpackSpecCompanion(')
           ..write('id: $id, ')
-          ..write('created: $created, ')
-          ..write('updated: $updated, ')
-          ..write('type: $type, ')
           ..write('name: $name, ')
-          ..write('system: $system, ')
-          ..write('listRule: $listRule, ')
-          ..write('viewRule: $viewRule, ')
-          ..write('createRule: $createRule, ')
-          ..write('updateRule: $updateRule, ')
-          ..write('deleteRule: $deleteRule, ')
-          ..write('extra: $extra')
+          ..write('fileSpec: $fileSpec, ')
+          ..write('retrieveSpec: $retrieveSpec, ')
+          ..write('modules: $modules')
           ..write(')'))
         .toString();
   }
 }
 
-class $FieldTable extends Field with TableInfo<$FieldTable, FieldData> {
+class $UnpackStateTable extends UnpackState
+    with TableInfo<$UnpackStateTable, UnpackStateData> {
   @override
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
-  $FieldTable(this.attachedDatabase, [this._alias]);
+  $UnpackStateTable(this.attachedDatabase, [this._alias]);
   static const VerificationMeta _idMeta = const VerificationMeta('id');
   @override
-  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+  late final GeneratedColumn<int> id = GeneratedColumn<int>(
       'id', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
-  static const VerificationMeta _createdMeta =
-      const VerificationMeta('created');
+      hasAutoIncrement: true,
+      type: DriftSqlType.int,
+      requiredDuringInsert: false,
+      defaultConstraints:
+          GeneratedColumn.constraintIsAlways('PRIMARY KEY AUTOINCREMENT'));
+  static const VerificationMeta _specIdMeta = const VerificationMeta('specId');
   @override
-  late final GeneratedColumn<DateTime> created = GeneratedColumn<DateTime>(
-      'created', aliasedName, false,
-      type: DriftSqlType.dateTime, requiredDuringInsert: true);
-  static const VerificationMeta _updatedMeta =
-      const VerificationMeta('updated');
-  @override
-  late final GeneratedColumn<DateTime> updated = GeneratedColumn<DateTime>(
-      'updated', aliasedName, false,
-      type: DriftSqlType.dateTime, requiredDuringInsert: true);
-  static const VerificationMeta _typeMeta = const VerificationMeta('type');
-  @override
-  late final GeneratedColumnWithTypeConverter<FieldType, String> type =
-      GeneratedColumn<String>('type', aliasedName, false,
-              type: DriftSqlType.string, requiredDuringInsert: true)
-          .withConverter<FieldType>($FieldTable.$convertertype);
-  static const VerificationMeta _nameMeta = const VerificationMeta('name');
-  @override
-  late final GeneratedColumn<String> name = GeneratedColumn<String>(
-      'name', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
-  static const VerificationMeta _systemMeta = const VerificationMeta('system');
-  @override
-  late final GeneratedColumn<bool> system =
-      GeneratedColumn<bool>('system', aliasedName, false,
-          type: DriftSqlType.bool,
-          requiredDuringInsert: true,
-          defaultConstraints: GeneratedColumn.constraintsDependsOnDialect({
-            SqlDialect.sqlite: 'CHECK ("system" IN (0, 1))',
-            SqlDialect.mysql: '',
-            SqlDialect.postgres: '',
-          }));
-  static const VerificationMeta _requiredMeta =
-      const VerificationMeta('required');
-  @override
-  late final GeneratedColumn<bool> required =
-      GeneratedColumn<bool>('required', aliasedName, false,
-          type: DriftSqlType.bool,
-          requiredDuringInsert: true,
-          defaultConstraints: GeneratedColumn.constraintsDependsOnDialect({
-            SqlDialect.sqlite: 'CHECK ("required" IN (0, 1))',
-            SqlDialect.mysql: '',
-            SqlDialect.postgres: '',
-          }));
-  static const VerificationMeta _uniqueMeta = const VerificationMeta('unique');
-  @override
-  late final GeneratedColumn<bool> unique =
-      GeneratedColumn<bool>('unique', aliasedName, false,
-          type: DriftSqlType.bool,
-          requiredDuringInsert: true,
-          defaultConstraints: GeneratedColumn.constraintsDependsOnDialect({
-            SqlDialect.sqlite: 'CHECK ("unique" IN (0, 1))',
-            SqlDialect.mysql: '',
-            SqlDialect.postgres: '',
-          }));
-  static const VerificationMeta _collectionIdMeta =
-      const VerificationMeta('collectionId');
-  @override
-  late final GeneratedColumn<String> collectionId = GeneratedColumn<String>(
-      'collection_id', aliasedName, false,
-      type: DriftSqlType.string,
+  late final GeneratedColumn<int> specId = GeneratedColumn<int>(
+      'spec_id', aliasedName, false,
+      type: DriftSqlType.int,
       requiredDuringInsert: true,
       defaultConstraints:
-          GeneratedColumn.constraintIsAlways('REFERENCES collection (id)'));
-  static const VerificationMeta _extraMeta = const VerificationMeta('extra');
+          GeneratedColumn.constraintIsAlways('REFERENCES unpack_spec (id)'));
+  static const VerificationMeta _stepMeta = const VerificationMeta('step');
   @override
-  late final GeneratedColumn<String> extra = GeneratedColumn<String>(
-      'extra', aliasedName, false,
+  late final GeneratedColumn<String> step = GeneratedColumn<String>(
+      'step', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _selectedModulesMeta =
+      const VerificationMeta('selectedModules');
   @override
-  List<GeneratedColumn> get $columns => [
-        id,
-        created,
-        updated,
-        type,
-        name,
-        system,
-        required,
-        unique,
-        collectionId,
-        extra
-      ];
+  late final GeneratedColumn<String> selectedModules = GeneratedColumn<String>(
+      'selected_modules', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _filePathMeta =
+      const VerificationMeta('filePath');
   @override
-  String get aliasedName => _alias ?? 'field';
+  late final GeneratedColumn<String> filePath = GeneratedColumn<String>(
+      'file_path', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
   @override
-  String get actualTableName => 'field';
+  List<GeneratedColumn> get $columns =>
+      [id, specId, step, selectedModules, filePath];
   @override
-  VerificationContext validateIntegrity(Insertable<FieldData> instance,
+  String get aliasedName => _alias ?? 'unpack_state';
+  @override
+  String get actualTableName => 'unpack_state';
+  @override
+  VerificationContext validateIntegrity(Insertable<UnpackStateData> instance,
       {bool isInserting = false}) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
     if (data.containsKey('id')) {
       context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
-    } else if (isInserting) {
-      context.missing(_idMeta);
     }
-    if (data.containsKey('created')) {
-      context.handle(_createdMeta,
-          created.isAcceptableOrUnknown(data['created']!, _createdMeta));
+    if (data.containsKey('spec_id')) {
+      context.handle(_specIdMeta,
+          specId.isAcceptableOrUnknown(data['spec_id']!, _specIdMeta));
     } else if (isInserting) {
-      context.missing(_createdMeta);
+      context.missing(_specIdMeta);
     }
-    if (data.containsKey('updated')) {
-      context.handle(_updatedMeta,
-          updated.isAcceptableOrUnknown(data['updated']!, _updatedMeta));
-    } else if (isInserting) {
-      context.missing(_updatedMeta);
-    }
-    context.handle(_typeMeta, const VerificationResult.success());
-    if (data.containsKey('name')) {
+    if (data.containsKey('step')) {
       context.handle(
-          _nameMeta, name.isAcceptableOrUnknown(data['name']!, _nameMeta));
+          _stepMeta, step.isAcceptableOrUnknown(data['step']!, _stepMeta));
     } else if (isInserting) {
-      context.missing(_nameMeta);
+      context.missing(_stepMeta);
     }
-    if (data.containsKey('system')) {
-      context.handle(_systemMeta,
-          system.isAcceptableOrUnknown(data['system']!, _systemMeta));
-    } else if (isInserting) {
-      context.missing(_systemMeta);
-    }
-    if (data.containsKey('required')) {
-      context.handle(_requiredMeta,
-          required.isAcceptableOrUnknown(data['required']!, _requiredMeta));
-    } else if (isInserting) {
-      context.missing(_requiredMeta);
-    }
-    if (data.containsKey('unique')) {
-      context.handle(_uniqueMeta,
-          unique.isAcceptableOrUnknown(data['unique']!, _uniqueMeta));
-    } else if (isInserting) {
-      context.missing(_uniqueMeta);
-    }
-    if (data.containsKey('collection_id')) {
+    if (data.containsKey('selected_modules')) {
       context.handle(
-          _collectionIdMeta,
-          collectionId.isAcceptableOrUnknown(
-              data['collection_id']!, _collectionIdMeta));
-    } else if (isInserting) {
-      context.missing(_collectionIdMeta);
+          _selectedModulesMeta,
+          selectedModules.isAcceptableOrUnknown(
+              data['selected_modules']!, _selectedModulesMeta));
     }
-    if (data.containsKey('extra')) {
-      context.handle(
-          _extraMeta, extra.isAcceptableOrUnknown(data['extra']!, _extraMeta));
-    } else if (isInserting) {
-      context.missing(_extraMeta);
+    if (data.containsKey('file_path')) {
+      context.handle(_filePathMeta,
+          filePath.isAcceptableOrUnknown(data['file_path']!, _filePathMeta));
     }
     return context;
   }
@@ -738,283 +375,181 @@ class $FieldTable extends Field with TableInfo<$FieldTable, FieldData> {
   @override
   Set<GeneratedColumn> get $primaryKey => {id};
   @override
-  FieldData map(Map<String, dynamic> data, {String? tablePrefix}) {
+  UnpackStateData map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
-    return FieldData(
+    return UnpackStateData(
       id: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}id'])!,
-      created: attachedDatabase.typeMapping
-          .read(DriftSqlType.dateTime, data['${effectivePrefix}created'])!,
-      updated: attachedDatabase.typeMapping
-          .read(DriftSqlType.dateTime, data['${effectivePrefix}updated'])!,
-      type: $FieldTable.$convertertype.fromSql(attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}type'])!),
-      name: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}name'])!,
-      system: attachedDatabase.typeMapping
-          .read(DriftSqlType.bool, data['${effectivePrefix}system'])!,
-      required: attachedDatabase.typeMapping
-          .read(DriftSqlType.bool, data['${effectivePrefix}required'])!,
-      unique: attachedDatabase.typeMapping
-          .read(DriftSqlType.bool, data['${effectivePrefix}unique'])!,
-      collectionId: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}collection_id'])!,
-      extra: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}extra'])!,
+          .read(DriftSqlType.int, data['${effectivePrefix}id'])!,
+      specId: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}spec_id'])!,
+      step: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}step'])!,
+      selectedModules: attachedDatabase.typeMapping.read(
+          DriftSqlType.string, data['${effectivePrefix}selected_modules']),
+      filePath: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}file_path']),
     );
   }
 
   @override
-  $FieldTable createAlias(String alias) {
-    return $FieldTable(attachedDatabase, alias);
+  $UnpackStateTable createAlias(String alias) {
+    return $UnpackStateTable(attachedDatabase, alias);
   }
-
-  static JsonTypeConverter2<FieldType, String, String> $convertertype =
-      const EnumNameConverter<FieldType>(FieldType.values);
 }
 
-class FieldData extends DataClass implements Insertable<FieldData> {
-  final String id;
-  final DateTime created;
-  final DateTime updated;
-  final FieldType type;
-  final String name;
-  final bool system;
-  final bool required;
-  final bool unique;
-  final String collectionId;
-  final String extra;
-  const FieldData(
+class UnpackStateData extends DataClass implements Insertable<UnpackStateData> {
+  final int id;
+  final int specId;
+  final String step;
+  final String? selectedModules;
+  final String? filePath;
+  const UnpackStateData(
       {required this.id,
-      required this.created,
-      required this.updated,
-      required this.type,
-      required this.name,
-      required this.system,
-      required this.required,
-      required this.unique,
-      required this.collectionId,
-      required this.extra});
+      required this.specId,
+      required this.step,
+      this.selectedModules,
+      this.filePath});
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
-    map['id'] = Variable<String>(id);
-    map['created'] = Variable<DateTime>(created);
-    map['updated'] = Variable<DateTime>(updated);
-    {
-      final converter = $FieldTable.$convertertype;
-      map['type'] = Variable<String>(converter.toSql(type));
+    map['id'] = Variable<int>(id);
+    map['spec_id'] = Variable<int>(specId);
+    map['step'] = Variable<String>(step);
+    if (!nullToAbsent || selectedModules != null) {
+      map['selected_modules'] = Variable<String>(selectedModules);
     }
-    map['name'] = Variable<String>(name);
-    map['system'] = Variable<bool>(system);
-    map['required'] = Variable<bool>(required);
-    map['unique'] = Variable<bool>(unique);
-    map['collection_id'] = Variable<String>(collectionId);
-    map['extra'] = Variable<String>(extra);
+    if (!nullToAbsent || filePath != null) {
+      map['file_path'] = Variable<String>(filePath);
+    }
     return map;
   }
 
-  FieldCompanion toCompanion(bool nullToAbsent) {
-    return FieldCompanion(
+  UnpackStateCompanion toCompanion(bool nullToAbsent) {
+    return UnpackStateCompanion(
       id: Value(id),
-      created: Value(created),
-      updated: Value(updated),
-      type: Value(type),
-      name: Value(name),
-      system: Value(system),
-      required: Value(required),
-      unique: Value(unique),
-      collectionId: Value(collectionId),
-      extra: Value(extra),
+      specId: Value(specId),
+      step: Value(step),
+      selectedModules: selectedModules == null && nullToAbsent
+          ? const Value.absent()
+          : Value(selectedModules),
+      filePath: filePath == null && nullToAbsent
+          ? const Value.absent()
+          : Value(filePath),
     );
   }
 
-  factory FieldData.fromJson(Map<String, dynamic> json,
+  factory UnpackStateData.fromJson(Map<String, dynamic> json,
       {ValueSerializer? serializer}) {
     serializer ??= driftRuntimeOptions.defaultSerializer;
-    return FieldData(
-      id: serializer.fromJson<String>(json['id']),
-      created: serializer.fromJson<DateTime>(json['created']),
-      updated: serializer.fromJson<DateTime>(json['updated']),
-      type: $FieldTable.$convertertype
-          .fromJson(serializer.fromJson<String>(json['type'])),
-      name: serializer.fromJson<String>(json['name']),
-      system: serializer.fromJson<bool>(json['system']),
-      required: serializer.fromJson<bool>(json['required']),
-      unique: serializer.fromJson<bool>(json['unique']),
-      collectionId: serializer.fromJson<String>(json['collectionId']),
-      extra: serializer.fromJson<String>(json['extra']),
+    return UnpackStateData(
+      id: serializer.fromJson<int>(json['id']),
+      specId: serializer.fromJson<int>(json['specId']),
+      step: serializer.fromJson<String>(json['step']),
+      selectedModules: serializer.fromJson<String?>(json['selectedModules']),
+      filePath: serializer.fromJson<String?>(json['filePath']),
     );
   }
   @override
   Map<String, dynamic> toJson({ValueSerializer? serializer}) {
     serializer ??= driftRuntimeOptions.defaultSerializer;
     return <String, dynamic>{
-      'id': serializer.toJson<String>(id),
-      'created': serializer.toJson<DateTime>(created),
-      'updated': serializer.toJson<DateTime>(updated),
-      'type':
-          serializer.toJson<String>($FieldTable.$convertertype.toJson(type)),
-      'name': serializer.toJson<String>(name),
-      'system': serializer.toJson<bool>(system),
-      'required': serializer.toJson<bool>(required),
-      'unique': serializer.toJson<bool>(unique),
-      'collectionId': serializer.toJson<String>(collectionId),
-      'extra': serializer.toJson<String>(extra),
+      'id': serializer.toJson<int>(id),
+      'specId': serializer.toJson<int>(specId),
+      'step': serializer.toJson<String>(step),
+      'selectedModules': serializer.toJson<String?>(selectedModules),
+      'filePath': serializer.toJson<String?>(filePath),
     };
   }
 
-  FieldData copyWith(
-          {String? id,
-          DateTime? created,
-          DateTime? updated,
-          FieldType? type,
-          String? name,
-          bool? system,
-          bool? required,
-          bool? unique,
-          String? collectionId,
-          String? extra}) =>
-      FieldData(
+  UnpackStateData copyWith(
+          {int? id,
+          int? specId,
+          String? step,
+          Value<String?> selectedModules = const Value.absent(),
+          Value<String?> filePath = const Value.absent()}) =>
+      UnpackStateData(
         id: id ?? this.id,
-        created: created ?? this.created,
-        updated: updated ?? this.updated,
-        type: type ?? this.type,
-        name: name ?? this.name,
-        system: system ?? this.system,
-        required: required ?? this.required,
-        unique: unique ?? this.unique,
-        collectionId: collectionId ?? this.collectionId,
-        extra: extra ?? this.extra,
+        specId: specId ?? this.specId,
+        step: step ?? this.step,
+        selectedModules: selectedModules.present
+            ? selectedModules.value
+            : this.selectedModules,
+        filePath: filePath.present ? filePath.value : this.filePath,
       );
   @override
   String toString() {
-    return (StringBuffer('FieldData(')
+    return (StringBuffer('UnpackStateData(')
           ..write('id: $id, ')
-          ..write('created: $created, ')
-          ..write('updated: $updated, ')
-          ..write('type: $type, ')
-          ..write('name: $name, ')
-          ..write('system: $system, ')
-          ..write('required: $required, ')
-          ..write('unique: $unique, ')
-          ..write('collectionId: $collectionId, ')
-          ..write('extra: $extra')
+          ..write('specId: $specId, ')
+          ..write('step: $step, ')
+          ..write('selectedModules: $selectedModules, ')
+          ..write('filePath: $filePath')
           ..write(')'))
         .toString();
   }
 
   @override
-  int get hashCode => Object.hash(id, created, updated, type, name, system,
-      required, unique, collectionId, extra);
+  int get hashCode => Object.hash(id, specId, step, selectedModules, filePath);
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      (other is FieldData &&
+      (other is UnpackStateData &&
           other.id == this.id &&
-          other.created == this.created &&
-          other.updated == this.updated &&
-          other.type == this.type &&
-          other.name == this.name &&
-          other.system == this.system &&
-          other.required == this.required &&
-          other.unique == this.unique &&
-          other.collectionId == this.collectionId &&
-          other.extra == this.extra);
+          other.specId == this.specId &&
+          other.step == this.step &&
+          other.selectedModules == this.selectedModules &&
+          other.filePath == this.filePath);
 }
 
-class FieldCompanion extends UpdateCompanion<FieldData> {
-  final Value<String> id;
-  final Value<DateTime> created;
-  final Value<DateTime> updated;
-  final Value<FieldType> type;
-  final Value<String> name;
-  final Value<bool> system;
-  final Value<bool> required;
-  final Value<bool> unique;
-  final Value<String> collectionId;
-  final Value<String> extra;
-  const FieldCompanion({
+class UnpackStateCompanion extends UpdateCompanion<UnpackStateData> {
+  final Value<int> id;
+  final Value<int> specId;
+  final Value<String> step;
+  final Value<String?> selectedModules;
+  final Value<String?> filePath;
+  const UnpackStateCompanion({
     this.id = const Value.absent(),
-    this.created = const Value.absent(),
-    this.updated = const Value.absent(),
-    this.type = const Value.absent(),
-    this.name = const Value.absent(),
-    this.system = const Value.absent(),
-    this.required = const Value.absent(),
-    this.unique = const Value.absent(),
-    this.collectionId = const Value.absent(),
-    this.extra = const Value.absent(),
+    this.specId = const Value.absent(),
+    this.step = const Value.absent(),
+    this.selectedModules = const Value.absent(),
+    this.filePath = const Value.absent(),
   });
-  FieldCompanion.insert({
-    required String id,
-    required DateTime created,
-    required DateTime updated,
-    required FieldType type,
-    required String name,
-    required bool system,
-    required bool required,
-    required bool unique,
-    required String collectionId,
-    required String extra,
-  })  : id = Value(id),
-        created = Value(created),
-        updated = Value(updated),
-        type = Value(type),
-        name = Value(name),
-        system = Value(system),
-        required = Value(required),
-        unique = Value(unique),
-        collectionId = Value(collectionId),
-        extra = Value(extra);
-  static Insertable<FieldData> custom({
-    Expression<String>? id,
-    Expression<DateTime>? created,
-    Expression<DateTime>? updated,
-    Expression<String>? type,
-    Expression<String>? name,
-    Expression<bool>? system,
-    Expression<bool>? required,
-    Expression<bool>? unique,
-    Expression<String>? collectionId,
-    Expression<String>? extra,
+  UnpackStateCompanion.insert({
+    this.id = const Value.absent(),
+    required int specId,
+    required String step,
+    this.selectedModules = const Value.absent(),
+    this.filePath = const Value.absent(),
+  })  : specId = Value(specId),
+        step = Value(step);
+  static Insertable<UnpackStateData> custom({
+    Expression<int>? id,
+    Expression<int>? specId,
+    Expression<String>? step,
+    Expression<String>? selectedModules,
+    Expression<String>? filePath,
   }) {
     return RawValuesInsertable({
       if (id != null) 'id': id,
-      if (created != null) 'created': created,
-      if (updated != null) 'updated': updated,
-      if (type != null) 'type': type,
-      if (name != null) 'name': name,
-      if (system != null) 'system': system,
-      if (required != null) 'required': required,
-      if (unique != null) 'unique': unique,
-      if (collectionId != null) 'collection_id': collectionId,
-      if (extra != null) 'extra': extra,
+      if (specId != null) 'spec_id': specId,
+      if (step != null) 'step': step,
+      if (selectedModules != null) 'selected_modules': selectedModules,
+      if (filePath != null) 'file_path': filePath,
     });
   }
 
-  FieldCompanion copyWith(
-      {Value<String>? id,
-      Value<DateTime>? created,
-      Value<DateTime>? updated,
-      Value<FieldType>? type,
-      Value<String>? name,
-      Value<bool>? system,
-      Value<bool>? required,
-      Value<bool>? unique,
-      Value<String>? collectionId,
-      Value<String>? extra}) {
-    return FieldCompanion(
+  UnpackStateCompanion copyWith(
+      {Value<int>? id,
+      Value<int>? specId,
+      Value<String>? step,
+      Value<String?>? selectedModules,
+      Value<String?>? filePath}) {
+    return UnpackStateCompanion(
       id: id ?? this.id,
-      created: created ?? this.created,
-      updated: updated ?? this.updated,
-      type: type ?? this.type,
-      name: name ?? this.name,
-      system: system ?? this.system,
-      required: required ?? this.required,
-      unique: unique ?? this.unique,
-      collectionId: collectionId ?? this.collectionId,
-      extra: extra ?? this.extra,
+      specId: specId ?? this.specId,
+      step: step ?? this.step,
+      selectedModules: selectedModules ?? this.selectedModules,
+      filePath: filePath ?? this.filePath,
     );
   }
 
@@ -1022,52 +557,31 @@ class FieldCompanion extends UpdateCompanion<FieldData> {
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
     if (id.present) {
-      map['id'] = Variable<String>(id.value);
+      map['id'] = Variable<int>(id.value);
     }
-    if (created.present) {
-      map['created'] = Variable<DateTime>(created.value);
+    if (specId.present) {
+      map['spec_id'] = Variable<int>(specId.value);
     }
-    if (updated.present) {
-      map['updated'] = Variable<DateTime>(updated.value);
+    if (step.present) {
+      map['step'] = Variable<String>(step.value);
     }
-    if (type.present) {
-      final converter = $FieldTable.$convertertype;
-      map['type'] = Variable<String>(converter.toSql(type.value));
+    if (selectedModules.present) {
+      map['selected_modules'] = Variable<String>(selectedModules.value);
     }
-    if (name.present) {
-      map['name'] = Variable<String>(name.value);
-    }
-    if (system.present) {
-      map['system'] = Variable<bool>(system.value);
-    }
-    if (required.present) {
-      map['required'] = Variable<bool>(required.value);
-    }
-    if (unique.present) {
-      map['unique'] = Variable<bool>(unique.value);
-    }
-    if (collectionId.present) {
-      map['collection_id'] = Variable<String>(collectionId.value);
-    }
-    if (extra.present) {
-      map['extra'] = Variable<String>(extra.value);
+    if (filePath.present) {
+      map['file_path'] = Variable<String>(filePath.value);
     }
     return map;
   }
 
   @override
   String toString() {
-    return (StringBuffer('FieldCompanion(')
+    return (StringBuffer('UnpackStateCompanion(')
           ..write('id: $id, ')
-          ..write('created: $created, ')
-          ..write('updated: $updated, ')
-          ..write('type: $type, ')
-          ..write('name: $name, ')
-          ..write('system: $system, ')
-          ..write('required: $required, ')
-          ..write('unique: $unique, ')
-          ..write('collectionId: $collectionId, ')
-          ..write('extra: $extra')
+          ..write('specId: $specId, ')
+          ..write('step: $step, ')
+          ..write('selectedModules: $selectedModules, ')
+          ..write('filePath: $filePath')
           ..write(')'))
         .toString();
   }
@@ -1075,13 +589,14 @@ class FieldCompanion extends UpdateCompanion<FieldData> {
 
 abstract class _$LocalDatabase extends GeneratedDatabase {
   _$LocalDatabase(QueryExecutor e) : super(e);
-  late final $CollectionTable collection = $CollectionTable(this);
-  late final $FieldTable field = $FieldTable(this);
-  late final CollectionDao collectionDao = CollectionDao(this as LocalDatabase);
-  late final DocumentDao documentDao = DocumentDao(this as LocalDatabase);
+  late final $UnpackSpecTable unpackSpec = $UnpackSpecTable(this);
+  late final $UnpackStateTable unpackState = $UnpackStateTable(this);
+  late final UnpackStateDao unpackStateDao =
+      UnpackStateDao(this as LocalDatabase);
+  late final UnpackSpecDao unpackSpecDao = UnpackSpecDao(this as LocalDatabase);
   @override
   Iterable<TableInfo<Table, Object?>> get allTables =>
       allSchemaEntities.whereType<TableInfo<Table, Object?>>();
   @override
-  List<DatabaseSchemaEntity> get allSchemaEntities => [collection, field];
+  List<DatabaseSchemaEntity> get allSchemaEntities => [unpackSpec, unpackState];
 }

@@ -1,0 +1,21 @@
+name: unself_unpack_repository
+description: Repository for Unpack Service
+
+publish_to: "none"
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.18.6 <3.0.0"
+
+dependencies:
+  unself_model:
+  unself_local_database:
+
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  # mocktail: ^0.3.0
+  unself_analysis:

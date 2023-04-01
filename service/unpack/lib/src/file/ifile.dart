@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:unself_file/unself_file.dart';
+import 'package:unself_model/unself_model.dart';
 import 'package:unself_unpack/unself_unpack.dart';
 
 abstract class IFile {

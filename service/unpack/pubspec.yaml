@@ -11,7 +11,7 @@ dependencies:
   flutter:
     sdk: flutter
 
-  unself_local_database:
+  unself_unpack_repository:
   unself_model:
 
   unself_file:
