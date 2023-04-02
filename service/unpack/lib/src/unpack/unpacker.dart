@@ -33,6 +33,9 @@ class Unpacker extends IUnpack {
   UnpackStep get currentStep => currentState.step;
 
   @override
+  String get id => currentState.id!;
+
+  @override
   FutureOr<void> configure(Iterable<ModuleSpec> selectedModules) {
     // _require<UnpackInitial>();
 
@@ -62,9 +65,10 @@ class Unpacker extends IUnpack {
   FutureOr<void> process() async {
     // final retrieve = _require<Unpackeretrieve>();
 
-    for (final module in currentState.selectedModules!) {
-      await Modularize(module, spec.fileSpec).process(currentState.xFile);
-    }
+    modularize(m) async =>
+        Modularize(m, spec.fileSpec).process(currentState.xFile);
+
+    await Future.wait(currentState.selectedModules!.map((modularize)));
 
     _states.add(currentState.copyWith(
       step: UnpackStep.complete,

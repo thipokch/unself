@@ -11,13 +11,18 @@ class $UnpackSpecTable extends UnpackSpec
   $UnpackSpecTable(this.attachedDatabase, [this._alias]);
   static const VerificationMeta _idMeta = const VerificationMeta('id');
   @override
-  late final GeneratedColumn<int> id = GeneratedColumn<int>(
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
       'id', aliasedName, false,
-      hasAutoIncrement: true,
-      type: DriftSqlType.int,
+      type: DriftSqlType.string,
       requiredDuringInsert: false,
-      defaultConstraints:
-          GeneratedColumn.constraintIsAlways('PRIMARY KEY AUTOINCREMENT'));
+      clientDefault: () => Slugid.nice().toString());
+  static const VerificationMeta _slugMeta = const VerificationMeta('slug');
+  @override
+  late final GeneratedColumn<String> slug = GeneratedColumn<String>(
+      'slug', aliasedName, false,
+      type: DriftSqlType.string,
+      requiredDuringInsert: true,
+      defaultConstraints: GeneratedColumn.constraintIsAlways('UNIQUE'));
   static const VerificationMeta _nameMeta = const VerificationMeta('name');
   @override
   late final GeneratedColumn<String> name = GeneratedColumn<String>(
@@ -43,7 +48,7 @@ class $UnpackSpecTable extends UnpackSpec
       type: DriftSqlType.string, requiredDuringInsert: true);
   @override
   List<GeneratedColumn> get $columns =>
-      [id, name, fileSpec, retrieveSpec, modules];
+      [id, slug, name, fileSpec, retrieveSpec, modules];
   @override
   String get aliasedName => _alias ?? 'unpack_spec';
   @override
@@ -55,6 +60,12 @@ class $UnpackSpecTable extends UnpackSpec
     final data = instance.toColumns(true);
     if (data.containsKey('id')) {
       context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    }
+    if (data.containsKey('slug')) {
+      context.handle(
+          _slugMeta, slug.isAcceptableOrUnknown(data['slug']!, _slugMeta));
+    } else if (isInserting) {
+      context.missing(_slugMeta);
     }
     if (data.containsKey('name')) {
       context.handle(
@@ -92,7 +103,9 @@ class $UnpackSpecTable extends UnpackSpec
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return UnpackSpecData(
       id: attachedDatabase.typeMapping
-          .read(DriftSqlType.int, data['${effectivePrefix}id'])!,
+          .read(DriftSqlType.string, data['${effectivePrefix}id'])!,
+      slug: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}slug'])!,
       name: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}name'])!,
       fileSpec: attachedDatabase.typeMapping
@@ -111,13 +124,15 @@ class $UnpackSpecTable extends UnpackSpec
 }
 
 class UnpackSpecData extends DataClass implements Insertable<UnpackSpecData> {
-  final int id;
+  final String id;
+  final String slug;
   final String name;
   final String fileSpec;
   final String retrieveSpec;
   final String modules;
   const UnpackSpecData(
       {required this.id,
+      required this.slug,
       required this.name,
       required this.fileSpec,
       required this.retrieveSpec,
@@ -125,7 +140,8 @@ class UnpackSpecData extends DataClass implements Insertable<UnpackSpecData> {
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
-    map['id'] = Variable<int>(id);
+    map['id'] = Variable<String>(id);
+    map['slug'] = Variable<String>(slug);
     map['name'] = Variable<String>(name);
     map['file_spec'] = Variable<String>(fileSpec);
     map['retrieve_spec'] = Variable<String>(retrieveSpec);
@@ -136,6 +152,7 @@ class UnpackSpecData extends DataClass implements Insertable<UnpackSpecData> {
   UnpackSpecCompanion toCompanion(bool nullToAbsent) {
     return UnpackSpecCompanion(
       id: Value(id),
+      slug: Value(slug),
       name: Value(name),
       fileSpec: Value(fileSpec),
       retrieveSpec: Value(retrieveSpec),
@@ -147,7 +164,8 @@ class UnpackSpecData extends DataClass implements Insertable<UnpackSpecData> {
       {ValueSerializer? serializer}) {
     serializer ??= driftRuntimeOptions.defaultSerializer;
     return UnpackSpecData(
-      id: serializer.fromJson<int>(json['id']),
+      id: serializer.fromJson<String>(json['id']),
+      slug: serializer.fromJson<String>(json['slug']),
       name: serializer.fromJson<String>(json['name']),
       fileSpec: serializer.fromJson<String>(json['fileSpec']),
       retrieveSpec: serializer.fromJson<String>(json['retrieveSpec']),
@@ -158,7 +176,8 @@ class UnpackSpecData extends DataClass implements Insertable<UnpackSpecData> {
   Map<String, dynamic> toJson({ValueSerializer? serializer}) {
     serializer ??= driftRuntimeOptions.defaultSerializer;
     return <String, dynamic>{
-      'id': serializer.toJson<int>(id),
+      'id': serializer.toJson<String>(id),
+      'slug': serializer.toJson<String>(slug),
       'name': serializer.toJson<String>(name),
       'fileSpec': serializer.toJson<String>(fileSpec),
       'retrieveSpec': serializer.toJson<String>(retrieveSpec),
@@ -167,13 +186,15 @@ class UnpackSpecData extends DataClass implements Insertable<UnpackSpecData> {
   }
 
   UnpackSpecData copyWith(
-          {int? id,
+          {String? id,
+          String? slug,
           String? name,
           String? fileSpec,
           String? retrieveSpec,
           String? modules}) =>
       UnpackSpecData(
         id: id ?? this.id,
+        slug: slug ?? this.slug,
         name: name ?? this.name,
         fileSpec: fileSpec ?? this.fileSpec,
         retrieveSpec: retrieveSpec ?? this.retrieveSpec,
@@ -183,6 +204,7 @@ class UnpackSpecData extends DataClass implements Insertable<UnpackSpecData> {
   String toString() {
     return (StringBuffer('UnpackSpecData(')
           ..write('id: $id, ')
+          ..write('slug: $slug, ')
           ..write('name: $name, ')
           ..write('fileSpec: $fileSpec, ')
           ..write('retrieveSpec: $retrieveSpec, ')
@@ -192,12 +214,14 @@ class UnpackSpecData extends DataClass implements Insertable<UnpackSpecData> {
   }
 
   @override
-  int get hashCode => Object.hash(id, name, fileSpec, retrieveSpec, modules);
+  int get hashCode =>
+      Object.hash(id, slug, name, fileSpec, retrieveSpec, modules);
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       (other is UnpackSpecData &&
           other.id == this.id &&
+          other.slug == this.slug &&
           other.name == this.name &&
           other.fileSpec == this.fileSpec &&
           other.retrieveSpec == this.retrieveSpec &&
@@ -205,13 +229,15 @@ class UnpackSpecData extends DataClass implements Insertable<UnpackSpecData> {
 }
 
 class UnpackSpecCompanion extends UpdateCompanion<UnpackSpecData> {
-  final Value<int> id;
+  final Value<String> id;
+  final Value<String> slug;
   final Value<String> name;
   final Value<String> fileSpec;
   final Value<String> retrieveSpec;
   final Value<String> modules;
   const UnpackSpecCompanion({
     this.id = const Value.absent(),
+    this.slug = const Value.absent(),
     this.name = const Value.absent(),
     this.fileSpec = const Value.absent(),
     this.retrieveSpec = const Value.absent(),
@@ -219,16 +245,19 @@ class UnpackSpecCompanion extends UpdateCompanion<UnpackSpecData> {
   });
   UnpackSpecCompanion.insert({
     this.id = const Value.absent(),
+    required String slug,
     required String name,
     required String fileSpec,
     required String retrieveSpec,
     required String modules,
-  })  : name = Value(name),
+  })  : slug = Value(slug),
+        name = Value(name),
         fileSpec = Value(fileSpec),
         retrieveSpec = Value(retrieveSpec),
         modules = Value(modules);
   static Insertable<UnpackSpecData> custom({
-    Expression<int>? id,
+    Expression<String>? id,
+    Expression<String>? slug,
     Expression<String>? name,
     Expression<String>? fileSpec,
     Expression<String>? retrieveSpec,
@@ -236,6 +265,7 @@ class UnpackSpecCompanion extends UpdateCompanion<UnpackSpecData> {
   }) {
     return RawValuesInsertable({
       if (id != null) 'id': id,
+      if (slug != null) 'slug': slug,
       if (name != null) 'name': name,
       if (fileSpec != null) 'file_spec': fileSpec,
       if (retrieveSpec != null) 'retrieve_spec': retrieveSpec,
@@ -244,13 +274,15 @@ class UnpackSpecCompanion extends UpdateCompanion<UnpackSpecData> {
   }
 
   UnpackSpecCompanion copyWith(
-      {Value<int>? id,
+      {Value<String>? id,
+      Value<String>? slug,
       Value<String>? name,
       Value<String>? fileSpec,
       Value<String>? retrieveSpec,
       Value<String>? modules}) {
     return UnpackSpecCompanion(
       id: id ?? this.id,
+      slug: slug ?? this.slug,
       name: name ?? this.name,
       fileSpec: fileSpec ?? this.fileSpec,
       retrieveSpec: retrieveSpec ?? this.retrieveSpec,
@@ -262,7 +294,10 @@ class UnpackSpecCompanion extends UpdateCompanion<UnpackSpecData> {
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
     if (id.present) {
-      map['id'] = Variable<int>(id.value);
+      map['id'] = Variable<String>(id.value);
+    }
+    if (slug.present) {
+      map['slug'] = Variable<String>(slug.value);
     }
     if (name.present) {
       map['name'] = Variable<String>(name.value);
@@ -283,6 +318,7 @@ class UnpackSpecCompanion extends UpdateCompanion<UnpackSpecData> {
   String toString() {
     return (StringBuffer('UnpackSpecCompanion(')
           ..write('id: $id, ')
+          ..write('slug: $slug, ')
           ..write('name: $name, ')
           ..write('fileSpec: $fileSpec, ')
           ..write('retrieveSpec: $retrieveSpec, ')
@@ -300,18 +336,16 @@ class $UnpackStateTable extends UnpackState
   $UnpackStateTable(this.attachedDatabase, [this._alias]);
   static const VerificationMeta _idMeta = const VerificationMeta('id');
   @override
-  late final GeneratedColumn<int> id = GeneratedColumn<int>(
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
       'id', aliasedName, false,
-      hasAutoIncrement: true,
-      type: DriftSqlType.int,
+      type: DriftSqlType.string,
       requiredDuringInsert: false,
-      defaultConstraints:
-          GeneratedColumn.constraintIsAlways('PRIMARY KEY AUTOINCREMENT'));
+      clientDefault: () => Slugid.nice().toString());
   static const VerificationMeta _specIdMeta = const VerificationMeta('specId');
   @override
-  late final GeneratedColumn<int> specId = GeneratedColumn<int>(
+  late final GeneratedColumn<String> specId = GeneratedColumn<String>(
       'spec_id', aliasedName, false,
-      type: DriftSqlType.int,
+      type: DriftSqlType.string,
       requiredDuringInsert: true,
       defaultConstraints:
           GeneratedColumn.constraintIsAlways('REFERENCES unpack_spec (id)'));
@@ -379,9 +413,9 @@ class $UnpackStateTable extends UnpackState
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return UnpackStateData(
       id: attachedDatabase.typeMapping
-          .read(DriftSqlType.int, data['${effectivePrefix}id'])!,
+          .read(DriftSqlType.string, data['${effectivePrefix}id'])!,
       specId: attachedDatabase.typeMapping
-          .read(DriftSqlType.int, data['${effectivePrefix}spec_id'])!,
+          .read(DriftSqlType.string, data['${effectivePrefix}spec_id'])!,
       step: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}step'])!,
       selectedModules: attachedDatabase.typeMapping.read(
@@ -398,8 +432,8 @@ class $UnpackStateTable extends UnpackState
 }
 
 class UnpackStateData extends DataClass implements Insertable<UnpackStateData> {
-  final int id;
-  final int specId;
+  final String id;
+  final String specId;
   final String step;
   final String? selectedModules;
   final String? filePath;
@@ -412,8 +446,8 @@ class UnpackStateData extends DataClass implements Insertable<UnpackStateData> {
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
-    map['id'] = Variable<int>(id);
-    map['spec_id'] = Variable<int>(specId);
+    map['id'] = Variable<String>(id);
+    map['spec_id'] = Variable<String>(specId);
     map['step'] = Variable<String>(step);
     if (!nullToAbsent || selectedModules != null) {
       map['selected_modules'] = Variable<String>(selectedModules);
@@ -442,8 +476,8 @@ class UnpackStateData extends DataClass implements Insertable<UnpackStateData> {
       {ValueSerializer? serializer}) {
     serializer ??= driftRuntimeOptions.defaultSerializer;
     return UnpackStateData(
-      id: serializer.fromJson<int>(json['id']),
-      specId: serializer.fromJson<int>(json['specId']),
+      id: serializer.fromJson<String>(json['id']),
+      specId: serializer.fromJson<String>(json['specId']),
       step: serializer.fromJson<String>(json['step']),
       selectedModules: serializer.fromJson<String?>(json['selectedModules']),
       filePath: serializer.fromJson<String?>(json['filePath']),
@@ -453,8 +487,8 @@ class UnpackStateData extends DataClass implements Insertable<UnpackStateData> {
   Map<String, dynamic> toJson({ValueSerializer? serializer}) {
     serializer ??= driftRuntimeOptions.defaultSerializer;
     return <String, dynamic>{
-      'id': serializer.toJson<int>(id),
-      'specId': serializer.toJson<int>(specId),
+      'id': serializer.toJson<String>(id),
+      'specId': serializer.toJson<String>(specId),
       'step': serializer.toJson<String>(step),
       'selectedModules': serializer.toJson<String?>(selectedModules),
       'filePath': serializer.toJson<String?>(filePath),
@@ -462,8 +496,8 @@ class UnpackStateData extends DataClass implements Insertable<UnpackStateData> {
   }
 
   UnpackStateData copyWith(
-          {int? id,
-          int? specId,
+          {String? id,
+          String? specId,
           String? step,
           Value<String?> selectedModules = const Value.absent(),
           Value<String?> filePath = const Value.absent()}) =>
@@ -502,8 +536,8 @@ class UnpackStateData extends DataClass implements Insertable<UnpackStateData> {
 }
 
 class UnpackStateCompanion extends UpdateCompanion<UnpackStateData> {
-  final Value<int> id;
-  final Value<int> specId;
+  final Value<String> id;
+  final Value<String> specId;
   final Value<String> step;
   final Value<String?> selectedModules;
   final Value<String?> filePath;
@@ -516,15 +550,15 @@ class UnpackStateCompanion extends UpdateCompanion<UnpackStateData> {
   });
   UnpackStateCompanion.insert({
     this.id = const Value.absent(),
-    required int specId,
+    required String specId,
     required String step,
     this.selectedModules = const Value.absent(),
     this.filePath = const Value.absent(),
   })  : specId = Value(specId),
         step = Value(step);
   static Insertable<UnpackStateData> custom({
-    Expression<int>? id,
-    Expression<int>? specId,
+    Expression<String>? id,
+    Expression<String>? specId,
     Expression<String>? step,
     Expression<String>? selectedModules,
     Expression<String>? filePath,
@@ -539,8 +573,8 @@ class UnpackStateCompanion extends UpdateCompanion<UnpackStateData> {
   }
 
   UnpackStateCompanion copyWith(
-      {Value<int>? id,
-      Value<int>? specId,
+      {Value<String>? id,
+      Value<String>? specId,
       Value<String>? step,
       Value<String?>? selectedModules,
       Value<String?>? filePath}) {
@@ -557,10 +591,10 @@ class UnpackStateCompanion extends UpdateCompanion<UnpackStateData> {
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
     if (id.present) {
-      map['id'] = Variable<int>(id.value);
+      map['id'] = Variable<String>(id.value);
     }
     if (specId.present) {
-      map['spec_id'] = Variable<int>(specId.value);
+      map['spec_id'] = Variable<String>(specId.value);
     }
     if (step.present) {
       map['step'] = Variable<String>(step.value);

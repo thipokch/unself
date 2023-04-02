@@ -15,6 +15,8 @@ abstract class IUnpack {
   UnpackState get currentState;
   UnpackStep get currentStep;
 
+  String get id;
+
   FutureOr<void> configure(Iterable<ModuleSpec> selectedModules);
   FutureOr<void> retrieve();
   FutureOr<void> process();

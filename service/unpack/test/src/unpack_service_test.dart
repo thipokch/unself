@@ -25,6 +25,7 @@ void main() {
     });
 
     tearDown(() async {
+      await unpack.clear();
       await database.close();
     });
 
@@ -34,35 +35,28 @@ void main() {
       expect(unpack, isNotNull);
     });
 
-    // test('spec back', () async {
-    //   await UnpackRepository.bootstrap(database, [spec]);
-    //   final s = (await repo.getAllSpecs()).first;
-
-    //   expect(s.id, spec.id);
-    //   expect(s.name, spec.name);
-    //   expect(s.fileSpec, spec.fileSpec);
-    //   expect(s.retrieveSpec, spec.retrieveSpec);
-    //   expect(s.modules.toList(), spec.modules);
-    // });
-
     test('initialize spec and get instance', () async {
       await UnpackRepository.bootstrap(database, [spec]);
-      final id = await unpack.initialize(spec);
+      final s = await unpack.specs;
+
+      final id = await unpack.initialize(s.first);
 
       expect((await repo.getAllStates()).length, 1);
-      expect(id, 1);
+      expect(id.length, 22);
 
       expect(await unpack.unpacker(id), const TypeMatcher<Unpacker>());
     });
 
     test('restore instance from repository and dispose them', () async {
       await UnpackRepository.bootstrap(database, [spec]);
-      final id = await repo.putState(spec.initialState);
+      final s = await unpack.specs;
 
-      expect(await unpack.unpacker(id), const TypeMatcher<Unpacker>());
+      final state = await repo.putState(s.first.initialState);
+
+      expect(await unpack.unpacker(state.id!), const TypeMatcher<Unpacker>());
       expect(unpack.runningInstances, 1);
 
-      await unpack.dispose(id);
+      await unpack.dispose(state.id!);
       expect(unpack.runningInstances, 0);
     });
   });

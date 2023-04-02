@@ -9,9 +9,9 @@ abstract class IUnpackService {
   Stream<Iterable<UnpackState>> get states;
   FutureOr<Iterable<UnpackSpec>> get specs;
 
-  Future<int> initialize(UnpackSpec spec);
-  Future<IUnpack?> unpacker(int instanceId);
-  FutureOr<void> dispose(int instanceId);
+  Future<String> initialize(UnpackSpec spec);
+  Future<IUnpack?> unpacker(String id);
+  FutureOr<void> dispose(String id);
 
   // Iterable<ModuleSpec> modules(int instanceId);
 

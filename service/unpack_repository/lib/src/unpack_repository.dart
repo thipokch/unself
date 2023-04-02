@@ -42,15 +42,16 @@ class UnpackRepository implements IUnpackRepository {
       .then((_) => _.map(UnpackSpecMapper.entityToModel));
 
   @override
-  Future<UnpackSpec> getSpecById(int id) =>
+  Future<UnpackSpec> getSpecById(String id) =>
       _db.unpackSpecDao.get(id).then(UnpackSpecMapper.entityToModel);
 
   @override
   Future<bool> get isStatesEmpty => _db.unpackStateDao.isEmpty;
 
   @override
-  Future<int> putSpec(UnpackSpec spec) =>
-      _db.unpackSpecDao.put(UnpackSpecMapper.modelToEntity(spec));
+  Future<UnpackSpec> putSpec(UnpackSpec spec) => _db.unpackSpecDao
+      .put(UnpackSpecMapper.modelToEntity(spec))
+      .then(UnpackSpecMapper.entityToModel);
 
   @override
   Stream<Iterable<UnpackState>> watchAllStates() => _db.unpackStateDao
@@ -63,10 +64,11 @@ class UnpackRepository implements IUnpackRepository {
       .then((_) => _.map(UnpackStateMapper.entityToModel));
 
   @override
-  Future<UnpackState> getStateById(int id) =>
+  Future<UnpackState> getStateById(String id) =>
       _db.unpackStateDao.get(id).then(UnpackStateMapper.entityToModel);
 
   @override
-  Future<int> putState(UnpackState state) =>
-      _db.unpackStateDao.put(UnpackStateMapper.modelToEntity(state));
+  Future<UnpackState> putState(UnpackState state) => _db.unpackStateDao
+      .put(UnpackStateMapper.modelToEntity(state))
+      .then(UnpackStateMapper.entityToModel);
 }

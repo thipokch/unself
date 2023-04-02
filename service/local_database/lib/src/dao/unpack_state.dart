@@ -12,11 +12,19 @@ class UnpackStateDao extends DatabaseAccessor<LocalDatabase>
 
   Future<List<UnpackStateData>> getAll() => select(unpackState).get();
 
-  Future<UnpackStateData> get(int id) =>
+  Future<UnpackStateData> get(String id) =>
       (select(unpackState)..where((t) => t.id.equals(id))).getSingle();
 
-  Future<int> put(Insertable<UnpackStateData> entity) =>
-      into(unpackState).insert(entity, mode: InsertMode.insertOrReplace);
+  Future<UnpackStateData> put(Insertable<UnpackStateData> entity) =>
+      into(unpackState)
+          .insertReturning(entity, mode: InsertMode.insertOrReplace);
 
-  Future<bool> get isEmpty => select(unpackSpec).get().then((_) => _.isEmpty);
+  Future<int> get count {
+    final countExp = unpackState.id.count();
+    final q = selectOnly(unpackState)..addColumns([countExp]);
+
+    return q.map((row) => row.read(countExp)).getSingle().then((_) => _!);
+  }
+
+  Future<bool> get isEmpty => count.then((value) => value == 0);
 }

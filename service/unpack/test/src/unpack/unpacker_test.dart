@@ -19,7 +19,7 @@ void main() {
           // selectedModules: modules,
           state: UnpackState(
             // id: 'id',
-            specId: 0,
+            specId: '0',
             step: UnpackStep.retrieve,
             selectedModules: modules,
             filePath: facebookSampleData.path,

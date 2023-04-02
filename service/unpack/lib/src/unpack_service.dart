@@ -24,36 +24,33 @@ class UnpackService implements IUnpackService {
   @override
   Future<Iterable<UnpackSpec>> get specs => _repo.getAllSpecs();
 
-  static final _instances = <int, IUnpack>{};
+  static final _instances = <String, IUnpack>{};
 
   int get runningInstances => _instances.length;
 
   @override
-  Future<int> initialize(UnpackSpec spec) async {
-    final u = Unpacker(spec);
-    final id = await _repo.putState(u.currentState);
-
-    _instances[id] = u;
-    // u.states.listen((s) => _repo.putState(s));
-    return id;
-  }
+  Future<String> initialize(UnpackSpec spec) async =>
+      await _repo.putState(spec.initialState).then((_) => _.id!);
 
   @override
-  Future<IUnpack> unpacker(int instanceId) async {
-    if (_instances.containsKey(instanceId)) return _instances[instanceId]!;
+  Future<IUnpack> unpacker(String id) async {
+    if (_instances.containsKey(id)) return _instances[id]!;
 
-    final state = await _repo.getStateById(instanceId);
+    final state = await _repo.getStateById(id);
     final spec = await _repo.getSpecById(state.specId);
 
-    _instances[instanceId] ??= Unpacker(spec, state: state);
+    _instances[id] ??= Unpacker(spec, state: state);
 
-    return _instances[instanceId]!;
+    return _instances[id]!;
   }
 
   @override
-  FutureOr<void> dispose(int instanceId) {
+  Future<void> dispose(String instanceId) async {
     final instance = _instances[instanceId];
-    instance?.dispose();
+    await instance?.dispose();
     _instances.remove(instanceId);
   }
+
+  FutureOr<void> clear() async =>
+      await Future.wait(_instances.keys.map(dispose));
 }

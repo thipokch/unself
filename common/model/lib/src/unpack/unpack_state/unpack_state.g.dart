@@ -8,8 +8,8 @@ part of 'unpack_state.dart';
 
 _$_UnpackState _$$_UnpackStateFromJson(Map<String, dynamic> json) =>
     _$_UnpackState(
-      id: json['id'] as int?,
-      specId: json['specId'] as int,
+      id: json['id'] as String?,
+      specId: json['specId'] as String,
       step: $enumDecode(_$UnpackStepEnumMap, json['step']),
       selectedModules: (json['selectedModules'] as List<dynamic>?)
           ?.map((e) => ModuleSpec.fromJson(e as Map<String, dynamic>)),

@@ -8,7 +8,7 @@ part of 'unpack_spec.dart';
 
 _$_UnpackSpec _$$_UnpackSpecFromJson(Map<String, dynamic> json) =>
     _$_UnpackSpec(
-      id: json['id'] as int?,
+      id: json['id'] as String?,
       name: json['name'] as String,
       fileSpec: FileSpec.fromJson(json['fileSpec'] as Map<String, dynamic>),
       retrieveSpec:

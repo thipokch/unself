@@ -3,7 +3,8 @@ import 'package:unself_model/unself_model.dart';
 abstract class IUnpackSpec {
   const IUnpackSpec();
 
-  int? get id;
+  String? get id;
+  String get slug;
   String get name;
 
   FileSpec get fileSpec;

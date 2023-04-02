@@ -23,7 +23,7 @@ const modules = <ModuleSpec>[
 ];
 
 const spec = UnpackSpec(
-  id: 0,
+  // id: 0,
   name: 'name',
   fileSpec: FileSpec.zip(),
   retrieveSpec: RetrieveSpec.localFile(),

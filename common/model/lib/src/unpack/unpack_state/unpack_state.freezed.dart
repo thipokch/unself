@@ -20,8 +20,8 @@ UnpackState _$UnpackStateFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$UnpackState {
-  int? get id => throw _privateConstructorUsedError;
-  int get specId => throw _privateConstructorUsedError;
+  String? get id => throw _privateConstructorUsedError;
+  String get specId => throw _privateConstructorUsedError;
   UnpackStep get step => throw _privateConstructorUsedError;
   Iterable<ModuleSpec>? get selectedModules =>
       throw _privateConstructorUsedError;
@@ -40,8 +40,8 @@ abstract class $UnpackStateCopyWith<$Res> {
       _$UnpackStateCopyWithImpl<$Res, UnpackState>;
   @useResult
   $Res call(
-      {int? id,
-      int specId,
+      {String? id,
+      String specId,
       UnpackStep step,
       Iterable<ModuleSpec>? selectedModules,
       String? filePath});
@@ -70,11 +70,11 @@ class _$UnpackStateCopyWithImpl<$Res, $Val extends UnpackState>
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as String?,
       specId: null == specId
           ? _value.specId
           : specId // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       step: null == step
           ? _value.step
           : step // ignore: cast_nullable_to_non_nullable
@@ -100,8 +100,8 @@ abstract class _$$_UnpackStateCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {int? id,
-      int specId,
+      {String? id,
+      String specId,
       UnpackStep step,
       Iterable<ModuleSpec>? selectedModules,
       String? filePath});
@@ -128,11 +128,11 @@ class __$$_UnpackStateCopyWithImpl<$Res>
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as String?,
       specId: null == specId
           ? _value.specId
           : specId // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       step: null == step
           ? _value.step
           : step // ignore: cast_nullable_to_non_nullable
@@ -164,9 +164,9 @@ class _$_UnpackState extends _UnpackState {
       _$$_UnpackStateFromJson(json);
 
   @override
-  final int? id;
+  final String? id;
   @override
-  final int specId;
+  final String specId;
   @override
   final UnpackStep step;
   @override
@@ -214,8 +214,8 @@ class _$_UnpackState extends _UnpackState {
 
 abstract class _UnpackState extends UnpackState {
   const factory _UnpackState(
-      {final int? id,
-      required final int specId,
+      {final String? id,
+      required final String specId,
       required final UnpackStep step,
       final Iterable<ModuleSpec>? selectedModules,
       final String? filePath}) = _$_UnpackState;
@@ -225,9 +225,9 @@ abstract class _UnpackState extends UnpackState {
       _$_UnpackState.fromJson;
 
   @override
-  int? get id;
+  String? get id;
   @override
-  int get specId;
+  String get specId;
   @override
   UnpackStep get step;
   @override

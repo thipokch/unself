@@ -9,8 +9,8 @@ class UnpackState with _$UnpackState {
   const UnpackState._();
 
   const factory UnpackState({
-    int? id,
-    required int specId,
+    String? id,
+    required String specId,
     required UnpackStep step,
     Iterable<ModuleSpec>? selectedModules,
     String? filePath,

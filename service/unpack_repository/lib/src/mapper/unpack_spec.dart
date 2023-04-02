@@ -10,6 +10,7 @@ class UnpackSpecMapper {
   static UnpackSpecCompanion modelToEntity(UnpackSpec model) =>
       UnpackSpecCompanion.insert(
         id: model.id != null ? Value(model.id!) : const Value.absent(),
+        slug: model.slug,
         name: model.name,
         fileSpec: jsonEncode(model.fileSpec),
         retrieveSpec: jsonEncode(model.retrieveSpec),

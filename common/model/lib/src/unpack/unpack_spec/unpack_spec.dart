@@ -1,6 +1,7 @@
 import 'package:unself_model/unself_model.dart';
 
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:slugify/slugify.dart';
 
 import 'iunpack_spec.dart';
 
@@ -12,7 +13,7 @@ class UnpackSpec with _$UnpackSpec implements IUnpackSpec {
   const UnpackSpec._();
 
   const factory UnpackSpec({
-    int? id,
+    String? id,
     required String name,
     required FileSpec fileSpec,
     required RetrieveSpec retrieveSpec,
@@ -27,4 +28,7 @@ class UnpackSpec with _$UnpackSpec implements IUnpackSpec {
         step: UnpackStep.initial,
         // selectedModules: modules,
       );
+
+  @override
+  String get slug => slugify(name);
 }

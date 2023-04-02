@@ -20,7 +20,7 @@ UnpackSpec _$UnpackSpecFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$UnpackSpec {
-  int? get id => throw _privateConstructorUsedError;
+  String? get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   FileSpec get fileSpec => throw _privateConstructorUsedError;
   RetrieveSpec get retrieveSpec => throw _privateConstructorUsedError;
@@ -39,7 +39,7 @@ abstract class $UnpackSpecCopyWith<$Res> {
       _$UnpackSpecCopyWithImpl<$Res, UnpackSpec>;
   @useResult
   $Res call(
-      {int? id,
+      {String? id,
       String name,
       FileSpec fileSpec,
       RetrieveSpec retrieveSpec,
@@ -72,7 +72,7 @@ class _$UnpackSpecCopyWithImpl<$Res, $Val extends UnpackSpec>
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as String?,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -118,7 +118,7 @@ abstract class _$$_UnpackSpecCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {int? id,
+      {String? id,
       String name,
       FileSpec fileSpec,
       RetrieveSpec retrieveSpec,
@@ -151,7 +151,7 @@ class __$$_UnpackSpecCopyWithImpl<$Res>
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as String?,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -187,7 +187,7 @@ class _$_UnpackSpec extends _UnpackSpec {
       _$$_UnpackSpecFromJson(json);
 
   @override
-  final int? id;
+  final String? id;
   @override
   final String name;
   @override
@@ -237,7 +237,7 @@ class _$_UnpackSpec extends _UnpackSpec {
 
 abstract class _UnpackSpec extends UnpackSpec {
   const factory _UnpackSpec(
-      {final int? id,
+      {final String? id,
       required final String name,
       required final FileSpec fileSpec,
       required final RetrieveSpec retrieveSpec,
@@ -248,7 +248,7 @@ abstract class _UnpackSpec extends UnpackSpec {
       _$_UnpackSpec.fromJson;
 
   @override
-  int? get id;
+  String? get id;
   @override
   String get name;
   @override

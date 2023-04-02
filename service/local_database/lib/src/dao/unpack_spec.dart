@@ -12,15 +12,25 @@ class UnpackSpecDao extends DatabaseAccessor<LocalDatabase>
 
   Future<List<UnpackSpecData>> getAll() => select(unpackSpec).get();
 
-  Future<UnpackSpecData> get(int id) =>
-      (select(unpackSpec)..where((t) => t.id.equals(id))).getSingle();
+  Future<UnpackSpecData> get(String id) {
+    final q = select(unpackSpec)..where((t) => t.id.equals(id));
+    return q.getSingle();
+  }
 
-  Future<int> put(Insertable<UnpackSpecData> entity) =>
-      into(unpackSpec).insert(entity, mode: InsertMode.insertOrReplace);
+  Future<UnpackSpecData> put(Insertable<UnpackSpecData> entity) =>
+      into(unpackSpec)
+          .insertReturning(entity, mode: InsertMode.insertOrReplace);
 
   Future<void> putAll(Iterable<Insertable<UnpackSpecData>> entities) =>
       batch((batch) => batch.insertAll(unpackSpec, entities,
           mode: InsertMode.insertOrReplace));
 
-  Future<bool> get isEmpty => select(unpackSpec).get().then((_) => _.isEmpty);
+  Future<int> get count {
+    final countExp = unpackSpec.id.count();
+    final q = selectOnly(unpackSpec)..addColumns([countExp]);
+
+    return q.map((row) => row.read(countExp)).getSingle().then((_) => _!);
+  }
+
+  Future<bool> get isEmpty => count.then((value) => value == 0);
 }

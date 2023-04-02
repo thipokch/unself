@@ -7,9 +7,9 @@ abstract class IUnpackRepository {
   Stream<Iterable<UnpackSpec>> watchAllSpecs();
 
   Future<Iterable<UnpackSpec>> getAllSpecs();
-  Future<UnpackSpec> getSpecById(int id);
+  Future<UnpackSpec> getSpecById(String id);
 
-  Future<int> putSpec(UnpackSpec spec);
+  Future<UnpackSpec> putSpec(UnpackSpec spec);
   // putAllSpecs(Iterable<UnpackSpec> spec);
 
   Future<bool> get isStatesEmpty;
@@ -17,8 +17,8 @@ abstract class IUnpackRepository {
   Stream<Iterable<UnpackState>> watchAllStates();
 
   Future<Iterable<UnpackState>> getAllStates();
-  Future<UnpackState> getStateById(int id);
+  Future<UnpackState> getStateById(String id);
 
-  Future<int> putState(UnpackState state);
+  Future<UnpackState> putState(UnpackState state);
   // putAllStates(Iterable<UnpackState> states);
 }

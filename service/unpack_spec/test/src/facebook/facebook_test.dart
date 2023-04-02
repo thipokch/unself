@@ -19,7 +19,7 @@ void main() {
       unpackr = Unpacker(facebookSpec,
           state: UnpackState(
             // id: 'id',
-            specId: 0,
+            specId: '0',
             step: UnpackStep.retrieve,
             selectedModules: facebookSpec.modules,
             filePath: facebookSampleData.path,
