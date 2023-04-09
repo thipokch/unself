@@ -1,0 +1,10 @@
+# melos_managed_dependency_overrides: un_analysis,un_license,un_style,un_ui
+dependency_overrides:
+  un_analysis:
+    path: ../../un_analysis
+  un_license:
+    path: ../license
+  un_style:
+    path: ../../un_style
+  un_ui:
+    path: ../../un_ui

@@ -1,0 +1,32 @@
+name: unpack_spec
+description: Data providers for Unpack archive data service.
+
+publish_to: "none"
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.18.6 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  un_model:
+  un_file:
+
+dev_dependencies:
+  # Code Quality
+
+  un_analysis:
+  dart_code_metrics: ^5.4.0
+  dependency_validator: ^3.2.2
+
+  # Testing
+
+  flutter_test:
+    sdk: flutter
+
+  # bloc_test: ^9.1.0
+  # mocktail: ^0.3.0
+
+  unpack:

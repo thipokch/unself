@@ -1,0 +1,16 @@
+# melos_managed_dependency_overrides: un_analysis,un_database,un_file,un_model,ungraph_database,ungraph_repository,unpack_repository
+dependency_overrides:
+  un_analysis:
+    path: ../un_analysis
+  un_database:
+    path: ../un_database
+  un_file:
+    path: ../un_file
+  un_model:
+    path: ../un_model
+  ungraph_database:
+    path: ../ungraph_database
+  ungraph_repository:
+    path: ../ungraph_repository
+  unpack_repository:
+    path: ../unpack_repository

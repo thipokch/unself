@@ -1,5 +1,0 @@
-include: package:unself_analysis/unself_analysis.yaml
-
-analyzer:
-  exclude:
-    - "lib/config/**"

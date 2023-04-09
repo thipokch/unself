@@ -1,0 +1,52 @@
+name: unpack
+description: Unpack archive data service for Unself project.
+
+publish_to: none
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.18.6 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  ungraph_repository:
+  unpack_repository:
+  un_model:
+
+  un_file:
+
+  archive: ^3.3.0
+  clock:
+  collection: ^1.17.0
+  json_path: ^0.4.2
+  slugify: ^2.0.0
+  slugid: ^1.1.1
+
+  normalizr: ^0.1.1
+
+  freezed_annotation: ^2.2.0
+  built_collection: ^5.1.1
+  rxdart: ^0.27.7
+
+dev_dependencies:
+  # Code Quality
+
+  un_analysis:
+  dart_code_metrics: ^5.4.0
+  dependency_validator: ^3.2.2
+
+  # Code Generation
+
+  build_runner: ^2.3.0
+  freezed: ^2.2.0
+  json_serializable: ^6.5.4
+
+  # Testing
+
+  flutter_test:
+    sdk: flutter
+
+  # bloc_test: ^9.1.0
+  # mocktail: ^0.3.0

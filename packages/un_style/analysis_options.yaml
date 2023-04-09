@@ -1,0 +1,11 @@
+include: package:un_analysis/un_analysis.yaml
+
+exclude:
+    - lib/test/**
+    - lib/config/**
+    - lib/**.g.dart
+    - lib/**.gen.dart
+    - lib/**.freezed.dart
+    - "**.g.dart"
+    - "**.gen.dart"
+    - "**.freezed.dart"

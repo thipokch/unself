@@ -1,7 +1,7 @@
 bricks:
   feature_package:
-    path: tool/template/feature_package
+    path: packages/un_tool/templates/feature_package
   model:
-    path: tool/template/model
+    path: packages/un_tool/templates/model
   service_package:
-    path: tool/template/service_package
+    path: packages/un_tool/templates/service_package

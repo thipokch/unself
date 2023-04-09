@@ -1,0 +1,38 @@
+name: un_model
+description: Domain model for unself project.
+
+publish_to: "none"
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.18.6 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  freezed_annotation: ^2.2.0
+  built_collection: ^5.1.1
+  pub_semver: ^2.1.3
+  json_annotation:
+  slugify: ^2.0.0
+
+dev_dependencies:
+  # Code Quality
+
+  un_analysis:
+  dart_code_metrics: ^5.4.0
+  dependency_validator: ^3.2.2
+
+  # Code Generation
+
+  build_runner: ^2.3.0
+  freezed: ^2.2.0
+  json_serializable: ^6.5.4
+
+  # Testing
+
+  flutter_test:
+    sdk: flutter
+
+  # mocktail: ^0.3.0

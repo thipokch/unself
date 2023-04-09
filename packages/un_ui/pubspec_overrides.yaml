@@ -1,0 +1,6 @@
+# melos_managed_dependency_overrides: un_analysis,un_style
+dependency_overrides:
+  un_analysis:
+    path: ../un_analysis
+  un_style:
+    path: ../un_style

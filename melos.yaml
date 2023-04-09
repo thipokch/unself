@@ -2,9 +2,9 @@ name: unself
 repository: https://github.com/thipokch/unself
 
 packages:
-  - "**"
+  - "packages/**"
 ignore:
-  - "tool/template/**"
+  - "packages/un_tool/templates/**"
 
 command:
   bootstrap:
@@ -64,7 +64,7 @@ scripts:
       [ ! -f .env ] || export $(grep -v '^#' .env | xargs) && \
         echo "Environment variables from .env exported..." && \
 
-      export APP_DIR=$MELOS_ROOT_PATH/app/unself && \
+      export APP_DIR=$MELOS_ROOT_PATH/packages/un_app && \
       export SECRETS_DIR=$MELOS_ROOT_PATH/.secrets && \
       echo "Using '$SECRETS_DIR'..." && \
 
@@ -123,11 +123,11 @@ scripts:
 
   setup:canvaskit:
     run: |
-      dart ./tool/script/bin/version_canvaskit.dart
+      dart ./packages/script/bin/version_canvaskit.dart
 
   setup:doc:
     run: |
-      cd ./page/doc && \
+      cd ./docs && \
       yarn install
 
   #
@@ -180,7 +180,7 @@ scripts:
       Run `flutter analyze` in all packages.
        - Note: you can also rely on your IDEs Dart Analysis / Issues window.
     run: |
-      melos exec -c 1 --scope="unself*" -- \
+      melos exec -c 1 --scope="un*" --ignore="un_tool" -- \
         flutter analyze . --fatal-infos
 
   hygiene:format:
@@ -188,15 +188,16 @@ scripts:
       Run `dart format` in all packages.
         - Note: Exits with non-zero exit code if formatting is needed.
     run: |
-      melos exec -c 1 -- \
+      melos exec -c 1 --ignore="un_tool" -- \
           dart format --output=none --set-exit-if-changed .
 
   hygiene:format:fix:
     description: |
       Fix `dart format` in all packages.
     run: |
-      melos exec -c 1 -- \
-          dart format .
+      melos exec -c 1 --ignore="un_tool" -- \
+          dart format .  &&
+          flutter pub run import_sorter:main
 
   #
   #   Build
@@ -207,7 +208,7 @@ scripts:
       Bump build number
       For local development, use .env to set variables
         BUILD_NUM - build number
-    run: dart ./tool/script/bin/version_build.dart
+    run: dart ./packages/un_tool/bin/version_build.dart
 
   build:generate:
     description: Run all code generators.
@@ -239,9 +240,9 @@ scripts:
   build:doc:
     description: Generate documentation for the package.
     run: |
-      melos exec -c 5 --scope="unself*" -- \
-          dart doc . --output=$MELOS_ROOT_PATH/page/doc/developer/api/ && \
-      dart ./tool/script/bin/docusaurify.dart
+      melos exec -c 5 --scope="un*" -- \
+          dart doc . --output=$MELOS_ROOT_PATH/docs/developer/api/ && \
+      dart ./packages/un_tool/bin/docusaurify.dart
 
   #   iOS
 
@@ -254,7 +255,7 @@ scripts:
       [ ! -f .env ] || export $(grep -v '^#' .env | xargs) && \
         echo "Environment variables from .env exported..."
 
-      export APP_DIR=$MELOS_ROOT_PATH/app/unself && \
+      export APP_DIR=$MELOS_ROOT_PATH/packages/un_app && \
       export MATCH_GIT_URL=$MELOS_ROOT_PATH/.secrets && \
       export MATCH_PASSWORD=$SECRETS_PASSWORD && \
 
@@ -267,7 +268,7 @@ scripts:
     description: Xcode Pre-build command. Requires ENVIRONMENT
     run: |
       export BUILD_ENV=$FLAVOR && \
-      export APP_DIR=$MELOS_ROOT_PATH/app/unself && \
+      export APP_DIR=$MELOS_ROOT_PATH/packages/un_app && \
       $FLUTTER_ROOT/bin/dart pub global run melos setup:build
 
   build:ios:dev:
@@ -292,7 +293,7 @@ scripts:
       [ ! -f .env ] || export $(grep -v '^#' .env | xargs) && \
         echo "Environment variables from .env exported..."
 
-      export APP_DIR=$MELOS_ROOT_PATH/app/unself && \
+      export APP_DIR=$MELOS_ROOT_PATH/packages/un_app && \
 
       melos setup:build && \
 
@@ -322,7 +323,7 @@ scripts:
     description: Xcode Pre-build command. Requires ENVIRONMENT
     run: |
       export BUILD_ENV=$FLAVOR && \
-      export APP_DIR=$MELOS_ROOT_PATH/app/unself && \
+      export APP_DIR=$MELOS_ROOT_PATH/packages/un_app && \
       $FLUTTER_ROOT/bin/dart pub global run melos setup:build
 
   #   web
@@ -335,7 +336,7 @@ scripts:
       [ ! -f .env ] || export $(grep -v '^#' .env | xargs) && \
         echo "Environment variables from .env exported..."
 
-      export APP_DIR=$MELOS_ROOT_PATH/app/unself && \
+      export APP_DIR=$MELOS_ROOT_PATH/packages/un_app && \
 
       melos setup:build && \
 
