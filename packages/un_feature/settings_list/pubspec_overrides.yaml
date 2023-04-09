@@ -1,0 +1,12 @@
+# melos_managed_dependency_overrides: un_analysis,un_model,un_style,un_ui,un_user_repository
+dependency_overrides:
+  un_analysis:
+    path: ../../un_analysis
+  un_model:
+    path: ../../un_model
+  un_style:
+    path: ../../un_style
+  un_ui:
+    path: ../../un_ui
+  un_user_repository:
+    path: ../../un_user_repository

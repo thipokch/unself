@@ -1,0 +1,44 @@
+# melos_managed_dependency_overrides: un_analysis,un_app_info,un_browser,un_database,un_file,un_license,un_license_detail,un_license_list,un_model,un_monitoring,un_settings_appearance,un_settings_data,un_settings_list,un_style,un_ui,un_user_repository,ungraph_database,ungraph_repository,unpack,unpack_assistant,unpack_repository
+dependency_overrides:
+  un_analysis:
+    path: ../un_analysis
+  un_app_info:
+    path: ../un_feature/app_info
+  un_browser:
+    path: ../un_feature/browser
+  un_database:
+    path: ../un_database
+  un_file:
+    path: ../un_file
+  un_license:
+    path: ../un_feature/license
+  un_license_detail:
+    path: ../un_feature/license_detail
+  un_license_list:
+    path: ../un_feature/license_list
+  un_model:
+    path: ../un_model
+  un_monitoring:
+    path: ../un_monitoring
+  un_settings_appearance:
+    path: ../un_feature/settings_appearance
+  un_settings_data:
+    path: ../un_feature/settings_data
+  un_settings_list:
+    path: ../un_feature/settings_list
+  un_style:
+    path: ../un_style
+  un_ui:
+    path: ../un_ui
+  un_user_repository:
+    path: ../un_user_repository
+  ungraph_database:
+    path: ../ungraph_database
+  ungraph_repository:
+    path: ../ungraph_repository
+  unpack:
+    path: ../unpack
+  unpack_assistant:
+    path: ../un_feature/unpack_assistant
+  unpack_repository:
+    path: ../unpack_repository

@@ -1,0 +1,5 @@
+include: package:un_analysis/un_analysis.yaml
+
+analyzer:
+  exclude:
+    - "lib/config/**"

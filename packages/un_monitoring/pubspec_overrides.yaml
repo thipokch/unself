@@ -1,0 +1,4 @@
+# melos_managed_dependency_overrides: un_analysis
+dependency_overrides:
+  un_analysis:
+    path: ../un_analysis

@@ -1,0 +1,62 @@
+name: un_app
+description: Flutter app for Unself project.
+
+publish_to: none
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.18.6 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  go_router: ^6.0.1
+  provider: ^6.0.5
+
+  # service
+
+  un_database:
+  un_license:
+  un_monitoring:
+  un_user_repository:
+  unpack:
+
+  # style
+
+  un_ui:
+  un_style:
+
+  # feature
+
+  un_app_info:
+  un_browser:
+  un_license_detail:
+  un_license_list:
+  un_settings_appearance:
+  un_settings_data:
+  un_settings_list:
+  unpack_assistant:
+
+dev_dependencies:
+  # Code Quality
+
+  un_analysis:
+  dart_code_metrics: ^5.4.0
+  dependency_validator: ^3.2.2
+
+  # Code Generation
+
+  build_runner: ^2.3.0
+  go_router_builder: ^1.0.15
+
+  # Testing
+
+  flutter_test:
+    sdk: flutter
+  integration_test:
+    sdk: flutter
+  # mocktail: ^0.3.0
+
+flutter:
+  uses-material-design: true
