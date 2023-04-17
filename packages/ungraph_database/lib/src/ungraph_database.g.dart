@@ -661,6 +661,12 @@ class $NodeSpecTable extends NodeSpec
   late final GeneratedColumn<String> name = GeneratedColumn<String>(
       'name', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _descriptionMeta =
+      const VerificationMeta('description');
+  @override
+  late final GeneratedColumn<String> description = GeneratedColumn<String>(
+      'description', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
   static const VerificationMeta _slugMeta = const VerificationMeta('slug');
   @override
   late final GeneratedColumn<String> slug = GeneratedColumn<String>(
@@ -673,14 +679,15 @@ class $NodeSpecTable extends NodeSpec
   late final GeneratedColumn<String> labels = GeneratedColumn<String>(
       'labels', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  static const VerificationMeta _propSpecsMeta =
-      const VerificationMeta('propSpecs');
+  static const VerificationMeta _jsonSpecsMeta =
+      const VerificationMeta('jsonSpecs');
   @override
-  late final GeneratedColumn<String> propSpecs = GeneratedColumn<String>(
-      'prop_specs', aliasedName, false,
+  late final GeneratedColumn<String> jsonSpecs = GeneratedColumn<String>(
+      'json_specs', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
   @override
-  List<GeneratedColumn> get $columns => [id, name, slug, labels, propSpecs];
+  List<GeneratedColumn> get $columns =>
+      [id, name, description, slug, labels, jsonSpecs];
   @override
   String get aliasedName => _alias ?? 'node_spec';
   @override
@@ -699,6 +706,14 @@ class $NodeSpecTable extends NodeSpec
     } else if (isInserting) {
       context.missing(_nameMeta);
     }
+    if (data.containsKey('description')) {
+      context.handle(
+          _descriptionMeta,
+          description.isAcceptableOrUnknown(
+              data['description']!, _descriptionMeta));
+    } else if (isInserting) {
+      context.missing(_descriptionMeta);
+    }
     if (data.containsKey('slug')) {
       context.handle(
           _slugMeta, slug.isAcceptableOrUnknown(data['slug']!, _slugMeta));
@@ -711,11 +726,11 @@ class $NodeSpecTable extends NodeSpec
     } else if (isInserting) {
       context.missing(_labelsMeta);
     }
-    if (data.containsKey('prop_specs')) {
-      context.handle(_propSpecsMeta,
-          propSpecs.isAcceptableOrUnknown(data['prop_specs']!, _propSpecsMeta));
+    if (data.containsKey('json_specs')) {
+      context.handle(_jsonSpecsMeta,
+          jsonSpecs.isAcceptableOrUnknown(data['json_specs']!, _jsonSpecsMeta));
     } else if (isInserting) {
-      context.missing(_propSpecsMeta);
+      context.missing(_jsonSpecsMeta);
     }
     return context;
   }
@@ -730,12 +745,14 @@ class $NodeSpecTable extends NodeSpec
           .read(DriftSqlType.string, data['${effectivePrefix}id'])!,
       name: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}name'])!,
+      description: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}description'])!,
       slug: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}slug'])!,
       labels: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}labels'])!,
-      propSpecs: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}prop_specs'])!,
+      jsonSpecs: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}json_specs'])!,
     );
   }
 
@@ -748,23 +765,26 @@ class $NodeSpecTable extends NodeSpec
 class NodeSpecData extends DataClass implements Insertable<NodeSpecData> {
   final String id;
   final String name;
+  final String description;
   final String slug;
   final String labels;
-  final String propSpecs;
+  final String jsonSpecs;
   const NodeSpecData(
       {required this.id,
       required this.name,
+      required this.description,
       required this.slug,
       required this.labels,
-      required this.propSpecs});
+      required this.jsonSpecs});
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
     map['id'] = Variable<String>(id);
     map['name'] = Variable<String>(name);
+    map['description'] = Variable<String>(description);
     map['slug'] = Variable<String>(slug);
     map['labels'] = Variable<String>(labels);
-    map['prop_specs'] = Variable<String>(propSpecs);
+    map['json_specs'] = Variable<String>(jsonSpecs);
     return map;
   }
 
@@ -772,9 +792,10 @@ class NodeSpecData extends DataClass implements Insertable<NodeSpecData> {
     return NodeSpecCompanion(
       id: Value(id),
       name: Value(name),
+      description: Value(description),
       slug: Value(slug),
       labels: Value(labels),
-      propSpecs: Value(propSpecs),
+      jsonSpecs: Value(jsonSpecs),
     );
   }
 
@@ -784,9 +805,10 @@ class NodeSpecData extends DataClass implements Insertable<NodeSpecData> {
     return NodeSpecData(
       id: serializer.fromJson<String>(json['id']),
       name: serializer.fromJson<String>(json['name']),
+      description: serializer.fromJson<String>(json['description']),
       slug: serializer.fromJson<String>(json['slug']),
       labels: serializer.fromJson<String>(json['labels']),
-      propSpecs: serializer.fromJson<String>(json['propSpecs']),
+      jsonSpecs: serializer.fromJson<String>(json['jsonSpecs']),
     );
   }
   @override
@@ -795,90 +817,102 @@ class NodeSpecData extends DataClass implements Insertable<NodeSpecData> {
     return <String, dynamic>{
       'id': serializer.toJson<String>(id),
       'name': serializer.toJson<String>(name),
+      'description': serializer.toJson<String>(description),
       'slug': serializer.toJson<String>(slug),
       'labels': serializer.toJson<String>(labels),
-      'propSpecs': serializer.toJson<String>(propSpecs),
+      'jsonSpecs': serializer.toJson<String>(jsonSpecs),
     };
   }
 
   NodeSpecData copyWith(
           {String? id,
           String? name,
+          String? description,
           String? slug,
           String? labels,
-          String? propSpecs}) =>
+          String? jsonSpecs}) =>
       NodeSpecData(
         id: id ?? this.id,
         name: name ?? this.name,
+        description: description ?? this.description,
         slug: slug ?? this.slug,
         labels: labels ?? this.labels,
-        propSpecs: propSpecs ?? this.propSpecs,
+        jsonSpecs: jsonSpecs ?? this.jsonSpecs,
       );
   @override
   String toString() {
     return (StringBuffer('NodeSpecData(')
           ..write('id: $id, ')
           ..write('name: $name, ')
+          ..write('description: $description, ')
           ..write('slug: $slug, ')
           ..write('labels: $labels, ')
-          ..write('propSpecs: $propSpecs')
+          ..write('jsonSpecs: $jsonSpecs')
           ..write(')'))
         .toString();
   }
 
   @override
-  int get hashCode => Object.hash(id, name, slug, labels, propSpecs);
+  int get hashCode =>
+      Object.hash(id, name, description, slug, labels, jsonSpecs);
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       (other is NodeSpecData &&
           other.id == this.id &&
           other.name == this.name &&
+          other.description == this.description &&
           other.slug == this.slug &&
           other.labels == this.labels &&
-          other.propSpecs == this.propSpecs);
+          other.jsonSpecs == this.jsonSpecs);
 }
 
 class NodeSpecCompanion extends UpdateCompanion<NodeSpecData> {
   final Value<String> id;
   final Value<String> name;
+  final Value<String> description;
   final Value<String> slug;
   final Value<String> labels;
-  final Value<String> propSpecs;
+  final Value<String> jsonSpecs;
   final Value<int> rowid;
   const NodeSpecCompanion({
     this.id = const Value.absent(),
     this.name = const Value.absent(),
+    this.description = const Value.absent(),
     this.slug = const Value.absent(),
     this.labels = const Value.absent(),
-    this.propSpecs = const Value.absent(),
+    this.jsonSpecs = const Value.absent(),
     this.rowid = const Value.absent(),
   });
   NodeSpecCompanion.insert({
     this.id = const Value.absent(),
     required String name,
+    required String description,
     required String slug,
     required String labels,
-    required String propSpecs,
+    required String jsonSpecs,
     this.rowid = const Value.absent(),
   })  : name = Value(name),
+        description = Value(description),
         slug = Value(slug),
         labels = Value(labels),
-        propSpecs = Value(propSpecs);
+        jsonSpecs = Value(jsonSpecs);
   static Insertable<NodeSpecData> custom({
     Expression<String>? id,
     Expression<String>? name,
+    Expression<String>? description,
     Expression<String>? slug,
     Expression<String>? labels,
-    Expression<String>? propSpecs,
+    Expression<String>? jsonSpecs,
     Expression<int>? rowid,
   }) {
     return RawValuesInsertable({
       if (id != null) 'id': id,
       if (name != null) 'name': name,
+      if (description != null) 'description': description,
       if (slug != null) 'slug': slug,
       if (labels != null) 'labels': labels,
-      if (propSpecs != null) 'prop_specs': propSpecs,
+      if (jsonSpecs != null) 'json_specs': jsonSpecs,
       if (rowid != null) 'rowid': rowid,
     });
   }
@@ -886,16 +920,18 @@ class NodeSpecCompanion extends UpdateCompanion<NodeSpecData> {
   NodeSpecCompanion copyWith(
       {Value<String>? id,
       Value<String>? name,
+      Value<String>? description,
       Value<String>? slug,
       Value<String>? labels,
-      Value<String>? propSpecs,
+      Value<String>? jsonSpecs,
       Value<int>? rowid}) {
     return NodeSpecCompanion(
       id: id ?? this.id,
       name: name ?? this.name,
+      description: description ?? this.description,
       slug: slug ?? this.slug,
       labels: labels ?? this.labels,
-      propSpecs: propSpecs ?? this.propSpecs,
+      jsonSpecs: jsonSpecs ?? this.jsonSpecs,
       rowid: rowid ?? this.rowid,
     );
   }
@@ -909,14 +945,17 @@ class NodeSpecCompanion extends UpdateCompanion<NodeSpecData> {
     if (name.present) {
       map['name'] = Variable<String>(name.value);
     }
+    if (description.present) {
+      map['description'] = Variable<String>(description.value);
+    }
     if (slug.present) {
       map['slug'] = Variable<String>(slug.value);
     }
     if (labels.present) {
       map['labels'] = Variable<String>(labels.value);
     }
-    if (propSpecs.present) {
-      map['prop_specs'] = Variable<String>(propSpecs.value);
+    if (jsonSpecs.present) {
+      map['json_specs'] = Variable<String>(jsonSpecs.value);
     }
     if (rowid.present) {
       map['rowid'] = Variable<int>(rowid.value);
@@ -929,9 +968,10 @@ class NodeSpecCompanion extends UpdateCompanion<NodeSpecData> {
     return (StringBuffer('NodeSpecCompanion(')
           ..write('id: $id, ')
           ..write('name: $name, ')
+          ..write('description: $description, ')
           ..write('slug: $slug, ')
           ..write('labels: $labels, ')
-          ..write('propSpecs: $propSpecs, ')
+          ..write('jsonSpecs: $jsonSpecs, ')
           ..write('rowid: $rowid')
           ..write(')'))
         .toString();
@@ -956,6 +996,12 @@ class $EdgeSpecTable extends EdgeSpec
   late final GeneratedColumn<String> name = GeneratedColumn<String>(
       'name', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _descriptionMeta =
+      const VerificationMeta('description');
+  @override
+  late final GeneratedColumn<String> description = GeneratedColumn<String>(
+      'description', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
   static const VerificationMeta _slugMeta = const VerificationMeta('slug');
   @override
   late final GeneratedColumn<String> slug = GeneratedColumn<String>(
@@ -968,11 +1014,11 @@ class $EdgeSpecTable extends EdgeSpec
   late final GeneratedColumn<String> type = GeneratedColumn<String>(
       'type', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  static const VerificationMeta _propSpecsMeta =
-      const VerificationMeta('propSpecs');
+  static const VerificationMeta _jsonSpecsMeta =
+      const VerificationMeta('jsonSpecs');
   @override
-  late final GeneratedColumn<String> propSpecs = GeneratedColumn<String>(
-      'prop_specs', aliasedName, false,
+  late final GeneratedColumn<String> jsonSpecs = GeneratedColumn<String>(
+      'json_specs', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
   static const VerificationMeta _sourceNodeSpecIdMeta =
       const VerificationMeta('sourceNodeSpecId');
@@ -993,8 +1039,16 @@ class $EdgeSpecTable extends EdgeSpec
       defaultConstraints:
           GeneratedColumn.constraintIsAlways('REFERENCES node_spec (slug)'));
   @override
-  List<GeneratedColumn> get $columns =>
-      [id, name, slug, type, propSpecs, sourceNodeSpecId, targetNodeSpecId];
+  List<GeneratedColumn> get $columns => [
+        id,
+        name,
+        description,
+        slug,
+        type,
+        jsonSpecs,
+        sourceNodeSpecId,
+        targetNodeSpecId
+      ];
   @override
   String get aliasedName => _alias ?? 'edge_spec';
   @override
@@ -1013,6 +1067,14 @@ class $EdgeSpecTable extends EdgeSpec
     } else if (isInserting) {
       context.missing(_nameMeta);
     }
+    if (data.containsKey('description')) {
+      context.handle(
+          _descriptionMeta,
+          description.isAcceptableOrUnknown(
+              data['description']!, _descriptionMeta));
+    } else if (isInserting) {
+      context.missing(_descriptionMeta);
+    }
     if (data.containsKey('slug')) {
       context.handle(
           _slugMeta, slug.isAcceptableOrUnknown(data['slug']!, _slugMeta));
@@ -1025,11 +1087,11 @@ class $EdgeSpecTable extends EdgeSpec
     } else if (isInserting) {
       context.missing(_typeMeta);
     }
-    if (data.containsKey('prop_specs')) {
-      context.handle(_propSpecsMeta,
-          propSpecs.isAcceptableOrUnknown(data['prop_specs']!, _propSpecsMeta));
+    if (data.containsKey('json_specs')) {
+      context.handle(_jsonSpecsMeta,
+          jsonSpecs.isAcceptableOrUnknown(data['json_specs']!, _jsonSpecsMeta));
     } else if (isInserting) {
-      context.missing(_propSpecsMeta);
+      context.missing(_jsonSpecsMeta);
     }
     if (data.containsKey('source_node_spec_id')) {
       context.handle(
@@ -1060,12 +1122,14 @@ class $EdgeSpecTable extends EdgeSpec
           .read(DriftSqlType.string, data['${effectivePrefix}id'])!,
       name: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}name'])!,
+      description: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}description'])!,
       slug: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}slug'])!,
       type: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}type'])!,
-      propSpecs: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}prop_specs'])!,
+      jsonSpecs: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}json_specs'])!,
       sourceNodeSpecId: attachedDatabase.typeMapping.read(
           DriftSqlType.string, data['${effectivePrefix}source_node_spec_id'])!,
       targetNodeSpecId: attachedDatabase.typeMapping.read(
@@ -1082,17 +1146,19 @@ class $EdgeSpecTable extends EdgeSpec
 class EdgeSpecData extends DataClass implements Insertable<EdgeSpecData> {
   final String id;
   final String name;
+  final String description;
   final String slug;
   final String type;
-  final String propSpecs;
+  final String jsonSpecs;
   final String sourceNodeSpecId;
   final String targetNodeSpecId;
   const EdgeSpecData(
       {required this.id,
       required this.name,
+      required this.description,
       required this.slug,
       required this.type,
-      required this.propSpecs,
+      required this.jsonSpecs,
       required this.sourceNodeSpecId,
       required this.targetNodeSpecId});
   @override
@@ -1100,9 +1166,10 @@ class EdgeSpecData extends DataClass implements Insertable<EdgeSpecData> {
     final map = <String, Expression>{};
     map['id'] = Variable<String>(id);
     map['name'] = Variable<String>(name);
+    map['description'] = Variable<String>(description);
     map['slug'] = Variable<String>(slug);
     map['type'] = Variable<String>(type);
-    map['prop_specs'] = Variable<String>(propSpecs);
+    map['json_specs'] = Variable<String>(jsonSpecs);
     map['source_node_spec_id'] = Variable<String>(sourceNodeSpecId);
     map['target_node_spec_id'] = Variable<String>(targetNodeSpecId);
     return map;
@@ -1112,9 +1179,10 @@ class EdgeSpecData extends DataClass implements Insertable<EdgeSpecData> {
     return EdgeSpecCompanion(
       id: Value(id),
       name: Value(name),
+      description: Value(description),
       slug: Value(slug),
       type: Value(type),
-      propSpecs: Value(propSpecs),
+      jsonSpecs: Value(jsonSpecs),
       sourceNodeSpecId: Value(sourceNodeSpecId),
       targetNodeSpecId: Value(targetNodeSpecId),
     );
@@ -1126,9 +1194,10 @@ class EdgeSpecData extends DataClass implements Insertable<EdgeSpecData> {
     return EdgeSpecData(
       id: serializer.fromJson<String>(json['id']),
       name: serializer.fromJson<String>(json['name']),
+      description: serializer.fromJson<String>(json['description']),
       slug: serializer.fromJson<String>(json['slug']),
       type: serializer.fromJson<String>(json['type']),
-      propSpecs: serializer.fromJson<String>(json['propSpecs']),
+      jsonSpecs: serializer.fromJson<String>(json['jsonSpecs']),
       sourceNodeSpecId: serializer.fromJson<String>(json['sourceNodeSpecId']),
       targetNodeSpecId: serializer.fromJson<String>(json['targetNodeSpecId']),
     );
@@ -1139,9 +1208,10 @@ class EdgeSpecData extends DataClass implements Insertable<EdgeSpecData> {
     return <String, dynamic>{
       'id': serializer.toJson<String>(id),
       'name': serializer.toJson<String>(name),
+      'description': serializer.toJson<String>(description),
       'slug': serializer.toJson<String>(slug),
       'type': serializer.toJson<String>(type),
-      'propSpecs': serializer.toJson<String>(propSpecs),
+      'jsonSpecs': serializer.toJson<String>(jsonSpecs),
       'sourceNodeSpecId': serializer.toJson<String>(sourceNodeSpecId),
       'targetNodeSpecId': serializer.toJson<String>(targetNodeSpecId),
     };
@@ -1150,17 +1220,19 @@ class EdgeSpecData extends DataClass implements Insertable<EdgeSpecData> {
   EdgeSpecData copyWith(
           {String? id,
           String? name,
+          String? description,
           String? slug,
           String? type,
-          String? propSpecs,
+          String? jsonSpecs,
           String? sourceNodeSpecId,
           String? targetNodeSpecId}) =>
       EdgeSpecData(
         id: id ?? this.id,
         name: name ?? this.name,
+        description: description ?? this.description,
         slug: slug ?? this.slug,
         type: type ?? this.type,
-        propSpecs: propSpecs ?? this.propSpecs,
+        jsonSpecs: jsonSpecs ?? this.jsonSpecs,
         sourceNodeSpecId: sourceNodeSpecId ?? this.sourceNodeSpecId,
         targetNodeSpecId: targetNodeSpecId ?? this.targetNodeSpecId,
       );
@@ -1169,9 +1241,10 @@ class EdgeSpecData extends DataClass implements Insertable<EdgeSpecData> {
     return (StringBuffer('EdgeSpecData(')
           ..write('id: $id, ')
           ..write('name: $name, ')
+          ..write('description: $description, ')
           ..write('slug: $slug, ')
           ..write('type: $type, ')
-          ..write('propSpecs: $propSpecs, ')
+          ..write('jsonSpecs: $jsonSpecs, ')
           ..write('sourceNodeSpecId: $sourceNodeSpecId, ')
           ..write('targetNodeSpecId: $targetNodeSpecId')
           ..write(')'))
@@ -1179,17 +1252,18 @@ class EdgeSpecData extends DataClass implements Insertable<EdgeSpecData> {
   }
 
   @override
-  int get hashCode => Object.hash(
-      id, name, slug, type, propSpecs, sourceNodeSpecId, targetNodeSpecId);
+  int get hashCode => Object.hash(id, name, description, slug, type, jsonSpecs,
+      sourceNodeSpecId, targetNodeSpecId);
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       (other is EdgeSpecData &&
           other.id == this.id &&
           other.name == this.name &&
+          other.description == this.description &&
           other.slug == this.slug &&
           other.type == this.type &&
-          other.propSpecs == this.propSpecs &&
+          other.jsonSpecs == this.jsonSpecs &&
           other.sourceNodeSpecId == this.sourceNodeSpecId &&
           other.targetNodeSpecId == this.targetNodeSpecId);
 }
@@ -1197,18 +1271,20 @@ class EdgeSpecData extends DataClass implements Insertable<EdgeSpecData> {
 class EdgeSpecCompanion extends UpdateCompanion<EdgeSpecData> {
   final Value<String> id;
   final Value<String> name;
+  final Value<String> description;
   final Value<String> slug;
   final Value<String> type;
-  final Value<String> propSpecs;
+  final Value<String> jsonSpecs;
   final Value<String> sourceNodeSpecId;
   final Value<String> targetNodeSpecId;
   final Value<int> rowid;
   const EdgeSpecCompanion({
     this.id = const Value.absent(),
     this.name = const Value.absent(),
+    this.description = const Value.absent(),
     this.slug = const Value.absent(),
     this.type = const Value.absent(),
-    this.propSpecs = const Value.absent(),
+    this.jsonSpecs = const Value.absent(),
     this.sourceNodeSpecId = const Value.absent(),
     this.targetNodeSpecId = const Value.absent(),
     this.rowid = const Value.absent(),
@@ -1216,24 +1292,27 @@ class EdgeSpecCompanion extends UpdateCompanion<EdgeSpecData> {
   EdgeSpecCompanion.insert({
     this.id = const Value.absent(),
     required String name,
+    required String description,
     required String slug,
     required String type,
-    required String propSpecs,
+    required String jsonSpecs,
     required String sourceNodeSpecId,
     required String targetNodeSpecId,
     this.rowid = const Value.absent(),
   })  : name = Value(name),
+        description = Value(description),
         slug = Value(slug),
         type = Value(type),
-        propSpecs = Value(propSpecs),
+        jsonSpecs = Value(jsonSpecs),
         sourceNodeSpecId = Value(sourceNodeSpecId),
         targetNodeSpecId = Value(targetNodeSpecId);
   static Insertable<EdgeSpecData> custom({
     Expression<String>? id,
     Expression<String>? name,
+    Expression<String>? description,
     Expression<String>? slug,
     Expression<String>? type,
-    Expression<String>? propSpecs,
+    Expression<String>? jsonSpecs,
     Expression<String>? sourceNodeSpecId,
     Expression<String>? targetNodeSpecId,
     Expression<int>? rowid,
@@ -1241,9 +1320,10 @@ class EdgeSpecCompanion extends UpdateCompanion<EdgeSpecData> {
     return RawValuesInsertable({
       if (id != null) 'id': id,
       if (name != null) 'name': name,
+      if (description != null) 'description': description,
       if (slug != null) 'slug': slug,
       if (type != null) 'type': type,
-      if (propSpecs != null) 'prop_specs': propSpecs,
+      if (jsonSpecs != null) 'json_specs': jsonSpecs,
       if (sourceNodeSpecId != null) 'source_node_spec_id': sourceNodeSpecId,
       if (targetNodeSpecId != null) 'target_node_spec_id': targetNodeSpecId,
       if (rowid != null) 'rowid': rowid,
@@ -1253,18 +1333,20 @@ class EdgeSpecCompanion extends UpdateCompanion<EdgeSpecData> {
   EdgeSpecCompanion copyWith(
       {Value<String>? id,
       Value<String>? name,
+      Value<String>? description,
       Value<String>? slug,
       Value<String>? type,
-      Value<String>? propSpecs,
+      Value<String>? jsonSpecs,
       Value<String>? sourceNodeSpecId,
       Value<String>? targetNodeSpecId,
       Value<int>? rowid}) {
     return EdgeSpecCompanion(
       id: id ?? this.id,
       name: name ?? this.name,
+      description: description ?? this.description,
       slug: slug ?? this.slug,
       type: type ?? this.type,
-      propSpecs: propSpecs ?? this.propSpecs,
+      jsonSpecs: jsonSpecs ?? this.jsonSpecs,
       sourceNodeSpecId: sourceNodeSpecId ?? this.sourceNodeSpecId,
       targetNodeSpecId: targetNodeSpecId ?? this.targetNodeSpecId,
       rowid: rowid ?? this.rowid,
@@ -1280,14 +1362,17 @@ class EdgeSpecCompanion extends UpdateCompanion<EdgeSpecData> {
     if (name.present) {
       map['name'] = Variable<String>(name.value);
     }
+    if (description.present) {
+      map['description'] = Variable<String>(description.value);
+    }
     if (slug.present) {
       map['slug'] = Variable<String>(slug.value);
     }
     if (type.present) {
       map['type'] = Variable<String>(type.value);
     }
-    if (propSpecs.present) {
-      map['prop_specs'] = Variable<String>(propSpecs.value);
+    if (jsonSpecs.present) {
+      map['json_specs'] = Variable<String>(jsonSpecs.value);
     }
     if (sourceNodeSpecId.present) {
       map['source_node_spec_id'] = Variable<String>(sourceNodeSpecId.value);
@@ -1306,9 +1391,10 @@ class EdgeSpecCompanion extends UpdateCompanion<EdgeSpecData> {
     return (StringBuffer('EdgeSpecCompanion(')
           ..write('id: $id, ')
           ..write('name: $name, ')
+          ..write('description: $description, ')
           ..write('slug: $slug, ')
           ..write('type: $type, ')
-          ..write('propSpecs: $propSpecs, ')
+          ..write('jsonSpecs: $jsonSpecs, ')
           ..write('sourceNodeSpecId: $sourceNodeSpecId, ')
           ..write('targetNodeSpecId: $targetNodeSpecId, ')
           ..write('rowid: $rowid')

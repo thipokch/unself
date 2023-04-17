@@ -10,8 +10,9 @@ _$_NodeSpec _$$_NodeSpecFromJson(Map<String, dynamic> json) => _$_NodeSpec(
       id: json['id'] as String?,
       slugged: json['slugged'] as String?,
       name: json['name'] as String,
-      propSpecs: (json['propSpecs'] as List<dynamic>)
-          .map((e) => PropSpec.fromJson(e as Map<String, dynamic>))
+      description: json['description'] as String,
+      jsonSpecs: (json['jsonSpecs'] as List<dynamic>)
+          .map((e) => JsonSpec.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
@@ -27,6 +28,7 @@ Map<String, dynamic> _$$_NodeSpecToJson(_$_NodeSpec instance) {
   writeNotNull('id', instance.id);
   writeNotNull('slugged', instance.slugged);
   val['name'] = instance.name;
-  val['propSpecs'] = instance.propSpecs.map((e) => e.toJson()).toList();
+  val['description'] = instance.description;
+  val['jsonSpecs'] = instance.jsonSpecs.map((e) => e.toJson()).toList();
   return val;
 }

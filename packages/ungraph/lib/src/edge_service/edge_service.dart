@@ -3,6 +3,7 @@ import 'package:ungraph_repository/ungraph_repository.dart';
 part 'iedge_service.dart';
 
 class EdgeService extends IEdgeService {
+  // ignore: unused_field
   final EdgeRepository _repo;
 
   EdgeService(this._repo);

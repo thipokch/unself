@@ -15,7 +15,8 @@ class NodeSpec with _$NodeSpec implements INodeSpec {
     String? id,
     String? slugged,
     required String name,
-    required List<PropSpec> propSpecs,
+    required String description,
+    required List<JsonSpec> jsonSpecs,
   }) = _NodeSpec;
 
   factory NodeSpec.fromJson(Map<String, dynamic> json) =>

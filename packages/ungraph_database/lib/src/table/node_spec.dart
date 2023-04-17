@@ -4,7 +4,8 @@ import 'package:ungraph_database/ungraph_database.dart';
 @DataClassName('NodeSpecData')
 class NodeSpec extends Table with PrimaryUuid {
   TextColumn get name => text()();
+  TextColumn get description => text()();
   TextColumn get slug => text().unique()();
   TextColumn get labels => text()();
-  TextColumn get propSpecs => text()();
+  TextColumn get jsonSpecs => text()();
 }

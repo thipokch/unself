@@ -32,6 +32,9 @@ class UngraphService implements IUngraphService {
   Future<void> registerNode(NodeSpec spec) async =>
       await _repo.registerNode(spec);
 
+  Future<void> registerAllNodes(Iterable<NodeSpec> specs) async =>
+      await Future.wait(specs.map(registerNode));
+
   Future<void> registerEdge(EdgeSpec spec) async =>
       await _repo.registerEdge(spec);
 

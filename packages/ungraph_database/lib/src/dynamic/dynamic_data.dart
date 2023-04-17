@@ -1,5 +1,6 @@
+import 'dart:convert';
+
 import 'package:drift/drift.dart';
-import 'package:ungraph_database/ungraph_database.dart';
 
 class DynamicData<D> extends DataClass implements Insertable<D> {
   DynamicData(this.data);
@@ -7,9 +8,9 @@ class DynamicData<D> extends DataClass implements Insertable<D> {
   final Map<String, dynamic> data;
 
   @override
-  Map<String, Expression<Object>> toColumns(bool nullToAbsent) =>
-      data.map((k, v) => MapEntry(k, Variable(v)))
-        ..putIfAbsent('id', () => Variable(Slugid.nice().toString()));
+  Map<String, Expression<Object>> toColumns(bool nullToAbsent) => {
+        'json': Variable<String>(jsonEncode(data)),
+      };
 
   @override
   // TODO: implement toJson

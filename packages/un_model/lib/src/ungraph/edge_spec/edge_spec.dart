@@ -15,10 +15,11 @@ class EdgeSpec with _$EdgeSpec implements IEdgeSpec {
     String? id,
     String? slugged,
     required String name,
+    required String description,
     required String type,
     required String sourceNodeSpecId,
     required String targetNodeSpecId,
-    required List<PropSpec> propSpecs,
+    required List<JsonSpec> jsonSpecs,
   }) = _EdgeSpec;
 
   factory EdgeSpec.fromJson(Map<String, dynamic> json) =>

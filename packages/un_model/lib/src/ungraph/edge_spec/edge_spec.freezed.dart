@@ -23,10 +23,11 @@ mixin _$EdgeSpec {
   String? get id => throw _privateConstructorUsedError;
   String? get slugged => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
+  String get description => throw _privateConstructorUsedError;
   String get type => throw _privateConstructorUsedError;
   String get sourceNodeSpecId => throw _privateConstructorUsedError;
   String get targetNodeSpecId => throw _privateConstructorUsedError;
-  List<PropSpec> get propSpecs => throw _privateConstructorUsedError;
+  List<JsonSpec> get jsonSpecs => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -43,10 +44,11 @@ abstract class $EdgeSpecCopyWith<$Res> {
       {String? id,
       String? slugged,
       String name,
+      String description,
       String type,
       String sourceNodeSpecId,
       String targetNodeSpecId,
-      List<PropSpec> propSpecs});
+      List<JsonSpec> jsonSpecs});
 }
 
 /// @nodoc
@@ -65,10 +67,11 @@ class _$EdgeSpecCopyWithImpl<$Res, $Val extends EdgeSpec>
     Object? id = freezed,
     Object? slugged = freezed,
     Object? name = null,
+    Object? description = null,
     Object? type = null,
     Object? sourceNodeSpecId = null,
     Object? targetNodeSpecId = null,
-    Object? propSpecs = null,
+    Object? jsonSpecs = null,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -83,6 +86,10 @@ class _$EdgeSpecCopyWithImpl<$Res, $Val extends EdgeSpec>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
+      description: null == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -95,10 +102,10 @@ class _$EdgeSpecCopyWithImpl<$Res, $Val extends EdgeSpec>
           ? _value.targetNodeSpecId
           : targetNodeSpecId // ignore: cast_nullable_to_non_nullable
               as String,
-      propSpecs: null == propSpecs
-          ? _value.propSpecs
-          : propSpecs // ignore: cast_nullable_to_non_nullable
-              as List<PropSpec>,
+      jsonSpecs: null == jsonSpecs
+          ? _value.jsonSpecs
+          : jsonSpecs // ignore: cast_nullable_to_non_nullable
+              as List<JsonSpec>,
     ) as $Val);
   }
 }
@@ -114,10 +121,11 @@ abstract class _$$_EdgeSpecCopyWith<$Res> implements $EdgeSpecCopyWith<$Res> {
       {String? id,
       String? slugged,
       String name,
+      String description,
       String type,
       String sourceNodeSpecId,
       String targetNodeSpecId,
-      List<PropSpec> propSpecs});
+      List<JsonSpec> jsonSpecs});
 }
 
 /// @nodoc
@@ -134,10 +142,11 @@ class __$$_EdgeSpecCopyWithImpl<$Res>
     Object? id = freezed,
     Object? slugged = freezed,
     Object? name = null,
+    Object? description = null,
     Object? type = null,
     Object? sourceNodeSpecId = null,
     Object? targetNodeSpecId = null,
-    Object? propSpecs = null,
+    Object? jsonSpecs = null,
   }) {
     return _then(_$_EdgeSpec(
       id: freezed == id
@@ -152,6 +161,10 @@ class __$$_EdgeSpecCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
+      description: null == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -164,10 +177,10 @@ class __$$_EdgeSpecCopyWithImpl<$Res>
           ? _value.targetNodeSpecId
           : targetNodeSpecId // ignore: cast_nullable_to_non_nullable
               as String,
-      propSpecs: null == propSpecs
-          ? _value._propSpecs
-          : propSpecs // ignore: cast_nullable_to_non_nullable
-              as List<PropSpec>,
+      jsonSpecs: null == jsonSpecs
+          ? _value._jsonSpecs
+          : jsonSpecs // ignore: cast_nullable_to_non_nullable
+              as List<JsonSpec>,
     ));
   }
 }
@@ -179,11 +192,12 @@ class _$_EdgeSpec extends _EdgeSpec {
       {this.id,
       this.slugged,
       required this.name,
+      required this.description,
       required this.type,
       required this.sourceNodeSpecId,
       required this.targetNodeSpecId,
-      required final List<PropSpec> propSpecs})
-      : _propSpecs = propSpecs,
+      required final List<JsonSpec> jsonSpecs})
+      : _jsonSpecs = jsonSpecs,
         super._();
 
   factory _$_EdgeSpec.fromJson(Map<String, dynamic> json) =>
@@ -196,22 +210,24 @@ class _$_EdgeSpec extends _EdgeSpec {
   @override
   final String name;
   @override
+  final String description;
+  @override
   final String type;
   @override
   final String sourceNodeSpecId;
   @override
   final String targetNodeSpecId;
-  final List<PropSpec> _propSpecs;
+  final List<JsonSpec> _jsonSpecs;
   @override
-  List<PropSpec> get propSpecs {
-    if (_propSpecs is EqualUnmodifiableListView) return _propSpecs;
+  List<JsonSpec> get jsonSpecs {
+    if (_jsonSpecs is EqualUnmodifiableListView) return _jsonSpecs;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_propSpecs);
+    return EqualUnmodifiableListView(_jsonSpecs);
   }
 
   @override
   String toString() {
-    return 'EdgeSpec(id: $id, slugged: $slugged, name: $name, type: $type, sourceNodeSpecId: $sourceNodeSpecId, targetNodeSpecId: $targetNodeSpecId, propSpecs: $propSpecs)';
+    return 'EdgeSpec(id: $id, slugged: $slugged, name: $name, description: $description, type: $type, sourceNodeSpecId: $sourceNodeSpecId, targetNodeSpecId: $targetNodeSpecId, jsonSpecs: $jsonSpecs)';
   }
 
   @override
@@ -222,13 +238,15 @@ class _$_EdgeSpec extends _EdgeSpec {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.slugged, slugged) || other.slugged == slugged) &&
             (identical(other.name, name) || other.name == name) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
             (identical(other.type, type) || other.type == type) &&
             (identical(other.sourceNodeSpecId, sourceNodeSpecId) ||
                 other.sourceNodeSpecId == sourceNodeSpecId) &&
             (identical(other.targetNodeSpecId, targetNodeSpecId) ||
                 other.targetNodeSpecId == targetNodeSpecId) &&
             const DeepCollectionEquality()
-                .equals(other._propSpecs, _propSpecs));
+                .equals(other._jsonSpecs, _jsonSpecs));
   }
 
   @JsonKey(ignore: true)
@@ -238,10 +256,11 @@ class _$_EdgeSpec extends _EdgeSpec {
       id,
       slugged,
       name,
+      description,
       type,
       sourceNodeSpecId,
       targetNodeSpecId,
-      const DeepCollectionEquality().hash(_propSpecs));
+      const DeepCollectionEquality().hash(_jsonSpecs));
 
   @JsonKey(ignore: true)
   @override
@@ -262,10 +281,11 @@ abstract class _EdgeSpec extends EdgeSpec {
       {final String? id,
       final String? slugged,
       required final String name,
+      required final String description,
       required final String type,
       required final String sourceNodeSpecId,
       required final String targetNodeSpecId,
-      required final List<PropSpec> propSpecs}) = _$_EdgeSpec;
+      required final List<JsonSpec> jsonSpecs}) = _$_EdgeSpec;
   const _EdgeSpec._() : super._();
 
   factory _EdgeSpec.fromJson(Map<String, dynamic> json) = _$_EdgeSpec.fromJson;
@@ -277,13 +297,15 @@ abstract class _EdgeSpec extends EdgeSpec {
   @override
   String get name;
   @override
+  String get description;
+  @override
   String get type;
   @override
   String get sourceNodeSpecId;
   @override
   String get targetNodeSpecId;
   @override
-  List<PropSpec> get propSpecs;
+  List<JsonSpec> get jsonSpecs;
   @override
   @JsonKey(ignore: true)
   _$$_EdgeSpecCopyWith<_$_EdgeSpec> get copyWith =>

@@ -23,7 +23,8 @@ mixin _$NodeSpec {
   String? get id => throw _privateConstructorUsedError;
   String? get slugged => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
-  List<PropSpec> get propSpecs => throw _privateConstructorUsedError;
+  String get description => throw _privateConstructorUsedError;
+  List<JsonSpec> get jsonSpecs => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -37,7 +38,11 @@ abstract class $NodeSpecCopyWith<$Res> {
       _$NodeSpecCopyWithImpl<$Res, NodeSpec>;
   @useResult
   $Res call(
-      {String? id, String? slugged, String name, List<PropSpec> propSpecs});
+      {String? id,
+      String? slugged,
+      String name,
+      String description,
+      List<JsonSpec> jsonSpecs});
 }
 
 /// @nodoc
@@ -56,7 +61,8 @@ class _$NodeSpecCopyWithImpl<$Res, $Val extends NodeSpec>
     Object? id = freezed,
     Object? slugged = freezed,
     Object? name = null,
-    Object? propSpecs = null,
+    Object? description = null,
+    Object? jsonSpecs = null,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -71,10 +77,14 @@ class _$NodeSpecCopyWithImpl<$Res, $Val extends NodeSpec>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      propSpecs: null == propSpecs
-          ? _value.propSpecs
-          : propSpecs // ignore: cast_nullable_to_non_nullable
-              as List<PropSpec>,
+      description: null == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
+      jsonSpecs: null == jsonSpecs
+          ? _value.jsonSpecs
+          : jsonSpecs // ignore: cast_nullable_to_non_nullable
+              as List<JsonSpec>,
     ) as $Val);
   }
 }
@@ -87,7 +97,11 @@ abstract class _$$_NodeSpecCopyWith<$Res> implements $NodeSpecCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {String? id, String? slugged, String name, List<PropSpec> propSpecs});
+      {String? id,
+      String? slugged,
+      String name,
+      String description,
+      List<JsonSpec> jsonSpecs});
 }
 
 /// @nodoc
@@ -104,7 +118,8 @@ class __$$_NodeSpecCopyWithImpl<$Res>
     Object? id = freezed,
     Object? slugged = freezed,
     Object? name = null,
-    Object? propSpecs = null,
+    Object? description = null,
+    Object? jsonSpecs = null,
   }) {
     return _then(_$_NodeSpec(
       id: freezed == id
@@ -119,10 +134,14 @@ class __$$_NodeSpecCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      propSpecs: null == propSpecs
-          ? _value._propSpecs
-          : propSpecs // ignore: cast_nullable_to_non_nullable
-              as List<PropSpec>,
+      description: null == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
+      jsonSpecs: null == jsonSpecs
+          ? _value._jsonSpecs
+          : jsonSpecs // ignore: cast_nullable_to_non_nullable
+              as List<JsonSpec>,
     ));
   }
 }
@@ -134,8 +153,9 @@ class _$_NodeSpec extends _NodeSpec {
       {this.id,
       this.slugged,
       required this.name,
-      required final List<PropSpec> propSpecs})
-      : _propSpecs = propSpecs,
+      required this.description,
+      required final List<JsonSpec> jsonSpecs})
+      : _jsonSpecs = jsonSpecs,
         super._();
 
   factory _$_NodeSpec.fromJson(Map<String, dynamic> json) =>
@@ -147,17 +167,19 @@ class _$_NodeSpec extends _NodeSpec {
   final String? slugged;
   @override
   final String name;
-  final List<PropSpec> _propSpecs;
   @override
-  List<PropSpec> get propSpecs {
-    if (_propSpecs is EqualUnmodifiableListView) return _propSpecs;
+  final String description;
+  final List<JsonSpec> _jsonSpecs;
+  @override
+  List<JsonSpec> get jsonSpecs {
+    if (_jsonSpecs is EqualUnmodifiableListView) return _jsonSpecs;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_propSpecs);
+    return EqualUnmodifiableListView(_jsonSpecs);
   }
 
   @override
   String toString() {
-    return 'NodeSpec(id: $id, slugged: $slugged, name: $name, propSpecs: $propSpecs)';
+    return 'NodeSpec(id: $id, slugged: $slugged, name: $name, description: $description, jsonSpecs: $jsonSpecs)';
   }
 
   @override
@@ -168,14 +190,16 @@ class _$_NodeSpec extends _NodeSpec {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.slugged, slugged) || other.slugged == slugged) &&
             (identical(other.name, name) || other.name == name) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
             const DeepCollectionEquality()
-                .equals(other._propSpecs, _propSpecs));
+                .equals(other._jsonSpecs, _jsonSpecs));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, slugged, name,
-      const DeepCollectionEquality().hash(_propSpecs));
+  int get hashCode => Object.hash(runtimeType, id, slugged, name, description,
+      const DeepCollectionEquality().hash(_jsonSpecs));
 
   @JsonKey(ignore: true)
   @override
@@ -196,7 +220,8 @@ abstract class _NodeSpec extends NodeSpec {
       {final String? id,
       final String? slugged,
       required final String name,
-      required final List<PropSpec> propSpecs}) = _$_NodeSpec;
+      required final String description,
+      required final List<JsonSpec> jsonSpecs}) = _$_NodeSpec;
   const _NodeSpec._() : super._();
 
   factory _NodeSpec.fromJson(Map<String, dynamic> json) = _$_NodeSpec.fromJson;
@@ -208,7 +233,9 @@ abstract class _NodeSpec extends NodeSpec {
   @override
   String get name;
   @override
-  List<PropSpec> get propSpecs;
+  String get description;
+  @override
+  List<JsonSpec> get jsonSpecs;
   @override
   @JsonKey(ignore: true)
   _$$_NodeSpecCopyWith<_$_NodeSpec> get copyWith =>

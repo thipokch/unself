@@ -1,18 +1,18 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'prop_spec.dart';
+part of 'json_spec.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_PropSpec _$$_PropSpecFromJson(Map<String, dynamic> json) => _$_PropSpec(
+_$_JsonSpec _$$_JsonSpecFromJson(Map<String, dynamic> json) => _$_JsonSpec(
       name: json['name'] as String,
       description: json['description'] as String,
       type: json['type'] as String,
     );
 
-Map<String, dynamic> _$$_PropSpecToJson(_$_PropSpec instance) =>
+Map<String, dynamic> _$$_JsonSpecToJson(_$_JsonSpec instance) =>
     <String, dynamic>{
       'name': instance.name,
       'description': instance.description,

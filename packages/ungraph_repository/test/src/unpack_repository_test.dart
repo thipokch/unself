@@ -30,7 +30,7 @@ void main() {
     // test('init nodespec', () async {
     //   const ns = NodeSpec(
     //     name: 'node spec',
-    //     propSpecs: [
+    //     jsonSpecs: [
     //       PropSpec(
     //         name: 'id',
     //         description: 'Just an identifier',

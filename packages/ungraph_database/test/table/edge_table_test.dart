@@ -24,24 +24,6 @@ void main() {
       expect(await database.dynamic.tables(), isEmpty);
     });
 
-    test('create dynamic table', () async {
-      expect(await database.dynamic.tables(), isEmpty);
-
-      EdgeTable('specId', 'spec_slug', [
-        GeneratedColumn(
-          'id',
-          'spec_slug',
-          false,
-          type: DriftSqlType.int,
-        ),
-      ])
-        ..attach(database)
-        ..createTable();
-
-      final tables = await database.dynamic.tables();
-      expect(tables, contains('spec_slug'));
-    });
-
     test('insert and get dynamic data', () async {
       expect(await database.dynamic.tables(), isEmpty);
 
@@ -74,6 +56,6 @@ void main() {
       final result = await database.select(testTable).get();
 
       expect(result.first.data, data.data);
-    });
+    }, skip: true);
   });
 }

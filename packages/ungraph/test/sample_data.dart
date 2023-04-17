@@ -2,18 +2,20 @@ import 'package:un_model/un_model.dart';
 
 const nsPost = NodeSpec(
   name: 'Facebook Posts',
-  propSpecs: [
-    PropSpec(name: 'name', description: 'description', type: 'string')
+  description: '',
+  jsonSpecs: [
+    JsonSpec(name: 'name', description: 'description', type: 'string')
   ],
 );
 
 final esComment = EdgeSpec(
   name: 'Facebook Comments',
+  description: '',
   type: '',
   sourceNodeSpecId: nsPost.slug,
   targetNodeSpecId: nsPost.slug,
-  propSpecs: const [
-    PropSpec(name: 'name', description: 'description', type: 'string')
+  jsonSpecs: const [
+    JsonSpec(name: 'name', description: 'description', type: 'string')
   ],
 );
 

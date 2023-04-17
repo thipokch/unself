@@ -12,7 +12,7 @@ class NodeService extends INodeService {
   NodeService(this._repo, this.edges);
 
   @override
-  List<PropSpec> get properties => _repo.spec.propSpecs;
+  List<JsonSpec> get json => _repo.spec.jsonSpecs;
 
   Future<List<Node>> getAll() => _repo.getAll();
 
